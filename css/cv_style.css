@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #c99797;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    padding: 20px 10%;
+    background: #240202;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+.logo{
+    position: relative;
+    font-size: 24px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 600;
+}
+.logo::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #240202;
+    animation: showRight 1s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.navbar li{
+    list-style: none;
+    display: inline-block;
+    position: relative;
+}
+.navbar a{
+    font-size: 16px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 36px;
+    transition: 0.3s;
+}
+.navbar a:hover, .navbar a.active{
+    color: #f88379;
+}
+.navbar li:hover .subnav{
+    display: block;
+}
+.navbar .subnav{
+    display: none;
+    position: absolute;
+    background-color: #240202;
+}
+.navbar .subnav li{
+    width: 100%;
+    height: 8%;
+    padding: 12px 36px 0 0;
+    text-align: center;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100px;
+    margin: 48px;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    box-shadow: 0 36px 56px rgba(0,0,0,0.1);
+}
+
+.container .left_side{
+    position: relative;
+    background: #5e3e3e;
+    padding: 40px;
+}
+
+.profile{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.profile .imgbox{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile .imgbox img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile h2{
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.4em;
+}
+.profile h2 span{
+    font-size: 0.6em;
+    font-weight: 300;
+}
+
+.contactInfo{
+    padding-top: 40px;
+}
+.title{
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.contactInfo ul{
+    position: relative;
+}
+.contactInfo ul li{
+    position: relative;
+    list-style: none;
+    margin: 8px 0;
+    cursor: pointer;
+}
+.contactInfo ul li .icon{
+    display: inline-block;
+    width: 28px;
+    font-size: 16px;
+    color: #68100b;
+}
+.contactInfo ul li span{
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.education li{
+    margin-bottom: 16px;
+    list-style: none;
+}
+.education h5{
+    color: #68100b;
+    font-weight: 500;
+}
+.education h4:nth-child(2){
+    color: #ffffff;
+    font-weight: 500;
+}
+.education h4{
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.language ul li{
+    list-style: none;
+    color: #ffffff;
+    margin-top: 8px;
+}
+.language .percent{
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background: #180606;
+    display: block;
+    margin-top: 8px;
+}
+.language .percent div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #68100b;
+}
+
+.container .right_side{
+    position: relative;
+    background: #ffffff;
+    padding: 40px;
+}
+.about {
+    margin-bottom: 48px;
+}
+.title2{
+    color: #381108;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.about .box{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+}
+.about .box .year_company{   
+    min-width: 148px;
+}
+.about .box .year_company h5{
+    text-transform: uppercase;
+    color: #848c90;
+    font-weight: 600;
+}
+.about .box .text h4{
+    text-transform: uppercase;
+    color: #a22a2a;
+    font-size: 16px;
+}
+
+.skills .box{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.skills .box h4{
+    text-transform: uppercase;
+    color: #848c90;
+    font-weight: 500;
+}
+.skills .box .percent{
+    position: relative;
+    width: 100%;
+    height: 12px;
+    background: #f0f0f0;
+}
+.skills .box .percent div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #68100b;
+}
+
+.interest ul{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.interest ul li{
+    list-style: none;
+    color: #333;
+    font-weight: 500;
+    margin: 8px 0;
+}
+.interest ul li .fa{
+    color: #68100b;
+    font-size: 16px;
+    width: 20px;
+}
+
+@media (max-width: 1000px){
+    .container{
+        margin: 8px;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .interest ul{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width: 600px){
+    .about .box{
+        flex-direction: column;
+    }
+    .about .box .year_company{
+        margin-bottom: 4px;
+    }
+    .interest ul{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .skills .box{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+/* Keyframes animation */
+@keyframes showRight{
+    100%{
+        width: 0;
+    }
+}
