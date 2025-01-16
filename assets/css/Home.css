@@ -11,70 +11,6 @@ body{
     background: #754f4f;
 }
 
-.header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 8%;
-    padding: 20px 10%;
-    background: #240202;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 5;
-}
-
-.logo{
-    position: relative;
-    font-size: 24px;
-    color: #ededed;
-    text-decoration: none;
-    font-weight: 600;
-}
-.logo::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: #240202;
-    animation: showRight 1s ease forwards;
-    animation-delay: 0.4s;
-}
-
-.navbar li{
-    list-style: none;
-    display: inline-block;
-    position: relative;
-}
-.navbar a{
-    font-size: 16px;
-    color: #ededed;
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 36px;
-    transition: 0.3s;
-}
-.navbar a:hover, .navbar a.active{
-    color: #f88379;
-}
-.navbar li:hover .subnav{
-    display: block;
-}
-.navbar .subnav{
-    display: none;
-    position: absolute;
-    background-color: #240202;
-}
-.navbar .subnav li{
-    width: 100%;
-    height: 8%;
-    padding: 12px 36px 0 0;
-    text-align: center;
-}
-
 .home{
     height: 100vh;
     /* background: url(./home.jpg) no-repeat;
@@ -246,6 +182,68 @@ body{
 }
 .home-sci a:hover::before{
     width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .home-img img {
+        max-width: 450px;
+    }
+}
+@media (max-width: 991px) {
+    .home {
+        padding: 0 4%;
+    }    
+    .home-img img {
+        max-width: 400px;
+    }
+}
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column-reverse;
+        padding-top: 100px;
+        text-align: center;
+    }
+    .home-content {
+        margin: 0 auto;
+    }
+    .home-content h1 {
+        font-size: 40px;
+    }
+    .home-img img {
+        max-width: 350px;
+        margin-top: 2rem;
+    }
+    .home-sci {
+        position: relative;
+        margin: 2rem auto 0;
+    }    
+    .btn-box {
+        margin: 0 auto;
+    }
+}
+@media (max-width: 520px) {
+    .home-content h1 {
+        font-size: 32px;
+    }
+    .home-img img {
+        max-width: 280px;
+    }
+    .btn-box {
+        width: 280px;
+        flex-direction: column;
+        gap: 1rem;
+        height: auto;
+    }
+    .btn-box a {
+        width: 100%;
+        height: 56px;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .home-sci {
+        width: 200px;
+    }
 }
 
 /* Keyframes animation */
