@@ -1,7 +1,7 @@
 class Header {
     static async loadHeader() {
         try {
-            const response = await fetch('/components/header/header.html');
+            const response = await fetch('./components/header/header.html');
             const html = await response.text();
             document.body.insertAdjacentHTML('afterbegin', html);
             
@@ -20,7 +20,7 @@ class Header {
             console.error('Error loading header:', error);
         }
     }
-    
+
     static initializeMenuButton() {
         const menuBtn = document.querySelector('.menu-btn');
         const navbar = document.querySelector('.navbar');
