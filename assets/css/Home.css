@@ -20,12 +20,14 @@ body{
     display: flex;
     align-items: center;
     padding: 0 10%;
+    gap: 2rem;
 }
 .home-img img{
     max-width: 600px;
 }
 .home-content{
     max-width: 600px;
+    flex: 1;
 }
 .home-content h1{
     position: relative;
@@ -129,6 +131,30 @@ body{
 .btn-box a:hover::before{
     width: 100%;
 }
+.home-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -8%;
+}
+.home-img img {
+    max-width: 600px;
+    opacity: 0.8;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.7s;
+}
+.home-img .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #754f4f;
+    animation: showRight 1s ease forwards;
+    animation-delay: 0.5s;
+    z-index: 2;
+}
 
 .home-sci{
     position: absolute;
@@ -203,6 +229,7 @@ body{
         flex-direction: column-reverse;
         padding-top: 100px;
         text-align: center;
+        gap: 1rem;
     }
     .home-content {
         margin: 0 auto;
@@ -210,9 +237,12 @@ body{
     .home-content h1 {
         font-size: 40px;
     }
+    .home-img {
+        margin-right: 0;
+        margin-top: 2rem;
+    }
     .home-img img {
         max-width: 350px;
-        margin-top: 2rem;
     }
     .home-sci {
         position: relative;
@@ -250,5 +280,13 @@ body{
 @keyframes showRight{
     100%{
         width: 0;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.8;
     }
 }
