@@ -1,7 +1,13 @@
 class Header {
     static async loadHeader() {
         try {
-            const baseUrl = window.location.pathname.includes('github.io') ? '/personalwebsite' : '';
+            const pathSegments = window.location.pathname.split('/');
+            const repoName = pathSegments[1];
+            const baseUrl = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+                ? ''
+                : `/${repoName}`;
+            //console.log('Current pathname:', window.location.pathname);
+            //console.log('Base URL:', baseUrl);
             const response = await fetch(`${baseUrl}/components/header/header.html`);
             const html = await response.text();
             document.body.insertAdjacentHTML('afterbegin', html);
