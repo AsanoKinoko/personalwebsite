@@ -7,7 +7,10 @@ class Header {
             document.body.insertAdjacentHTML('afterbegin', html);
             
             // Add active class based on current page
-            const currentPage = window.location.pathname.split('/').pop().split('.')[0].toLowerCase();
+            let currentPage = window.location.pathname.split('/').pop().split('.')[0].toLowerCase();
+            if (currentPage === '' || currentPage === 'personalwebsite' || currentPage === 'index') {
+                currentPage = 'home';
+            }
             const navLinks = document.querySelectorAll('[data-nav]');
             navLinks.forEach(link => {
                 if (link.dataset.nav === currentPage) {
