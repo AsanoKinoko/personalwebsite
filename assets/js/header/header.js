@@ -1,7 +1,8 @@
 class Header {
     static async loadHeader() {
         try {
-            const response = await fetch('./components/header/header.html');
+            const baseUrl = window.location.pathname.includes('github.io') ? '/personalwebsite' : '';
+            const response = await fetch(`${baseUrl}/components/header/header.html`);
             const html = await response.text();
             document.body.insertAdjacentHTML('afterbegin', html);
             
