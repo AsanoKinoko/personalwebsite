@@ -49,6 +49,33 @@ class Header {
                 navbar.classList.toggle('active');
             });
         }
+
+        // Fix logo link for GitHub Pages vs local
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            const pathSegments = window.location.pathname.split('/');
+            const repoName = pathSegments[1];
+            const isLocal = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost');
+            const baseUrl = isLocal ? '' : `/${repoName}`;
+            // Use relative path on local to preserve subfolder, absolute with repo on GitHub Pages
+            const logoHref = isLocal ? 'index.html' : `${baseUrl}/index.html`;
+            logo.setAttribute('href', logoHref);
+
+            logo.addEventListener('click', (e) => {
+                const pathname = window.location.pathname;
+                const onHome = (
+                    pathname.endsWith('/index.html') ||
+                    pathname.endsWith(`${repoName}/`) ||
+                    pathname === '/' ||
+                    pathname === `${baseUrl}/index.html`
+                );
+                if (onHome) {
+                    e.preventDefault();
+                    const home = document.querySelector('.home');
+                    if (home) home.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
     }
 
     static initializeScrollSpy() {
