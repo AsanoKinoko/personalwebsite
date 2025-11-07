@@ -1,5 +1,5 @@
 (() => {
-    const DATA_ENDPOINT = '/data/projects_data.json';
+    const DATA_ENDPOINT = '/data/projects/projects_data.json';
     let cachedProjects = null;
 
     const baseUrl = () => {
@@ -47,9 +47,17 @@
         const titleEl = card.querySelector('.project-info h3');
         const descEl = card.querySelector('.project-info p');
         const techContainer = card.querySelector('.project-tech');
+        const resolveAssetUrl = (path) => {
+            if (!path) return '';
+            const trimmed = String(path).trim();
+            if (/^https?:\/\//i.test(trimmed)) return trimmed; // absolute URL
+            if (trimmed.startsWith('/')) return `${baseUrl()}${trimmed}`; // absolute-from-root within site relative path like "data/projects/images/x.png" or "./data/projects/images/x.png"
+            const cleaned = trimmed.replace(/^\.\/?/, '');
+            return `${baseUrl()}/${cleaned}`;
+        };
 
         if (imageEl) {
-            imageEl.src = project.image;
+            imageEl.src = resolveAssetUrl(project.image);
             imageEl.alt = project.title || 'Project preview';
         }
 

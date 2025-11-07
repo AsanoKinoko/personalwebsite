@@ -2,7 +2,7 @@
     {
         "title": "Project Evaluation System",
         "description": "The Project Evaluation System is an application that helps manage and evaluate projects effectively",
-        "image": "https://placehold.co/400x250?text=E-commerce+Platform&bg=e6f5e9&color=2f5233",
+        "image": "https://placehold.co/400x250?text=Project+Evaluation+System&bg=e6f5e9&color=2f5233",
         "demoUrl": "#",
         "codeUrl": "https://github.com/AsanoKinoko/Project-Evaluation-System",
         "tech": ["ReactJS", "Spring Boot", "MongoDB"]
@@ -10,7 +10,7 @@
     {
         "title": "GreenWeave",
         "description": "An e-commerce application for green fashion",
-        "image": "https://placehold.co/400x250?text=Task+Management+App&bg=e6f5e9&color=2f5233",
+        "image": "data/projects/images/GreenWeave_Demo.png",
         "demoUrl": "#",
         "codeUrl": "https://github.com/AsanoKinoko/GreenWeave_V2",
         "tech": ["ReactJS", "NodeJS", "MongoDB"]
@@ -18,7 +18,7 @@
     {
         "title": "Debt Management System",
         "description": "A small project that allows debt recording was built during my new coding practice :v",
-        "image": "https://placehold.co/400x250?text=Weather+Dashboard&bg=e6f5e9&color=2f5233",
+        "image": "https://placehold.co/400x250?text=Debt+Management+System&bg=e6f5e9&color=2f5233",
         "demoUrl": "#",
         "codeUrl": "https://github.com/AsanoKinoko/DebtManagementSystem",
         "tech": ["JavaScript", "API", "SCSS"]
