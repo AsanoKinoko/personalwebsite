@@ -17,18 +17,70 @@
 }
 
 /* Project/About */
-.project{ background: #6c4949; }
-.project .container{ max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
-.project .about-text{ color: #f1c232; line-height: 1.7; }
-.project .high{ color:#fff2cc; }
-.project .stats{ display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 16px; }
-.project .stat{ background: rgba(36,2,2,0.18); border: 2px solid #f1c232; border-radius: 12px; padding: 16px; color:#f1c232; text-align: center; opacity:0; transform: translateY(16px); animation: cardIn 0.6s ease forwards; }
-.project .stat:nth-child(1){ animation-delay: .1s }
-.project .stat:nth-child(2){ animation-delay: .2s }
-.project .stat:nth-child(3){ animation-delay: .3s }
-.project .preview{ position: relative; border-radius: 16px; overflow: hidden; border: 2px solid #f1c232; }
-.project .preview::after{ content:''; position:absolute; inset:0; background: radial-gradient(ellipse at top right, rgba(248,131,121,.2), transparent 50%); pointer-events:none; }
-.project .preview img{ display:block; width: 100%; height: auto; opacity: .9; animation: fadeIn 0.8s ease forwards; }
+.project{ 
+    background: #6c4949; 
+}
+.project .container{ 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    display: grid; 
+    grid-template-columns: 1.2fr 1fr; 
+    gap: 32px; 
+    align-items: center; 
+}
+.project .about-text{ 
+    color: #f1c232; 
+    line-height: 1.7; 
+}
+.project .high{ 
+    color:#fff2cc; 
+}
+.project .stats{ 
+    display: grid; 
+    grid-template-columns: repeat(3,1fr); 
+    gap: 12px; 
+    margin-top: 16px; 
+}
+.project .stat{ 
+    background: rgba(36,2,2,0.18); 
+    border: 2px solid #f1c232; 
+    border-radius: 12px; 
+    padding: 16px; 
+    color:#f1c232; 
+    text-align: center; 
+    opacity:0; 
+    transform: translateY(16px); 
+    animation: cardIn 0.6s ease forwards; 
+}
+.project .stat:nth-child(1){ 
+    animation-delay: .1s 
+}
+.project .stat:nth-child(2){ 
+    animation-delay: .2s 
+}
+.project .stat:nth-child(3){ 
+    animation-delay: .3s 
+}
+.project .preview{ 
+    position: relative; 
+    border-radius: 16px; 
+    overflow: hidden; 
+    border: 2px solid #f1c232; 
+}
+.project .preview::after{ 
+    content:''; 
+    position:absolute; 
+    inset:0; 
+    background: radial-gradient(ellipse at top right, rgba(248,131,121,.2), transparent 50%); 
+    pointer-events:none; 
+}
+.project .preview img{ 
+    display:block; 
+    width: 100%; 
+    height: auto; 
+    opacity: .9; 
+    animation: fadeIn 0.8s ease forwards; 
+}
 
 .featured-projects{ 
     background: radial-gradient(circle at top, rgba(241,194,50,0.08), transparent 55%), 
