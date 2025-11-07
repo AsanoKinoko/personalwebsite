@@ -1,0 +1,26 @@
+[
+    {
+        "title": "E-commerce Platform",
+        "description": "A full-stack e-commerce solution built with modern web technologies",
+        "image": "https://placehold.co/400x250?text=E-commerce+Platform&bg=e6f5e9&color=2f5233",
+        "demoUrl": "#",
+        "codeUrl": "#",
+        "tech": ["React", "Node.js", "MongoDB"]
+    },
+    {
+        "title": "Task Management App",
+        "description": "A collaborative task management tool with real-time updates",
+        "image": "https://placehold.co/400x250?text=Task+Management+App&bg=e6f5e9&color=2f5233",
+        "demoUrl": "#",
+        "codeUrl": "#",
+        "tech": ["Vue.js", "Firebase", "CSS3"]
+    },
+    {
+        "title": "Weather Dashboard",
+        "description": "A responsive weather app with beautiful animations and forecasts",
+        "image": "https://placehold.co/400x250?text=Weather+Dashboard&bg=e6f5e9&color=2f5233",
+        "demoUrl": "#",
+        "codeUrl": "#",
+        "tech": ["JavaScript", "API", "SCSS"]
+    }
+]

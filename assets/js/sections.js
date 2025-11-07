@@ -17,13 +17,18 @@ class SectionsLoader {
             const homeSection = document.querySelector('.home');
             if (!homeSection) return;
 
-            const [languageHTML, projectHTML, contactHTML] = await Promise.all([
+            const [languageHTML, projectHTML, contactHTML, productCardHTML] = await Promise.all([
                 this.loadSection('/components/language/language.html'),
                 this.loadSection('/components/project/project.html'),
                 this.loadSection('/components/contact/contact.html'),
+                this.loadSection('/components/ui/projectcard/ProjectCard.html'),
             ]);
 
             homeSection.insertAdjacentHTML('afterend', languageHTML + projectHTML + contactHTML);
+
+            if (window.ProjectCards) {
+                await window.ProjectCards.render(productCardHTML);
+            }
 
             // Simple contact handler
             const form = document.getElementById('contactForm');
