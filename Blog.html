@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog • Kyuumei Neko</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./components/ui/blogcard/BlogCard.css">
+    <link rel="stylesheet" href="./assets/css/Blog.css">
+    <script src="./assets/js/blog-data.js"></script>
+    <script defer src="./assets/js/blog-page.js"></script>
+</head>
+<body class="blog-page">
+    <header class="blog-header">
+        <a class="blog-logo" href="index.html">
+            <span class="blog-logo__mark">KN</span>
+            <span class="blog-logo__label">Kyuumei Notes</span>
+        </a>
+        <a class="blog-back-home" href="index.html">
+            <i class='bx bx-home-heart'></i>
+            Back to home
+        </a>
+    </header>
+
+    <main class="blog-layout">
+        <aside class="blog-sidebar">
+            <h2 class="blog-sidebar__title">Main Tags</h2>
+            <nav class="blog-sidebar__nav" data-blog-sidebar>
+            </nav>
+        </aside>
+
+        <section class="blog-content">
+            <div class="blog-breadcrumb">
+                <button class="breadcrumb-back" type="button" aria-label="Back to previous section">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+                <div class="breadcrumb-tags" data-subtag-container>
+                    <div class="breadcrumb-more is-hidden" data-more-wrapper>
+                        <button class="breadcrumb-subtag breadcrumb-subtag--more" type="button" data-more-button>
+                            More
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="breadcrumb-more__menu" data-more-menu role="menu"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-feed" data-blog-feed></div>
+
+            <nav class="blog-pagination" aria-label="Pagination" data-blog-pagination></nav>
+        </section>
+    </main>
+</body>
+</html>

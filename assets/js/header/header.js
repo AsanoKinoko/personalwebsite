@@ -94,6 +94,7 @@ class Header {
             { id: 'home', nav: 'home', el: document.querySelector('.home') },
             { id: 'language', nav: 'about', el: document.getElementById('language') },
             { id: 'project', nav: 'about', el: document.getElementById('project') },
+            { id: 'blog', nav: 'blog', el: document.getElementById('blog') },
             { id: 'contact', nav: 'contact', el: document.getElementById('contact') },
         ].filter(s => s.el);
 
@@ -146,6 +147,15 @@ class Header {
                     if (lang) {
                         lang.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         history.replaceState(null, '', '#language');
+                    }
+                } else if (target === 'blog') {
+                    e.preventDefault();
+                    const blog = document.getElementById('blog');
+                    if (blog) {
+                        blog.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        history.replaceState(null, '', '#blog');
+                    } else {
+                        window.location.href = `${baseUrl}/index.html#blog`;
                     }
                 } else if (target === 'contact') {
                     e.preventDefault();
