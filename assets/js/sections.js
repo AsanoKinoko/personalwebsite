@@ -18,9 +18,9 @@ class SectionsLoader {
             if (!homeSection) return;
 
             const [languageHTML, projectHTML, contactHTML, productCardHTML] = await Promise.all([
-                this.loadSection('/components/language/language.html'),
-                this.loadSection('/components/project/project.html'),
-                this.loadSection('/components/contact/contact.html'),
+                this.loadSection('/components/language_section/language.html'),
+                this.loadSection('/components/project_section/project.html'),
+                this.loadSection('/components/contact_section/contact.html'),
                 this.loadSection('/components/ui/projectcard/ProjectCard.html'),
             ]);
 
