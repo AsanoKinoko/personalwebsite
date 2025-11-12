@@ -31,6 +31,34 @@
     animation-delay: 0.4s;
 }
 
+.back-btn{
+    display: none;
+    align-items: center;
+    gap: 8px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 500;
+    background: #68100b;
+    padding: 10px 20px;
+    border-radius: 999px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.back-btn i{
+    font-size: 20px;
+}
+.back-btn:hover{
+    background: #f88379;
+    color: #240202;
+}
+
+.header.about-header .back-btn{
+    display: flex;
+}
+.header.about-header .navbar,
+.header.about-header .menu-btn{
+    display: none !important;
+}
+
 .navbar li{
     list-style: none;
     display: inline-block;
@@ -115,5 +143,8 @@
     .menu-btn {
         display: block;
         padding: 8px;
+    }
+    .header.about-header{
+        padding: 20px 10%;
     }
 }

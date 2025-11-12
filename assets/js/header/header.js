@@ -24,6 +24,17 @@ class Header {
                 }
             });
 
+            const headerEl = document.querySelector('.header');
+            const backBtn = document.querySelector('.back-btn');
+            if (backBtn) {
+                const isLocal = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost');
+                const backHref = isLocal ? 'index.html' : `${baseUrl}/index.html`;
+                backBtn.setAttribute('href', backHref);
+            }
+            if (headerEl) {
+                headerEl.classList.toggle('about-header', currentPage === 'about');
+            }
+
             // Initialize menu button functionality
             this.initializeMenuButton();
 
