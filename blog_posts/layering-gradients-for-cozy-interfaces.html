@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layering Gradients for Cozy Interfaces • Kyuumei Neko</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../assets/css/header/header.css">
+    <link rel="stylesheet" href="../assets/css/post.css">
+</head>
+<body>
+    <header class="header post-header">
+        <a href="../index.html" class="logo">Kyuumei Neko</a>
+        <a href="../Blog.html" class="back-btn">
+            <i class='bx bx-arrow-back'></i>
+            Back to Blog
+        </a>
+    </header>
+
+    <main class="post-container">
+        <article class="post-article">
+            <header class="post-header-content">
+                <div class="post-meta">
+                    <span class="post-tag">Case Studies</span>
+                    <time class="post-date" datetime="2025-05-12T14:45:00+07:00">14:45 · 12/05/2025</time>
+                </div>
+                <h1 class="post-title">Layering Gradients for Cozy Interfaces</h1>
+                <p class="post-subtitle">The small tweaks that make gradients feel like velvet instead of neon—from blending modes to subtle noise overlays and timing.</p>
+            </header>
+
+            <div class="post-hero">
+                <img src="https://placehold.co/1200x600?text=Gradient+Stacks" alt="Layering Gradients for Cozy Interfaces" class="post-hero-image">
+            </div>
+
+            <div class="post-content">
+                <p class="post-lead">
+                    Creating gradients that feel warm and inviting rather than harsh and digital is an art form. It's about understanding how layers interact, how colors blend, and how subtle details can transform a simple gradient into something that feels almost tactile.
+                </p>
+
+                <h2>Understanding Blend Modes</h2>
+                <p>
+                    The foundation of cozy gradients lies in understanding blend modes. Instead of using standard linear gradients, I've found that layering multiple gradients with different blend modes creates depth and warmth. The key is to use modes like <code>multiply</code>, <code>overlay</code>, and <code>soft-light</code> to create natural-looking color transitions.
+                </p>
+
+                <p>
+                    For example, starting with a base gradient from a warm brown (#754f4f) to a golden yellow (#f1c232), I'll add a second layer using <code>overlay</code> mode with softer tones. This creates a rich, velvety texture that feels much more organic than a single gradient.
+                </p>
+
+                <div class="post-code-example">
+                    <pre><code>.cozy-gradient {
+    background: linear-gradient(135deg, #754f4f 0%, #f1c232 100%);
+    position: relative;
+}
+
+.cozy-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 242, 204, 0.3) 0%, 
+        rgba(241, 194, 50, 0.2) 100%);
+    mix-blend-mode: overlay;
+}</code></pre>
+                </div>
+
+                <h2>Subtle Noise Overlays</h2>
+                <p>
+                    One technique that's often overlooked is adding subtle noise or texture overlays. A tiny amount of noise (around 0.5-1% opacity) can break up the perfect smoothness of a gradient, making it feel more natural and less digital. This is especially effective when combined with the blend modes mentioned above.
+                </p>
+
+                <p>
+                    I create these noise overlays using SVG filters or CSS, applying them as a pseudo-element with very low opacity. The goal isn't to make the gradient look grainy, but to add just enough texture that it feels more like fabric or paper than a screen.
+                </p>
+
+                <h2>Timing and Transitions</h2>
+                <p>
+                    The way gradients animate and transition also contributes to that cozy feeling. Instead of instant color changes, I use longer, more gentle transitions (0.6s to 1s) with easing functions like <code>ease-out</code> or custom cubic-bezier curves. This creates a sense of warmth and patience, rather than the jarring snap of instant changes.
+                </p>
+
+                <p>
+                    When gradients are used in interactive elements, I make sure the color shifts are subtle. A hover state might shift the gradient by 5-10% in saturation or brightness, not a complete color change. This maintains the cozy atmosphere while still providing clear feedback.
+                </p>
+
+                <h2>Color Temperature Considerations</h2>
+                <p>
+                    Warm color palettes are essential for creating that cozy feeling. I tend to avoid pure whites and bright blues in favor of warm off-whites (#fff2cc) and muted golds. Even when using cooler colors, I'll warm them up slightly by mixing in small amounts of warm tones.
+                </p>
+
+                <p>
+                    The gradient direction also matters. Diagonal gradients (135deg or 45deg) tend to feel more dynamic and interesting than horizontal or vertical ones. They create a sense of movement and depth that contributes to the overall cozy atmosphere.
+                </p>
+
+                <h2>Practical Implementation</h2>
+                <p>
+                    In practice, I'll often layer 2-3 gradients together, each serving a different purpose:
+                </p>
+
+                <ul>
+                    <li><strong>Base layer:</strong> The main color transition, usually warm tones</li>
+                    <li><strong>Overlay layer:</strong> A subtle blend mode layer for depth</li>
+                    <li><strong>Texture layer:</strong> A very subtle noise or pattern overlay</li>
+                </ul>
+
+                <p>
+                    Each layer is kept subtle, so the final result feels cohesive rather than busy. The goal is to create something that feels almost accidental—like the way light naturally falls across a surface—rather than obviously designed.
+                </p>
+
+                <div class="post-tip">
+                    <strong>Pro tip:</strong> When testing gradients, view them in different lighting conditions and on different devices. A gradient that looks perfect on a bright monitor might feel too intense on a phone screen in dim lighting. Adjust opacity and saturation accordingly.
+                </div>
+
+                <h2>Conclusion</h2>
+                <p>
+                    Creating cozy gradients isn't about using the latest CSS features or the most complex techniques. It's about understanding how small details—blend modes, subtle textures, gentle transitions, and warm color choices—combine to create something that feels inviting and comfortable. The best gradients are the ones you don't notice as gradients at all, but simply as beautiful, warm backgrounds that enhance the overall experience.
+                </p>
+            </div>
+
+            <footer class="post-footer">
+                <div class="post-footer-meta">
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Published</span>
+                        <time datetime="2025-05-12T14:45:00+07:00">May 12, 2025</time>
+                    </div>
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Updated</span>
+                        <time datetime="2025-05-12T18:10:00+07:00">May 12, 2025</time>
+                    </div>
+                </div>
+                <a href="../Blog.html" class="post-back-link">
+                    <i class='bx bx-arrow-back'></i>
+                    Back to Blog
+                </a>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        // Handle base URL for GitHub Pages
+        (function() {
+            const pathSegments = window.location.pathname.split('/');
+            const repoName = pathSegments[1];
+            const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+            const baseUrl = isLocal ? '' : `/${repoName}`;
+
+            // Update all relative links
+            document.querySelectorAll('a[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                if (baseUrl) {
+                    link.setAttribute('href', href.replace('../', `${baseUrl}/`));
+                }
+            });
+
+            // Update CSS links
+            document.querySelectorAll('link[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                if (baseUrl) {
+                    link.setAttribute('href', href.replace('../', `${baseUrl}/`));
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

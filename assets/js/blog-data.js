@@ -117,7 +117,7 @@
         const excerptEl = fragment.querySelector('[data-role="excerpt"]');
         const ctaEl = fragment.querySelector('[data-role="cta"]');
 
-        const href = link || '#';
+        const href = (post?.url && post.url.trim()) ? post.url : (link || '#');
         const imgSrc = post.image || FALLBACK_IMAGE;
         const title = post.title || 'Untitled';
         const tagLabel = subtag?.label || mainTag?.label || 'Blog';
