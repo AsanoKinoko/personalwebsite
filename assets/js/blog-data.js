@@ -117,7 +117,16 @@
         const excerptEl = fragment.querySelector('[data-role="excerpt"]');
         const ctaEl = fragment.querySelector('[data-role="cta"]');
 
-        const href = (post?.url && post.url.trim()) ? post.url : (link || '#');
+        let href = (post?.url && post.url.trim()) ? post.url : (link || '#');
+        // Add base URL for relative paths (needed for GitHub Pages)
+        if (href && href !== '#' && !href.startsWith('http://') && !href.startsWith('https://')) {
+            const baseUrl = computeBaseUrl();
+            if (baseUrl) {
+                // Remove leading slash from href if present to avoid double slashes
+                const cleanHref = href.startsWith('/') ? href.slice(1) : href;
+                href = `${baseUrl}/${cleanHref}`;
+            }
+        }
         const imgSrc = post.image || FALLBACK_IMAGE;
         const title = post.title || 'Untitled';
         const tagLabel = subtag?.label || mainTag?.label || 'Blog';
