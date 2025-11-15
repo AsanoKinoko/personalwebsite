@@ -260,10 +260,3 @@ body{
         font-size: 12px;
     }
 }
-
-/* Keyframes animation */
-@keyframes showRight{
-    100%{
-        width: 0;
-    }
-}

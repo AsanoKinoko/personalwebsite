@@ -51,11 +51,14 @@
     color: #240202;
 }
 
-.header.about-header .back-btn{
+.header.about-header .back-btn,
+.header.blog-header .back-btn{
     display: flex;
 }
 .header.about-header .navbar,
-.header.about-header .menu-btn{
+.header.about-header .menu-btn,
+.header.blog-header .navbar,
+.header.blog-header .menu-btn{
     display: none !important;
 }
 
@@ -144,7 +147,15 @@
         display: block;
         padding: 8px;
     }
-    .header.about-header{
+    .header.about-header,
+    .header.blog-header{
         padding: 20px 10%;
+    }
+}
+
+/* Keyframes animation for logo */
+@keyframes showRight{
+    100%{
+        width: 0;
     }
 }

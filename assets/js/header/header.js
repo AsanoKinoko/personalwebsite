@@ -33,6 +33,7 @@ class Header {
             }
             if (headerEl) {
                 headerEl.classList.toggle('about-header', currentPage === 'about');
+                headerEl.classList.toggle('blog-header', currentPage === 'blog');
             }
 
             // Initialize menu button functionality
