@@ -35,142 +35,84 @@
                     "id": "performance",
                     "label": "Performance",
                     "posts": [
-                        {
-                            "id": "lcp-preload",
-                            "slug": "preloading-images-without-hurting-lcp",
-                            "title": "Preloading Images Without Hurting LCP",
-                            "description": "Techniques I leaned on to keep this media-heavy portfolio speedy—priority hints, decode control, and graceful fallbacks.",
-                            "image": "https://placehold.co/600x360?text=Performance",
-                            "url": "",
-                            "createdAt": "2025-04-18T11:20:00+07:00",
-                            "updatedAt": "2025-04-21T09:40:00+07:00"
-                        }
+                        
                     ]
                 },
                 {
                     "id": "accessibility",
                     "label": "Accessibility",
                     "posts": [
-                        {
-                            "id": "contrast-checks",
-                            "slug": "high-contrast-low-stress-ui-testing",
-                            "title": "High Contrast, Low Stress UI Testing",
-                            "description": "Checking overlays, focus states, and reduced motion modes to keep the cozy vibe inclusive for every visitor.",
-                            "image": "https://placehold.co/600x360?text=Accessibility",
-                            "url": "",
-                            "createdAt": "2025-04-05T16:40:00+07:00",
-                            "updatedAt": "2025-04-07T20:15:00+07:00"
-                        }
+                        
                     ]
                 }
             ]
         },
         {
-            "id": "ui-artistry",
-            "label": "UI Artistry",
-            "description": "Visual storytelling and playful details.",
+            "id": "games",
+            "label": "Games",
+            "description": "Some memories related to games I have played",
             "subtags": [
                 {
-                    "id": "micro-interactions",
-                    "label": "Micro Interactions",
+                    "id": "leagueoflegends",
+                    "label": "League of Legends",
                     "posts": [
-                        {
-                            "id": "button-personality",
-                            "slug": "micro-interactions-that-echo-personality",
-                            "title": "Micro-interactions that Echo Personality",
-                            "description": "How easing curves, glimmers, and hover shadows keep the playful cat spirit alive without slowing the interface down.",
-                            "image": "https://placehold.co/600x360?text=Animation+Notes",
-                            "url": "",
-                            "createdAt": "2025-05-02T08:15:00+07:00",
-                            "updatedAt": "2025-05-03T14:30:00+07:00"
-                        }
+                        
                     ]
                 },
                 {
-                    "id": "color-theory",
-                    "label": "Color Theory",
+                    "id": "onmyojiarena",
+                    "label": "Onmyoji Arena",
                     "posts": [
-                        {
-                            "id": "palette-journaling",
-                            "slug": "color-journaling-for-character-driven-ui",
-                            "title": "Color Journaling for Character-driven UI",
-                            "description": "Logging palette shifts with watercolor swatches and translating moods into digital gradients.",
-                            "image": "https://placehold.co/600x360?text=Warm+Palette",
-                            "url": "",
-                            "createdAt": "2025-03-22T09:10:00+07:00",
-                            "updatedAt": "2025-03-23T17:45:00+07:00"
-                        }
+                        
                     ]
                 },
                 {
-                    "id": "typography",
-                    "label": "Typography",
+                    "id": "worldofwarships",
+                    "label": "World of Warships",
                     "posts": [
-                        {
-                            "id": "storybook-type",
-                            "slug": "storybook-type-for-web",
-                            "title": "Storybook Type for the Web",
-                            "description": "Pairing serif whimsy with readable sans-serifs, and how I balance them across responsive breakpoints.",
-                            "image": "https://placehold.co/600x360?text=Typography",
-                            "url": "",
-                            "createdAt": "2025-02-14T20:40:00+07:00",
-                            "updatedAt": "2025-02-15T11:25:00+07:00"
-                        }
+                        
                     ]
                 }
             ]
         },
         {
-            "id": "personal",
-            "label": "Personal Log",
-            "description": "Thoughts, routines, and behind-the-scenes notes.",
+            "id": "operatingSystem",
+            "label": "Operating System",
+            "description": "Some interesting things related to operating systems",
             "subtags": [
                 {
-                    "id": "workflow",
-                    "label": "Workflow",
+                    "id": "windows",
+                    "label": "Windows",
                     "posts": [
-                        {
-                            "id": "nightly-sketch",
-                            "slug": "my-nightly-ui-sketch-routine",
-                            "title": "My Nightly UI Sketch Routine",
-                            "description": "Keeping creativity sharp with timed doodles, reference boards, and translating pencil strokes into component guidelines.",
-                            "image": "https://placehold.co/600x360?text=Notebook+Scribbles",
-                            "url": "",
-                            "createdAt": "2025-04-26T19:05:00+07:00",
-                            "updatedAt": "2025-04-27T09:50:00+07:00"
-                        }
+                        
                     ]
                 },
                 {
-                    "id": "diary",
-                    "label": "Diary",
+                    "id": "linux",
+                    "label": "Linux",
                     "posts": [
-                        {
-                            "id": "visual-storytelling",
-                            "slug": "late-night-thoughts-on-visual-storytelling",
-                            "title": "Late Night Thoughts on Visual Storytelling",
-                            "description": "Personal rambles on how narration, typography, and a few playful paw prints turn a portfolio into a storybook.",
-                            "image": "https://placehold.co/600x360?text=Diary",
-                            "url": "",
-                            "createdAt": "2025-03-30T22:05:00+07:00",
-                            "updatedAt": "2025-04-01T07:15:00+07:00"
-                        }
+                        
                     ]
                 },
                 {
-                    "id": "career",
-                    "label": "Career",
+                    "id": "ios",
+                    "label": "iOS",
                     "posts": [
-                        {
-                            "id": "portfolio-lessons",
-                            "slug": "what-i-learned-building-this-cozy-portfolio",
-                            "title": "What I Learned Building This Cozy Portfolio",
-                            "description": "From color exploration to performance tricks, here are the notes I left for future me after wrapping this iteration.",
-                            "image": "https://placehold.co/600x360?text=Portfolio+Lessons",
-                            "url": "",
-                            "createdAt": "2025-03-28T07:50:00+07:00",
-                            "updatedAt": "2025-03-29T10:25:00+07:00"
-                        }
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "travel",
+            "label": "Travel",
+            "description": "Beautiful places I have been to and some memories related to them",
+            "subtags": [
+                {
+                    "id": "japan",
+                    "label": "Japan",
+                    "posts": [
+                        
                     ]
                 }
             ]
