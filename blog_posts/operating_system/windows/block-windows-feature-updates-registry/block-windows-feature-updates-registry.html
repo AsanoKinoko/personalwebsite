@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chặn Windows Feature Updates bằng Registry Editor • Kyuumei Neko</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../../../assets/css/header/header.css">
+    <link rel="stylesheet" href="../../../../assets/css/post.css">
+</head>
+<body>
+    <header class="header post-header">
+        <a href="../../../../index.html" class="logo">Kyuumei Neko</a>
+        <a href="../../../../Blog.html" class="back-btn">
+            <i class='bx bx-arrow-back'></i>
+            Back to Blog
+        </a>
+    </header>
+
+    <main class="post-container">
+        <article class="post-article">
+            <header class="post-header-content">
+                <div class="post-meta">
+                    <span class="post-tag">Windows</span>
+                    <time class="post-date" datetime="2025-01-16T09:00:00+07:00">09:00 · 16/01/2025</time>
+                </div>
+                <h1 class="post-title">Chặn Windows Feature Updates bằng Registry Editor</h1>
+                <p class="post-subtitle">Hướng dẫn cách sử dụng Registry Editor để chặn Windows tự động cập nhật lên các phiên bản feature update mới, giúp bạn kiểm soát tốt hơn quá trình cập nhật hệ thống.</p>
+            </header>
+
+            <div class="post-content">
+                <p class="post-lead">
+                    Windows thường tự động cài đặt các feature update mới, điều này có thể gây gián đoạn công việc hoặc đưa ra những thay đổi không mong muốn. Nếu bạn muốn giữ nguyên phiên bản Windows hiện tại (ví dụ: Windows 11 23H2) và chỉ nhận các bản cập nhật bảo mật, bạn có thể sử dụng Registry Editor để chặn feature updates. Bài viết này sẽ hướng dẫn bạn cách thực hiện điều đó một cách an toàn.
+                </p>
+
+                <h2>Tại sao tôi chặn Feature Updates?</h2>
+                <p>
+                    Feature Updates là những bản cập nhật lớn của Windows, thường mang đến các tính năng mới và thay đổi đáng kể về giao diện. Tuy nhiên, không phải lúc nào việc cập nhật ngay lập tức cũng là điều tốt. Trong trường hợp của tôi, sau khi Windows tự động cập nhật lên phiên bản 24H2, Steam của tôi bắt đầu gặp lỗi và không hoạt động bình thường. Điều này gây ảnh hưởng đáng kể đến trải nghiệm chơi game của tôi.
+                </p>
+                <p>
+                    Vì vậy, tôi quyết định chặn feature updates để giữ nguyên phiên bản Windows 23H2 đang hoạt động ổn định. Bằng cách này, tôi vẫn sẽ nhận được các bản cập nhật bảo mật quan trọng nhưng sẽ không bị "ép" nâng cấp lên phiên bản mới có thể gây ra các vấn đề tương thích với phần mềm mà tôi đang sử dụng. Đây là một giải pháp hữu ích khi bạn muốn kiểm soát tốt hơn quá trình cập nhật hệ thống và tránh những rủi ro không mong muốn.
+                </p>
+
+                <div class="post-tip">
+                    <strong>Lưu ý quan trọng:</strong> Trước khi thực hiện bất kỳ thay đổi nào trong Registry Editor, hãy đảm bảo bạn đã sao lưu registry hoặc tạo System Restore Point. Registry Editor là công cụ mạnh mẽ và việc chỉnh sửa sai có thể gây ảnh hưởng đến hệ thống.
+                </div>
+
+                <h2>Hướng dẫn từng bước</h2>
+
+                <h3>Bước 1: Mở Registry Editor</h3>
+                <p>
+                    Đầu tiên, bạn cần mở Registry Editor (regedit). Có nhiều cách để làm điều này:
+                </p>
+                <ul>
+                    <li><strong>Cách 1:</strong> Nhấn tổ hợp phím <code>Win + R</code>, gõ <code>regedit</code> và nhấn Enter</li>
+                    <li><strong>Cách 2:</strong> Tìm kiếm "Registry Editor" trong Start Menu và chọn kết quả tương ứng</li>
+                    <li><strong>Cách 3:</strong> Mở Command Prompt hoặc PowerShell với quyền Administrator, gõ <code>regedit</code> và nhấn Enter</li>
+                </ul>
+                <p>
+                    Khi Registry Editor mở ra, bạn sẽ thấy một cây thư mục bên trái với các key registry. Đây là nơi bạn sẽ thực hiện các thay đổi.
+                </p>
+
+                <h3>Bước 2: Điều hướng đến key WindowsUpdate</h3>
+                <p>
+                    Trong Registry Editor, bạn cần điều hướng đến đường dẫn sau:
+                </p>
+                <div class="post-code-example">
+                    <pre><code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</code></pre>
+                </div>
+                <p>
+                    Để làm điều này, hãy mở rộng từng thư mục theo thứ tự:
+                </p>
+                <ul>
+                    <li>Mở <code>HKEY_LOCAL_MACHINE</code></li>
+                    <li>Mở <code>SOFTWARE</code></li>
+                    <li>Mở <code>Policies</code></li>
+                    <li>Mở <code>Microsoft</code></li>
+                    <li>Mở <code>Windows</code></li>
+                    <li>Kiểm tra xem có key <code>WindowsUpdate</code> hay chưa</li>
+                </ul>
+                <p>
+                    <strong>Nếu key WindowsUpdate chưa tồn tại:</strong> Bạn cần tạo key mới. Nhấp chuột phải vào key <code>Windows</code>, chọn <code>New</code> → <code>Key</code>, và đặt tên là <code>WindowsUpdate</code>.
+                </p>
+                <p>
+                    <strong>Nếu key WindowsUpdate đã tồn tại:</strong> Bạn có thể tiếp tục với bước tiếp theo.
+                </p>
+
+                <h3>Bước 3: Tạo các giá trị Registry</h3>
+                <p>
+                    Sau khi đã điều hướng đến key <code>WindowsUpdate</code>, bạn cần tạo hai giá trị registry sau:
+                </p>
+
+                <h4>Tạo DWORD TargetReleaseVersion</h4>
+                <p>
+                    Đầu tiên, tạo một giá trị DWORD (32-bit):
+                </p>
+                <ul>
+                    <li>Nhấp chuột phải vào vùng trống bên phải trong key <code>WindowsUpdate</code></li>
+                    <li>Chọn <code>New</code> → <code>DWORD (32-bit) Value</code></li>
+                    <li>Đặt tên là: <code>TargetReleaseVersion</code></li>
+                    <li>Nhấp đúp vào giá trị vừa tạo để mở hộp thoại Edit</li>
+                    <li>Trong trường <code>Value data</code>, nhập: <code>1</code></li>
+                    <li>Đảm bảo <code>Base</code> được chọn là <code>Hexadecimal</code> hoặc <code>Decimal</code> (cả hai đều hoạt động với giá trị 1)</li>
+                    <li>Nhấn <code>OK</code> để lưu</li>
+                </ul>
+
+                <h4>Tạo String TargetReleaseVersionInfo</h4>
+                <p>
+                    Tiếp theo, tạo một giá trị String (REG_SZ):
+                </p>
+                <ul>
+                    <li>Nhấp chuột phải vào vùng trống bên phải trong key <code>WindowsUpdate</code></li>
+                    <li>Chọn <code>New</code> → <code>String Value</code></li>
+                    <li>Đặt tên là: <code>TargetReleaseVersionInfo</code></li>
+                    <li>Nhấp đúp vào giá trị vừa tạo để mở hộp thoại Edit</li>
+                    <li>Trong trường <code>Value data</code>, nhập: <code>23H2</code></li>
+                    <li>Nhấn <code>OK</code> để lưu</li>
+                </ul>
+                <p>
+                    <strong>Lưu ý:</strong> Giá trị <code>23H2</code> tương ứng với phiên bản Windows 11 23H2. Nếu bạn đang sử dụng phiên bản khác (ví dụ: 22H2, 21H2), hãy thay đổi giá trị này cho phù hợp. Bạn có thể kiểm tra phiên bản Windows hiện tại bằng cách mở <code>Settings</code> → <code>System</code> → <code>About</code>.
+                </p>
+
+                <h3>Bước 4: Khởi động lại máy</h3>
+                <p>
+                    Sau khi đã tạo xong cả hai giá trị registry, bạn cần khởi động lại máy tính để các thay đổi có hiệu lực. Đóng Registry Editor và khởi động lại Windows.
+                </p>
+                <p>
+                    Sau khi khởi động lại, Windows sẽ không tự động cài đặt các feature update mới hơn phiên bản bạn đã chỉ định (23H2 trong trường hợp này). Hệ thống vẫn sẽ nhận và cài đặt các bản cập nhật bảo mật quan trọng, nhưng sẽ bỏ qua các feature update.
+                </p>
+
+                <div class="post-tip">
+                    <strong>Kiểm tra kết quả:</strong> Sau khi khởi động lại, bạn có thể kiểm tra xem cài đặt đã hoạt động chưa bằng cách mở <code>Settings</code> → <code>Windows Update</code>. Nếu cài đặt thành công, bạn sẽ thấy thông báo rằng Windows đang ở phiên bản được chỉ định và sẽ không tự động nâng cấp lên phiên bản mới hơn.
+                </div>
+
+                <h2>Cách hoàn nguyên thay đổi</h2>
+                <p>
+                    Nếu sau này bạn muốn cho phép Windows tự động cập nhật feature updates trở lại, bạn có thể:
+                </p>
+                <ul>
+                    <li>Xóa hai giá trị <code>TargetReleaseVersion</code> và <code>TargetReleaseVersionInfo</code> trong Registry Editor</li>
+                    <li>Hoặc đơn giản là xóa toàn bộ key <code>WindowsUpdate</code> nếu bạn không cần các cài đặt khác trong key này</li>
+                    <li>Sau đó khởi động lại máy để áp dụng thay đổi</li>
+                </ul>
+
+                <h2>Kết luận</h2>
+                <p>
+                    Bằng cách sử dụng Registry Editor để thiết lập <code>TargetReleaseVersion</code> và <code>TargetReleaseVersionInfo</code>, bạn có thể kiểm soát tốt hơn quá trình cập nhật Windows. Phương pháp này đặc biệt hữu ích khi bạn muốn giữ nguyên phiên bản Windows hiện tại để đảm bảo tính ổn định và tương thích với các phần mềm quan trọng. Hãy nhớ luôn sao lưu registry trước khi thực hiện bất kỳ thay đổi nào và chỉ chỉnh sửa khi bạn hiểu rõ những gì mình đang làm.
+                </p>
+            </div>
+
+            <footer class="post-footer">
+                <div class="post-footer-meta">
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Published</span>
+                        <time datetime="2025-01-16T09:00:00+07:00">January 16, 2025</time>
+                    </div>
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Updated</span>
+                        <time datetime="2025-01-16T09:00:00+07:00">January 16, 2025</time>
+                    </div>
+                </div>
+                <a href="../../../../Blog.html" class="post-back-link">
+                    <i class='bx bx-arrow-back'></i>
+                    Back to Blog
+                </a>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        // Handle base URL for GitHub Pages
+        (function() {
+            const pathSegments = window.location.pathname.split('/');
+            const repoName = pathSegments[1];
+            const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+            const baseUrl = isLocal ? '' : `/${repoName}`;
+
+            // Helper function to normalize relative paths
+            const normalizePath = (href) => {
+                if (!baseUrl) return href;
+                // Count ../ sequences at the start
+                const match = href.match(/^(\.\.\/)+/);
+                if (match) {
+                    const relativePart = href.substring(match[0].length);
+                    return `${baseUrl}/${relativePart}`;
+                }
+                return href;
+            };
+
+            // Helper function to get image path for GitHub Pages
+            const getImagePath = (src) => {
+                if (!baseUrl) return src;
+                // Get current path and construct image path
+                const currentPath = window.location.pathname;
+                // Remove baseUrl from pathname if present
+                let relativePath = currentPath;
+                if (baseUrl && currentPath.startsWith(baseUrl)) {
+                    relativePath = currentPath.substring(baseUrl.length);
+                }
+                // Ensure relativePath starts with /
+                if (!relativePath.startsWith('/')) {
+                    relativePath = '/' + relativePath;
+                }
+                const pathParts = relativePath.split('/').filter(p => p);
+                // Remove filename, keep directory path
+                if (pathParts.length > 0 && pathParts[pathParts.length - 1].endsWith('.html')) {
+                    pathParts.pop();
+                }
+                // Construct full path - ensure no double slashes
+                const dirPath = pathParts.length > 0 ? pathParts.join('/') : '';
+                const imagePath = `${baseUrl}/${dirPath}/${src}`.replace(/\/+/g, '/');
+                return imagePath;
+            };
+
+            // Update all relative links
+            document.querySelectorAll('a[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                link.setAttribute('href', normalizePath(href));
+            });
+
+            // Update CSS links
+            document.querySelectorAll('link[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                link.setAttribute('href', normalizePath(href));
+            });
+
+            // Update image sources (relative paths starting with "images/")
+            document.querySelectorAll('img[src^="images/"]').forEach(img => {
+                const src = img.getAttribute('src');
+                const imagePath = getImagePath(src);
+                img.setAttribute('src', imagePath);
+            });
+        })();
+    </script>
+</body>
+</html>

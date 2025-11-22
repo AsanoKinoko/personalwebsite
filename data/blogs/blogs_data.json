@@ -31,8 +31,8 @@
                             "description": "Hướng dẫn nhanh cách khắc phục lỗi Cobblemon yêu cầu KotlinForForge khi chơi Minecraft với mods.",
                             "image": "blog_posts/games/minecraft/fix-cobblemon-kotlinforforge-error/images/kotlin-for-forge-mod_post_hero_image.jpg",
                             "url": "blog_posts/games/minecraft/fix-cobblemon-kotlinforforge-error/fix-cobblemon-kotlinforforge-error.html",
-                            "createdAt": "2025-01-15T14:00:00+07:00",
-                            "updatedAt": "2025-01-15T14:00:00+07:00"
+                            "createdAt": "2025-06-27T14:00:00+07:00",
+                            "updatedAt": "2025-06-27T14:00:00+07:00"
                         }
                     ]
                 },
@@ -70,6 +70,16 @@
                             "url": "blog_posts/operating_system/windows/getting-windows-iso-file/getting-windows-iso-file.html",
                             "createdAt": "2025-01-15T10:30:00+07:00",
                             "updatedAt": "2025-01-15T10:30:00+07:00"
+                        },
+                        {
+                            "id": "block-windows-feature-updates-registry",
+                            "slug": "block-windows-feature-updates-registry",
+                            "title": "Chặn Windows Feature Updates bằng Registry Editor",
+                            "description": "Hướng dẫn cách sử dụng Registry Editor để chặn Windows tự động cập nhật lên các phiên bản feature update mới, giúp bạn kiểm soát tốt hơn quá trình cập nhật hệ thống.",
+                            "image": "blog_posts/operating_system/windows/block-windows-feature-updates-registry/images/block_windows_feature_updates_registry_post_hero_image.png",
+                            "url": "blog_posts/operating_system/windows/block-windows-feature-updates-registry/block-windows-feature-updates-registry.html",
+                            "createdAt": "2025-06-17T09:00:00+07:00",
+                            "updatedAt": "2025-06-17T09:00:00+07:00"
                         }
                     ]
                 },
