@@ -166,6 +166,31 @@
                 return href;
             };
 
+            // Helper function to get image path for GitHub Pages
+            const getImagePath = (src) => {
+                if (!baseUrl) return src;
+                // Get current path and construct image path
+                const currentPath = window.location.pathname;
+                // Remove baseUrl from pathname if present
+                let relativePath = currentPath;
+                if (baseUrl && currentPath.startsWith(baseUrl)) {
+                    relativePath = currentPath.substring(baseUrl.length);
+                }
+                // Ensure relativePath starts with /
+                if (!relativePath.startsWith('/')) {
+                    relativePath = '/' + relativePath;
+                }
+                const pathParts = relativePath.split('/').filter(p => p);
+                // Remove filename, keep directory path
+                if (pathParts.length > 0 && pathParts[pathParts.length - 1].endsWith('.html')) {
+                    pathParts.pop();
+                }
+                // Construct full path - ensure no double slashes
+                const dirPath = pathParts.length > 0 ? pathParts.join('/') : '';
+                const imagePath = `${baseUrl}/${dirPath}/${src}`.replace(/\/+/g, '/');
+                return imagePath;
+            };
+
             // Update all relative links
             document.querySelectorAll('a[href^="../"]').forEach(link => {
                 const href = link.getAttribute('href');
@@ -181,29 +206,9 @@
             // Update image sources (relative paths starting with "images/")
             document.querySelectorAll('img[src^="images/"]').forEach(img => {
                 const src = img.getAttribute('src');
-                if (baseUrl) {
-                    // Get current path and construct image path
-                    const currentPath = window.location.pathname;
-                    const pathParts = currentPath.split('/').filter(p => p);
-                    // Remove filename, keep directory path
-                    pathParts.pop();
-                    const imagePath = `${baseUrl}/${pathParts.join('/')}/${src}`;
-                    img.setAttribute('src', imagePath);
-                }
+                const imagePath = getImagePath(src);
+                img.setAttribute('src', imagePath);
             });
-
-            // Update hero image if it's a relative path
-            const heroImg = document.querySelector('.post-hero-image');
-            if (heroImg && heroImg.src && heroImg.getAttribute('src').startsWith('images/')) {
-                const src = heroImg.getAttribute('src');
-                if (baseUrl) {
-                    const currentPath = window.location.pathname;
-                    const pathParts = currentPath.split('/').filter(p => p);
-                    pathParts.pop();
-                    const imagePath = `${baseUrl}/${pathParts.join('/')}/${src}`;
-                    heroImg.setAttribute('src', imagePath);
-                }
-            }
         })();
     </script>
 </body>
