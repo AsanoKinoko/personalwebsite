@@ -5,46 +5,7 @@
             "label": "Frontend",
             "description": "Interface explorations and engineering notes.",
             "subtags": [
-                {
-                    "id": "case-studies",
-                    "label": "Case Studies",
-                    "posts": [
-                        {
-                            "id": "warm-gradients",
-                            "slug": "layering-gradients-for-cozy-interfaces",
-                            "title": "Layering Gradients for Cozy Interfaces",
-                            "description": "The small tweaks that make gradients feel like velvet instead of neon—from blending modes to subtle noise overlays and timing.",
-                            "image": "https://placehold.co/600x360?text=Gradient+Stacks",
-                            "url": "blog_posts/layering-gradients-for-cozy-interfaces.html",
-                            "createdAt": "2025-05-12T14:45:00+07:00",
-                            "updatedAt": "2025-05-12T18:10:00+07:00"
-                        },
-                        {
-                            "id": "ui-prep",
-                            "slug": "prepping-components-before-production",
-                            "title": "Prepping Components Before Production",
-                            "description": "My checklist for taming design-to-code handoff: typography tokens, motion specs, and sharing accessible defaults.",
-                            "image": "https://placehold.co/600x360?text=Component+Prep",
-                            "url": "",
-                            "createdAt": "2025-04-16T10:05:00+07:00",
-                            "updatedAt": "2025-04-18T08:25:00+07:00"
-                        }
-                    ]
-                },
-                {
-                    "id": "performance",
-                    "label": "Performance",
-                    "posts": [
-                        
-                    ]
-                },
-                {
-                    "id": "accessibility",
-                    "label": "Accessibility",
-                    "posts": [
-                        
-                    ]
-                }
+                
             ]
         },
         {
