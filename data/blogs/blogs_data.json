@@ -21,6 +21,22 @@
                     ]
                 },
                 {
+                    "id": "minecraft",
+                    "label": "Minecraft",
+                    "posts": [
+                        {
+                            "id": "fix-cobblemon-kotlinforforge-error",
+                            "slug": "fix-cobblemon-kotlinforforge-error",
+                            "title": "Fix lỗi \"Mod File mods\\Cobblemon-neoforge-1.6.1+1.21.1.jar needs language provider kotlinforforge:5.3 or above to load\"",
+                            "description": "Hướng dẫn nhanh cách khắc phục lỗi Cobblemon yêu cầu KotlinForForge khi chơi Minecraft với mods.",
+                            "image": "blog_posts/games/minecraft/fix-cobblemon-kotlinforforge-error/images/kotlin-for-forge-mod_post_hero_image.jpg",
+                            "url": "blog_posts/games/minecraft/fix-cobblemon-kotlinforforge-error/fix-cobblemon-kotlinforforge-error.html",
+                            "createdAt": "2025-01-15T14:00:00+07:00",
+                            "updatedAt": "2025-01-15T14:00:00+07:00"
+                        }
+                    ]
+                },
+                {
                     "id": "onmyojiarena",
                     "label": "Onmyoji Arena",
                     "posts": [

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix lỗi Cobblemon cần KotlinForForge • Kyuumei Neko</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../../../assets/css/header/header.css">
+    <link rel="stylesheet" href="../../../../assets/css/post.css">
+</head>
+<body>
+    <header class="header post-header">
+        <a href="../../../../index.html" class="logo">Kyuumei Neko</a>
+        <a href="../../../../Blog.html" class="back-btn">
+            <i class='bx bx-arrow-back'></i>
+            Back to Blog
+        </a>
+    </header>
+
+    <main class="post-container">
+        <article class="post-article">
+            <header class="post-header-content">
+                <div class="post-meta">
+                    <span class="post-tag">Minecraft</span>
+                    <time class="post-date" datetime="2025-01-15T14:00:00+07:00">14:00 · 15/01/2025</time>
+                </div>
+                <h1 class="post-title">Fix lỗi "Mod File mods\Cobblemon-neoforge-1.6.1+1.21.1.jar needs language provider kotlinforforge:5.3 or above to load"</h1>
+                <p class="post-subtitle">Hướng dẫn nhanh cách khắc phục lỗi Cobblemon yêu cầu KotlinForForge khi chơi Minecraft với mods.</p>
+            </header>
+
+            <div class="post-content">
+                <p class="post-lead">
+                    Nếu bạn đang gặp lỗi "Mod File mods\Cobblemon-neoforge-1.6.1+1.21.1.jar needs language provider kotlinforforge:5.3 or above to load" khi khởi động Minecraft với mod Cobblemon, đừng lo lắng! Đây là một lỗi phổ biến xảy ra khi mod Cobblemon yêu cầu một dependency (phụ thuộc) là KotlinForForge nhưng bạn chưa cài đặt nó. Bài viết này sẽ hướng dẫn bạn cách khắc phục lỗi này một cách đơn giản và nhanh chóng.
+                </p>
+
+                <h2>Tại sao lỗi này xảy ra?</h2>
+                <p>
+                    Cobblemon là một mod được viết bằng ngôn ngữ Kotlin cho Minecraft. Để mod này hoạt động, nó cần một "language provider" (nhà cung cấp ngôn ngữ) có tên là KotlinForForge được cài đặt trong thư mục mods của bạn. KotlinForForge là một mod cốt lõi cho phép các mod khác được viết bằng Kotlin chạy trên Minecraft Forge/NeoForge.
+                </p>
+                <p>
+                    Khi bạn chỉ cài Cobblemon mà không cài KotlinForForge, Minecraft sẽ không thể tải mod Cobblemon và hiển thị thông báo lỗi yêu cầu bạn cài đặt KotlinForForge phiên bản 5.3 trở lên.
+                </p>
+
+                <h2>Hướng dẫn khắc phục</h2>
+
+                <h3>Bước 1: Tải KotlinForForge</h3>
+                <p>
+                    Đầu tiên, bạn cần tải mod KotlinForForge từ CurseForge. Đây là nguồn chính thức và an toàn nhất để tải mod Minecraft.
+                </p>
+                <p>
+                    Truy cập vào liên kết sau để tải KotlinForForge:
+                </p>
+                <div class="post-code-example">
+                    <pre><code>https://www.curseforge.com/minecraft/mc-mods/kotlin-for-forge</code></pre>
+                </div>
+                <p>
+                    Tại trang CurseForge, bạn sẽ thấy các phiên bản khác nhau của KotlinForForge. Hãy chọn phiên bản phù hợp với phiên bản Minecraft và NeoForge mà bạn đang sử dụng. Ví dụ, nếu bạn đang chơi Minecraft 1.21.1 với NeoForge, hãy tìm phiên bản KotlinForForge tương thích với 1.21.1.
+                </p>
+                <p>
+                    Sau khi chọn đúng phiên bản, nhấn nút <strong>"Download"</strong> để tải file .jar về máy. File này thường có tên dạng như <code>kotlinforforge-x.x.x.jar</code> (với x.x.x là số phiên bản).
+                </p>
+
+                <div class="post-tip">
+                    <strong>Lưu ý quan trọng:</strong> Đảm bảo bạn tải đúng phiên bản KotlinForForge tương thích với phiên bản Minecraft và NeoForge của bạn. Nếu không tương thích, mod có thể không hoạt động hoặc gây crash game.
+                </div>
+
+                <h3>Bước 2: Đặt file KotlinForForge vào thư mục mods</h3>
+                <p>
+                    Sau khi đã tải file .jar của KotlinForForge về máy, bạn cần đặt nó vào thư mục mods của Minecraft. Đây là bước quan trọng để Minecraft có thể nhận diện và tải mod.
+                </p>
+                <p>
+                    Thư mục mods thường nằm tại đường dẫn sau:
+                </p>
+                <div class="post-code-example">
+                    <pre><code>.minecraft/mods/</code></pre>
+                </div>
+                <p>
+                    Để truy cập thư mục này, bạn có thể:
+                </p>
+                <ul>
+                    <li><strong>Windows:</strong> Nhấn <code>Win + R</code>, gõ <code>%appdata%</code> và nhấn Enter, sau đó vào thư mục <code>.minecraft/mods/</code></li>
+                    <li><strong>Mac:</strong> Mở Finder, nhấn <code>Cmd + Shift + G</code>, gõ <code>~/Library/Application Support/minecraft/mods/</code></li>
+                    <li><strong>Linux:</strong> Thư mục thường nằm tại <code>~/.minecraft/mods/</code></li>
+                </ul>
+                <p>
+                    Sau khi đã mở thư mục mods, hãy copy (hoặc di chuyển) file .jar KotlinForForge mà bạn vừa tải vào đây. Bạn không cần giải nén file .jar, chỉ cần đặt nguyên file vào thư mục mods là được.
+                </p>
+
+                <figure>
+                    <img src="images/place_the_KotlinForForge_file_in_the_mods_folder.png" alt="Đặt file KotlinForForge vào thư mục mods">
+                    <figcaption>Đặt file .jar KotlinForForge vào thư mục mods của Minecraft</figcaption>
+                </figure>
+
+                <div class="post-tip">
+                    <strong>Mẹo hữu ích:</strong> Nếu bạn đang sử dụng một launcher như CurseForge App hoặc Modrinth App, bạn có thể cài đặt KotlinForForge trực tiếp từ launcher mà không cần tải thủ công. Launcher sẽ tự động quản lý dependencies và đảm bảo tương thích phiên bản.
+                </div>
+
+                <h3>Bước 3: Khởi động lại Minecraft</h3>
+                <p>
+                    Sau khi đã đặt file KotlinForForge vào thư mục mods, hãy đóng Minecraft (nếu đang mở) và khởi động lại game. Lần này, Minecraft sẽ tự động tải KotlinForForge trước, sau đó mới tải Cobblemon và các mod khác.
+                </p>
+                <p>
+                    Nếu mọi thứ đều đúng, bạn sẽ không còn thấy thông báo lỗi nữa và Cobblemon sẽ hoạt động bình thường. Bạn có thể kiểm tra trong màn hình mods khi khởi động game để xác nhận rằng cả KotlinForForge và Cobblemon đều đã được tải thành công.
+                </p>
+
+                <h2>Kiểm tra và xác nhận</h2>
+                <p>
+                    Để đảm bảo mọi thứ hoạt động đúng, bạn có thể kiểm tra:
+                </p>
+                <ul>
+                    <li><strong>Màn hình mods khi khởi động:</strong> Bạn sẽ thấy cả KotlinForForge và Cobblemon trong danh sách mods đã tải</li>
+                    <li><strong>Trong game:</strong> Cobblemon sẽ hoạt động bình thường, bạn có thể bắt Pokémon và sử dụng các tính năng của mod</li>
+                    <li><strong>Không còn thông báo lỗi:</strong> Game sẽ khởi động mà không hiển thị thông báo lỗi về KotlinForForge nữa</li>
+                </ul>
+
+                <h2>Kết luận</h2>
+                <p>
+                    Lỗi "Mod File needs language provider kotlinforforge:5.3 or above to load" là một lỗi dependency phổ biến khi chơi Minecraft với mods. Giải pháp rất đơn giản: chỉ cần tải và cài đặt KotlinForForge vào thư mục mods của bạn. Với hướng dẫn trên, bạn có thể khắc phục lỗi này trong vài phút và tiếp tục tận hưởng trải nghiệm chơi Cobblemon trên Minecraft.
+                </p>
+                <p>
+                    Nếu sau khi làm theo hướng dẫn mà vẫn gặp lỗi, hãy kiểm tra lại phiên bản KotlinForForge có tương thích với phiên bản Minecraft và NeoForge của bạn không. Bạn cũng có thể thử tải lại cả hai mod để đảm bảo file không bị lỗi trong quá trình tải về.
+                </p>
+            </div>
+
+            <footer class="post-footer">
+                <div class="post-footer-meta">
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Published</span>
+                        <time datetime="2025-01-15T14:00:00+07:00">January 15, 2025</time>
+                    </div>
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Updated</span>
+                        <time datetime="2025-01-15T14:00:00+07:00">January 15, 2025</time>
+                    </div>
+                </div>
+                <a href="../../../../Blog.html" class="post-back-link">
+                    <i class='bx bx-arrow-back'></i>
+                    Back to Blog
+                </a>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        // Handle base URL for GitHub Pages
+        (function() {
+            const pathSegments = window.location.pathname.split('/');
+            const repoName = pathSegments[1];
+            const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+            const baseUrl = isLocal ? '' : `/${repoName}`;
+
+            // Helper function to normalize relative paths
+            const normalizePath = (href) => {
+                if (!baseUrl) return href;
+                // Count ../ sequences at the start
+                const match = href.match(/^(\.\.\/)+/);
+                if (match) {
+                    const relativePart = href.substring(match[0].length);
+                    return `${baseUrl}/${relativePart}`;
+                }
+                return href;
+            };
+
+            // Helper function to get image path for GitHub Pages
+            const getImagePath = (src) => {
+                if (!baseUrl) return src;
+                // Get current path and construct image path
+                const currentPath = window.location.pathname;
+                // Remove baseUrl from pathname if present
+                let relativePath = currentPath;
+                if (baseUrl && currentPath.startsWith(baseUrl)) {
+                    relativePath = currentPath.substring(baseUrl.length);
+                }
+                // Ensure relativePath starts with /
+                if (!relativePath.startsWith('/')) {
+                    relativePath = '/' + relativePath;
+                }
+                const pathParts = relativePath.split('/').filter(p => p);
+                // Remove filename, keep directory path
+                if (pathParts.length > 0 && pathParts[pathParts.length - 1].endsWith('.html')) {
+                    pathParts.pop();
+                }
+                // Construct full path - ensure no double slashes
+                const dirPath = pathParts.length > 0 ? pathParts.join('/') : '';
+                const imagePath = `${baseUrl}/${dirPath}/${src}`.replace(/\/+/g, '/');
+                return imagePath;
+            };
+
+            // Update all relative links
+            document.querySelectorAll('a[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                link.setAttribute('href', normalizePath(href));
+            });
+
+            // Update CSS links
+            document.querySelectorAll('link[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                link.setAttribute('href', normalizePath(href));
+            });
+
+            // Update image sources (relative paths starting with "images/")
+            document.querySelectorAll('img[src^="images/"]').forEach(img => {
+                const src = img.getAttribute('src');
+                const imagePath = getImagePath(src);
+                img.setAttribute('src', imagePath);
+            });
+        })();
+    </script>
+</body>
+</html>
