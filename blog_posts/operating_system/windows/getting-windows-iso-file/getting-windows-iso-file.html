@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lấy file ISO Windows từ trang chính thức • Kyuumei Neko</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../../../assets/css/header/header.css">
+    <link rel="stylesheet" href="../../../../assets/css/post.css">
+</head>
+<body>
+    <header class="header post-header">
+        <a href="../../../../index.html" class="logo">Kyuumei Neko</a>
+        <a href="../../../../Blog.html" class="back-btn">
+            <i class='bx bx-arrow-back'></i>
+            Back to Blog
+        </a>
+    </header>
+
+    <main class="post-container">
+        <article class="post-article">
+            <header class="post-header-content">
+                <div class="post-meta">
+                    <span class="post-tag">Windows</span>
+                    <time class="post-date" datetime="2025-01-15T10:30:00+07:00">10:30 · 15/01/2025</time>
+                </div>
+                <h1 class="post-title">Lấy file ISO Windows từ trang chính thức</h1>
+                <p class="post-subtitle">Hướng dẫn chi tiết cách tải file ISO Windows trực tiếp từ Microsoft mà không cần công cụ Media Creation Tool.</p>
+            </header>
+
+            <div class="post-hero">
+                <img src="images/getting_windows_iso_file_post_hero_image.jpg" alt="Lấy file ISO Windows" class="post-hero-image">
+            </div>
+
+            <div class="post-content">
+                <p class="post-lead">
+                    Khi cần cài đặt Windows mới hoặc tạo USB boot, nhiều người thường tìm đến các nguồn bên ngoài không chính thức. Tuy nhiên, Microsoft thực sự cung cấp cách để tải trực tiếp file ISO từ trang chính thức của họ—chỉ cần một chút "mẹo" với Developer Tools của trình duyệt. Bài viết này sẽ hướng dẫn bạn cách làm điều đó một cách an toàn và đơn giản.
+                </p>
+
+                <h2>Tại sao nên tải ISO từ trang chính thức?</h2>
+                <p>
+                    Tải file ISO Windows từ trang chính thức của Microsoft đảm bảo bạn nhận được phiên bản nguyên bản, không bị chỉnh sửa, và hoàn toàn an toàn. Điều này giúp tránh các rủi ro về bảo mật, malware, hoặc các phiên bản đã bị crack không ổn định.
+                </p>
+
+                <h2>Hướng dẫn từng bước</h2>
+
+                <h3>Bước 1: Truy cập trang tải Windows</h3>
+                <p>
+                    Đầu tiên, bạn cần truy cập vào trang tải Windows chính thức của Microsoft tại:
+                </p>
+                <div class="post-code-example">
+                    <pre><code>https://www.microsoft.com/en-au/software-download</code></pre>
+                </div>
+                <p>
+                    Tại đây, bạn sẽ thấy danh sách các phiên bản Windows có sẵn. Chọn phiên bản Windows bạn muốn tải về (Windows 10 hoặc Windows 11).
+                </p>
+
+                <figure>
+                    <img src="images/select_Windows_version.png" alt="Chọn phiên bản Windows từ trang Microsoft">
+                    <figcaption>Giao diện trang tải Windows của Microsoft</figcaption>
+                </figure>
+
+                <h3>Bước 2: Mở Developer Tools</h3>
+                <p>
+                    Để truy cập các tùy chọn tải ISO trực tiếp, bạn cần mở Developer Tools của trình duyệt. Có hai cách để làm điều này:
+                </p>
+                <ul>
+                    <li><strong>Cách 1:</strong> Nhấn tổ hợp phím <code>Ctrl + Shift + I</code> (hoặc <code>Cmd + Option + I</code> trên Mac)</li>
+                    <li><strong>Cách 2:</strong> Nhấp chuột phải vào bất kỳ đâu trên trang và chọn <code>Inspect</code> (Kiểm tra)</li>
+                </ul>
+                <p>
+                    Sau khi Developer Tools mở ra, bạn sẽ thấy một thanh công cụ ở phía trên hoặc bên cạnh cửa sổ trình duyệt. Tìm và nhấp vào biểu tượng <strong>ba chấm (⋮)</strong> ở góc phải của thanh công cụ này.
+                </p>
+                <p>
+                    Trong menu thả xuống, chọn <code>More tools</code> (Thêm công cụ), sau đó chọn <code>Network conditions</code> (Điều kiện mạng).
+                </p>
+
+                <figure>
+                    <img src="images/open_developer_tools.png" alt="Mở Developer Tools và chọn Network conditions">
+                    <figcaption>Mở Developer Tools và điều hướng đến Network conditions</figcaption>
+                </figure>
+
+                <h3>Bước 3: Thay đổi User Agent</h3>
+                <p>
+                    Trong tab <code>Network conditions</code> vừa mở, bạn sẽ thấy một phần có tên <code>User agent</code>. Tại đây:
+                </p>
+                <ul>
+                    <li><strong>Bỏ tích</strong> ô <code>Use browser default</code> (Sử dụng mặc định của trình duyệt)</li>
+                    <li>Trong danh sách thả xuống, chọn <code>Safari – iPad iOS</code></li>
+                    <li>Sau khi chọn xong, nhấn <code>F5</code> hoặc nút <code>Reload</code> để tải lại trang</li>
+                </ul>
+                <p>
+                    Việc thay đổi User Agent này sẽ làm cho trang web của Microsoft "nghĩ" rằng bạn đang truy cập từ một thiết bị iPad, điều này sẽ kích hoạt tùy chọn tải ISO trực tiếp thay vì chỉ hiển thị Media Creation Tool.
+                </p>
+
+                <figure>
+                    <img src="images/change_user_agent.png" alt="Thay đổi User Agent sang Safari iPad iOS">
+                    <figcaption>Bỏ tích "Use browser default" và chọn "Safari – iPad iOS"</figcaption>
+                </figure>
+
+                <h3>Bước 4: Chọn và tải file ISO</h3>
+                <p>
+                    Sau khi trang được tải lại, giao diện sẽ thay đổi và bạn sẽ thấy các tùy chọn mới:
+                </p>
+                <ul>
+                    <li><strong>Chọn phiên bản Windows:</strong> Chọn phiên bản cụ thể bạn muốn (ví dụ: Windows 10 Home, Pro, hoặc Windows 11)</li>
+                    <li><strong>Xác nhận:</strong> Nhấn nút <code>Confirm</code> để tiếp tục</li>
+                    <li><strong>Chọn kiến trúc:</strong> Chọn phiên bản <code>64-bit</code> hoặc <code>32-bit</code> tùy theo nhu cầu của bạn</li>
+                    <li><strong>Tải về:</strong> Nhấn nút tải về để bắt đầu quá trình tải file ISO về máy</li>
+                </ul>
+                <p>
+                    File ISO sẽ có kích thước khá lớn (thường từ 4-6 GB), vì vậy hãy đảm bảo bạn có kết nối internet ổn định và đủ dung lượng lưu trữ.
+                </p>
+
+                <figure>
+                    <img src="images/select_and_download_ISO_file.png" alt="Chọn và tải file ISO Windows">
+                    <figcaption>Giao diện chọn phiên bản, kiến trúc và tải file ISO</figcaption>
+                </figure>
+
+                <div class="post-tip">
+                    <strong>Lưu ý quan trọng:</strong> Sau khi tải xong file ISO, bạn có thể đóng Developer Tools và đặt lại User Agent về mặc định nếu muốn. File ISO đã tải về sẽ không bị ảnh hưởng. Ngoài ra, hãy kiểm tra hash của file ISO (nếu Microsoft cung cấp) để đảm bảo file không bị lỗi trong quá trình tải.
+                </div>
+
+                <h2>Kết luận</h2>
+                <p>
+                    Với phương pháp này, bạn có thể tải trực tiếp file ISO Windows từ nguồn chính thức của Microsoft mà không cần sử dụng Media Creation Tool. Điều này đặc biệt hữu ích khi bạn muốn tạo USB boot bằng các công cụ khác như Rufus, hoặc khi bạn cần file ISO để cài đặt trên máy ảo. Hãy nhớ luôn tải Windows từ nguồn chính thức để đảm bảo an toàn và ổn định cho hệ thống của bạn.
+                </p>
+            </div>
+
+            <footer class="post-footer">
+                <div class="post-footer-meta">
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Published</span>
+                        <time datetime="2025-01-15T10:30:00+07:00">January 15, 2025</time>
+                    </div>
+                    <div class="post-footer-item">
+                        <span class="post-footer-label">Updated</span>
+                        <time datetime="2025-01-15T10:30:00+07:00">January 15, 2025</time>
+                    </div>
+                </div>
+                <a href="../../../../Blog.html" class="post-back-link">
+                    <i class='bx bx-arrow-back'></i>
+                    Back to Blog
+                </a>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        // Handle base URL for GitHub Pages
+        (function() {
+            const pathSegments = window.location.pathname.split('/');
+            const repoName = pathSegments[1];
+            const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+            const baseUrl = isLocal ? '' : `/${repoName}`;
+
+            // Helper function to normalize relative paths
+            const normalizePath = (href) => {
+                if (!baseUrl) return href;
+                // Count ../ sequences at the start
+                const match = href.match(/^(\.\.\/)+/);
+                if (match) {
+                    const relativePart = href.substring(match[0].length);
+                    return `${baseUrl}/${relativePart}`;
+                }
+                return href;
+            };
+
+            // Update all relative links
+            document.querySelectorAll('a[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                link.setAttribute('href', normalizePath(href));
+            });
+
+            // Update CSS links
+            document.querySelectorAll('link[href^="../"]').forEach(link => {
+                const href = link.getAttribute('href');
+                link.setAttribute('href', normalizePath(href));
+            });
+
+            // Update image sources (relative paths starting with "images/")
+            document.querySelectorAll('img[src^="images/"]').forEach(img => {
+                const src = img.getAttribute('src');
+                if (baseUrl) {
+                    // Get current path and construct image path
+                    const currentPath = window.location.pathname;
+                    const pathParts = currentPath.split('/').filter(p => p);
+                    // Remove filename, keep directory path
+                    pathParts.pop();
+                    const imagePath = `${baseUrl}/${pathParts.join('/')}/${src}`;
+                    img.setAttribute('src', imagePath);
+                }
+            });
+
+            // Update hero image if it's a relative path
+            const heroImg = document.querySelector('.post-hero-image');
+            if (heroImg && heroImg.src && heroImg.getAttribute('src').startsWith('images/')) {
+                const src = heroImg.getAttribute('src');
+                if (baseUrl) {
+                    const currentPath = window.location.pathname;
+                    const pathParts = currentPath.split('/').filter(p => p);
+                    pathParts.pop();
+                    const imagePath = `${baseUrl}/${pathParts.join('/')}/${src}`;
+                    heroImg.setAttribute('src', imagePath);
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

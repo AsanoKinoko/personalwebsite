@@ -84,7 +84,16 @@
                     "id": "windows",
                     "label": "Windows",
                     "posts": [
-                        
+                        {
+                            "id": "getting-windows-iso",
+                            "slug": "getting-windows-iso-file",
+                            "title": "Lấy file ISO Windows từ trang chính thức",
+                            "description": "Hướng dẫn chi tiết cách tải file ISO Windows trực tiếp từ Microsoft mà không cần công cụ Media Creation Tool.",
+                            "image": "blog_posts/operating_system/windows/getting-windows-iso-file/images/getting_windows_iso_file_post_hero_image.jpg",
+                            "url": "blog_posts/operating_system/windows/getting-windows-iso-file/getting-windows-iso-file.html",
+                            "createdAt": "2025-01-15T10:30:00+07:00",
+                            "updatedAt": "2025-01-15T10:30:00+07:00"
+                        }
                     ]
                 },
                 {
