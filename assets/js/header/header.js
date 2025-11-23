@@ -95,6 +95,7 @@ class Header {
             { id: 'home', nav: 'home', el: document.querySelector('.home') },
             { id: 'language', nav: 'about', el: document.getElementById('language') },
             { id: 'project', nav: 'about', el: document.getElementById('project') },
+            { id: 'services', nav: 'services', el: document.getElementById('services') },
             { id: 'blog', nav: 'blog', el: document.getElementById('blog') },
             { id: 'contact', nav: 'contact', el: document.getElementById('contact') },
         ].filter(s => s.el);
@@ -157,6 +158,15 @@ class Header {
                         history.replaceState(null, '', '#blog');
                     } else {
                         window.location.href = `${baseUrl}/index.html#blog`;
+                    }
+                } else if (target === 'services') {
+                    e.preventDefault();
+                    const services = document.getElementById('services');
+                    if (services) {
+                        services.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        history.replaceState(null, '', '#services');
+                    } else {
+                        window.location.href = `${baseUrl}/index.html#services`;
                     }
                 } else if (target === 'contact') {
                     e.preventDefault();

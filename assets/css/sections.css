@@ -142,7 +142,10 @@
 .btn-primary:hover{ background:#8c6d0d; color:#f1c232 }
 
 /* Utilities */
-.language.section-spacer, .project.section-spacer, .contact.section-spacer{ padding-top: 80px; padding-bottom: 80px; }
+.language.section-spacer, .project.section-spacer, .services.section-spacer, .contact.section-spacer{ 
+    padding-top: 80px; 
+    padding-bottom: 80px; 
+}
 
 /* Keyframes */
 @keyframes cardIn{

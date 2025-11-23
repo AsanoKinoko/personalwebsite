@@ -17,15 +17,16 @@ class SectionsLoader {
             const homeSection = document.querySelector('.home');
             if (!homeSection) return;
 
-            const [languageHTML, projectHTML, blogHTML, contactHTML, productCardHTML] = await Promise.all([
+            const [languageHTML, projectHTML, servicesHTML, blogHTML, contactHTML, productCardHTML] = await Promise.all([
                 this.loadSection('/components/language_section/language.html'),
                 this.loadSection('/components/project_section/project.html'),
                 this.loadSection('/components/blog_section/BlogSection.html'),
+                this.loadSection('/components/service_section/ServiceSection.html'),
                 this.loadSection('/components/contact_section/contact.html'),
                 this.loadSection('/components/ui/projectcard/ProjectCard.html'),
             ]);
 
-            homeSection.insertAdjacentHTML('afterend', languageHTML + projectHTML + blogHTML + contactHTML);
+            homeSection.insertAdjacentHTML('afterend', languageHTML + projectHTML + servicesHTML + blogHTML + contactHTML);
 
             await renderHomeBlogSection();
 
@@ -46,6 +47,12 @@ class SectionsLoader {
             // Notify header that sections are now in DOM
             document.dispatchEvent(new CustomEvent('sectionsLoaded'));
 
+            // Handle deep link to services after inject
+            if (window.location.hash === '#services') {
+                const services = document.getElementById('services');
+                services && services.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
             // Handle deep link to contact after inject
             if (window.location.hash === '#contact') {
                 const contact = document.getElementById('contact');
