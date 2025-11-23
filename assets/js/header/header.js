@@ -17,6 +17,11 @@ class Header {
             if (currentPage === '' || currentPage === 'personalwebsite' || currentPage === 'index') {
                 currentPage = 'home';
             }
+            // Check if it's a service page (in my_services folder)
+            const pathname = window.location.pathname.toLowerCase();
+            if (pathname.includes('my_services') || pathname.includes('randompassword')) {
+                currentPage = 'service';
+            }
             const navLinks = document.querySelectorAll('[data-nav]');
             navLinks.forEach(link => {
                 if (link.dataset.nav === currentPage) {
@@ -28,11 +33,25 @@ class Header {
             const backBtn = document.querySelector('.back-btn');
             if (backBtn) {
                 const isLocal = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost');
-                const backHref = isLocal ? 'index.html' : `${baseUrl}/index.html`;
+                
+                // Calculate relative path to index.html based on current location
+                let backHref;
+                if (isLocal) {
+                    // Get pathname and split into parts
+                    const pathname = window.location.pathname;
+                    // Split and filter: remove empty strings and HTML files (keep only directories)
+                    const pathParts = pathname.split('/').filter(part => part && !part.endsWith('.html'));
+                    // Calculate how many levels up we need to go to reach root
+                    const levelsUp = pathParts.length;
+                    backHref = levelsUp > 0 ? '../'.repeat(levelsUp) + 'index.html' : 'index.html';
+                } else {
+                    backHref = `${baseUrl}/index.html`;
+                }
                 backBtn.setAttribute('href', backHref);
             }
             if (headerEl) {
                 headerEl.classList.toggle('about-header', currentPage === 'about');
+                headerEl.classList.toggle('service-header', currentPage === 'service');
                 headerEl.classList.toggle('blog-header', currentPage === 'blog');
             }
 
@@ -69,8 +88,17 @@ class Header {
             const repoName = pathSegments[1];
             const isLocal = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost');
             const baseUrl = isLocal ? '' : `/${repoName}`;
-            // Use relative path on local to preserve subfolder, absolute with repo on GitHub Pages
-            const logoHref = isLocal ? 'index.html' : `${baseUrl}/index.html`;
+            
+            // Calculate relative path to index.html based on current location
+            let logoHref;
+            if (isLocal) {
+                const pathname = window.location.pathname;
+                const pathParts = pathname.split('/').filter(part => part && !part.endsWith('.html'));
+                const levelsUp = pathParts.length;
+                logoHref = levelsUp > 0 ? '../'.repeat(levelsUp) + 'index.html' : 'index.html';
+            } else {
+                logoHref = `${baseUrl}/index.html`;
+            }
             logo.setAttribute('href', logoHref);
 
             logo.addEventListener('click', (e) => {

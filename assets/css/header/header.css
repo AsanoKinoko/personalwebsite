@@ -52,13 +52,16 @@
 }
 
 .header.about-header .back-btn,
-.header.blog-header .back-btn{
+.header.blog-header .back-btn,
+.header.service-header .back-btn{
     display: flex;
 }
 .header.about-header .navbar,
 .header.about-header .menu-btn,
 .header.blog-header .navbar,
-.header.blog-header .menu-btn{
+.header.blog-header .menu-btn,
+.header.service-header .navbar,
+.header.service-header .menu-btn{
     display: none !important;
 }
 
@@ -148,7 +151,8 @@
         padding: 8px;
     }
     .header.about-header,
-    .header.blog-header{
+    .header.blog-header,
+    .header.service-header{
         padding: 20px 10%;
     }
 }
