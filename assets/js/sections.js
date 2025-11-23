@@ -12,6 +12,23 @@ class SectionsLoader {
         return await response.text();
     }
 
+    static fixServiceLinks() {
+        const serviceLinks = document.querySelectorAll('[data-service-path]');
+        serviceLinks.forEach(link => {
+            let href = link.getAttribute('data-service-path');
+            // Add base URL for relative paths (needed for GitHub Pages)
+            if (href && href !== '#' && !href.startsWith('http://') && !href.startsWith('https://')) {
+                const baseUrl = this.baseUrl();
+                if (baseUrl) {
+                    // Remove leading slash from href if present to avoid double slashes
+                    const cleanHref = href.startsWith('/') ? href.slice(1) : href;
+                    href = `${baseUrl}/${cleanHref}`;
+                }
+            }
+            link.setAttribute('href', href);
+        });
+    }
+
     static async init() {
         try {
             const homeSection = document.querySelector('.home');
@@ -27,6 +44,9 @@ class SectionsLoader {
             ]);
 
             homeSection.insertAdjacentHTML('afterend', languageHTML + projectHTML + servicesHTML + blogHTML + contactHTML);
+
+            // Service links for GitHub Pages
+            this.fixServiceLinks();
 
             await renderHomeBlogSection();
 
