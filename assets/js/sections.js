@@ -35,11 +35,11 @@ class SectionsLoader {
             if (!homeSection) return;
 
             const [languageHTML, projectHTML, servicesHTML, blogHTML, contactHTML, productCardHTML] = await Promise.all([
-                this.loadSection('/components/language_section/language.html'),
-                this.loadSection('/components/project_section/project.html'),
-                this.loadSection('/components/blog_section/BlogSection.html'),
-                this.loadSection('/components/service_section/ServiceSection.html'),
-                this.loadSection('/components/contact_section/contact.html'),
+                this.loadSection('/components/sections/language_section/language.html'),
+                this.loadSection('/components/sections/project_section/project.html'),
+                this.loadSection('/components/sections/blog_section/BlogSection.html'),
+                this.loadSection('/components/sections/service_section/ServiceSection.html'),
+                this.loadSection('/components/sections/contact_section/contact.html'),
                 this.loadSection('/components/ui/projectcard/ProjectCard.html'),
             ]);
 
