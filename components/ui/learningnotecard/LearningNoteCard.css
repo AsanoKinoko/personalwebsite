@@ -1,0 +1,91 @@
+.learning-note-card {
+    background: rgba(36, 2, 2, 0.32);
+    border-radius: 16px;
+    border: 1px solid rgba(241, 194, 50, 0.32);
+    box-shadow: 0 12px 28px rgba(26, 6, 6, 0.35);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    aspect-ratio: 1;
+}
+
+.learning-note-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(241, 194, 50, 0.62);
+    box-shadow: 0 18px 40px rgba(26, 6, 6, 0.45);
+}
+
+.learning-note-card__image-wrapper {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.learning-note-card__image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: saturate(100%);
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.learning-note-card:hover .learning-note-card__image {
+    transform: scale(1.08);
+}
+
+.learning-note-card__body {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(36, 2, 2, 0.4);
+}
+
+.learning-note-card__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff2cc;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.learning-note-card:hover .learning-note-card__title {
+    color: #f1c232;
+}
+
+@media (max-width: 768px) {
+    .learning-note-card__image-wrapper {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 520px) {
+    .learning-note-card__title {
+        font-size: 14px;
+    }
+
+    .learning-note-card__image-wrapper {
+        padding: 16px;
+    }
+
+    .learning-note-card__body {
+        padding: 12px 16px;
+    }
+}

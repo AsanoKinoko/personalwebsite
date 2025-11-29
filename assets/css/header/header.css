@@ -53,7 +53,8 @@
 
 .header.about-header .back-btn,
 .header.blog-header .back-btn,
-.header.service-header .back-btn{
+.header.service-header .back-btn,
+.header.learning-note-header .back-btn{
     display: flex;
 }
 .header.about-header .navbar,
@@ -61,7 +62,9 @@
 .header.blog-header .navbar,
 .header.blog-header .menu-btn,
 .header.service-header .navbar,
-.header.service-header .menu-btn{
+.header.service-header .menu-btn,
+.header.learning-note-header .navbar,
+.header.learning-note-header .menu-btn{
     display: none !important;
 }
 
@@ -152,7 +155,8 @@
     }
     .header.about-header,
     .header.blog-header,
-    .header.service-header{
+    .header.service-header,
+    .header.learning-note-header{
         padding: 20px 10%;
     }
 }

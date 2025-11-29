@@ -22,6 +22,10 @@ class Header {
             if (pathname.includes('my_services') || pathname.includes('randompassword')) {
                 currentPage = 'service';
             }
+            // Check if it's LearningNote page
+            if (currentPage === 'learningnote' || currentPage === 'learning-note') {
+                currentPage = 'learningnote';
+            }
             const navLinks = document.querySelectorAll('[data-nav]');
             navLinks.forEach(link => {
                 if (link.dataset.nav === currentPage) {
@@ -53,6 +57,7 @@ class Header {
                 headerEl.classList.toggle('about-header', currentPage === 'about');
                 headerEl.classList.toggle('service-header', currentPage === 'service');
                 headerEl.classList.toggle('blog-header', currentPage === 'blog');
+                headerEl.classList.toggle('learning-note-header', currentPage === 'learningnote');
             }
 
             // Initialize menu button functionality

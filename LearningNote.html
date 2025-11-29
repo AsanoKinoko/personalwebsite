@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Notes • Kyuumei Neko</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/header/header.css">
+    <link rel="stylesheet" href="./components/ui/learningnotecard/LearningNoteCard.css">
+    <link rel="stylesheet" href="./assets/css/LearningNote.css">
+    <script src="./assets/js/header/header.js"></script>
+    <script src="./assets/js/learning-note/learning-note-data.js"></script>
+    <script defer src="./assets/js/learning-note/learning-note-page.js"></script>
+</head>
+<body class="learning-note-page">
+    <main class="learning-note-layout">
+        <div class="learning-note-header">
+            <h1 class="learning-note-header__title">Learning Notes</h1>
+            <p class="learning-note-header__subtitle">Quick references and learning tags</p>
+            <div class="learning-note-search">
+                <div class="learning-note-search__wrapper">
+                    <i class='bx bx-search learning-note-search__icon'></i>
+                    <input 
+                        type="text" 
+                        class="learning-note-search__input" 
+                        placeholder="Search learning notes..." 
+                        data-learning-note-search
+                        aria-label="Search learning notes"
+                    >
+                    <button 
+                        type="button" 
+                        class="learning-note-search__clear" 
+                        data-learning-note-search-clear
+                        aria-label="Clear search"
+                        style="display: none;"
+                    >
+                        <i class='bx bx-x'></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="learning-note-feed" data-learning-note-feed></div>
+
+        <nav class="learning-note-pagination" aria-label="Pagination" data-learning-note-pagination></nav>
+    </main>
+</body>
+</html>

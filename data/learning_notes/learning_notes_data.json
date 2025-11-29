@@ -1,0 +1,46 @@
+{
+    "notes": [
+        {
+            "id": "javascript",
+            "title": "JavaScript",
+            "image": "data/learning_notes/images/javascript.png",
+            "url": "LearningNote.html?tag=javascript"
+        },
+        {
+            "id": "reactjs",
+            "title": "ReactJS",
+            "image": "data/learning_notes/images/react_logo_light.svg",
+            "url": "LearningNote.html?tag=reactjs"
+        },
+        {
+            "id": "figma",
+            "title": "Figma",
+            "image": "data/learning_notes/images/figma.png",
+            "url": "LearningNote.html?tag=figma"
+        },
+        {
+            "id": "typescript",
+            "title": "TypeScript",
+            "image": "data/learning_notes/images/typescript.png",
+            "url": "LearningNote.html?tag=typescript"
+        },
+        {
+            "id": "nodejs",
+            "title": "Node.js",
+            "image": "data/learning_notes/images/nodejs.png",
+            "url": "LearningNote.html?tag=nodejs"
+        },
+        {
+            "id": "vuejs",
+            "title": "Vue.js",
+            "image": "data/learning_notes/images/vuejs.png",
+            "url": "LearningNote.html?tag=vuejs"
+        },
+        {
+            "id": "python",
+            "title": "Python",
+            "image": "data/learning_notes/images/python.png",
+            "url": "LearningNote.html?tag=python"
+        }
+    ]
+}

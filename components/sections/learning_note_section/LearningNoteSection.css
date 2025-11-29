@@ -1,0 +1,92 @@
+/* Learning Note Section */
+.learning-note {
+    background: radial-gradient(circle at top right, rgba(241, 194, 50, 0.08), transparent 55%), #6c4545;
+    border-top: 2px solid rgba(241, 194, 50, 0.28);
+    border-bottom: 2px solid rgba(241, 194, 50, 0.18);
+}
+
+.learning-note__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+}
+
+.learning-note__intro {
+    display: grid;
+    gap: 20px;
+    text-align: center;
+    justify-items: center;
+}
+
+.learning-note__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.learning-note__view-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.learning-note__view-more.is-hidden {
+    display: none;
+}
+
+.learning-note__view-more-btn {
+    padding: 12px 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(241, 194, 50, 0.45);
+    background: rgba(241, 194, 50, 0.12);
+    color: #f1c232;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 8px 16px rgba(26, 6, 6, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.learning-note__view-more-btn:hover {
+    background: #f1c232;
+    color: #6c4545;
+    transform: translateY(-2px);
+    border-color: rgba(241, 194, 50, 0.6);
+    box-shadow: 0 12px 24px rgba(26, 6, 6, 0.4);
+}
+
+.learning-note__empty {
+    padding: 28px;
+    border-radius: 18px;
+    background: rgba(36, 2, 2, 0.32);
+    border: 1px dashed rgba(241, 194, 50, 0.35);
+    color: rgba(241, 194, 50, 0.85);
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}
+
+@media (max-width: 768px) {
+    .learning-note__container {
+        gap: 32px;
+    }
+
+    .learning-note__grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .learning-note__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}

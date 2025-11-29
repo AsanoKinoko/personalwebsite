@@ -34,21 +34,23 @@ class SectionsLoader {
             const homeSection = document.querySelector('.home');
             if (!homeSection) return;
 
-            const [languageHTML, projectHTML, servicesHTML, blogHTML, contactHTML, productCardHTML] = await Promise.all([
+            const [languageHTML, projectHTML, servicesHTML, blogHTML, learningNoteHTML, contactHTML, productCardHTML] = await Promise.all([
                 this.loadSection('/components/sections/language_section/language.html'),
                 this.loadSection('/components/sections/project_section/project.html'),
                 this.loadSection('/components/sections/blog_section/BlogSection.html'),
-                this.loadSection('/components/sections/service_section/ServiceSection.html'),
+                this.loadSection('/components/sections/learning_note_section/LearningNoteSection.html'),
+                this.loadSection('/components/sections/service_section/ServiceSection.html'),   
                 this.loadSection('/components/sections/contact_section/contact.html'),
                 this.loadSection('/components/ui/projectcard/ProjectCard.html'),
             ]);
 
-            homeSection.insertAdjacentHTML('afterend', languageHTML + projectHTML + servicesHTML + blogHTML + contactHTML);
+            homeSection.insertAdjacentHTML('afterend', languageHTML + projectHTML + servicesHTML + blogHTML + learningNoteHTML + contactHTML);
 
             // Service links for GitHub Pages
             this.fixServiceLinks();
 
             await renderHomeBlogSection();
+            await renderHomeLearningNoteSection();
 
             if (window.ProjectCards) {
                 await window.ProjectCards.render(productCardHTML);
@@ -175,5 +177,62 @@ async function renderHomeBlogSection() {
     } catch (error) {
         console.error('Blog preview failed to render', error);
         grid.innerHTML = '<p class="blog__empty">Unable to fetch blog posts at the moment.</p>';
+    }
+}
+
+const LEARNING_NOTE_PREVIEW_COUNT = 3;
+
+async function renderHomeLearningNoteSection() {
+    const section = document.getElementById('learning-note');
+    if (!section || !window.LearningNoteData) return;
+
+    const grid = section.querySelector('[data-learning-note-grid]');
+    const viewMoreContainer = section.querySelector('[data-learning-note-view-more]');
+
+    if (!grid || !viewMoreContainer) return;
+
+    grid.innerHTML = '';
+    viewMoreContainer.innerHTML = '';
+
+    try {
+        const [notes, template] = await Promise.all([
+            window.LearningNoteData.getNotes(),
+            window.LearningNoteData.getCardTemplate(),
+        ]);
+
+        if (!notes.length) {
+            grid.innerHTML = '<p class="learning-note__empty">Learning notes are on the way. Please check back soon!</p>';
+            return;
+        }
+
+        const preview = notes.slice(0, LEARNING_NOTE_PREVIEW_COUNT);
+        const cardsFragment = document.createDocumentFragment();
+
+        preview.forEach((note) => {
+            const cardFragment = window.LearningNoteData.createCardFragment(template, {
+                note,
+                link: note.url || '#',
+            });
+            cardsFragment.appendChild(cardFragment);
+        });
+
+        grid.appendChild(cardsFragment);
+
+        // Show "View More" button if there are more than 3 notes
+        if (notes.length > LEARNING_NOTE_PREVIEW_COUNT) {
+            const baseUrl = window.LearningNoteData.computeBaseUrl();
+            const viewMoreBtn = document.createElement('a');
+            viewMoreBtn.className = 'learning-note__view-more-btn';
+            const learning_note_href = baseUrl ? `${baseUrl}/LearningNote.html` : '/LearningNote.html';
+            viewMoreBtn.href = learning_note_href;
+            viewMoreBtn.innerHTML = 'View More <i class=\'bx bx-chevron-right\'></i>';
+            viewMoreContainer.appendChild(viewMoreBtn);
+            viewMoreContainer.classList.remove('is-hidden');
+        } else {
+            viewMoreContainer.classList.add('is-hidden');
+        }
+    } catch (error) {
+        console.error('Learning Note preview failed to render', error);
+        grid.innerHTML = '<p class="learning-note__empty">Unable to fetch learning notes at the moment.</p>';
     }
 }
