@@ -7,6 +7,7 @@ A responsive personal portfolio website showcasing projects, blog posts, and pro
 - **Home Page**: Introduction and quick navigation
 - **About/CV Page**: Professional resume and skills
 - **Blog Section**: Categorized blog posts (Frontend, Games, Operating System, Travel)
+- **Learning Notes**: Quickly reference some knowledge with flashcards with search function
 - **Projects Showcase**: Display of personal projects with links
 - **Services Section**: Available services
 - **Contact Section**: Contact information
@@ -31,6 +32,7 @@ Trang web portfolio cá nhân responsive giới thiệu các dự án, bài vi�
 - **Trang Chủ**: Giới thiệu và điều hướng nhanh
 - **Trang Giới Thiệu/CV**: Sơ yếu lý lịch và kỹ năng chuyên nghiệp
 - **Mục Blog**: Bài viết blog được phân loại (Frontend, Games, Operating System, Travel)
+- **Learning Notes**: Tham khảo nhanh một số kiến thức với thẻ học tập với chức năng tìm kiếm
 - **Trưng Bày Dự Án**: Hiển thị các dự án cá nhân kèm liên kết
 - **Mục Dịch Vụ**: Các dịch vụ có sẵn
 - **Mục Liên Hệ**: Thông tin liên hệ
