@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning • Kyuumei Neko</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/header/header.css">
+    <link rel="stylesheet" href="./assets/css/MyLearning.css">
+    <script src="./assets/js/header/header.js"></script>
+    <script src="./assets/js/learning_notes/learning-note-data.js"></script>
+    <script defer src="./assets/js/learning_notes/my-learning-page.js"></script>
+</head>
+<body class="my-learning-page">
+    <main class="my-learning-layout">
+        <header class="my-learning-header">
+            <h1 class="my-learning-title" data-ml-main-title>My Learning</h1>
+            <p class="my-learning-subtitle" data-ml-main-subtitle>
+                Focus on one topic at a time. The layout stays, the knowledge changes.
+            </p>
+        </header>
+
+        <section class="my-learning-body" aria-label="My learning content layout">
+            <aside class="my-learning-sidebar" aria-label="Learning topics">
+                <p class="my-learning-sidebar__title" data-ml-sidebar-label>Topics</p>
+                <nav>
+                    <ul class="my-learning-tree" data-ml-sidebar></ul>
+                </nav>
+            </aside>
+
+            <section class="my-learning-content" aria-live="polite">
+                <div class="my-learning-content__status" data-ml-status></div>
+                <h2 class="my-learning-content__title" data-ml-content-title></h2>
+                <div class="my-learning-content__meta" data-ml-content-meta></div>
+                <div class="my-learning-content__body" data-ml-content>
+                    <div class="my-learning-content__placeholder">
+                        Select a topic from the left side to start learning.
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

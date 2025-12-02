@@ -1,6 +1,53 @@
 {
     "notes": [
         {
+            "id": "css3",
+            "title": "CSS3",
+            "image": "data/learning_notes/images/css-3.png",
+            "url": "LearningNote.html?tag=css3"
+        },
+        {
+            "id": "figma",
+            "title": "Figma",
+            "image": "data/learning_notes/images/figma.png",
+            "url": "LearningNote.html?tag=figma"
+        },
+        {
+            "id": "html5",
+            "title": "HTML5",
+            "subtitle": "Study HTML step-by-step, like an online textbook.",
+            "image": "data/learning_notes/images/html.png",
+            "url": "MyLearning.html?tag=html5",
+            "topics": [
+                {
+                    "id": "html-introduction",
+                    "title": "HTML Introduction",
+                    "breadcrumb": "HTML5 / Getting started",
+                    "url": "my_learning/html5/html-introduction.html"
+                },
+                {
+                    "id": "html-basic",
+                    "title": "HTML Basic",
+                    "breadcrumb": "HTML5 / Basics",
+                    "url": "my_learning/html5/html-basic.html",
+                    "children": [
+                        {
+                            "id": "html-elements",
+                            "title": "HTML Elements",
+                            "breadcrumb": "HTML5 / Basics / Elements",
+                            "url": "my_learning/html5/html-elements.html"
+                        },
+                        {
+                            "id": "html-attributes",
+                            "title": "HTML Attributes",
+                            "breadcrumb": "HTML5 / Basics / Attributes",
+                            "url": "my_learning/html5/html-attributes.html"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "id": "javascript",
             "title": "JavaScript",
             "image": "data/learning_notes/images/javascript.png",
@@ -11,36 +58,6 @@
             "title": "ReactJS",
             "image": "data/learning_notes/images/react_logo_light.svg",
             "url": "LearningNote.html?tag=reactjs"
-        },
-        {
-            "id": "figma",
-            "title": "Figma",
-            "image": "data/learning_notes/images/figma.png",
-            "url": "LearningNote.html?tag=figma"
-        },
-        {
-            "id": "typescript",
-            "title": "TypeScript",
-            "image": "data/learning_notes/images/typescript.png",
-            "url": "LearningNote.html?tag=typescript"
-        },
-        {
-            "id": "nodejs",
-            "title": "Node.js",
-            "image": "data/learning_notes/images/nodejs.png",
-            "url": "LearningNote.html?tag=nodejs"
-        },
-        {
-            "id": "vuejs",
-            "title": "Vue.js",
-            "image": "data/learning_notes/images/vuejs.png",
-            "url": "LearningNote.html?tag=vuejs"
-        },
-        {
-            "id": "python",
-            "title": "Python",
-            "image": "data/learning_notes/images/python.png",
-            "url": "LearningNote.html?tag=python"
         }
     ]
 }

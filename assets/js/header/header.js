@@ -22,8 +22,8 @@ class Header {
             if (pathname.includes('my_services') || pathname.includes('randompassword')) {
                 currentPage = 'service';
             }
-            // Check if it's LearningNote page
-            if (currentPage === 'learningnote' || currentPage === 'learning-note') {
+            // Check if it's LearningNote / MyLearning page
+            if (currentPage === 'learningnote' || currentPage === 'learning-note' || currentPage === 'mylearning') {
                 currentPage = 'learningnote';
             }
             const navLinks = document.querySelectorAll('[data-nav]');
