@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kỹ thuật tạo & gộp</title>
+</head>
+<body>
+    <main>
+        <h2>Kỹ thuật tạo & gộp</h2>
+        
+        <h3>Property Shorthand (viết tắt thuộc tính)</h3>
+        <p>Nếu tên biến trùng với tên key, có thể viết rút gọn:</p>
+        
+        <pre><code>const x = 1, y = 2;
+
+// Thông thường:
+const obj1 = { x: x, y: y };
+
+// Viết tắt (ES6+):
+const obj2 = { x, y };
+
+console.log(obj2); // { x: 1, y: 2 }</code></pre>
+        
+        <p><strong>Ứng dụng:</strong> Dễ đọc hơn khi truyền nhiều biến cùng tên vào object (thường gặp trong React, API request,…).</p>
+        
+        <h3>Computed Property Names (tên key tính toán động)</h3>
+        <p>Khi cần key được tạo từ biểu thức hoặc biến, ta dùng cú pháp <code>[]</code>.</p>
+        
+        <pre><code>const key = "score";
+
+const obj = {
+  [key]: 100,           // key lấy từ biến
+  ["k" + 1]: 42,        // key tính toán
+};
+
+console.log(obj); // { score: 100, k1: 42 }</code></pre>
+        
+        <p><strong>Lưu ý:</strong> Không thể viết <code>key: 100</code> nếu muốn lấy giá trị của biến key, vì JS sẽ hiểu là key "key" literal.</p>
+        
+        <h3>Kỹ thuật gộp và sao chép object</h3>
+        
+        <h4>Spread syntax (...)</h4>
+        <p>ES2018+: Tạo bản sao nông (shallow copy) hoặc gộp object mới mà không thay đổi bản gốc.</p>
+        
+        <pre><code>const a = { x: 1, y: 2 };
+const b = { y: 3, z: 4 };
+const merged = { ...a, ...b };
+
+console.log(merged); // { x: 1, y: 3, z: 4 }</code></pre>
+        
+        <ul>
+            <li>Các key trùng sẽ bị ghi đè bởi key sau.</li>
+            <li>Đây là sao chép nông (shallow) → nếu giá trị là object, nó chỉ sao chép tham chiếu.</li>
+        </ul>
+        
+        <pre><code>const nested = { info: { age: 20 } };
+const copy = { ...nested };
+
+copy.info.age = 99;
+console.log(nested.info.age); // 99 ❗(tham chiếu chung)</code></pre>
+        
+        <p>Nếu muốn sao chép sâu (deep copy):</p>
+        <pre><code>const deepCopy = structuredClone(nested); // ES2023+</code></pre>
+        
+        <h4>Object.assign(target, ...sources)</h4>
+        <p>Cũng dùng để gộp hoặc sao chép nông, nhưng có tác dụng đột biến (mutate) lên target.</p>
+        
+        <pre><code>const a = { x: 1 };
+const b = { y: 2 };
+const target = {};
+
+Object.assign(target, a, b);
+console.log(target); // { x: 1, y: 2 }</code></pre>
+        
+        <h3>Kỹ thuật destructuring (phân rã object)</h3>
+        <p>Dùng để rút trích dữ liệu từ object một cách ngắn gọn.</p>
+        
+        <h4>Cơ bản:</h4>
+        <pre><code>const user = { name: "Alice", age: 25 };
+const { name, age } = user;
+
+console.log(name); // "Alice"</code></pre>
+        
+        <h4>Đặt tên mới:</h4>
+        <pre><code>const { name: fullName } = user;
+console.log(fullName); // "Alice"</code></pre>
+        
+        <h4>Giá trị mặc định:</h4>
+        <p>Nếu thuộc tính không tồn tại → gán giá trị mặc định.</p>
+        <pre><code>const user = {};
+const { name = "N/A", age = 0 } = user;
+
+console.log(name, age); // "N/A", 0</code></pre>
+        
+        <h4>Destructuring lồng nhau (Nested):</h4>
+        <p>Với giá trị mặc định để tránh lỗi khi object con undefined</p>
+        <pre><code>const user = {
+  name: "Alice",
+  info: { age: 25 }
+};
+
+// Nếu user hoặc info có thể null/undefined:
+const { 
+  name = 'N/A', 
+  info: { age = 0 } = {}    // ✅ thêm = {} để tránh lỗi khi info undefined
+} = user || {};
+
+console.log(name, age); // "Alice", 25</code></pre>
+        
+        <h3>Optional chaining & Nullish coalescing</h3>
+        
+        <h4>Optional chaining (?.)</h4>
+        <p>Giúp truy cập sâu vào object mà không bị lỗi nếu một phần undefined/null.</p>
+        
+        <pre><code>const user = { address: { city: "Hanoi" } };
+
+console.log(user.address.city);     // "Hanoi"
+console.log(user.profile?.city);    // undefined (không lỗi)</code></pre>
+        
+        <h4>Nullish coalescing (??)</h4>
+        <p>Trả về giá trị bên phải nếu bên trái là null hoặc undefined, khác với <code>||</code> vì <code>||</code> cũng coi 0, '', false là falsy.</p>
+        
+        <pre><code>const user = null;
+const name = user?.info?.name ?? "(anonymous)";
+
+console.log(name); // "(anonymous)"
+
+console.log(0 || 100);  // 100  (vì 0 là falsy)
+console.log(0 ?? 100);  // 0    (vì 0 không phải null/undefined)</code></pre>
+    </main>
+</body>
+</html>

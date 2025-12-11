@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thứ tự liệt kê thuộc tính</title>
+</head>
+<body>
+    <main>
+        <h2>Thứ tự liệt kê thuộc tính (Property enumeration order)</h2>
+        
+        <p>Từ ES2015 (ES6) trở đi, JavaScript đã chuẩn hóa thứ tự duyệt key của object.</p>
+        
+        <p>Thứ tự duyệt khi dùng: <code>for...in</code>, <code>Object.keys()</code>, <code>Object.values()</code>, <code>Object.entries()</code>, <code>JSON.stringify()</code> (theo thứ tự key), <code>Reflect.ownKeys()</code>.</p>
+        
+        <h3>Quy tắc thứ tự:</h3>
+        <ol>
+            <li><strong>Các key dạng số (Integer-like keys):</strong> Sắp xếp theo thứ tự tăng dần. Số nguyên hợp lệ là chuỗi biểu diễn số nguyên ≥ 0 và < 2³²−1.</li>
+            <li><strong>Các key chuỗi còn lại:</strong> Theo thứ tự chèn vào(insertion order).</li>
+            <li><strong>Symbol keys:</strong> Theo thứ tự chèn, nhưng xuất hiện sau cùng khi liệt kê.</li>
+        </ol>
+        
+        <p>Ví dụ:</p>
+        <pre><code>const obj = {
+  "3": "three",
+  "1": "one",
+  "b": "bee",
+  "a": "aye",
+  [Symbol("z")]: "sym",
+};
+
+console.log(Object.keys(obj)); // ["1", "3", "b", "a"]</code></pre>
+        
+        <h3>Giải thích:</h3>
+        <ul>
+            <li><code>"1"</code> và <code>"3"</code> là key số (numeric keys) → sắp xếp tăng dần (1, 3).</li>
+            <li><code>"b"</code> và <code>"a"</code> là chuỗi (string keys) → theo thứ tự chèn (b, rồi a).</li>
+            <li><code>Symbol("z")</code> không liệt kê ở <code>Object.keys()</code>; chỉ xuất hiện khi gọi <code>Object.getOwnPropertySymbols(obj)</code>.</li>
+        </ul>
+    </main>
+</body>
+</html>

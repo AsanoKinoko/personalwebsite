@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array - Mảng</title>
+</head>
+<body>
+    <main>
+        <h2>Array - Mảng</h2>
+        
+        <p>Array là kiểu dữ liệu mà giá trị của nó chứa nhiều giá trị khác. Mỗi giá trị của mảng được gọi là element (phần tử). Array là object đặc biệt.</p>
+        
+        <h3>Có 2 cách khai báo Array trong Javascript:</h3>
+        
+        <h4>Dùng Array literals</h4>
+        <p>Được biểu diễn bằng dấu ngoặc vuông và theo sau là giá trị rỗng hay một hoặc nhiều giá trị được ngăn cách nhau bằng dấu phẩy:</p>
+        <pre><code>var foo = []; // literal
+
+var b = [1, 2, 3];</code></pre>
+        
+        <h4>Dùng Array constructor</h4>
+        <p>Được khởi tạo bằng sử dụng từ khóa 'new'</p>
+        <pre><code>var foo = new Array(3); // length = 3 (holes)
+
+const d = Array.of(1, 2, 3);   // [1,2,3]
+
+const e = Array.from('abc');   // ['a','b','c']
+
+const f = Array.from({length:4}, (_,i)=>i*i); // [0,1,4,9]</code></pre>
+        
+        <h3>Chỉ mục và khóa thuộc tính</h3>
+        <p>"Chỉ mục mảng" thực ra là key dạng chuỗi thỏa điều kiện array index: chuyển sang ToUint32(key) giữ nguyên và khác 2^32 - 1. 
+        Chỉ mục hợp lệ: 0 đến 2^32-2 (4,294,967,294). Key ngoài phạm vi (ví dụ "foo" hoặc -1) vẫn set được nhưng không là phần tử mảng. 
+        Chỉ mục mảng bắt đầu từ 0; truy cập âm dùng at(). VD: <code>arr.at(-1)</code></p>
+        
+        <h3>at() và chỉ mục âm</h3>
+        <p><code>arr.at(-1)</code> truy cập phần tử cuối; không cần <code>arr[arr.length-1]</code>. at() hoạt động trên cả string, typed array…</p>
+        
+        <h3>Dãy giá trị</h3>
+        <p>Mảng có thể chứa mọi kiểu; với object/array con là tham chiếu (shallow copy sẽ giữ chung tham chiếu).</p>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-array-length" data-topic-link="javascript-array-length">Thuộc tính length</a></strong> - "Đồng hồ" của mảng</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-array-holes" data-topic-link="javascript-array-holes">"Holes" và undefined</a></strong> - Phần tử trống và giá trị undefined</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-array-property-enumeration" data-topic-link="javascript-array-property-enumeration">Thứ tự liệt kê thuộc tính</a></strong> - Property enumeration order</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-array-comparison-type-conversion" data-topic-link="javascript-array-comparison-type-conversion">So sánh, chuyển kiểu & "weird corners"</a></strong> - So sánh tham chiếu và chuyển kiểu</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-array-mutation-immutability" data-topic-link="javascript-array-mutation-immutability">Biến đổi bất biến và đột biến</a></strong> - Mutation và immutability</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-array-performance-data-structures" data-topic-link="javascript-array-performance-data-structures">Hiệu năng & cấu trúc dữ liệu</a></strong> - Performance và data structures</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-array-methods" data-topic-link="javascript-array-methods">Các method trong mảng</a></strong> - Tổng hợp các phương thức mảng nhóm theo chức năng</li>
+        </ul>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

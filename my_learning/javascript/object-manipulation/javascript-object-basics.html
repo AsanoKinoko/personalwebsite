@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Khái niệm cơ bản</title>
+</head>
+<body>
+    <main>
+        <h2>Khái niệm cơ bản</h2>
+        
+        <p>Object (đối tượng) là một tập hợp các cặp <strong>key–value</strong> (thuộc tính và giá trị).</p>
+        
+        <ul>
+            <li><strong>Key</strong> luôn là kiểu <code>string</code> hoặc <code>symbol</code>.</li>
+            <li><strong>Value</strong> có thể là bất kỳ kiểu dữ liệu nào (số, chuỗi, mảng, hàm, object khác,...).</li>
+        </ul>
+        
+        <h3>Đặc điểm:</h3>
+        <ul>
+            <li><strong>Không có thứ tự:</strong> Các thuộc tính không có index như mảng</li>
+            <li><strong>Tham chiếu (by reference):</strong> Khi gán object cho biến khác, hai biến cùng trỏ đến cùng vùng nhớ</li>
+            <li><strong>Có thể thay đổi (mutable):</strong> Có thể thêm, sửa, xóa thuộc tính sau khi tạo</li>
+            <li><strong>Prototype-based:</strong> Object có thể kế thừa từ <code>Object.prototype</code> hoặc từ object khác</li>
+        </ul>
+        
+        <h3>Cách khởi tạo Object:</h3>
+        
+        <h4>Object Literal (Cách phổ biến nhất):</h4>
+        <pre><code>const user = {
+  name: "John",
+  age: 30,
+  email: "john@example.com",
+};</code></pre>
+        
+        <h4>Dùng new Object():</h4>
+        <pre><code>const user = new Object();
+user.name = "John";
+user.age = 30;</code></pre>
+        
+        <h4>Dùng Constructor Function (trước ES6):</h4>
+        <pre><code>function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const p1 = new Person("Alice", 25);</code></pre>
+        
+        <h4>Dùng Class (ES6+):</h4>
+        <pre><code>class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+const p2 = new Person("Bob", 28);</code></pre>
+        
+        <h4>Dùng Object.create():</h4>
+        <pre><code>const animal = { eats: true };
+const dog = Object.create(animal);
+dog.barks = true;
+
+console.log(dog.eats); // true (kế thừa từ animal)</code></pre>
+        
+        <h3>Truy cập thuộc tính (Accessing properties):</h3>
+        
+        <h4>Dùng dấu chấm (.):</h4>
+        <p>Dễ đọc, thường dùng khi key là tên hợp lệ (identifier hợp lệ)</p>
+        <pre><code>const user = { name: "Alice", age: 25 };
+console.log(user.name); // "Alice"</code></pre>
+        
+        <h4>Dùng ngoặc vuông []:</h4>
+        <p>Bắt buộc khi Key không hợp lệ (chứa dấu cách, ký tự đặc biệt, số đầu tiên) hoặc Key được tạo động (dynamic) bằng biến</p>
+        <pre><code>const user = { "user name": "Bob", age: 20 };
+console.log(user["user name"]); // "Bob"
+const key = "age";
+console.log(user[key]); // 20</code></pre>
+        
+        <h4>Lưu ý:</h4>
+        <ul>
+            <li>Nếu truy cập thuộc tính không tồn tại → trả về <code>undefined</code></li>
+            <li>Không có lỗi trừ khi bạn cố truy cập sâu hơn từ <code>undefined</code></li>
+        </ul>
+        <pre><code>const obj = {};
+console.log(obj.address.city); // TypeError
+
+console.log(obj.address?.city); // undefined (dùng optional chaining)</code></pre>
+        
+        <h3>Cập nhật / Thêm / Xóa thuộc tính:</h3>
+        
+        <h4>Thêm hoặc sửa thuộc tính:</h4>
+        <pre><code>const user = { name: "Alice" };
+user.age = 25;         // thêm
+user.name = "Bob";     // cập nhật</code></pre>
+        
+        <h4>Xóa thuộc tính:</h4>
+        <pre><code>delete user.age;</code></pre>
+        
+        <h4>Kiểm tra thuộc tính tồn tại:</h4>
+        <pre><code>console.log("name" in user);     // true
+console.log(user.hasOwnProperty("age")); // false</code></pre>
+        
+        <h3>Truy cập lồng nhau (Nested Object):</h3>
+        <pre><code>const company = {
+  name: "TechCorp",
+  address: {
+    city: "Hanoi",
+    district: "Ba Dinh",
+  },
+};
+
+console.log(company.address.city); // "Hanoi"
+console.log(company["address"]["district"]); // "Ba Dinh"</code></pre>
+        
+        <p>Có thể dùng <strong>Optional Chaining</strong> (ES2020) để tránh lỗi:</p>
+        <pre><code>console.log(company.location?.city); // undefined, không lỗi</code></pre>
+    </main>
+</body>
+</html>

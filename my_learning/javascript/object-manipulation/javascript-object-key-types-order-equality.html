@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểu key, thứ tự, bình đẳng</title>
+</head>
+<body>
+    <main>
+        <h2>Kiểu key, thứ tự, bình đẳng</h2>
+        
+        <p>Object key hợp lệ là <code>String</code> hoặc <code>Symbol</code>. Cụ thể:</p>
+        
+        <ul>
+            <li>Nếu bạn dùng số, nó sẽ tự động được ép sang chuỗi.</li>
+            <li>Nếu bạn dùng Symbol, đó là một key đặc biệt, không xung đột với key chuỗi khác.</li>
+        </ul>
+        
+        <pre><code>const sym = Symbol("id");
+const obj = {
+  1: "one",
+  name: "Alice",
+  [sym]: "secret",
+};
+
+console.log(Object.keys(obj)); // ["1", "name"]
+console.log(Object.getOwnPropertySymbols(obj)); // [Symbol(id)]</code></pre>
+        
+        <h3>Lưu ý:</h3>
+        <ul>
+            <li><code>1</code>, <code>"1"</code> và <code>Symbol("1")</code> là 3 key hoàn toàn khác nhau.</li>
+            <li>Key dạng số luôn bị chuyển thành string, chỉ khác là JS đối xử đặc biệt khi liệt kê thứ tự (giải thích ở phần tiếp theo).</li>
+        </ul>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-object-symbols" data-topic-link="javascript-object-symbols">Symbols: key "ẩn" & well-known symbols</a></strong> - Symbol làm key ẩn, Global Symbol Registry và Well-known Symbols</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-object-property-enumeration-order" data-topic-link="javascript-object-property-enumeration-order">Thứ tự liệt kê thuộc tính</a></strong> - Property enumeration order từ ES6</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-object-equality" data-topic-link="javascript-object-equality">So sánh giá trị</a></strong> - So sánh object, === và Object.is()</li>
+        </ul>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object Manipulation - Thao tác với đối tượng</title>
+</head>
+<body>
+    <main>
+        <h2>Object Manipulation - Thao tác với đối tượng</h2>
+        
+        <p>Object (đối tượng) là một tập hợp các cặp key–value (thuộc tính và giá trị), là một trong những kiểu dữ liệu quan trọng nhất trong JavaScript.</p>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-object-basics" data-topic-link="javascript-object-basics">Khái niệm cơ bản</a></strong> - Các khái niệm, cách khởi tạo, truy cập và thao tác với object</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-object-key-types-order-equality" data-topic-link="javascript-object-key-types-order-equality">Kiểu key, thứ tự, bình đẳng</a></strong> - Kiểu key, Symbols và các đặc điểm về thứ tự và bình đẳng</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-object-creation-merge-techniques" data-topic-link="javascript-object-creation-merge-techniques">Kỹ thuật tạo & gộp</a></strong> - Property Shorthand, Computed Property Names, Spread syntax, Destructuring, Optional chaining & Nullish coalescing</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-object-iteration-enumeration" data-topic-link="javascript-object-iteration-enumeration">Duyệt & liệt kê</a></strong> - Các phương thức liệt kê thuộc tính và duyệt object</li>
+        </ul>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Các method trong mảng</title>
+</head>
+<body>
+    <main>
+        <h2>Các method trong mảng (Nhóm theo chức năng)</h2>
+        
+        <h3>1. Thêm/xóa/chèn (thường đột biến mảng gốc)</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Đột biến?</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>push(...items)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Thêm phần tử vào cuối mảng, trả về độ dài mới.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2]; a.push(3,4); // [1,2,3,4]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>pop()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Bỏ phần tử cuối cùng, trả về phần tử đó.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3]; a.pop(); // trả 3, a=[1,2]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>unshift(...items)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Thêm phần tử vào đầu mảng, trả về độ dài mới.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[2,3]; a.unshift(1); // [1,2,3]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>shift()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Bỏ phần tử đầu tiên, trả về phần tử đó.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3]; a.shift(); // trả 1, a=[2,3]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>splice(start, deleteCount, ...items)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Xóa hoặc chèn phần tử giữa mảng. Trả về mảng chứa phần tử bị xóa.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3,4]; a.splice(1,2,'x','y'); // a=[1,'x','y',4]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>toSpliced(start, deleteCount, ...items)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Giống splice, nhưng không đổi mảng gốc, trả mảng mới.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Không</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3]; let b=a.toSpliced(1,1,9); // b=[1,9,3], a=[1,2,3]</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>2. Cắt/gộp/điền/copy nội bộ</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Đột biến?</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>slice(start?, end?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Cắt đoạn [start, end) tạo mảng mới.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Không</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3,4].slice(1,3); // [2,3]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>concat(...arrs)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Nối nhiều mảng hoặc giá trị tạo ra mảng mới.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Không</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2].concat([3,4]); // [1,2,3,4]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>fill(value, start?, end?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Điền giá trị vào đoạn [start, end)</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3]; a.fill(0,1,3); // [1,0,0]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>copyWithin(target, start, end?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Sao chép đoạn [start, end) đè lên từ vị trí target</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3,4,5]; a.copyWithin(0,3); // [4,5,3,4,5]</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>3. Sắp xếp/đảo</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Đột biến?</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>reverse()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Đảo ngược thứ tự phần tử.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].reverse(); // [3,2,1]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>toReversed()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả bản đảo của mảng (không đổi mảng gốc).</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Không</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3]; a.toReversed(); // [3,2,1], a=[1,2,3]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>sort(compareFn?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Sắp xếp theo so sánh. Stable sort từ ES2019+.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[3,1,2].sort((a,b)=>a-b); // [1,2,3]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>toSorted(compareFn?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả bản sắp xếp mới, mảng cũ giữ nguyên.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Không</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[3,1,2]; a.toSorted(); // [1,2,3]</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>4. Biến đổi bất biến từng phần tử</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Đột biến?</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>with(index, value)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả bản sao của mảng, trong đó phần tử index được thay bởi value. Không đổi mảng gốc.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Không</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>let a=[1,2,3]; a.with(1,99); // [1,99,3], a=[1,2,3]</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>5. Tìm kiếm và truy vấn (Search and Query)</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Trả về</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>indexOf(value, fromIndex?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tìm từ đầu, trả index đầu tiên hoặc -1.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Index</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3,2].indexOf(2); // 1</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>lastIndexOf(value)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tìm từ cuối, trả index cuối cùng.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Index</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3,2].lastIndexOf(2); // 3</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>includes(value, fromIndex?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Kiểm tra có phần tử bằng (===).</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Boolean</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].includes(2); // true</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>find(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả phần tử đầu tiên thỏa mãn điều kiện.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Value</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].find(x=>x>1); // 2</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>findLast(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Từ cuối lên → phần tử đầu tiên thỏa mãn điều kiện.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Value</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].findLast(x=>x>1); // 3</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>findLastIndex(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Từ cuối lên → index đầu tiên thỏa mãn điều kiện.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Index</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].findLastIndex(x=>x>1); // 2</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>some(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Có ít nhất một phần tử thỏa?</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Boolean</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,3,5].some(x=>x%2===0); // false</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>every(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tất cả phần tử thỏa?</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Boolean</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[2,4,6].every(x=>x%2===0); // true</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>6. Ánh xạ / Lọc / Gom (Functional)</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Trả về</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>map(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Ánh xạ mỗi phần tử thành giá trị mới.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Mảng mới</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].map(x=>x*2); // [2,4,6]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>filter(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Giữ lại phần tử thỏa điều kiện.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Mảng mới</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].filter(x=>x>1); // [2,3]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>flat(depth=1)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">"Dẹt" mảng con lồng nhau.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Mảng mới</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,[2,[3]]].flat(2); // [1,2,3]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>flatMap(fn)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Kết hợp map + flat(1).</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Mảng mới</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].flatMap(x=>[x,x*2]); // [1,2,2,4,3,6]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>reduce(fn, init?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tích lũy từ trái → phải.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Giá trị</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].reduce((s,x)=>s+x,0); // 6</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>reduceRight(fn, init?)</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tích lũy từ phải → trái.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Giá trị</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>["a","b","c"].reduceRight((s,x)=>s+x,""); // "cba"</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>7. Chuỗi hóa & Hiển thị (Stringification & Display)</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Trả về</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>join(sep=',')</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Nối phần tử thành chuỗi, cách nhau bởi sep.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Chuỗi mới</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].join('-'); // "1-2-3"</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>toString()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tự động giống join(',').</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Chuỗi mới</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1,2,3].toString(); // "1,2,3"</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>toLocaleString()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Chuỗi hóa theo định dạng vùng.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Chuỗi mới</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>[1000].toLocaleString('vi-VN'); // "1.000"</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>8. Iterator (dùng trong for...of)</h3>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Phương thức</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Mô tả</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Trả về</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Ví dụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>keys()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả iterator các chỉ mục (0,1,2,...).</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tạo một iterator chứa chỉ mục</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>const arr = ['a', 'b', 'c']; const keys = arr.keys(); console.log([...keys]); // [0, 1, 2]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>values()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả iterator các giá trị.</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả về iterator chứa các giá trị trong mảng</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>const arr = ['a', 'b', 'c']; const values = arr.values(); console.log([...values]); // ["a", "b", "c"]</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>entries()</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả iterator [index, value].</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trả về iterator chứa cặp [index, value] cho từng phần tử</td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>const arr = ['a', 'b', 'c']; const entries = arr.entries(); console.log([...entries]); // [[0, "a"], [1, "b"], [2, "c"]]</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Lưu ý</h3>
+        <ul>
+            <li><code>sort()</code> mặc định theo chuỗi UTF-16: <code>['2','10','1'].sort() → ['1','10','2']</code>.</li>
+            <li><code>includes(NaN)</code> là <code>true</code> nếu có NaN (khác với <code>indexOf(NaN)</code> luôn -1).</li>
+            <li><code>forEach</code> không break/return để dừng sớm → dùng <code>for..of</code> hoặc <code>some/find</code>.</li>
+            <li><code>map</code> giữ nguyên độ dài (kể cả lỗ); <code>filter</code> có thể rút ngắn.</li>
+            <li>Phương thức "toXxx" (<code>toSorted</code>, <code>toReversed</code>, <code>toSpliced</code>) trả mảng mới, 
+            không đổi mảng gốc – phù hợp lập trình bất biến.</li>
+            <li>Typed arrays (như <code>Uint8Array</code>) có API giống một phần Array nhưng hạn chế: cố định độ dài, chỉ số kiểu số.</li>
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>So sánh giá trị</title>
+</head>
+<body>
+    <main>
+        <h2>So sánh giá trị (Equality in Object Manipulation)</h2>
+        
+        <h3>So sánh object với object:</h3>
+        <p>Object được so sánh theo tham chiếu, không phải theo nội dung.</p>
+        <pre><code>const a = {x: 1};
+const b = {x: 1};
+const c = a;
+console.log(a === b); // false (khác vùng nhớ)
+console.log(a === c); // true (cùng tham chiếu)</code></pre>
+        
+        <h3>So sánh giá trị bằng === (strict equality):</h3>
+        <p>Hoạt động bình thường nhưng có 2 điểm "lạ":</p>
+        <pre><code>console.log(NaN === NaN); // false
+console.log(+0 === -0); // true</code></pre>
+        
+        <h3>So sánh chính xác hơn bằng Object.is():</h3>
+        <p>Method này sửa 2 điểm "không hợp lý" của <code>===</code>, còn lại hoạt động tương tự strict equality.</p>
+        <pre><code>console.log(Object.is(NaN, NaN)); // true
+console.log(Object.is(+0, -0)); // false
+console.log(Object.is(5, 5)); // true
+console.log(Object.is({}, {})); // false (khác vùng nhớ)</code></pre>
+    </main>
+</body>
+</html>

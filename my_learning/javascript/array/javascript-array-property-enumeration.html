@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thứ tự liệt kê thuộc tính</title>
+</head>
+<body>
+    <main>
+        <h2>Thứ tự liệt kê thuộc tính (property enumeration order)</h2>
+        
+        <p>Array là một object đặc biệt, điều đó có nghĩa là mảng chỉ là một object có các key dạng số nguyên (stringified), 
+        cộng thêm một thuộc tính đặc biệt là length.</p>
+        
+        <h3>Ví dụ:</h3>
+        <pre><code>const arr = ["a", "b", "c"];
+
+console.log(Object.keys(arr)); // ["0", "1", "2"]</code></pre>
+        
+        <p>Nội bộ thật ra là:</p>
+        <pre><code>{
+  "0": "a",
+  "1": "b",
+  "2": "c",
+  length: 3
+}</code></pre>
+        
+        <p>Vì vậy, khi liệt kê thuộc tính của bất kỳ object nào, kể cả array, JavaScript dùng quy tắc thứ tự đặc biệt 
+        (được chuẩn hóa từ ECMAScript 2015+):</p>
+        
+        <h3>Thứ tự luôn như sau:</h3>
+        <ul>
+            <li>Các key là chỉ mục số (array indices) — tức là chuỗi biểu diễn số nguyên ≥ 0 và < 2³² - 1 
+            → được sắp tăng dần (ascending numeric order).</li>
+            <li>Các key là chuỗi (string) — không phải chỉ mục số → được liệt kê theo thứ tự chèn vào (insertion order).</li>
+            <li>Các key là symbol → cũng liệt kê theo thứ tự chèn vào (insertion order).</li>
+        </ul>
+        
+        <h3>Ví dụ:</h3>
+        <pre><code>const arr = ["a", "b"];
+
+arr[100] = "c";     // thêm chỉ mục số xa
+
+arr.extra = "x";    // thêm key không phải số
+
+arr[-1] = "neg";    // không phải chỉ mục hợp lệ
+
+arr[1.5] = "half";  // cũng không phải chỉ mục hợp lệ
+
+arr[2] = "z";       // thêm chỉ mục số hợp lệ
+
+console.log(Object.keys(arr)); => Kq: ["0", "1", "2", "100", "extra", "-1", "1.5"]</code></pre>
+        
+        <h3>Giải thích:</h3>
+        <ul>
+            <li><code>"0"</code>, <code>"1"</code>, <code>"2"</code>, <code>"100"</code> là chỉ mục số → sắp tăng dần.</li>
+            <li><code>"extra"</code>, <code>"-1"</code>, <code>"1.5"</code> là chuỗi không phải chỉ mục hợp lệ → theo thứ tự chèn.</li>
+            <li>Nếu ta thêm Symbol, chúng cũng sẽ được liệt kê sau cùng.</li>
+        </ul>
+        
+        <h3>Cách an toàn để duyệt mảng:</h3>
+        <ul>
+            <li>Duyệt phần tử theo thứ tự index: <code>for (let i = 0; i &lt; arr.length; i++)</code></li>
+            <li>Duyệt phần tử (giá trị): <code>for (const v of arr)</code></li>
+            <li>Duyệt cả index và giá trị: <code>arr.forEach((v, i) =&gt; {...})</code></li>
+            <li>Duyệt chỉ các key có thứ tự logic: <code>Object.keys(arr)</code> 
+            (trả về mảng key string đã được sắp đúng)</li>
+            <li>Không nên dùng <code>for...in</code> để duyệt mảng vì có thể duyệt key ngoài ý muốn 
+            (kể cả key kế thừa)</li>
+        </ul>
+    </main>
+</body>
+</html>

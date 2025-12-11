@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiệu năng & cấu trúc dữ liệu</title>
+</head>
+<body>
+    <main>
+        <h2>Hiệu năng & cấu trúc dữ liệu</h2>
+        
+        <h3>Dense vs. Sparse</h3>
+        <p>Tránh mảng sparse (nhiều holes) → làm chậm do engine khó tối ưu bố cục bộ nhớ.</p>
+        
+        <pre><code>// Dense array - tốt
+const dense = [1, 2, 3, 4, 5];
+
+// Sparse array - tránh
+const sparse = [];
+sparse[0] = 1;
+sparse[100] = 2;  // tạo nhiều holes</code></pre>
+        
+        <h3>push/pop vs. unshift/shift</h3>
+        <p><code>push</code>/<code>pop</code> thường rẻ hơn <code>unshift</code>/<code>shift</code> trên mảng rất lớn 
+        (do phải dịch chuyển).</p>
+        
+        <pre><code>const arr = [];
+
+// Tốt - O(1)
+arr.push(1);
+arr.pop();
+
+// Chậm hơn trên mảng lớn - O(n)
+arr.unshift(1);  // phải dịch tất cả phần tử
+arr.shift();</code></pre>
+        
+        <h3>Sao chép mảng lớn</h3>
+        <p>Sao chép mảng lớn (<code>[...arr]</code>, <code>slice</code>) tốn O(n). 
+        Với dữ liệu to, cân nhắc cấu trúc khác (List/Deque) hoặc bất biến có chia sẻ cấu trúc 
+        (persistent structures / libs).</p>
+        
+        <pre><code>const largeArray = new Array(1000000).fill(0);
+
+// Tốn O(n) - sao chép toàn bộ
+const copy1 = [...largeArray];
+const copy2 = largeArray.slice();</code></pre>
+        
+        <h3>Tránh thuộc tính tùy biến</h3>
+        <p>Tránh gắn thuộc tính tùy biến lên mảng (vd <code>arr.foo = 1</code>) — 
+        làm "thoát tối ưu" (deopt) và rối thứ tự duyệt.</p>
+        
+        <pre><code>const arr = [1, 2, 3];
+
+// Tránh - làm mất tối ưu
+arr.foo = 'bar';
+arr.custom = 123;
+
+// Thay vào đó, dùng object riêng
+const data = {
+    items: [1, 2, 3],
+    foo: 'bar',
+    custom: 123
+};</code></pre>
+    </main>
+</body>
+</html>

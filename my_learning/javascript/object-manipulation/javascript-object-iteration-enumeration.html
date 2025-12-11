@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Duyệt & liệt kê</title>
+</head>
+<body>
+    <main>
+        <h2>Duyệt & liệt kê</h2>
+        
+        <p>Trong JavaScript, object có thể chứa:</p>
+        <ul>
+            <li>Thuộc tính <strong>own</strong> (thuộc chính object đó)</li>
+            <li>Thuộc tính <strong>inherited</strong> (kế thừa từ prototype chain)</li>
+            <li>Thuộc tính <strong>enumerable</strong> hoặc <strong>non-enumerable</strong></li>
+            <li>Thuộc tính <strong>string key</strong> hoặc <strong>symbol key</strong></li>
+        </ul>
+        
+        <p>Vì thế, việc duyệt object không đơn giản — ta phải chọn đúng hàm / vòng lặp phù hợp tùy mục đích.</p>
+        
+        <h3>Nhóm hàm core để liệt kê thuộc tính</h3>
+        
+        <h4>Object.keys(obj)</h4>
+        <ul>
+            <li>Trả về mảng key dạng chuỗi</li>
+            <li>Chỉ bao gồm own + enumerable + string-key</li>
+        </ul>
+        
+        <pre><code>const obj = { a: 1, b: 2 };
+Object.defineProperty(obj, "hidden", { value: 99, enumerable: false });
+
+console.log(Object.keys(obj)); // ["a", "b"]</code></pre>
+        
+        <h4>Object.values(obj)</h4>
+        <p>Trả về mảng giá trị tương ứng với Object.keys(obj)</p>
+        
+        <pre><code>const obj = { a: 1, b: 2 };
+console.log(Object.values(obj)); // [1, 2]</code></pre>
+        
+        <h4>Object.entries(obj)</h4>
+        <ul>
+            <li>Trả về mảng các cặp [key, value]</li>
+            <li>Dễ dùng với vòng lặp for...of hoặc map</li>
+        </ul>
+        
+        <pre><code>const obj = { a: 1, b: 2 };
+console.log(Object.entries(obj)); // [["a",1], ["b",2]]
+
+for (const [k, v] of Object.entries(obj)) {
+  console.log(`${k}: ${v}`);
+}</code></pre>
+        
+        <h4>Object.fromEntries(pairs)</h4>
+        <p>Ngược lại với Object.entries() — chuyển mảng cặp [key, value] → object.</p>
+        
+        <pre><code>const pairs = [["x", 10], ["y", 20]];
+const obj = Object.fromEntries(pairs);
+
+console.log(obj); // { x: 10, y: 20 }</code></pre>
+        
+        <p><strong>Ứng dụng:</strong> lọc, ánh xạ, hoặc chuyển đổi object một cách functional-style:</p>
+        
+        <pre><code>const user = { a: 1, b: 2, c: 3 };
+const doubled = Object.fromEntries(
+  Object.entries(user).map(([k, v]) => [k, v * 2])
+);
+
+console.log(doubled); // { a: 2, b: 4, c: 6 }</code></pre>
+        
+        <h3>Nhóm hàm nâng cao để liệt kê toàn bộ thuộc tính</h3>
+        
+        <h4>Object.getOwnPropertyNames(obj)</h4>
+        <ul>
+            <li>Trả về own property names (string keys)</li>
+            <li>Bao gồm cả non-enumerable</li>
+            <li>Không bao gồm Symbol keys</li>
+        </ul>
+        
+        <pre><code>const obj = Object.create({}, {
+  a: { value: 1, enumerable: true },
+  b: { value: 2, enumerable: false }
+});
+
+console.log(Object.getOwnPropertyNames(obj)); // ["a", "b"]</code></pre>
+        
+        <h4>Object.getOwnPropertySymbols(obj)</h4>
+        <p>Trả về mảng các Symbol key của chính object đó.</p>
+        
+        <pre><code>const sym1 = Symbol("id");
+const obj = { [sym1]: 42 };
+
+console.log(Object.getOwnPropertySymbols(obj)); // [Symbol(id)]</code></pre>
+        
+        <h4>Reflect.ownKeys(obj)</h4>
+        <p>Trả về toàn bộ key (string + symbol) của chính object, bất kể enumerable hay không.</p>
+        
+        <pre><code>const sym = Symbol("s");
+const obj = { a: 1, [sym]: 2 };
+Object.defineProperty(obj, "hidden", { value: 3, enumerable: false });
+
+console.log(Reflect.ownKeys(obj)); // ["a", "hidden", Symbol(s)]</code></pre>
+        
+        <p><strong>Lưu ý:</strong> Đây là phương pháp toàn diện nhất nếu bạn cần mọi key có thể có của object.</p>
+        
+        <h3>Duyệt object bằng vòng lặp</h3>
+        
+        <h4>for...in</h4>
+        <ul>
+            <li>Duyệt key enumerable (cả own lẫn kế thừa qua prototype chain)</li>
+            <li>Không duyệt Symbol key</li>
+        </ul>
+        
+        <pre><code>const base = { inherited: 1 };
+const obj = Object.create(base);
+obj.own = 2;
+
+for (const key in obj) {
+  console.log(key);
+}
+// "own", "inherited"</code></pre>
+        
+        <p>Nếu bạn chỉ muốn key của chính object (own):</p>
+        
+        <pre><code>for (const key in obj) {
+  if (Object.hasOwn(obj, key)) {
+    console.log(key); // "own" thôi
+  }
+}</code></pre>
+        
+        <p><strong>Lưu ý:</strong> <code>Object.hasOwn(obj, key)</code> (ES2022) an toàn hơn <code>obj.hasOwnProperty(key)</code> vì nó không bị ghi đè nếu object có thuộc tính hasOwnProperty riêng.</p>
+        
+        <h4>for...of kết hợp với Object.entries()</h4>
+        <p>Duyệt trực tiếp qua own + enumerable key–value pairs, an toàn và phổ biến nhất.</p>
+        
+        <pre><code>const obj = { a: 1, b: 2 };
+
+for (const [key, value] of Object.entries(obj)) {
+  console.log(`${key} = ${value}`);
+}</code></pre>
+        
+        <ul>
+            <li>Không đụng tới prototype chain.</li>
+            <li>Dễ đọc, dễ thao tác trong thực tế.</li>
+        </ul>
+    </main>
+</body>
+</html>

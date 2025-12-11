@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>So sánh, chuyển kiểu & "weird corners"</title>
+</head>
+<body>
+    <main>
+        <h2>So sánh, chuyển kiểu & "weird corners"</h2>
+        
+        <h3>So sánh tham chiếu</h3>
+        <p><code>[] === []</code> là <code>false</code>. So nội dung cần tự viết (deepEqual), hoặc dùng <code>JSON.stringify</code> khi dữ liệu đơn giản 
+        (nhưng coi chừng thứ tự key, kiểu đặc biệt).</p>
+        
+        <h3>Tránh "==" với mảng</h3>
+        <p>Tránh <code>"=="</code> với mảng; dùng <code>"==="</code> vì "==" sẽ ép kiểu với mảng, dễ gây bug.</p>
+        
+        <h3>Ví dụ</h3>
+        <pre><code>const arr1 = [1, 2, 3];
+const arr2 = [1, 2, 3];
+
+console.log(arr1 === arr2);  // false - so sánh tham chiếu
+
+// So sánh nội dung với JSON.stringify (chỉ dùng khi dữ liệu đơn giản)
+console.log(JSON.stringify(arr1) === JSON.stringify(arr2));  // true
+
+// Lưu ý: JSON.stringify có thể gặp vấn đề với:
+// - Key không đảm bảo thứ tự trong object 
+// - giá trị undefined, function, Symbol
+// - Kiểu Date (bị convert thành chuỗi ISO)
+// - Map, Set, BigInt</code></pre>
+    </main>
+</body>
+</html>

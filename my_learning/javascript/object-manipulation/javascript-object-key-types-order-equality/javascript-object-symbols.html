@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Symbols: key "ẩn" & well-known symbols</title>
+</head>
+<body>
+    <main>
+        <h2>Symbols: key "ẩn" & well-known symbols</h2>
+        
+        <p>Symbol là kiểu dữ liệu nguyên thuỷ thứ 7 trong JavaScript (bên cạnh string, number, boolean, bigint, undefined, null, object).</p>
+        
+        <p>Giá trị Symbol là duy nhất và bất biến, thường dùng làm key ẩn của object để tránh xung đột tên.</p>
+        
+        <h3>Tạo Symbol:</h3>
+        <pre><code>const ID = Symbol('id');
+console.log(ID);  // Symbol(id)
+console.log(typeof ID);  // "symbol"</code></pre>
+        
+        <ul>
+            <li>Chuỗi <code>'id'</code> chỉ là mô tả (description), không ảnh hưởng đến tính duy nhất.</li>
+            <li>Mỗi lần gọi <code>Symbol('id')</code> sẽ tạo một giá trị mới khác nhau:</li>
+        </ul>
+        <pre><code>Symbol('id') === Symbol('id'); // false</code></pre>
+        
+        <h3>1. Symbol làm key "ẩn" trong object</h3>
+        <p>Ví dụ:</p>
+        <pre><code>const ID = Symbol('id');
+const o = {
+  visible: true,
+  [ID]: 123
+};
+
+console.log(o); // { visible: true }
+console.log(o[ID]); // 123</code></pre>
+        
+        <h4>Giải thích:</h4>
+        <ul>
+            <li>Khi in ra (<code>console.log</code> hoặc <code>JSON.stringify</code>) - thuộc tính Symbol không hiển thị.</li>
+            <li>Đây là "key ẩn", tránh bị lộ hoặc xung đột khi object được mở rộng từ bên ngoài.</li>
+        </ul>
+        
+        <h4>Lấy các Symbol keys:</h4>
+        <pre><code>Object.getOwnPropertySymbols(o);  // [ Symbol(id) ]
+Reflect.ownKeys(o); // [ 'visible', Symbol(id) ]   (gồm cả string + symbol)</code></pre>
+        
+        <h4>Symbol keys không tham gia vào:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Có thấy Symbol không?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>for...in</code></td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><code>Object.keys()</code></td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><code>JSON.stringify()</code></td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><code>Object.getOwnPropertyNames()</code></td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><code>Object.getOwnPropertySymbols()</code></td>
+                    <td>Có</td>
+                </tr>
+                <tr>
+                    <td><code>Reflect.ownKeys()</code></td>
+                    <td>Có</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>2. Global Symbol Registry</h3>
+        <p>Đôi khi bạn cần chia sẻ cùng một Symbol giữa nhiều module hoặc file. Khi đó dùng <code>Symbol.for(key)</code> và <code>Symbol.keyFor(symbol)</code>.</p>
+        
+        <p>Ví dụ:</p>
+        <pre><code>const a = Symbol.for('shared');
+const b = Symbol.for('shared');
+console.log(a === b); // true (cùng registry)
+console.log(Symbol.keyFor(a)); // 'shared'</code></pre>
+        
+        <h4>Lưu ý:</h4>
+        <ul>
+            <li><code>Symbol.for()</code> lưu Symbol vào global registry (toàn cục).</li>
+            <li><code>Symbol('shared')</code> tạo Symbol cục bộ mới, không liên quan đến registry.</li>
+        </ul>
+        
+        <h3>3. Well-known Symbols (biểu tượng đặc biệt)</h3>
+        <p>JavaScript định nghĩa sẵn một số Symbol đặc biệt (well-known symbols) → Giúp ta tuỳ biến hành vi mặc định của object hoặc class.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Mục đích</th>
+                    <th>Ghi chú</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>Symbol.iterator</code></td>
+                    <td>Định nghĩa hành vi lặp (for...of)</td>
+                    <td>Trả về iterator object</td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.asyncIterator</code></td>
+                    <td>Duyệt bất đồng bộ (for await...of)</td>
+                    <td>Async iterator</td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.toStringTag</code></td>
+                    <td>Tuỳ chỉnh chuỗi khi Object.prototype.toString.call(obj)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.toPrimitive</code></td>
+                    <td>Tuỳ chỉnh chuyển đổi sang primitive (+, ==, template string)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.hasInstance</code></td>
+                    <td>Tuỳ chỉnh instanceof</td>
+                    <td>Dùng trong class</td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.isConcatSpreadable</code></td>
+                    <td>Kiểm soát khi Array.prototype.concat()</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.match</code>, <code>Symbol.replace</code>, <code>Symbol.search</code>, <code>Symbol.split</code></td>
+                    <td>Tuỳ chỉnh cách đối tượng hoạt động với String method</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.species</code></td>
+                    <td>Tuỳ chỉnh constructor khi kế thừa class</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>Symbol.unscopables</code></td>
+                    <td>Ẩn thuộc tính khỏi with scope</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h4>Một số ví dụ cụ thể:</h4>
+        
+        <h5>Symbol.iterator:</h5>
+        <p>Cho phép object được duyệt bằng for...of.</p>
+        <pre><code>const range = {
+  start: 1,
+  end: 3,
+  [Symbol.iterator]() {
+    let current = this.start;
+    const end = this.end;
+    return {
+      next() {
+        if (current <= end) {
+          return { value: current++, done: false };
+        }
+        return { done: true };
+      }
+    };
+  }
+};
+for (const n of range) console.log(n);
+// 1, 2, 3</code></pre>
+        
+        <h5>Symbol.toPrimitive:</h5>
+        <p>Tuỳ chỉnh cách object chuyển sang dạng nguyên thuỷ (string/number).</p>
+        <pre><code>const user = {
+  name: 'Alice',
+  money: 1000,
+  [Symbol.toPrimitive](hint) {
+    if (hint === 'string') return this.name;
+    if (hint === 'number') return this.money;
+    return `User(${this.name})`;
+  }
+};
+console.log(`${user}`);    // "Alice"
+console.log(+user);        // 1000
+console.log(user + 500);   // "User(Alice)500"
+</code></pre>
+        
+        <h5>Symbol.toStringTag:</h5>
+        <p>Giúp tuỳ chỉnh chuỗi xuất hiện trong Object.prototype.toString.call(obj).</p>
+        <pre><code>const car = {
+  brand: 'Tesla',
+  [Symbol.toStringTag]: 'Car'
+};
+console.log(Object.prototype.toString.call(car)); // [object Car]</code></pre>
+        
+        <h5>Symbol.hasInstance:</h5>
+        <p>Tuỳ chỉnh logic của instanceof.</p>
+        <pre><code>class EvenNumber {
+  static [Symbol.hasInstance](obj) {
+    return Number.isInteger(obj) && obj % 2 === 0;
+  }
+}
+console.log(2 instanceof EvenNumber); // true
+console.log(3 instanceof EvenNumber); // false</code></pre>
+        
+        <h5>Symbol.isConcatSpreadable:</h5>
+        <p>Kiểm soát khi nối mảng (concat).</p>
+        <pre><code>const arr = [1, 2];
+const obj = {0:3, 1: 4, length: 2, [Symbol.isConcatSpreadable]: true };
+console.log(arr.concat(obj)); // [1, 2, 3, 4]</code></pre>
+    </main>
+</body>
+</html>

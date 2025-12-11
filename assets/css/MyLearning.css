@@ -158,18 +158,52 @@
     font-size: 0.98rem;
     color: #fff2cc;
     line-height: 1.7;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .my-learning-content__body h1,
 .my-learning-content__body h2,
 .my-learning-content__body h3,
-.my-learning-content__body h4 {
+.my-learning-content__body h4,
+.my-learning-content__body h5,
+.my-learning-content__body h6 {
     scroll-margin-top: 90px;
     margin-bottom: 0.75rem;
+    color: #fff2cc;
+    font-weight: 600;
+}
+
+.my-learning-content__body h1 {
+    font-size: 2rem;
+}
+
+.my-learning-content__body h2 {
+    font-size: 1.75rem;
+}
+
+.my-learning-content__body h3 {
+    font-size: 1.5rem;
+}
+
+.my-learning-content__body h4 {
+    font-size: 1.25rem;
+}
+
+.my-learning-content__body h5 {
+    font-size: 1.1rem;
+}
+
+.my-learning-content__body h6 {
+    font-size: 1rem;
 }
 
 .my-learning-content__body p {
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .my-learning-content__body code {
@@ -177,6 +211,42 @@
     padding: 0.1rem 0.3rem;
     border-radius: 4px;
     font-size: 0.92em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.my-learning-content__body pre {
+    max-width: 100%;
+    overflow-x: auto;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(241, 194, 50, 0.2);
+}
+
+.my-learning-content__body pre code {
+    background: transparent;
+    padding: 0;
+    font-size: 0.9em;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-wrap: normal;
+}
+
+.my-learning-content__body ul,
+.my-learning-content__body ol {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.my-learning-content__body li {
+    margin-bottom: 0.4rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .my-learning-content__body table {

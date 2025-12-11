@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biến đổi bất biến và đột biến</title>
+</head>
+<body>
+    <main>
+        <h2>Biến đổi bất biến và đột biến</h2>
+        
+        <h3>Đột biến (Mutation)</h3>
+        <p>Các phương thức đột biến thay đổi mảng gốc:</p>
+        <ul>
+            <li><code>push</code>/<code>pop</code></li>
+            <li><code>shift</code>/<code>unshift</code></li>
+            <li><code>splice</code></li>
+            <li><code>reverse</code></li>
+            <li><code>sort</code></li>
+            <li><code>fill</code></li>
+            <li><code>copyWithin</code></li>
+        </ul>
+        
+        <h3>Bất biến (ES2023+)</h3>
+        <p>Các phương thức bất biến trả về mảng mới và shallow:</p>
+        <ul>
+            <li><code>toSorted</code></li>
+            <li><code>toReversed</code></li>
+            <li><code>toSpliced</code></li>
+            <li><code>with</code></li>
+        </ul>
+        
+        <h3>Ví dụ</h3>
+        <pre><code>const a = [3, 1, 2];
+
+// Bất biến - tạo mảng mới
+const b = a.toSorted((x, y) => x - y); // a giữ nguyên, b = [1, 2, 3]
+const c = a.with(1, 999);                // thay phần tử tại 1 trong bản sao
+
+console.log(a);  // [3, 1, 2] - không thay đổi
+console.log(b);  // [1, 2, 3]
+console.log(c);  // [3, 999, 2]</code></pre>
+        
+        <h3>Shallow vs Deep</h3>
+        <p>Mọi cách copy phổ biến (<code>slice</code>, <code>spread</code>, <code>Array.from</code>, <code>toSorted</code>…) là shallow; 
+        object lồng bên trong vẫn chung tham chiếu.</p>
+        
+        <h4>Shallow copy</h4>
+        <pre><code>const original = [{ id: 1 }, { id: 2 }];
+const shallow = [...original];
+
+shallow[0].id = 999;
+console.log(original[0].id);  // 999 - đã thay đổi vì cùng tham chiếu</code></pre>
+        
+        <h4>Deep copy</h4>
+        <p>Deep copy an toàn hơn dùng <code>structuredClone</code> (hỗ trợ Date, Map/Set...), 
+        còn mẹo <code>JSON.parse(JSON.stringify(x))</code> mất Date, undefined, Infinity, Map/Set, BigInt…</p>
+        
+        <pre><code>const original = [{ id: 1 }, { id: 2 }];
+
+// Deep copy với structuredClone
+const deep = structuredClone(original);
+deep[0].id = 999;
+console.log(original[0].id);  // 1 - không thay đổi
+
+// Lưu ý: JSON.parse(JSON.stringify(x)) có hạn chế
+const obj = { date: new Date(), value: undefined };
+const jsonCopy = JSON.parse(JSON.stringify(obj));
+console.log(jsonCopy.date);    // string, không phải Date
+console.log(jsonCopy.value);   // undefined bị mất</code></pre>
+    </main>
+</body>
+</html>

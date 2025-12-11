@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>"Holes" và undefined</title>
+</head>
+<body>
+    <main>
+        <h2>"Holes" (phần tử trống) và undefined</h2>
+        
+        <p>Holes là chỉ số thiếu property: VD <code>new Array(3)</code> tạo <code>[ &lt;3 empty items&gt; ]</code>.</p>
+        
+        <ul>
+            <li><code>arr[0]</code> ở đây trả <code>undefined</code>, nhưng <code>'0' in arr</code> cho <code>false</code> (vì không có property).</li>
+            <li><code>undefined</code> là giá trị có thật được gán: <code>'0' in arr</code> sẽ là <code>true</code>.</li>
+        </ul>
+        
+        <h3>Hệ quả với method:</h3>
+        <ul>
+            <li><code>forEach</code>, <code>map</code>, <code>filter</code>, <code>every</code>, <code>some</code>, <code>find</code>, <code>reduce</code> 
+            bỏ qua holes (không gọi callback cho index thiếu).</li>
+            <li><code>map</code>/<code>filter</code> giữ cấu trúc (độ dài không đổi với map).</li>
+            <li><code>join()</code> coi hole như <code>""</code> (nhưng vẫn chèn dấu phân cách), 
+            còn <code>toString()</code> về bản chất là <code>join(',')</code>.</li>
+        </ul>
+        
+        <pre><code>const a = Array(3);             // [ <3 empty> ]
+
+a.map(() => 1);                  // [ <3 empty> ] — callback không chạy
+
+Array.from(a, () => 1);          // [1,1,1] — lấp lỗ
+
+'0' in a;                        // false</code></pre>
+    </main>
+</body>
+</html>

@@ -38,25 +38,25 @@
                 {
                     "id": "javascript-variables-comments-builtin",
                     "title": "Biến, Comments và Built-in",
-                    "breadcrumb": "JavaScript / Basic",
+                    "breadcrumb": "JavaScript / Variables, Comments, and Built-ins",
                     "url": "my_learning/javascript/variables-comments-builtin/javascript-variables-comments-builtin.html",
                     "children": [
                         {
                             "id": "javascript-variables",
                             "title": "Biến",
-                            "breadcrumb": "JavaScript / Basic / Variable",
+                            "breadcrumb": "JavaScript / Variables, Comments, and Built-ins / Variable",
                             "url": "my_learning/javascript/variables-comments-builtin/javascript-variables.html"
                         },
                         {
                             "id": "javascript-comments",
                             "title": "Comments",
-                            "breadcrumb": "JavaScript / Basic / Comments",
+                            "breadcrumb": "JavaScript / Variables, Comments, and Built-ins / Comments",
                             "url": "my_learning/javascript/variables-comments-builtin/javascript-comments.html"
                         },
                         {
                             "id": "javascript-builtin-functions",
                             "title": "Built-in Functions",
-                            "breadcrumb": "JavaScript / Basic / Built-in Functions",
+                            "breadcrumb": "JavaScript / Variables, Comments, and Built-ins / Built-in Functions",
                             "url": "my_learning/javascript/variables-comments-builtin/javascript-builtin-functions.html"
                         }
                     ]
@@ -64,26 +64,128 @@
                 {
                     "id": "javascript-operators-data-types",
                     "title": "Toán tử, kiểu dữ liệu",
-                    "breadcrumb": "JavaScript / Basic",
+                    "breadcrumb": "JavaScript / Operators and data types",
                     "url": "my_learning/javascript/operators-data types/javascript-operators-data-types.html",
                     "children": [
                         {
                             "id": "javascript-arithmetic-operators",
                             "title": "Toán tử số học",
-                            "breadcrumb": "JavaScript / Basic / Arithmetic Operators",
+                            "breadcrumb": "JavaScript / Operators and data types / Arithmetic Operators",
                             "url": "my_learning/javascript/operators-data types/javascript-arithmetic-operators.html"
                         },
                         {
                             "id": "javascript-assignment-operators",
                             "title": "Toán tử gán",
-                            "breadcrumb": "JavaScript / Basic / Assignment Operators",
+                            "breadcrumb": "JavaScript / Operators and data types / Assignment Operators",
                             "url": "my_learning/javascript/operators-data types/javascript-assignment-operators.html"
                         },
                         {
                             "id": "javascript-comparison-operators",
                             "title": "Toán tử so sánh",
-                            "breadcrumb": "JavaScript / Basic / Comparison Operators",
+                            "breadcrumb": "JavaScript / Operators and data types / Comparison Operators",
                             "url": "my_learning/javascript/operators-data types/javascript-comparison-operators.html"
+                        }
+                    ]
+                },
+                {
+                    "id": "javascript-array",
+                    "title": "Array - Mảng",
+                    "breadcrumb": "JavaScript / Array",
+                    "url": "my_learning/javascript/array/javascript-array.html",
+                    "children": [
+                        {
+                            "id": "javascript-array-length",
+                            "title": "Thuộc tính length",
+                            "breadcrumb": "JavaScript / Array / Array Length",
+                            "url": "my_learning/javascript/array/javascript-array-length.html"
+                        },
+                        {
+                            "id": "javascript-array-holes",
+                            "title": "\"Holes\" và undefined",
+                            "breadcrumb": "JavaScript / Array / Array Holes",
+                            "url": "my_learning/javascript/array/javascript-array-holes.html"
+                        },
+                        {
+                            "id": "javascript-array-property-enumeration",
+                            "title": "Thứ tự liệt kê thuộc tính",
+                            "breadcrumb": "JavaScript / Array / Property Enumeration",
+                            "url": "my_learning/javascript/array/javascript-array-property-enumeration.html"
+                        },
+                        {
+                            "id": "javascript-array-comparison-type-conversion",
+                            "title": "So sánh, chuyển kiểu & \"weird corners\"",
+                            "breadcrumb": "JavaScript / Array / Comparison & Type Conversion",
+                            "url": "my_learning/javascript/array/javascript-array-comparison-type-conversion.html"
+                        },
+                        {
+                            "id": "javascript-array-mutation-immutability",
+                            "title": "Biến đổi bất biến và đột biến",
+                            "breadcrumb": "JavaScript / Array / Mutation & Immutability",
+                            "url": "my_learning/javascript/array/javascript-array-mutation-immutability.html"
+                        },
+                        {
+                            "id": "javascript-array-performance-data-structures",
+                            "title": "Hiệu năng & cấu trúc dữ liệu",
+                            "breadcrumb": "JavaScript / Array / Performance & Data Structures",
+                            "url": "my_learning/javascript/array/javascript-array-performance-data-structures.html"
+                        },
+                        {
+                            "id": "javascript-array-methods",
+                            "title": "Các method trong mảng",
+                            "breadcrumb": "JavaScript / Array / Array Methods",
+                            "url": "my_learning/javascript/array/javascript-array-methods.html"
+                        }
+                    ]
+                },
+                {
+                    "id": "javascript-object-manipulation",
+                    "title": "Object Manipulation - Thao tác với đối tượng",
+                    "breadcrumb": "JavaScript / Object Manipulation",
+                    "url": "my_learning/javascript/object-manipulation/javascript-object-manipulation.html",
+                    "children": [
+                        {
+                            "id": "javascript-object-basics",
+                            "title": "Khái niệm cơ bản",
+                            "breadcrumb": "JavaScript / Object Manipulation / Basics",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-basics.html"
+                        },
+                        {
+                            "id": "javascript-object-key-types-order-equality",
+                            "title": "Kiểu key, thứ tự, bình đẳng",
+                            "breadcrumb": "JavaScript / Object Manipulation / Key Types, Order, and Equality",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-key-types-order-equality.html",
+                            "children": [
+                                {
+                                    "id": "javascript-object-symbols",
+                                    "title": "Symbols: key \"ẩn\" & well-known symbols",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Key Types, Order, and Equality / Symbols",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-key-types-order-equality/javascript-object-symbols.html"
+                                },
+                                {
+                                    "id": "javascript-object-property-enumeration-order",
+                                    "title": "Thứ tự liệt kê thuộc tính",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Key Types, Order, and Equality / Property Enumeration Order",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-key-types-order-equality/javascript-object-property-enumeration-order.html"
+                                },
+                                {
+                                    "id": "javascript-object-equality",
+                                    "title": "So sánh giá trị",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Key Types, Order, and Equality / Equality",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-key-types-order-equality/javascript-object-equality.html"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "javascript-object-creation-merge-techniques",
+                            "title": "Kỹ thuật tạo & gộp",
+                            "breadcrumb": "JavaScript / Object Manipulation / Creation & Merge Techniques",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-creation-merge-techniques.html"
+                        },
+                        {
+                            "id": "javascript-object-iteration-enumeration",
+                            "title": "Duyệt & liệt kê",
+                            "breadcrumb": "JavaScript / Object Manipulation / Iteration & Enumeration",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-iteration-enumeration.html"
                         }
                     ]
                 }

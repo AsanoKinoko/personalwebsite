@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thuộc tính length</title>
+</head>
+<body>
+    <main>
+        <h2>Thuộc tính length - "đồng hồ" của mảng</h2>
+        
+        <h3>Ý nghĩa</h3>
+        <p><code>length</code> = chỉ số lớn nhất hiện có + 1 (không phải số phần tử thực nếu có phần tử trống). 
+        <code>length</code> luôn là số nguyên ≥ 0. Nếu cố gắng gán length thành giá trị không hợp lệ (negative, non-integer), sẽ ném RangeError.</p>
+        
+        <h3>Ghi length để cắt/đệm</h3>
+        <ul>
+            <li>Tăng <code>length</code> → thêm phần tử trống ở cuối.</li>
+            <li>Giảm <code>length</code> → truncate: xóa toàn bộ phần tử có index ≥ length mới.</li>
+        </ul>
+        
+        <h3>Đặc tính mô tả</h3>
+        <ul>
+            <li><strong>data property writable: true</strong> (nghĩa là giá trị <code>arr.length</code> có thể thay đổi)</li>
+            <li><strong>enumerable: false</strong> (thuộc tính không xuất hiện trong vòng lặp <code>for...in</code> hoặc <code>Object.keys(arr)</code>; 
+            tức là không hiện lên khi liệt kê thuộc tính)</li>
+            <li><strong>configurable: false</strong> không thể xoá thuộc tính bằng <code>delete</code> và không thể thay đổi hầu hết meta-attributes của nó 
+            (những thay đổi bị hạn chế - ví dụ: khi configurable: false bạn có thể đổi writable: true → false, 
+            nhưng không thể đổi ngược lại, và không thể đổi enumerable hay configurable).</li>
+            <li><strong>Có thể biến thành bất biến kích thước qua:</strong>
+                <pre><code>Object.defineProperty(arr, "length", { writable: false }); 
+// Câu lệnh này làm cho thuộc tính length không thể gán giá trị mới nữa (writable → false). 
+// Các phép làm tăng hoặc giảm độ dài thông qua tính năng mảng sẽ thất bại 
+// nếu chúng cần thay đổi length (VD: push(), pop()).
+
+let arr = [1,2,3];      // length = 3
+
+Object.defineProperty(arr, "length", { writable: false });
+
+arr[0] = 10;            // OK - cập nhật phần tử trong range
+
+arr[3] = 4;             // Throws TypeError in strict mode - because setting index 3 would increase length
+
+arr.push(5);            // Throws TypeError in strict mode - push cần thay length
+
+arr.pop();              // Throws TypeError in strict mode - pop cần thay length
+
+arr.length = 1;         // Throws TypeError in strict mode - gán length bị cấm</code></pre>
+            </li>
+            <li><strong>hoặc đóng băng mảng:</strong>
+                <pre><code>Object.freeze(arr)</code></pre>
+                <p>(khi đó mọi phép ghi/đổi kích thước sẽ lỗi (strict) hoặc bị bỏ qua (non-strict)). 
+                Nó sẽ khiến mảng hoàn toàn bất biến, khóa cả cấu trúc (không thể sửa phần tử, không thể thêm/xóa). 
+                Nhưng Object.freeze không làm cho length configurable - nó làm tất cả thuộc tính data non-writable và non-configurable.</p>
+            </li>
+        </ul>
+        
+        <p>=> <code>length</code> có thể thay đổi giá trị mặc định, nhưng không hiển thị khi liệt kê và không thể tái cấu trúc (delete/đổi configurable).</p>
+    </main>
+</body>
+</html>
