@@ -179,6 +179,57 @@
     font-size: 0.92em;
 }
 
+.my-learning-content__body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.my-learning-content__body table thead {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.my-learning-content__body table th {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid rgba(241, 194, 50, 0.25);
+    color: #fff2cc;
+    font-weight: 600;
+}
+
+.my-learning-content__body table td {
+    padding: 0.75rem;
+    border: 1px solid rgba(241, 194, 50, 0.25);
+    color: #fff2cc;
+}
+
+.my-learning-content__body table tbody tr:hover {
+    background: rgba(241, 194, 50, 0.1);
+}
+
+.my-learning-content__body a {
+    color: rgba(241, 194, 50, 0.9);
+    text-decoration: none;
+    transition: color 0.25s ease, opacity 0.25s ease;
+    font-weight: inherit;
+}
+
+.my-learning-content__body a:hover {
+    color: #f1c232;
+    opacity: 1;
+    text-decoration: underline;
+    text-decoration-color: rgba(241, 194, 50, 0.6);
+    text-underline-offset: 2px;
+}
+
+.my-learning-content__body a:active {
+    color: #fff2cc;
+    opacity: 0.9;
+}
+
 .my-learning-content__placeholder {
     text-align: center;
     padding: 3rem 1rem;

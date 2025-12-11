@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toán tử, kiểu dữ liệu</title>
+</head>
+<body>
+    <main>
+        <h2>Toán tử, kiểu dữ liệu</h2>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-arithmetic-operators" data-topic-link="javascript-arithmetic-operators">Toán tử số học</a></strong> - Các toán tử thực hiện phép tính số học</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-assignment-operators" data-topic-link="javascript-assignment-operators">Toán tử gán</a></strong> - Các toán tử gán giá trị cho biến</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-comparison-operators" data-topic-link="javascript-comparison-operators">Toán tử so sánh</a></strong> - Các toán tử so sánh và cấu trúc if else</li>
+        </ul>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Built-in Functions</title>
+</head>
+<body>
+    <main>
+        <h2>Built-in Functions</h2>
+        
+        <p>Built-in Function là những hàm được xây dựng sẵn trong JavaScript, chỉ cần lấy ra sử dụng mà không cần định nghĩa lại.</p>
+        
+        <h3>alert()</h3>
+        <pre><code>alert('Thông báo');</code></pre>
+        <p>Hiển thị hộp thoại thông báo với nút OK.</p>
+        
+        <h3>console</h3>
+        <p>Console chứa nhiều phương thức, để in ra thông báo bên tab Console của Dev tool trình duyệt. Để truy cập các phương thức của console thì chúng ta sử dụng dấu chấm <code>.</code>.</p>
+        
+        <ul>
+            <li>
+                <strong>console.log()</strong>
+                <pre><code>console.log('Thông báo');</code></pre>
+                <p>In ra dòng log có nội dung là "Thông báo" bên tab Console. Có thể đưa vào một số hoặc một biến.</p>
+                <pre><code>console.log('Hello', 123, myVariable);</code></pre>
+            </li>
+            
+            <li>
+                <strong>console.warn()</strong>
+                <pre><code>console.warn('Cảnh báo');</code></pre>
+                <p>In ra dòng log cảnh báo (có biểu tượng ! màu vàng ở trước).</p>
+            </li>
+            
+            <li>
+                <strong>console.error()</strong>
+                <pre><code>console.error('Lỗi');</code></pre>
+                <p>In ra dòng log báo lỗi (có biểu tượng lỗi màu đỏ ở trước).</p>
+            </li>
+        </ul>
+        
+        <h3>confirm()</h3>
+        <pre><code>confirm('Message');</code></pre>
+        <p>Tạo ra hộp thoại Confirm với hai nút: OK và Cancel. Trả về <code>true</code> nếu người dùng nhấn OK, <code>false</code> nếu nhấn Cancel.</p>
+        
+        <h3>prompt()</h3>
+        <pre><code>prompt('Message');</code></pre>
+        <p>Tạo ra hộp thoại giống hộp thoại Confirm nhưng có thêm ô input cho người dùng nhập. Trả về giá trị người dùng nhập vào hoặc <code>null</code> nếu hủy.</p>
+        
+        <h3>setTimeout()</h3>
+        <pre><code>setTimeout(function() {
+    // Coding here…
+}, x);</code></pre>
+        <p>Cho một đoạn code được chạy sau một khoảng thời gian <code>x</code>, <code>x</code> tính theo millisecond (1 giây = 1000 milliseconds). Ví dụ:</p>
+        <pre><code>setTimeout(function() {
+    console.log('Chạy sau 2 giây');
+}, 2000);</code></pre>
+        
+        <h3>setInterval()</h3>
+        <pre><code>setInterval(function() {
+    // Coding here…
+}, x);</code></pre>
+        <p>Cho một đoạn code, cứ định kỳ sau một khoảng thời gian <code>x</code> nó lại được chạy một lần, <code>x</code> tính theo millisecond. Ví dụ:</p>
+        <pre><code>setInterval(function() {
+    console.log('Chạy mỗi 1 giây');
+}, 1000);</code></pre>
+        
+        <h3>Tài liệu tham khảo</h3>
+        <p>Xem thêm một số built-in function khác: <a href="https://www.tutorialspoint.com/javascript/javascript_builtin_functions.htm" target="_blank">JavaScript Built-in Functions</a></p>
+    </main>
+</body>
+</html>

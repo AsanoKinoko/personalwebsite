@@ -19,39 +19,75 @@
             "image": "data/learning_notes/images/html.png",
             "url": "MyLearning.html?tag=html5",
             "topics": [
-                {
-                    "id": "html-introduction",
-                    "title": "HTML Introduction",
-                    "breadcrumb": "HTML5 / Getting started",
-                    "url": "my_learning/html5/html-introduction.html"
-                },
-                {
-                    "id": "html-basic",
-                    "title": "HTML Basic",
-                    "breadcrumb": "HTML5 / Basics",
-                    "url": "my_learning/html5/html-basic.html",
-                    "children": [
-                        {
-                            "id": "html-elements",
-                            "title": "HTML Elements",
-                            "breadcrumb": "HTML5 / Basics / Elements",
-                            "url": "my_learning/html5/html-elements.html"
-                        },
-                        {
-                            "id": "html-attributes",
-                            "title": "HTML Attributes",
-                            "breadcrumb": "HTML5 / Basics / Attributes",
-                            "url": "my_learning/html5/html-attributes.html"
-                        }
-                    ]
-                }
+                
             ]
         },
         {
             "id": "javascript",
             "title": "JavaScript",
+            "subtitle": "Study Javascript step-by-step, like an online textbook.",
             "image": "data/learning_notes/images/javascript.png",
-            "url": "LearningNote.html?tag=javascript"
+            "url": "MyLearning.html?tag=javascript",
+            "topics": [
+                {
+                    "id": "javascript-with-html",
+                    "title": "Sử dụng Javascript với HTML",
+                    "breadcrumb": "JavaScript / Getting started",
+                    "url": "my_learning/javascript/javascript-with-html.html"
+                },
+                {
+                    "id": "javascript-variables-comments-builtin",
+                    "title": "Biến, Comments và Built-in",
+                    "breadcrumb": "JavaScript / Basic",
+                    "url": "my_learning/javascript/variables-comments-builtin/javascript-variables-comments-builtin.html",
+                    "children": [
+                        {
+                            "id": "javascript-variables",
+                            "title": "Biến",
+                            "breadcrumb": "JavaScript / Basic / Variable",
+                            "url": "my_learning/javascript/variables-comments-builtin/javascript-variables.html"
+                        },
+                        {
+                            "id": "javascript-comments",
+                            "title": "Comments",
+                            "breadcrumb": "JavaScript / Basic / Comments",
+                            "url": "my_learning/javascript/variables-comments-builtin/javascript-comments.html"
+                        },
+                        {
+                            "id": "javascript-builtin-functions",
+                            "title": "Built-in Functions",
+                            "breadcrumb": "JavaScript / Basic / Built-in Functions",
+                            "url": "my_learning/javascript/variables-comments-builtin/javascript-builtin-functions.html"
+                        }
+                    ]
+                },
+                {
+                    "id": "javascript-operators-data-types",
+                    "title": "Toán tử, kiểu dữ liệu",
+                    "breadcrumb": "JavaScript / Basic",
+                    "url": "my_learning/javascript/operators-data types/javascript-operators-data-types.html",
+                    "children": [
+                        {
+                            "id": "javascript-arithmetic-operators",
+                            "title": "Toán tử số học",
+                            "breadcrumb": "JavaScript / Basic / Arithmetic Operators",
+                            "url": "my_learning/javascript/operators-data types/javascript-arithmetic-operators.html"
+                        },
+                        {
+                            "id": "javascript-assignment-operators",
+                            "title": "Toán tử gán",
+                            "breadcrumb": "JavaScript / Basic / Assignment Operators",
+                            "url": "my_learning/javascript/operators-data types/javascript-assignment-operators.html"
+                        },
+                        {
+                            "id": "javascript-comparison-operators",
+                            "title": "Toán tử so sánh",
+                            "breadcrumb": "JavaScript / Basic / Comparison Operators",
+                            "url": "my_learning/javascript/operators-data types/javascript-comparison-operators.html"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": "reactjs",

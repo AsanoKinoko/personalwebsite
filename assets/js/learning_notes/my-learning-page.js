@@ -219,5 +219,8 @@
         }
     };
 
+    // Expose selectTopic to window for use in loaded content
+    window.selectTopic = selectTopic;
+
     document.addEventListener('DOMContentLoaded', init);
 })();

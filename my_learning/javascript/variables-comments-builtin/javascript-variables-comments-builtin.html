@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biến, Comments và Built-in</title>
+</head>
+<body>
+    <main>
+        <h2>Biến, Comments và Built-in</h2>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-variables" data-topic-link="javascript-variables">Biến</a></strong> - Cách khai báo và sử dụng biến trong JavaScript</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-comments" data-topic-link="javascript-comments">Comments</a></strong> - Cách viết ghi chú trong code</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-builtin-functions" data-topic-link="javascript-builtin-functions">Built-in Functions</a></strong> - Các hàm được xây dựng sẵn trong JavaScript</li>
+        </ul>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

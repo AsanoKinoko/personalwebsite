@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toán tử số học</title>
+</head>
+<body>
+    <main>
+        <h2>Toán tử số học (Arithmetic Operators)</h2>
+        
+        <p>Các toán tử số học được sử dụng để thực hiện các phép tính toán học cơ bản.</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Toán tử</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>+</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Cộng</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>-</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Trừ</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>*</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Nhân</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>**</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Lũy thừa</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>/</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Chia</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>%</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Chia lấy số dư</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>++</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Tăng 1 giá trị số</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>--</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Giảm 1 giá trị số</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Lưu ý</h3>
+        <ul>
+            <li>Toán tử <code>++</code>/<code>--</code> khi dùng là <strong>hậu tố</strong> (Postfix) sẽ tăng giá trị của biến lên 1 và trả về giá trị <strong>trước khi</strong> tăng.</li>
+            <li>Toán tử <code>++</code>/<code>--</code> khi dùng là <strong>tiền tố</strong> (Prefix) sẽ tăng giá trị của biến lên 1 và trả về giá trị <strong>sau khi</strong> tăng.</li>
+            <li>Toán tử <code>+</code> nếu một trong 2 cái không phải là số thì nó sẽ trở thành toán tử nối chuỗi (String Operators).</li>
+        </ul>
+        
+        <h3>Ví dụ</h3>
+        <pre><code>var a = 5; var b = 3;
+ console.log(a + b);  // 8
+ console.log(a - b);  // 2
+ console.log(a * b);  // 15
+ console.log(a ** b); // 125
+ console.log(a / b);  // 1.666...
+ console.log(a % b);  // 2
+
+ var x = 5;
+ console.log(x++);    // 5 (trả về giá trị trước khi tăng)
+ console.log(x);      // 6
+
+ var y = 5;
+ console.log(++y);    // 6 (trả về giá trị sau khi tăng)
+ console.log(y);      // 6</code></pre>
+    </main>
+</body>
+</html>

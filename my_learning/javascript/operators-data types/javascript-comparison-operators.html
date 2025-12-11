@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toán tử so sánh</title>
+</head>
+<body>
+    <main>
+        <h2>Toán tử so sánh (Comparison Operators)</h2>
+        
+        <p>Các toán tử so sánh được sử dụng để so sánh hai giá trị và trả về kết quả là <code>true</code> hoặc <code>false</code>.</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+            <thead>
+                <tr style="background: rgba(0, 0, 0, 0.2);">
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Toán tử</th>
+                    <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(241, 194, 50, 0.25);">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>==</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Bằng</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>!=</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Không bằng</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>&gt;</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Lớn hơn</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>&lt;</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Nhỏ hơn</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>&gt;=</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Lớn hơn hoặc bằng</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);"><code>&lt;=</code></td>
+                    <td style="padding: 0.75rem; border: 1px solid rgba(241, 194, 50, 0.25);">Nhỏ hơn hoặc bằng</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Ví dụ</h3>
+        <pre><code>var a = 5;
+ var b = 3;
+ console.log(a == b);  // false
+ console.log(a != b);  // true
+ console.log(a > b);   // true
+ console.log(a < b);   // false
+ console.log(a >= b);  // true
+ console.log(a <= b);  // false</code></pre>
+        
+        <h3>if else</h3>
+        <p>Chúng ta sẽ hay gặp cấu trúc điều kiện <code>if else</code> sử dụng các toán tử so sánh để thực thi code dựa trên điều kiện.</p>
+        
+        <pre><code>if (conditions/variable) {
+    // Coding here...
+} else {
+    // Coding here...
+}</code></pre>
+        
+        <h4>Ví dụ sử dụng if else</h4>
+        <pre><code>var age = 18;
+
+if (age >= 18) {
+    console.log('Bạn đã đủ tuổi');
+} else {
+    console.log('Bạn chưa đủ tuổi');
+}
+
+var score = 85;
+if (score >= 90) {
+    console.log('Xuất sắc');
+} else if (score >= 70) {
+    console.log('Khá');
+} else {
+    console.log('Cần cố gắng');
+}</code></pre>
+    </main>
+</body>
+</html>
