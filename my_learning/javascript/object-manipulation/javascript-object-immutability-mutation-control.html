@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bất biến & Kiểm soát biến đổi</title>
+</head>
+<body>
+    <main>
+        <h2>Bất biến & kiểm soát biến đổi (Object Immutability & Mutation Control)</h2>
+        
+        <p>Phần này rất quan trọng để hiểu cách kiểm soát và bảo vệ dữ liệu, đặc biệt trong các ứng dụng phức tạp (React, Redux, v.v.).</p>
+        
+        <h3>Tại sao cần "kiểm soát biến đổi" object?</h3>
+        <p>Trong JavaScript, object mặc định là <strong>mutable</strong> (có thể thay đổi) - bạn có thể thêm, xóa, hoặc cập nhật thuộc tính bất kỳ lúc nào.</p>
+        <pre><code>const user = { name: "Alice" };
+user.age = 30;         // thêm mới
+delete user.name;      // xóa
+user.age = 40;         // sửa</code></pre>
+        
+        <p>Đôi khi, bạn muốn bảo vệ object khỏi thay đổi - ví dụ như cấu hình hệ thống, hằng số, hoặc dữ liệu được chia sẻ giữa nhiều module.</p>
+        <p>JavaScript cung cấp <strong>3 cấp độ "khóa"</strong> khác nhau để kiểm soát mức độ thay đổi.</p>
+        
+        <h3>Object.preventExtensions(obj) - Không thể thêm mới</h3>
+        <p>Ngăn chặn việc thêm thuộc tính mới vào object. Nhưng các thuộc tính hiện có vẫn có thể chỉnh sửa hoặc xóa (nếu configurable).</p>
+        <pre><code>const car = { brand: 'Toyota' };
+Object.preventExtensions(car);
+car.model = 'Corolla';  // không thêm được
+delete car.brand;       // xóa được
+car.brand = 'Honda';    // sửa được
+console.log(car); // { brand: 'Honda' }
+console.log(Object.isExtensible(car)); // false</code></pre>
+        <p><strong>Kiểm tra:</strong> <code>Object.isExtensible(obj)</code> // true hoặc false</p>
+        
+        <h3>Object.seal(obj) - Niêm phong object</h3>
+        <p>"Seal" nghĩa là niêm phong - không thể thêm hoặc xóa thuộc tính, nhưng vẫn có thể thay đổi giá trị nếu <code>writable: true</code>.</p>
+        <pre><code>const user = { name: 'Alice', age: 25 };
+Object.seal(user);
+user.age = 30;          // vẫn sửa được
+delete user.name;       // không xóa được
+user.city = 'Hanoi';    // không thêm mới
+console.log(user); // { name: 'Alice', age: 30 }
+console.log(Object.isSealed(user)); // true</code></pre>
+        <p>Seal cũng tự động đặt tất cả thuộc tính <code>configurable: false</code>.</p>
+        
+        <h3>Object.freeze(obj) - Đóng băng object</h3>
+        <p>Đây là mức cao nhất: không thể thêm, xóa hoặc sửa bất kỳ giá trị nào.</p>
+        <pre><code>const settings = { theme: 'dark', volume: 5 };
+Object.freeze(settings);
+settings.volume = 10;    // không sửa
+settings.language = 'en';// không thêm
+delete settings.theme;   // không xóa
+console.log(settings);   // { theme: 'dark', volume: 5 }
+console.log(Object.isFrozen(settings)); // true</code></pre>
+        
+        <h4>Lưu ý:</h4>
+        <p>Freeze chỉ là <strong>shallow</strong> (nông) - nó không bảo vệ object lồng bên trong:</p>
+        <pre><code>const user = {
+  name: 'Bob',
+  address: { city: 'Hanoi' }
+};
+Object.freeze(user);
+user.address.city = 'Hue'; // vẫn thay đổi được</code></pre>
+        
+        <h3>"Deep Freeze" - Đóng băng sâu (đệ quy)</h3>
+        <p>Để đảm bảo toàn bộ object lồng nhau đều bất biến, ta cần viết hàm <code>deepFreeze</code>.</p>
+        <pre><code>function deepFreeze(obj, seen = new WeakSet()) {
+  if (obj && typeof obj === 'object' && !seen.has(obj)) {
+    seen.add(obj);
+    for (const key of Reflect.ownKeys(obj)) {
+      deepFreeze(obj[key], seen);
+    }
+    return Object.freeze(obj);
+  }
+  return obj;
+}</code></pre>
+        
+        <h4>Cách dùng:</h4>
+        <pre><code>const config = {
+  ui: { theme: 'dark' },
+  api: { url: 'https://example.com' }
+};
+deepFreeze(config);
+config.ui.theme = 'light'; // không đổi được
+config.api.url = 'x';      // không đổi được
+console.log(config.ui.theme); // 'dark'</code></pre>
+        
+        <h4>Giải thích:</h4>
+        <ul>
+            <li><code>Reflect.ownKeys()</code> giúp duyệt cả string key + symbol key.</li>
+            <li><code>WeakSet</code> giúp tránh vòng tham chiếu (circular reference) trong object phức tạp.</li>
+            <li>Hàm <code>deepFreeze()</code> được dùng nhiều trong Redux, Zustand, hoặc ImmutableJS khi cần đảm bảo dữ liệu không bị thay đổi ngoài ý muốn.</li>
+        </ul>
+        
+        <h3>So sánh tổng hợp 3 cơ chế "khóa" object</h3>
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Tính năng / API</th>
+                    <th>preventExtensions</th>
+                    <th>seal</th>
+                    <th>freeze</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Thêm mới thuộc tính</strong></td>
+                    <td>Không</td>
+                    <td>Không</td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><strong>Xóa thuộc tính</strong></td>
+                    <td>Có</td>
+                    <td>Không</td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><strong>Sửa giá trị</strong></td>
+                    <td>Có</td>
+                    <td>Có thể (nếu Writable)</td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><strong>Chỉnh sửa descriptor</strong></td>
+                    <td>Có thể (nếu configurable)</td>
+                    <td>Không</td>
+                    <td>Không</td>
+                </tr>
+                <tr>
+                    <td><strong>Mặc định configurable</strong></td>
+                    <td>Không đổi</td>
+                    <td>False</td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td><strong>Mặc định writable</strong></td>
+                    <td>Không đổi</td>
+                    <td>Không đổi</td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td><strong>Đệ quy (nested objects)</strong></td>
+                    <td>Không</td>
+                    <td>Không</td>
+                    <td>Không (dùng deepFreeze)</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

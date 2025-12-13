@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4. Readonly, Deep Readonly và cấu trúc bất biến</title>
+</head>
+<body>
+    <main>
+        <h2>4. Readonly, Deep Readonly và cấu trúc bất biến</h2>
+        
+        <h3>readonly trên field:</h3>
+        <pre><code>type Config = {
+  readonly url: string;
+  timeout: number;
+};
+
+const c: Config = { url: 'api', timeout: 100};
+c.url = 'x'; // lỗi: readonly</code></pre>
+        
+        <h3>Readonly&lt;T&gt; (utility type):</h3>
+        <p>Biến toàn bộ thuộc tính của object thành <code>readonly</code></p>
+        <pre><code>type ReadonlyUser = Readonly&lt;User&gt;;
+// { readonly id: string; readonly name?: string}</code></pre>
+        
+        <h3>Deep Readonly (bằng kiểu đệ quy):</h3>
+        <pre><code>type DeepReadonly&lt;T&gt; = {
+  readonly [K in keyof T]: DeepReadonly&lt;T[K]&gt;;
+};</code></pre>
+        
+        <p>Kiểu này đệ quy áp dụng <code>readonly</code> cho tất cả các thuộc tính, kể cả các object lồng nhau, đảm bảo tính bất biến sâu (deep immutability).</p>
+    </main>
+</body>
+</html>

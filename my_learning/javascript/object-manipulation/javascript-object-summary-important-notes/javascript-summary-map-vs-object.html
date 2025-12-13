@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2. Khi nào dùng Map/Set/WeakMap/WeakSet thay cho Object?</title>
+</head>
+<body>
+    <main>
+        <h2>2. Khi nào dùng Map/Set/WeakMap/WeakSet thay cho Object?</h2>
+        
+        <h3>Dùng Map khi:</h3>
+        <ul>
+            <li>Key không giới hạn (có thể là object)</li>
+            <li>Cần bảo toàn thứ tự chèn</li>
+            <li>Cần kích thước (<code>size</code>)</li>
+            <li>Cần hiệu năng set/get đều</li>
+        </ul>
+        <pre><code>// Map cho phép key là object
+const map = new Map();
+const keyObj = { id: 1 };
+map.set(keyObj, 'value');
+map.set('string', 'value2');
+console.log(map.size); // 2</code></pre>
+        
+        <h3>WeakMap/WeakSet cho cache rác tự thu (GC)</h3>
+        <p>WeakMap/WeakSet cho phép garbage collector tự động thu hồi bộ nhớ theo vòng đời object key (không ngăn GC).</p>
+        <p>Key phải là object, không thể là primitive.</p>
+        <pre><code>// WeakMap - key bị GC khi không còn tham chiếu
+const weakMap = new WeakMap();
+let obj = { id: 1 };
+weakMap.set(obj, 'data');
+obj = null; // obj có thể bị GC, weakMap entry cũng bị xóa</code></pre>
+        
+        <h3>Dùng Object khi:</h3>
+        <ul>
+            <li>Key là chuỗi/symbol</li>
+            <li>Mô hình dữ liệu mang tính "bản ghi"/định hình</li>
+            <li>Cần JSON serialization</li>
+            <li>Cần destructuring, spread syntax</li>
+        </ul>
+        <pre><code>// Object phù hợp cho dữ liệu có cấu trúc cố định
+const user = {
+  id: 'u1',
+  name: 'Alice',
+  email: 'alice@example.com'
+};</code></pre>
+    </main>
+</body>
+</html>

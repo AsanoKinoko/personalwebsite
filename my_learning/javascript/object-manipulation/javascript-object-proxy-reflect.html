@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proxy & Reflect</title>
+</head>
+<body>
+    <main>
+        <h2>Proxy & Reflect (meta-programming)</h2>
+        
+        <h3>Proxy chặn thao tác</h3>
+        <p>Proxy là một lớp bao (wrapper) quanh object gốc (target) để chặn và tuỳ chỉnh các thao tác truy cập, như:</p>
+        <ul>
+            <li>get / set thuộc tính</li>
+            <li>xoá (delete)</li>
+            <li>kiểm tra tồn tại (in)</li>
+            <li>gọi hàm (apply)</li>
+            <li>khởi tạo bằng new (construct)</li>
+            <li>lấy danh sách keys (ownKeys)</li>
+            <li>… và nhiều trap khác</li>
+        </ul>
+        
+        <p><strong>Syntax:</strong> <code>const proxy = new Proxy(target, handler);</code></p>
+        
+        <h4>Tham số:</h4>
+        <ul>
+            <li><strong>target:</strong> object gốc được bao.</li>
+            <li><strong>handler:</strong> object chứa các "trap" (hàm chặn).</li>
+        </ul>
+        
+        <h3>VD: Chặn get và set</h3>
+        <pre><code>const user = { name: 'Alice', age: 25 };
+const proxy = new Proxy(user, {
+  get(target, key, receiver) {
+    console.log('GET:', key);
+    return Reflect.get(target, key, receiver);
+  },
+  set(target, key, value, receiver) {
+    console.log('SET:', key, '=', value);
+    return Reflect.set(target, key, value, receiver);
+  }
+});
+proxy.name;         // GET: name
+proxy.age = 30;     // SET: age = 30
+console.log(user.age); // 30</code></pre>
+        
+        <h4>Giải thích:</h4>
+        <ul>
+            <li>Proxy không làm thay đổi object gốc (user), nhưng mọi thao tác qua proxy đều bị "chặn".</li>
+            <li>Reflect được dùng bên trong để thực hiện hành vi mặc định (nếu muốn).</li>
+        </ul>
+        
+        <h3>Các trap phổ biến của Proxy:</h3>
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Trap</th>
+                    <th>Kích hoạt khi...</th>
+                    <th>Tương ứng Reflect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>get(target, key, receiver)</code></td>
+                    <td>Đọc thuộc tính</td>
+                    <td><code>Reflect.get()</code></td>
+                </tr>
+                <tr>
+                    <td><code>set(target, key, value, receiver)</code></td>
+                    <td>Gán giá trị</td>
+                    <td><code>Reflect.set()</code></td>
+                </tr>
+                <tr>
+                    <td><code>has(target, key)</code></td>
+                    <td>Dùng toán tử in</td>
+                    <td><code>Reflect.has()</code></td>
+                </tr>
+                <tr>
+                    <td><code>deleteProperty(target, key)</code></td>
+                    <td>Xoá thuộc tính</td>
+                    <td><code>Reflect.deleteProperty()</code></td>
+                </tr>
+                <tr>
+                    <td><code>ownKeys(target)</code></td>
+                    <td>Gọi Object.keys() / for...in</td>
+                    <td><code>Reflect.ownKeys()</code></td>
+                </tr>
+                <tr>
+                    <td><code>defineProperty(target, key, desc)</code></td>
+                    <td>Định nghĩa thuộc tính</td>
+                    <td><code>Reflect.defineProperty()</code></td>
+                </tr>
+                <tr>
+                    <td><code>getOwnPropertyDescriptor(target, key)</code></td>
+                    <td>Lấy descriptor</td>
+                    <td><code>Reflect.getOwnPropertyDescriptor()</code></td>
+                </tr>
+                <tr>
+                    <td><code>apply(target, thisArg, args)</code></td>
+                    <td>Gọi hàm</td>
+                    <td><code>Reflect.apply()</code></td>
+                </tr>
+                <tr>
+                    <td><code>construct(target, args, newTarget)</code></td>
+                    <td>Dùng new</td>
+                    <td><code>Reflect.construct()</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>VD: Kiểm tra tồn tại thuộc tính</h3>
+        <pre><code>const user = { name: 'Bob', hidden: true };
+const proxy = new Proxy(user, {
+  has(target, key) {
+    if (key === 'hidden') return false;
+    return Reflect.has(target, key);
+  }
+});
+console.log('name' in proxy);   // true
+console.log('hidden' in proxy); // false</code></pre>
+        
+        <h3>VD: Cấm xoá thuộc tính</h3>
+        <pre><code>const obj = { id: 1, name: 'Item' };
+const safe = new Proxy(obj, {
+  deleteProperty(target, key) {
+    if (key === 'id') {
+      console.warn('Không thể xoá id');
+      return false;
+    }
+    return Reflect.deleteProperty(target, key);
+  }
+});
+delete safe.id;     // Cảnh báo
+delete safe.name;   // Xoá thành công</code></pre>
+        
+        <h3>VD: Proxy cho hàm</h3>
+        <pre><code>function sum(a, b) { return a + b; }
+const proxySum = new Proxy(sum, {
+  apply(target, thisArg, args) {
+    console.log('Gọi sum với:', args);
+    return Reflect.apply(target, thisArg, args);
+  }
+});
+proxySum(2, 3);  // Gọi sum với: [2, 3]</code></pre>
+        
+        <h3>Reflect</h3>
+        <p>Reflect tương ứng với các thao tác nội bộ: là một object toàn cục (global) chứa các hàm tương ứng với các thao tác nội bộ (internal operations) của JavaScript.</p>
+        <p>Hầu hết các trap trong Proxy đều có bản sao an toàn trong Reflect.</p>
+        
+        <h4>Mục đích của Reflect:</h4>
+        <ul>
+            <li>Thực hiện hành vi mặc định khi proxy chặn (giống ví dụ ở trên).</li>
+            <li>Cung cấp API thống nhất, thay cho các cú pháp đặc biệt (<code>delete obj.key</code>, <code>in</code>, <code>Object.defineProperty</code>…).</li>
+            <li>Không ném lỗi (throw) khi thất bại - chỉ trả <code>false</code>.</li>
+        </ul>
+        
+        <h4>Một số hàm thường dùng:</h4>
+        <ul>
+            <li><code>Reflect.get(obj, key);</code> // <code>obj[key]</code></li>
+            <li><code>Reflect.set(obj, key, value);</code> // <code>obj[key] = value</code></li>
+            <li><code>Reflect.has(obj, key);</code> // <code>key in obj</code></li>
+            <li><code>Reflect.deleteProperty(obj, key);</code> // <code>delete obj[key]</code></li>
+            <li><code>Reflect.ownKeys(obj);</code> // tất cả keys (string + symbol)</li>
+            <li><code>Reflect.defineProperty(obj, key, desc);</code> // giống <code>Object.defineProperty</code> nhưng trả <code>true/false</code></li>
+            <li><code>Reflect.getPrototypeOf(obj);</code></li>
+            <li><code>Reflect.setPrototypeOf(obj, proto);</code></li>
+            <li><code>Reflect.apply(fn, thisArg, args);</code></li>
+            <li><code>Reflect.construct(Constructor, args);</code></li>
+        </ul>
+        
+        <h3>VD: Reflect giúp code an toàn hơn</h3>
+        <pre><code>try {
+  Object.defineProperty({}, 'x', { get: 'invalid' });
+} catch (e) {
+  console.error('Lỗi bị ném:', e);
+}
+// Reflect trả về false thay vì throw
+const ok = Reflect.defineProperty({}, 'x', { get: 'invalid' });
+console.log(ok); // false</code></pre>
+        
+        <h3>Ứng dụng thực tế của Proxy + Reflect</h3>
+        <ul>
+            <li><strong>Logging / Debug:</strong> Theo dõi get/set trên object</li>
+            <li><strong>Validation:</strong> Kiểm tra giá trị trước khi gán</li>
+            <li><strong>Virtual properties:</strong> Tạo thuộc tính ảo (computed khi truy cập)</li>
+            <li><strong>Access control:</strong> Giới hạn thao tác tuỳ người dung</li>
+            <li><strong>Observable / Reactive system:</strong> (VD: Vue 3 Reactivity System dùng Proxy)</li>
+            <li><strong>Deep Proxy:</strong> Tự động bao lồng (nested object)</li>
+        </ul>
+        
+        <h3>VD: Validation & Logging</h3>
+        <pre><code>const user = { name: 'Tom', age: 20 };
+const validator = new Proxy(user, {
+  set(target, key, value) {
+    if (key === 'age' && typeof value !== 'number') {
+      throw new TypeError('Age phải là số');
+    }
+    console.log(`SET ${key} =`, value);
+    return Reflect.set(target, key, value);
+  }
+});
+validator.age = 25;  // OK
+validator.age = 'abc'; // Lỗi TypeError</code></pre>
+    </main>
+</body>
+</html>

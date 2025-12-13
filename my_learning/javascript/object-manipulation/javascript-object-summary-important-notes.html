@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng kết + Lưu ý quan trọng</title>
+</head>
+<body>
+    <main>
+        <h2>Tổng kết + Lưu ý quan trọng</h2>
+        
+        <p>Phần này tổng hợp các lưu ý quan trọng, best practices, và những điểm cần chú ý khi làm việc với object trong JavaScript.</p>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-summary-performance" data-topic-link="javascript-summary-performance">1. Hiệu năng & thói quen tốt</a></strong> - Tránh thay đổi shape, ưu tiên object đầy đủ key, tránh setPrototypeOf trong hot path</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-summary-map-vs-object" data-topic-link="javascript-summary-map-vs-object">2. Khi nào dùng Map/Set/WeakMap/WeakSet thay cho Object?</a></strong> - So sánh Map vs Object, WeakMap/WeakSet cho cache</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-summary-api-cheatsheet" data-topic-link="javascript-summary-api-cheatsheet">3. Các API trọng yếu (cheat sheet)</a></strong> - Tổng hợp các API quan trọng: kiểm tra, descriptors, trạng thái, prototype, sao chép, meta</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-summary-common-mistakes" data-topic-link="javascript-summary-common-mistakes">4. Những lỗi/nhầm lẫn phổ biến</a></strong> - for...in vs Object.keys, so sánh NaN, freeze shallow, JSON.stringify clone, enumerable</li>
+        </ul>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

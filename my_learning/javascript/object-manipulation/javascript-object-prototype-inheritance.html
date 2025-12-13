@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype & Kế thừa</title>
+</head>
+<body>
+    <main>
+        <h2>Prototype & Kế thừa (Prototypal Inheritance)</h2>
+        
+        <p>Trong JavaScript, mỗi object đều có một "prototype" - đó là một object khác mà nó kế thừa thuộc tính và phương thức từ.</p>
+        <p>Ta có thể hiểu prototype giống như "bản đồ dự phòng":</p>
+        <ul>
+            <li>Khi truy cập <code>o.x</code>, nếu <code>o</code> không có <code>x</code>, JavaScript tự động tìm trong <code>o.__proto__</code>.</li>
+        </ul>
+        <p>Prototype tạo thành một chuỗi gọi là <strong>Prototype Chain</strong>.</p>
+        
+        <h4>VD:</h4>
+        <pre><code>const p = { greet() { return 'hi'; } };
+const o = Object.create(p);
+o.greet(); // "hi"  (vì greet() được tìm thấy trong p)</code></pre>
+        
+        <p>Ở đây:</p>
+        <ul>
+            <li><code>o</code> không có thuộc tính <code>greet</code>, nhưng <code>o.__proto__ === p</code> nên <code>o</code> "thừa hưởng" hàm <code>greet</code> từ <code>p</code></li>
+        </ul>
+        
+        <h3>Tạo object kế thừa prototype: Object.create(proto)</h3>
+        <p><code>Object.create(proto)</code> là cách chuẩn & hiệu quả nhất để tạo object với prototype tuỳ chọn.</p>
+        
+        <h4>Ưu điểm:</h4>
+        <ul>
+            <li>Kiểm soát prototype rõ ràng.</li>
+            <li>Không cần constructor.</li>
+        </ul>
+        
+        <h4>VD:</h4>
+        <pre><code>const p = { greet() { return 'hi'; } };
+const o = Object.create(p);
+console.log(Object.getPrototypeOf(o) === p); // true</code></pre>
+        
+        <h3>Lấy / đặt prototype</h3>
+        <ul>
+            <li><strong>Lấy prototype:</strong> <code>Object.getPrototypeOf(obj)</code> → Tốt, chuẩn</li>
+            <li><strong>Đặt prototype:</strong> <code>Object.setPrototypeOf(obj, newProto)</code> → Chậm, tránh dùng trong đoạn code chạy thường xuyên</li>
+        </ul>
+        
+        <h4>VD:</h4>
+        <pre><code>const o = {};
+const p = { x: 1 };
+Object.setPrototypeOf(o, p); // chậm, không nên lạm dụng
+console.log(o.x); // 1</code></pre>
+        
+        <h4>Vì sao Object.setPrototypeOf chậm?</h4>
+        <p>Vì nó thay đổi cấu trúc nội bộ (hidden class) của object → khiến V8/SpiderMonkey tối ưu hóa kém.</p>
+        <p>→ Chỉ dùng để khởi tạo, không dùng trong vòng lặp hoặc hàm hiệu năng.</p>
+        
+        <h4>Tại sao không nên dùng __proto__ mà dùng get/set?</h4>
+        <p><code>o.__proto__</code> Là thuộc tính nội bộ, chuẩn ES5 nhưng được khuyến nghị không dùng. Thay vào đó dùng <code>Object.getPrototypeOf(o);</code> và <code>Object.setPrototypeOf(o, p);</code></p>
+        
+        <h3>class – cú pháp "ngọt" (syntactic sugar) cho prototype</h3>
+        <p><code>class</code> không tạo hướng đối tượng theo kiểu Java/C# mà <code>class</code> chỉ là cách viết gọn cho việc thao tác prototype.</p>
+        
+        <h4>VD:</h4>
+        <pre><code>class Person {
+  constructor(name){ this.name = name; }
+  greet(){ return `Hi ${this.name}`; }
+  static of(n){ return new Person(n); }
+}</code></pre>
+        
+        <p>sẽ tương đương với:</p>
+        <pre><code>function Person(name) {
+  this.name = name;
+}
+Person.prototype.greet = function() {
+  return `Hi ${this.name}`;
+};
+Person.of = function(n) {
+  return new Person(n);
+};
+// Try
+const a = new Person("Bob");
+console.log(a.greet()); // "Hi Bob"
+const b = Person.of("Jane"); // static method gọi mà không cần new
+console.log(b.greet()); // "Hi Jane"</code></pre>
+        
+        <h3>Quy tắc tìm thuộc tính (Prototype Lookup Rule)</h3>
+        <p>Khi truy cập <code>obj.key</code>, JS tìm theo thứ tự:</p>
+        <ol>
+            <li>Trong chính <code>obj</code></li>
+            <li>Nếu không có → tìm trong <code>obj.__proto__</code></li>
+            <li>Nếu không có → tiếp tục tìm trong prototype của prototype</li>
+            <li>Đến <code>Object.prototype</code></li>
+            <li>Cuối cùng là <code>null</code></li>
+        </ol>
+        
+        <p><code>obj → proto → proto → ... → Object.prototype → null</code></p>
+        
+        <h4>Lưu ý:</h4>
+        <ul>
+            <li>Object không "kế thừa" theo kiểu class như Java. JS dùng kế thừa theo prototype (prototype-based inheritance)</li>
+            <li><code>class</code> không tạo class thực sự. Nó chỉ là cú pháp ngọt cho prototype</li>
+            <li>Mỗi instance không có bản sao method riêng. Tất cả instance chia sẻ method trong prototype (tiết kiệm bộ nhớ)</li>
+        </ul>
+    </main>
+</body>
+</html>

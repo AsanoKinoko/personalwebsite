@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3. "as const" - Đóng băng literal types</title>
+</head>
+<body>
+    <main>
+        <h2>3. "as const" - Đóng băng literal types</h2>
+        
+        <h3>Bình thường:</h3>
+        <pre><code>const cfg = { mode: 'dark', retry: 3 };
+cfg.mode = 'light'; // hợp lệ
+// TypeScript suy luận: type of cfg: { mode: string; retry: number }</code></pre>
+        
+        <h3>Khi thêm as const:</h3>
+        <pre><code>const cfg = { mode: 'dark', retry: 3 } as const;
+// Suy luận kiểu sẽ là: type of cfg: { readonly mode: 'dark'; readonly retry: 3 }</code></pre>
+        
+        <h4>Nghĩa là:</h4>
+        <ul>
+            <li>Thuộc tính <code>readonly</code> → không thể gán lại.</li>
+            <li>Giá trị <code>'dark'</code> và <code>3</code> được giữ nguyên là literal types, không bị nới thành <code>string</code> hay <code>number</code>.</li>
+        </ul>
+        
+        <h3>VD khác:</h3>
+        <pre><code>const COLORS = ['red', 'green', 'blue'] as const;
+// type: readonly ['red', 'green', 'blue']
+
+type Color = typeof COLORS[number];
+// => 'red' | 'green' | 'blue'
+
+// => Rất hữu ích khi định nghĩa enum-like hoặc cấu hình cố định.</code></pre>
+    </main>
+</body>
+</html>

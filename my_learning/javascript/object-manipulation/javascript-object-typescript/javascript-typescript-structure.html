@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1. Cấu trúc kiểu trong Object Manipulation</title>
+</head>
+<body>
+    <main>
+        <h2>1. Cấu trúc kiểu trong Object Manipulation</h2>
+        
+        <h3>Các utility types phổ biến:</h3>
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Cấu trúc</th>
+                    <th>Ý nghĩa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>?</code></td>
+                    <td>Thuộc tính tùy chọn</td>
+                </tr>
+                <tr>
+                    <td><code>readonly</code></td>
+                    <td>Không thể gán lại</td>
+                </tr>
+                <tr>
+                    <td><code>Record&lt;K, V&gt;</code></td>
+                    <td>Tạo kiểu map động</td>
+                </tr>
+                <tr>
+                    <td><code>Partial&lt;T&gt;</code></td>
+                    <td>Làm cho tất cả thuộc tính trong T thành tùy chọn</td>
+                </tr>
+                <tr>
+                    <td><code>Required&lt;T&gt;</code></td>
+                    <td>Ngược lại - tất cả bắt buộc</td>
+                </tr>
+                <tr>
+                    <td><code>Pick&lt;T, K&gt;</code></td>
+                    <td>Lấy ra vài thuộc tính trong T</td>
+                </tr>
+                <tr>
+                    <td><code>Omit&lt;T, K&gt;</code></td>
+                    <td>Bỏ đi vài thuộc tính trong T</td>
+                </tr>
+                <tr>
+                    <td><code>ReturnType&lt;F&gt;</code></td>
+                    <td>Lấy kiểu trả về của hàm</td>
+                </tr>
+                <tr>
+                    <td><code>Parameters&lt;F&gt;</code></td>
+                    <td>Lấy kiểu tham số của hàm</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>VD sử dụng utility types:</h3>
+        <pre><code>type User = { id: string; name: string; age: number };
+
+type UserPreview = Pick&lt;User, 'id' | 'name'&gt;;
+// { id: string; name: string}
+
+type UserUpdate = Partial&lt;User&gt;;
+// { id?: string; name?: string; age?: number }
+
+type UserWithoutAge = Omit&lt;User, 'age'&gt;;
+// { id: string; name: string}</code></pre>
+    </main>
+</body>
+</html>

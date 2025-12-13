@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8.3 JSON Clone (cách cũ)</title>
+</head>
+<body>
+    <main>
+        <h2>8.3 JSON Clone (cách cũ)</h2>
+        
+        <pre><code>const deep2 = JSON.parse(JSON.stringify(o));</code></pre>
+        
+        <h3>Nhược điểm lớn:</h3>
+        <ul>
+            <li>Mất function</li>
+            <li>Date biến thành string</li>
+            <li>Map, Set biến thành object thường hoặc mất nguyên dạng</li>
+            <li>Không clone được object circular → báo lỗi</li>
+        </ul>
+        
+        <h3>VD:</h3>
+        <pre><code>JSON.parse(JSON.stringify({ d: new Date() }));
+// d -> "2025-10-24T..." (string, không còn là Date)
+
+const o = {};
+o.self = o;
+JSON.stringify(o); // "TypeError: Converting circular structure to JSON"</code></pre>
+    </main>
+</body>
+</html>

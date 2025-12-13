@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5. Kết hợp literal types + union types</title>
+</head>
+<body>
+    <main>
+        <h2>5. Kết hợp literal types + union types</h2>
+        
+        <h3>VD:</h3>
+        <pre><code>type Mode = 'dark' | 'light';
+
+type Config = { mode: Mode; retry: number };
+
+const cfg: Config = { mode: 'dark', retry: 3};</code></pre>
+        
+        <h4>Lợi ích:</h4>
+        <ul>
+            <li>Dễ dàng kiểm tra cấu hình hợp lệ.</li>
+            <li>IntelliSense sẽ tự động gợi ý <code>'dark' | 'light'</code>.</li>
+        </ul>
+        
+        <p>Kết hợp literal types với union types giúp tạo ra các kiểu dữ liệu chặt chẽ và an toàn, đảm bảo chỉ các giá trị cụ thể mới được chấp nhận.</p>
+    </main>
+</body>
+</html>

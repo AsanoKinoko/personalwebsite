@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4. Những lỗi/nhầm lẫn phổ biến</title>
+</head>
+<body>
+    <main>
+        <h2>4. Những lỗi/nhầm lẫn phổ biến</h2>
+        
+        <h3>Nhầm for...in với Object.keys</h3>
+        <p><code>for...in</code> duyệt cả prototype chain, trong khi <code>Object.keys</code> chỉ lấy own properties.</p>
+        <pre><code>const obj = { a: 1 };
+Object.prototype.custom = 'test';
+
+// for...in - duyệt cả prototype
+for (let key in obj) {
+  console.log(key); // 'a', 'custom'
+}
+
+// Object.keys - chỉ own properties
+Object.keys(obj); // ['a']</code></pre>
+        
+        <h3>Dùng === để so NaN (luôn false)</h3>
+        <p>Hãy dùng <code>Number.isNaN()</code> hoặc <code>Object.is()</code>.</p>
+        <pre><code>const value = NaN;
+
+// Sai
+value === NaN; // false (luôn false)
+
+// Đúng
+Number.isNaN(value); // true
+Object.is(value, NaN); // true</code></pre>
+        
+        <h3>Tin rằng freeze là "deep" (không phải)</h3>
+        <p><code>Object.freeze()</code> chỉ là shallow freeze - không bảo vệ object lồng bên trong.</p>
+        <pre><code>const obj = {
+  nested: { value: 1 }
+};
+Object.freeze(obj);
+obj.nested.value = 2; // vẫn thay đổi được!
+
+// Cần dùng deepFreeze để đóng băng sâu
+function deepFreeze(obj) {
+  // ... (xem phần Deep Freeze)
+}</code></pre>
+        
+        <h3>Sử dụng JSON.stringify để clone cho dữ liệu có Date/Map/Function/circular</h3>
+        <p>Sẽ hỏng vì:</p>
+        <ul>
+            <li>Date → chuyển thành string</li>
+            <li>Map/Set → mất nguyên dạng</li>
+            <li>Function → bị bỏ qua</li>
+            <li>Circular reference → gây lỗi</li>
+        </ul>
+        <pre><code>// Không dùng cho dữ liệu phức tạp
+const obj = { date: new Date(), map: new Map() };
+const cloned = JSON.parse(JSON.stringify(obj));
+// date không còn là Date, map không còn là Map
+
+// Dùng structuredClone
+const cloned = structuredClone(obj);</code></pre>
+        
+        <h3>Quên enumerable: false khi muốn ẩn thuộc tính nội bộ</h3>
+        <p>Khi muốn ẩn thuộc tính nội bộ khỏi API công khai, cần đặt <code>enumerable: false</code>.</p>
+        <pre><code>const api = {};
+
+// Thuộc tính nội bộ - không nên xuất hiện khi duyệt
+Object.defineProperty(api, '_internal', {
+  value: 'secret',
+  enumerable: false
+});
+
+console.log(Object.keys(api)); // [] (không có '_internal')
+console.log(api._internal); // 'secret' (vẫn truy cập được)</code></pre>
+    </main>
+</body>
+</html>

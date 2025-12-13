@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2. Clone Sâu (Deep Clone)</title>
+</head>
+<body>
+    <main>
+        <h2>2. Clone Sâu (Deep Clone)</h2>
+        
+        <h3>Đặc điểm:</h3>
+        <ul>
+            <li>Sao chép mọi cấp độ, không dùng chung tham chiếu.</li>
+            <li>Giá trị lồng nhau được tạo mới hoàn toàn.</li>
+        </ul>
+        
+        <h3>Cách chuẩn, hiện đại (ES2021+):</h3>
+        <pre><code>const deep = structuredClone(o);</code></pre>
+        
+        <h3>Ưu điểm của structuredClone:</h3>
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Kiểu dữ liệu</th>
+                    <th>structuredClone</th>
+                    <th>JSON clone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Object lồng nhau</strong></td>
+                    <td>Được</td>
+                    <td>Được</td>
+                </tr>
+                <tr>
+                    <td><strong>Array</strong></td>
+                    <td>Được</td>
+                    <td>Được</td>
+                </tr>
+                <tr>
+                    <td><strong>Date</strong></td>
+                    <td>Được - giữ nguyên hình dạng Date</td>
+                    <td>chuyển thành string</td>
+                </tr>
+                <tr>
+                    <td><strong>Map/Set</strong></td>
+                    <td>Được - giữ nguyên Map/Set</td>
+                    <td>mất thành array/obj</td>
+                </tr>
+                <tr>
+                    <td><strong>Function</strong></td>
+                    <td>không clone, bỏ qua</td>
+                    <td>bỏ luôn</td>
+                </tr>
+                <tr>
+                    <td><strong>Circular reference (object tham chiếu vòng)</strong></td>
+                    <td>xử lý được</td>
+                    <td>gây lỗi</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>VD:</h3>
+        <pre><code>const o = {
+  d: new Date(),
+  m: new Map([['x', 1]]),
+  nested: {y: 2}
+};
+const deep = structuredClone(o);
+deep.nested.y = 99;
+console.log(o.nested.y); // 2 (độc lập hoàn toàn)</code></pre>
+    </main>
+</body>
+</html>

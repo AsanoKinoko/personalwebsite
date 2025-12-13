@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clone (Sao chép) - Nông vs Sâu</title>
+</head>
+<body>
+    <main>
+        <h2>Clone (Sao chép) - Nông vs Sâu</h2>
+        
+        <p>Việc sao chép object không đơn giản như sao chép số hoặc chuỗi, vì object là kiểu tham chiếu.</p>
+        
+        <h3>Nếu chỉ gán biến:</h3>
+        <pre><code>const a = {x: 1 };
+const b = a;
+b.x = 99;
+console.log(a.x); // 99 (b và a cùng trỏ 1 object)</code></pre>
+        
+        <p>→ Cả hai biến cùng trỏ đến cùng dữ liệu trong bộ nhớ. Vì vậy ta mới cần clone (tạo bản sao độc lập).</p>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-clone-shallow" data-topic-link="javascript-clone-shallow">1. Nông (Shallow Clone)</a></strong> - Sao chép cấp đầu tiên, spread operator, Object.assign()</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-clone-deep" data-topic-link="javascript-clone-deep">2. Sâu (Deep Clone)</a></strong> - structuredClone(), sao chép mọi cấp độ, xử lý Date/Map/Circular</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-clone-json" data-topic-link="javascript-clone-json">3. JSON Clone (cách cũ)</a></strong> - JSON.parse(JSON.stringify()), nhược điểm và hạn chế</li>
+        </ul>
+        
+        <h3>So sánh tổng hợp</h3>
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Loại clone</th>
+                    <th>VD</th>
+                    <th>Ưu điểm</th>
+                    <th>Nhược điểm</th>
+                    <th>Dùng khi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Shallow</strong></td>
+                    <td><code>{...o}, Object.assign({}, o)</code></td>
+                    <td>Nhanh, gọn</td>
+                    <td>Không clone object lồng nhau</td>
+                    <td>Object đơn giản, không lồng sâu</td>
+                </tr>
+                <tr>
+                    <td><strong>Deep (hiện đại)</strong></td>
+                    <td><code>structuredClone(o)</code></td>
+                    <td>Chuẩn ES, xử lý Date/Map/Circular</td>
+                    <td>Không clone function</td>
+                    <td>Ứng dụng thực tế, Redux state, API data</td>
+                </tr>
+                <tr>
+                    <td><strong>Deep (cách cũ)</strong></td>
+                    <td><code>JSON.parse(JSON.stringify(o))</code></td>
+                    <td>Dùng được ở môi trường cũ</td>
+                    <td>Mất dữ liệu phức tạp + lỗi circular</td>
+                    <td>Dữ liệu chỉ chứa số/string/boolean</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>VD so sánh trực quan:</h3>
+        <pre><code>const original = {
+  a: 1,
+  nested: { b: 2 },
+  date: new Date(),
+  map: new Map([['k', 3]])
+};
+
+// Shallow Clone
+const shallow = { ...original };
+shallow.nested.b = 99;
+console.log(original.nested.b); // 99 (shallow clone bị ảnh hưởng)
+
+// Deep Clone
+const deep = structuredClone(original);
+deep.nested.b = 200;
+console.log(original.nested.b); // 99 (deep clone độc lập)</code></pre>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

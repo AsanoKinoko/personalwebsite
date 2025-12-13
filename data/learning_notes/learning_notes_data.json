@@ -186,6 +186,132 @@
                             "title": "Duyệt & liệt kê",
                             "breadcrumb": "JavaScript / Object Manipulation / Iteration & Enumeration",
                             "url": "my_learning/javascript/object-manipulation/javascript-object-iteration-enumeration.html"
+                        },
+                        {
+                            "id": "javascript-object-property-descriptors",
+                            "title": "Mô tả thuộc tính",
+                            "breadcrumb": "JavaScript / Object Manipulation / Property Descriptors",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-property-descriptors.html"
+                        },
+                        {
+                            "id": "javascript-object-immutability-mutation-control",
+                            "title": "Bất biến & kiểm soát biến đổi",
+                            "breadcrumb": "JavaScript / Object Manipulation / Immutability & Mutation Control",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-immutability-mutation-control.html"
+                        },
+                        {
+                            "id": "javascript-object-prototype-inheritance",
+                            "title": "Prototype & Kế thừa",
+                            "breadcrumb": "JavaScript / Object Manipulation / Prototype & Inheritance",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-prototype-inheritance.html"
+                        },
+                        {
+                            "id": "javascript-object-clone-shallow-and-deep",
+                            "title": "Clone (Sao chép) - Nông vs Sâu",
+                            "breadcrumb": "JavaScript / Object Manipulation / Clone - Shallow and Deep",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-clone-shallow-and-deep.html",
+                            "children": [
+                                {
+                                    "id": "javascript-clone-shallow",
+                                    "title": "Clone Nông (Shallow Clone)",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Clone - Shallow and Deep / Shallow Clone",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-clone-shallow-and-deep/javascript-clone-shallow.html"
+                                },
+                                {
+                                    "id": "javascript-clone-deep",
+                                    "title": "Clone Sâu (Deep Clone)",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Clone - Shallow and Deep / Deep Clone",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-clone-shallow-and-deep/javascript-clone-deep.html"
+                                },
+                                {
+                                    "id": "javascript-clone-json",
+                                    "title": "JSON Clone (cách cũ)",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Clone - Shallow and Deep / JSON Clone",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-clone-shallow-and-deep/javascript-clone-json.html"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "javascript-object-serialization-deserialization",
+                            "title": "Serialization & Deserialization",
+                            "breadcrumb": "JavaScript / Object Manipulation / Serialization & Deserialization",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-serialization-deserialization.html"
+                        },
+                        {
+                            "id": "javascript-object-proxy-reflect",
+                            "title": "Proxy & Reflect",
+                            "breadcrumb": "JavaScript / Object Manipulation / Proxy & Reflect",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-proxy-reflect.html"
+                        },
+                        {
+                            "id": "javascript-object-typescript",
+                            "title": "Kiểu hoá (TypeScript)",
+                            "breadcrumb": "JavaScript / Object Manipulation / Typing (TypeScript)",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-typescript.html",
+                            "children": [
+                                {
+                                    "id": "javascript-typescript-structure",
+                                    "title": "Cấu trúc kiểu trong Object Manipulation",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Typing (TypeScript) / Type Structure",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-typescript/javascript-typescript-structure.html"
+                                },
+                                {
+                                    "id": "javascript-typescript-spread-destructuring",
+                                    "title": "Spread và Destructuring trong TypeScript",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Typing (TypeScript) / Spread and Destructuring",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-typescript/javascript-typescript-spread-destructuring.html"
+                                },
+                                {
+                                    "id": "javascript-typescript-as-const",
+                                    "title": "\"as const\" - Đóng băng literal types",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Typing (TypeScript) / as const",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-typescript/javascript-typescript-as-const.html"
+                                },
+                                {
+                                    "id": "javascript-typescript-readonly",
+                                    "title": "Readonly, Deep Readonly và cấu trúc bất biến",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Typing (TypeScript) / Readonly",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-typescript/javascript-typescript-readonly.html"
+                                },
+                                {
+                                    "id": "javascript-typescript-literal-union",
+                                    "title": "Kết hợp literal types + union types",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Typing (TypeScript) / Literal and Union Types",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-typescript/javascript-typescript-literal-union.html"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "javascript-object-summary-important-notes",
+                            "title": "Tổng kết + Lưu ý quan trọng",
+                            "breadcrumb": "JavaScript / Object Manipulation / Summary & Important Notes",
+                            "url": "my_learning/javascript/object-manipulation/javascript-object-summary-important-notes.html",
+                            "children": [
+                                {
+                                    "id": "javascript-summary-performance",
+                                    "title": "Hiệu năng & thói quen tốt",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Summary & Important Notes / Performance & Best Practices",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-summary-important-notes/javascript-summary-performance.html"
+                                },
+                                {
+                                    "id": "javascript-summary-map-vs-object",
+                                    "title": "Khi nào dùng Map/Set/WeakMap/WeakSet thay cho Object?",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Summary & Important Notes / Map vs Object",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-summary-important-notes/javascript-summary-map-vs-object.html"
+                                },
+                                {
+                                    "id": "javascript-summary-api-cheatsheet",
+                                    "title": "Các API trọng yếu (cheat sheet)",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Summary & Important Notes / API Cheat Sheet",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-summary-important-notes/javascript-summary-api-cheatsheet.html"
+                                },
+                                {
+                                    "id": "javascript-summary-common-mistakes",
+                                    "title": "Những lỗi/nhầm lẫn phổ biến",
+                                    "breadcrumb": "JavaScript / Object Manipulation / Summary & Important Notes / Common Mistakes",
+                                    "url": "my_learning/javascript/object-manipulation/javascript-object-summary-important-notes/javascript-summary-common-mistakes.html"
+                                }
+                            ]
                         }
                     ]
                 }

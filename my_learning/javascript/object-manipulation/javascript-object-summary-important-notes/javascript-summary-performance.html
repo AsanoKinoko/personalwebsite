@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1. Hiệu năng & thói quen tốt</title>
+</head>
+<body>
+    <main>
+        <h2>1. Hiệu năng & thói quen tốt</h2>
+        
+        <h3>Tránh thay đổi "shape" liên tục</h3>
+        <p>Tránh thay đổi "shape" (thêm/xoá key theo thời gian) trên cùng object trong hot path (đường nóng - code chạy thường xuyên).</p>
+        <p>Việc này khiến JavaScript engine (V8, SpiderMonkey) phải tối ưu lại cấu trúc nội bộ (hidden class), làm giảm hiệu năng.</p>
+        
+        <h3>Ưu tiên tạo object "đầy đủ key" ngay từ đầu</h3>
+        <p>Hoặc dùng <code>Map</code> cho tập khoá động/không biết trước.</p>
+        <pre><code>// Không tốt - thay đổi shape liên tục
+const obj = {};
+obj.a = 1;
+obj.b = 2;
+obj.c = 3;
+
+// Tốt - tạo đầy đủ key ngay từ đầu
+const obj = { a: 1, b: 2, c: 3 };
+
+// Hoặc dùng Map cho key động
+const map = new Map();
+map.set('a', 1);
+map.set('b', 2);</code></pre>
+        
+        <h3>Tránh Object.setPrototypeOf trong đường nóng</h3>
+        <p><code>Object.setPrototypeOf</code> thay đổi cấu trúc nội bộ (hidden class) của object → khiến engine tối ưu hóa kém.</p>
+        <p>Chỉ dùng để khởi tạo, không dùng trong vòng lặp hoặc hàm hiệu năng.</p>
+        
+        <h3>Sử dụng Object.hasOwn thay vì hasOwnProperty khi có thể</h3>
+        <p><code>Object.hasOwn(obj, key)</code> là API mới hơn, an toàn hơn so với <code>obj.hasOwnProperty(key)</code>.</p>
+        <p>Lý do: <code>hasOwnProperty</code> có thể bị ghi đè hoặc object có thể không có prototype chain.</p>
+        <pre><code>// Tốt
+Object.hasOwn(obj, 'key');
+
+// Có thể có vấn đề
+obj.hasOwnProperty('key');</code></pre>
+    </main>
+</body>
+</html>

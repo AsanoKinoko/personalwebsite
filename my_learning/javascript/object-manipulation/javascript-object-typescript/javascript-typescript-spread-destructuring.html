@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2. Spread và Destructuring trong TypeScript</title>
+</head>
+<body>
+    <main>
+        <h2>2. Spread và Destructuring trong TypeScript</h2>
+        
+        <p>Khi dùng spread syntax như <code>{...u, name}</code>, TypeScript sẽ suy luận kiểu của object mới từ object cũ và kiểm tra nếu bạn ghi đè thuộc tính có kiểu không tương thích.</p>
+        
+        <h3>VD:</h3>
+        <pre><code>const u = { id: '1', name: 'Tom' };
+const newU = {...u, age: 20 };
+// OK: newU có { id, name, age }</code></pre>
+        
+        <p>TypeScript sẽ tự động suy luận kiểu của <code>newU</code> dựa trên kiểu của <code>u</code> và các thuộc tính mới được thêm vào.</p>
+    </main>
+</body>
+</html>

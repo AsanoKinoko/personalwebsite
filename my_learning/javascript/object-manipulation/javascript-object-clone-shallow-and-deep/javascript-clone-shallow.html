@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1. Clone Nông (Shallow Clone)</title>
+</head>
+<body>
+    <main>
+        <h2>1. Clone Nông (Shallow Clone)</h2>
+        
+        <h3>Đặc điểm:</h3>
+        <ul>
+            <li>Chỉ sao chép cấp đầu tiên (level 1).</li>
+            <li>Nếu object lồng nhau → vẫn dùng chung tham chiếu.</li>
+        </ul>
+        
+        <h3>Cách phổ biến:</h3>
+        
+        <h4>Dùng toán tử spread:</h4>
+        <pre><code>const c1 = { ...o };</code></pre>
+        
+        <h4>Dùng Object.assign:</h4>
+        <pre><code>const c2 = Object.assign({}, o);</code></pre>
+        
+        <h3>VD:</h3>
+        <pre><code>const o = {a: 1, nested: {b: 2 } };
+const c = { ...o };
+c.nested.b = 99;
+console.log(o.nested.b); // 99 (vẫn bị ảnh hưởng)</code></pre>
+        
+        <p><strong>Điều quan trọng:</strong> <code>nested</code> là object bên trong, được sao chép bằng tham chiếu, không tạo bản sao mới. Vì thế gọi là shallow clone (sao chép nông).</p>
+    </main>
+</body>
+</html>

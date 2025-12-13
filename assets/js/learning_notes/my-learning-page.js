@@ -69,7 +69,7 @@
             button.dataset.topicId = topic.id;
             button.innerHTML = `
                 <span class="my-learning-tree__bullet"></span>
-                <span>${topic.title || topic.id}</span>
+                <span class="my-learning-tree__link-text">${topic.title || topic.id}</span>
             `;
 
             button.addEventListener('click', () => {

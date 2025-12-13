@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểu hoá (TypeScript - nếu dùng)</title>
+</head>
+<body>
+    <main>
+        <h2>Kiểu hoá (TypeScript - nếu dùng)</h2>
+        
+        <p>TypeScript là một "lớp phủ tĩnh" (static overlay) trên JavaScript, giúp phát hiện lỗi sớm và mô tả chính xác cấu trúc object.</p>
+        
+        <h3>Khai báo kiểu Object cơ bản:</h3>
+        <h4>VD:</h4>
+        <pre><code>type User = {
+  id: string;
+  name?: string;   // ? nghĩa là thuộc tính tùy chọn (optional)
+};</code></pre>
+        <ul>
+            <li><code>id</code> là bắt buộc (string)</li>
+            <li><code>name</code> là optional (có thể undefined)</li>
+        </ul>
+        
+        <h4>Hàm sử dụng kiểu đó:</h4>
+        <pre><code>function rename(u: User, name: string): User {
+  return { ...u, name };
+}
+const a: User = { id: 'u1' };
+const b = rename(a, 'Alice');</code></pre>
+        
+        <h4>TypeScript sẽ:</h4>
+        <ul>
+            <li>Kiểm tra <code>rename</code> luôn trả về object có ít nhất <code>id: string</code>.</li>
+            <li>Đảm bảo <code>u</code> có kiểu <code>User</code> (gồm <code>id</code>).</li>
+            <li>Gợi ý IntelliSense cho <code>name</code>, <code>id</code> khi truy cập.</li>
+        </ul>
+        
+        <h3>Các chủ đề chính</h3>
+        <ul>
+            <li><strong><a href="?tag=javascript&topic=javascript-typescript-structure" data-topic-link="javascript-typescript-structure">1. Cấu trúc kiểu trong Object Manipulation</a></strong> - Utility types: Partial, Required, Pick, Omit, Record, ReturnType, Parameters</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-typescript-spread-destructuring" data-topic-link="javascript-typescript-spread-destructuring">2. Spread và Destructuring trong TypeScript</a></strong> - Type inference với spread syntax</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-typescript-as-const" data-topic-link="javascript-typescript-as-const">3. "as const" - Đóng băng literal types</a></strong> - Freezing literal types, readonly properties</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-typescript-readonly" data-topic-link="javascript-typescript-readonly">4. Readonly, Deep Readonly và cấu trúc bất biến</a></strong> - Readonly utility type, DeepReadonly recursive type</li>
+            <li><strong><a href="?tag=javascript&topic=javascript-typescript-literal-union" data-topic-link="javascript-typescript-literal-union">5. Kết hợp literal types + union types</a></strong> - Union types, type safety với literal values</li>
+        </ul>
+    </main>
+    <script>
+        // Intercept clicks on topic links to navigate within MyLearning page
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    // Try to call selectTopic function from MyLearning page
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        // Fallback: update URL if function not available
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'javascript');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

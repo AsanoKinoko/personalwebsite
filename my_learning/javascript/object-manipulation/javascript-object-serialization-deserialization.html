@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Serialization & Deserialization</title>
+</head>
+<body>
+    <main>
+        <h2>Serialization & Deserialization</h2>
+        
+        <h3>Serialization (tuần tự hoá)</h3>
+        <p>Là quá trình chuyển một object hoặc giá trị JS sang dạng chuỗi (thường là JSON) để:</p>
+        <ul>
+            <li>Lưu trữ (ví dụ trong localStorage, file, database)</li>
+            <li>Truyền qua mạng (HTTP, WebSocket…)</li>
+        </ul>
+        
+        <p><strong>Syntax:</strong> <code>const json = JSON.stringify(o, replacer, space);</code></p>
+        
+        <h4>Tham số:</h4>
+        <ul>
+            <li><strong>o:</strong> Object cần tuần tự hoá</li>
+            <li><strong>replacer</strong> (tùy chọn): Hàm hoặc mảng dùng để lọc hoặc chuyển đổi giá trị trước khi stringify</li>
+            <li><strong>space</strong> (tùy chọn): Số hoặc chuỗi để thụt đầu dòng, giúp dễ đọc</li>
+        </ul>
+        
+        <h4>VD:</h4>
+        <pre><code>const user = { name: 'Alice', age: 25, password: 'secret' };
+// Loại bỏ password
+const json = JSON.stringify(user, (key, value) => key === 'password' ? undefined : value, 2);
+console.log(json);
+/*
+{
+  "name": "Alice",
+  "age": 25
+}
+*/</code></pre>
+        
+        <h3>Deserialization (giải tuần tự)</h3>
+        <p>Là quá trình chuyển chuỗi JSON trở lại object JavaScript.</p>
+        
+        <p><strong>Syntax:</strong> <code>const parsed = JSON.parse(json, reviver);</code></p>
+        
+        <h4>Tham số:</h4>
+        <ul>
+            <li><strong>json:</strong> Chuỗi JSON hợp lệ</li>
+            <li><strong>reviver</strong> (tùy chọn): Hàm dùng để xử lý từng cặp key–value sau khi parse</li>
+        </ul>
+        
+        <h4>VD:</h4>
+        <pre><code>const json = '{"name":"Alice","birth":"2000-01-01"}';
+// Chuyển string về Date khi parse
+const user = JSON.parse(json, (key, value) => {
+  if (key === 'birth') return new Date(value);
+  return value;
+});
+console.log(user.birth instanceof Date); // true</code></pre>
+    </main>
+</body>
+</html>

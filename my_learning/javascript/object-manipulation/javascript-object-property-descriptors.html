@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô tả thuộc tính</title>
+</head>
+<body>
+    <main>
+        <h2>Mô tả thuộc tính (Property Descriptors)</h2>
+        
+        <p><strong>Property Descriptor</strong> (mô tả thuộc tính) là một object đặc biệt mô tả cách một thuộc tính của object hoạt động:</p>
+        <ul>
+            <li>Có thể ghi (writable) hay không.</li>
+            <li>Có thể liệt kê (enumerable) hay không.</li>
+            <li>Có thể thay đổi cấu hình (configurable) hay không.</li>
+            <li>Có getter/setter hay chỉ có value.</li>
+        </ul>
+        
+        <p>Mỗi thuộc tính (property) trong JavaScript thực chất được lưu trữ kèm descriptor của nó.</p>
+        
+        <h3>Đọc mô tả thuộc tính: Object.getOwnPropertyDescriptor()</h3>
+        <p><strong>Syntax:</strong> <code>Object.getOwnPropertyDescriptor(obj, propName);</code></p>
+        <p>Trả về object descriptor của thuộc tính, VD:</p>
+        <pre><code>const person = { name: 'Alice' };
+const desc = Object.getOwnPropertyDescriptor(person, 'name');
+console.log(desc);
+/* Kết quả: 
+{
+  value: 'Alice',
+  writable: true,
+  enumerable: true,
+  configurable: true
+} */</code></pre>
+        
+        <h3>Định nghĩa hoặc chỉnh sửa thuộc tính: Object.defineProperty()</h3>
+        <p><strong>Syntax:</strong> <code>Object.defineProperty(obj, propName, descriptor);</code></p>
+        <p>VD:</p>
+        <pre><code>const user = {};
+Object.defineProperty(user, 'id', {
+  value: 1001,
+  writable: false,       // không thể gán lại
+  enumerable: false,     // không xuất hiện khi duyệt keys
+  configurable: false    // không thể xóa hoặc chỉnh sửa descriptor
+});
+console.log(user.id); // 1001
+user.id = 999;         // không có tác dụng
+console.log(user.id); // 1001</code></pre>
+        
+        <h4>Lưu ý:</h4>
+        <ul>
+            <li>Nếu <code>configurable: false</code>, bạn không thể thay đổi <code>writable</code>, <code>enumerable</code> hay redefine thuộc tính này sau đó.</li>
+            <li><code>Object.defineProperty()</code> không cho phép set cả <code>value</code> và <code>get/set</code> cùng lúc - chỉ một trong hai nhóm.</li>
+        </ul>
+        
+        <h3>Getter / Setter</h3>
+        <p>Thuộc tính có thể là <strong>accessor property</strong>, tức là không lưu giá trị trực tiếp mà được truy cập thông qua getter/setter.</p>
+        <p>VD:</p>
+        <pre><code>const person = {
+  first: 'John',
+  last: 'Doe'
+};
+Object.defineProperty(person, 'full', {
+  get() {
+    return `${this.first} ${this.last}`;
+  },
+  set(v) {
+    [this.first, this.last] = v.split(' ');
+  },
+  enumerable: true,
+  configurable: true
+});
+console.log(person.full); // "John Doe"
+person.full = 'Jane Smith';
+console.log(person.first); // "Jane"
+console.log(person.last);  // "Smith"</code></pre>
+        
+        <h4>Giải thích:</h4>
+        <ul>
+            <li>Khi truy cập <code>person.full</code>, hàm <code>get()</code> được gọi.</li>
+            <li>Khi gán <code>person.full = ...</code>, hàm <code>set()</code> được gọi.</li>
+            <li>Không có <code>value</code> hay <code>writable</code> trong descriptor kiểu này.</li>
+        </ul>
+        
+        <h3>Định nghĩa nhiều thuộc tính cùng lúc: Object.defineProperties()</h3>
+        <p><strong>Syntax:</strong> <code>Object.defineProperties(obj, descriptors);</code></p>
+        <p>VD:</p>
+        <pre><code>const obj = {};
+Object.defineProperties(obj, {
+  a: { value: 1, writable: true },
+  b: { get() { return this.a + 1; } }
+});
+console.log(obj.a); // 1
+console.log(obj.b); // 2</code></pre>
+        
+        <p><strong>Ưu điểm:</strong> định nghĩa nhiều thuộc tính cùng lúc, tiện cho cấu hình object phức tạp (frameworks, libraries thường dùng cách này).</p>
+        
+        <h3>Liên hệ giữa Data property và Accessor property</h3>
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Loại</th>
+                    <th>Các trường hợp có thể dùng trong descriptor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Data property</strong></td>
+                    <td><code>value</code>, <code>writable</code>, <code>enumerable</code>, <code>configurable</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Accessor property</strong></td>
+                    <td><code>get</code>, <code>set</code>, <code>enumerable</code>, <code>configurable</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Lưu ý:</strong> Không thể có cả <code>value/writable</code> và <code>get/set</code> trong cùng một descriptor.</p>
+        
+        <h3>Ứng dụng thực tế</h3>
+        
+        <h4>a. Tạo thuộc tính chỉ đọc</h4>
+        <pre><code>Object.defineProperty(obj, 'PI', {
+  value: 3.14159,
+  writable: false
+});</code></pre>
+        
+        <h4>b. Tạo thuộc tính ẩn (không liệt kê khi duyệt)</h4>
+        <pre><code>Object.defineProperty(user, '_token', {
+  value: 'abc123',
+  enumerable: false
+});</code></pre>
+        
+        <h4>c. Tạo thuộc tính động</h4>
+        <pre><code>let data = 0;
+Object.defineProperty(obj, 'counter', {
+  get() { return ++data; }
+});
+console.log(obj.counter); // 1
+console.log(obj.counter); // 2</code></pre>
+        
+        <h3>Kết hợp với Reflect API</h3>
+        <p><code>Reflect.getOwnPropertyDescriptor(obj, prop)</code> hoạt động tương tự như <code>Object.getOwnPropertyDescriptor</code>, nhưng thuộc nhóm Reflect - thường được dùng khi viết code ES6+ có tính "phản chiếu" (meta-programming).</p>
+        
+        <h3>Tóm tắt</h3>
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Hành động</th>
+                    <th>API</th>
+                    <th>Ghi chú</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lấy descriptor</td>
+                    <td><code>Object.getOwnPropertyDescriptor(obj, key)</code></td>
+                    <td>Xem chi tiết property</td>
+                </tr>
+                <tr>
+                    <td>Đặt 1 thuộc tính</td>
+                    <td><code>Object.defineProperty(obj, key, desc)</code></td>
+                    <td>Cấu hình property rõ ràng</td>
+                </tr>
+                <tr>
+                    <td>Đặt nhiều thuộc tính</td>
+                    <td><code>Object.defineProperties(obj, descriptors)</code></td>
+                    <td>Gọn hơn khi cần nhiều</td>
+                </tr>
+                <tr>
+                    <td>Kiểm tra tất cả descriptor</td>
+                    <td><code>Object.getOwnPropertyDescriptors(obj)</code></td>
+                    <td>Trả về map key → descriptor</td>
+                </tr>
+                <tr>
+                    <td>Loại property</td>
+                    <td><code>value/writable</code> hoặc <code>get/set</code></td>
+                    <td>Không được trộn chung</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
