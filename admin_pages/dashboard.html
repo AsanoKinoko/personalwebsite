@@ -66,132 +66,182 @@
     <div id="adminLayoutContainer"></div>
 
     <script>
-        // Load AdminLayout
-        fetch('../components/layout/AdminLayout.html')
-            .then(res => res.text())
-            .then(html => {
-                document.getElementById('adminLayoutContainer').innerHTML = html;
-                
-                // Set active nav
-                const navLink = document.querySelector('[data-nav="dashboard"]');
-                if (navLink) {
-                    navLink.classList.add('active');
-                    // Remove active from analytics
-                    const analyticsLink = document.querySelector('[data-nav="analytics"]');
-                    if (analyticsLink) {
-                        analyticsLink.classList.remove('active');
-                    }
-                }
+        let analyticsData = null;
 
-                // Set breadcrumbs
-                const breadcrumbs = document.getElementById('headerBreadcrumbs');
-                if (breadcrumbs) {
-                    breadcrumbs.innerHTML = `
-                        <a href="dashboard.html" style="color: var(--text-secondary); text-decoration: none;">Dashboard</a>
-                    `;
-                }
+        // Load analytics data
+        function loadAnalyticsData() {
+            return fetch('../data/analytics/analytics-data.json')
+                .then(res => res.json())
+                .then(data => {
+                    analyticsData = data;
+                    return data;
+                })
+                .catch(err => {
+                    console.error('Error loading analytics data:', err);
+                    return null;
+                });
+        }
 
-                // Set page content
-                const content = document.getElementById('adminContent');
-                if (content) {
+        // Format number
+        function formatNumber(num) {
+            if (!num) return '0';
+            return new Intl.NumberFormat('vi-VN').format(num);
+        }
+
+        // Render dashboard content
+        function renderDashboard(data) {
+            const metadata = data?.metadata || {};
+            const returningRate = data?.returningRate || 0;
+
+            return `
+                <div class="page-header">
+                    <h1 class="heading-1" style="color: #f1c232; text-shadow: 1px 1px 4px rgba(255, 242, 204, 0.5);">Dashboard</h1>
+                    <p class="body-text" style="color: #fff2cc; opacity: 0.9;">Tổng quan về website và hoạt động</p>
+                </div>
+
+                <div class="dashboard-section">
+                    <h2 class="section-title">Tổng quan</h2>
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <h3 class="stat-card-title">Tổng lượt truy cập</h3>
+                                <div class="stat-card-icon primary">
+                                    <i class='bx bx-trending-up'></i>
+                                </div>
+                            </div>
+                            <div class="stat-card-value">${formatNumber(metadata.totalVisits || 0)}</div>
+                            <div class="stat-card-footer">
+                                <span class="stat-card-description">Tổng số lượt truy cập</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <h3 class="stat-card-title">Người dùng duy nhất</h3>
+                                <div class="stat-card-icon success">
+                                    <i class='bx bx-user'></i>
+                                </div>
+                            </div>
+                            <div class="stat-card-value">${formatNumber(metadata.uniqueVisitors || 0)}</div>
+                            <div class="stat-card-footer">
+                                <span class="stat-card-description">Số người dùng duy nhất</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <h3 class="stat-card-title">Tổng pageviews</h3>
+                                <div class="stat-card-icon info">
+                                    <i class='bx bx-file'></i>
+                                </div>
+                            </div>
+                            <div class="stat-card-value">${formatNumber(metadata.totalPageviews || 0)}</div>
+                            <div class="stat-card-footer">
+                                <span class="stat-card-description">Tổng số lượt xem trang</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <h3 class="stat-card-title">Tỷ lệ quay lại</h3>
+                                <div class="stat-card-icon warning">
+                                    <i class='bx bx-refresh'></i>
+                                </div>
+                            </div>
+                            <div class="stat-card-value">${returningRate ? returningRate.toFixed(1) : '0.0'}%</div>
+                            <div class="stat-card-footer">
+                                <span class="stat-card-description">Tỷ lệ người dùng quay lại</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <h2 class="section-title">Thao tác nhanh</h2>
+                    <div class="quick-actions">
+                        <a href="access-analytics.html" class="btn btn-primary">
+                            <i class='bx bx-bar-chart-alt-2'></i>
+                            Xem phân tích truy cập
+                        </a>
+                        <a href="../index.html" class="btn btn-outline" target="_blank">
+                            <i class='bx bx-link-external'></i>
+                            Xem website
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize page
+        Promise.all([
+            fetch('../components/layout/AdminLayout.html').then(res => res.text()),
+            loadAnalyticsData()
+        ]).then(([layoutHtml, data]) => {
+            document.getElementById('adminLayoutContainer').innerHTML = layoutHtml;
+            
+            // Set active nav
+            const navLink = document.querySelector('[data-nav="dashboard"]');
+            if (navLink) {
+                navLink.classList.add('active');
+                const analyticsLink = document.querySelector('[data-nav="analytics"]');
+                if (analyticsLink) {
+                    analyticsLink.classList.remove('active');
+                }
+            }
+
+            // Set breadcrumbs
+            const breadcrumbs = document.getElementById('headerBreadcrumbs');
+            if (breadcrumbs) {
+                breadcrumbs.innerHTML = `
+                    <a href="dashboard.html" style="color: #ededed; text-decoration: none;">Dashboard</a>
+                `;
+            }
+
+            // Set page content
+            const content = document.getElementById('adminContent');
+            if (content) {
+                if (data) {
+                    content.innerHTML = renderDashboard(data);
+                } else {
                     content.innerHTML = `
                         <div class="page-header">
-                            <h1 class="heading-1">Dashboard</h1>
-                            <p class="body-text">Tổng quan về website và hoạt động</p>
+                            <h1 class="heading-1" style="color: #f1c232; text-shadow: 1px 1px 4px rgba(255, 242, 204, 0.5);">Dashboard</h1>
+                            <p class="body-text" style="color: #fff2cc; opacity: 0.9;">Tổng quan về website và hoạt động</p>
                         </div>
-
-                        <div class="dashboard-section">
-                            <h2 class="section-title">Tổng quan</h2>
-                            <div class="dashboard-grid">
-                                <div class="stat-card">
-                                    <div class="stat-card-header">
-                                        <h3 class="stat-card-title">Tổng lượt truy cập</h3>
-                                        <div class="stat-card-icon primary">
-                                            <i class='bx bx-trending-up'></i>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card-value">12,450</div>
-                                    <div class="stat-card-footer">
-                                        <span class="stat-card-change positive">
-                                            <i class='bx bx-up-arrow-alt'></i>
-                                            +12.5%
-                                        </span>
-                                        <span class="stat-card-description">so với tháng trước</span>
-                                    </div>
-                                </div>
-
-                                <div class="stat-card">
-                                    <div class="stat-card-header">
-                                        <h3 class="stat-card-title">Người dùng duy nhất</h3>
-                                        <div class="stat-card-icon success">
-                                            <i class='bx bx-user'></i>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card-value">8,230</div>
-                                    <div class="stat-card-footer">
-                                        <span class="stat-card-change positive">
-                                            <i class='bx bx-up-arrow-alt'></i>
-                                            +8.3%
-                                        </span>
-                                        <span class="stat-card-description">so với tháng trước</span>
-                                    </div>
-                                </div>
-
-                                <div class="stat-card">
-                                    <div class="stat-card-header">
-                                        <h3 class="stat-card-title">Tổng pageviews</h3>
-                                        <div class="stat-card-icon info">
-                                            <i class='bx bx-file'></i>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card-value">18,920</div>
-                                    <div class="stat-card-footer">
-                                        <span class="stat-card-change positive">
-                                            <i class='bx bx-up-arrow-alt'></i>
-                                            +15.2%
-                                        </span>
-                                        <span class="stat-card-description">so với tháng trước</span>
-                                    </div>
-                                </div>
-
-                                <div class="stat-card">
-                                    <div class="stat-card-header">
-                                        <h3 class="stat-card-title">Tỷ lệ quay lại</h3>
-                                        <div class="stat-card-icon warning">
-                                            <i class='bx bx-refresh'></i>
-                                        </div>
-                                    </div>
-                                    <div class="stat-card-value">34.2%</div>
-                                    <div class="stat-card-footer">
-                                        <span class="stat-card-change neutral">
-                                            <i class='bx bx-minus'></i>
-                                            0%
-                                        </span>
-                                        <span class="stat-card-description">so với tháng trước</span>
-                                    </div>
-                                </div>
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <i class='bx bx-bar-chart-alt-2'></i>
                             </div>
-                        </div>
-
-                        <div class="dashboard-section">
-                            <h2 class="section-title">Thao tác nhanh</h2>
-                            <div class="quick-actions">
-                                <a href="access-analytics.html" class="btn btn-primary">
-                                    <i class='bx bx-bar-chart-alt-2'></i>
-                                    Xem phân tích truy cập
-                                </a>
-                                <a href="../index.html" class="btn btn-outline" target="_blank">
-                                    <i class='bx bx-link-external'></i>
-                                    Xem website
-                                </a>
-                            </div>
+                            <h3 class="empty-state-title">Chưa có dữ liệu</h3>
+                            <p class="empty-state-description">Dữ liệu analytics sẽ được hiển thị khi có lượt truy cập được ghi nhận.</p>
                         </div>
                     `;
                 }
+            }
 
-                // Initialize sidebar toggle
-                initAdminLayout();
-            });
+            // Initialize sidebar toggle
+            initAdminLayout();
+        }).catch(err => {
+            console.error('Error initializing dashboard:', err);
+            const content = document.getElementById('adminContent');
+            if (content) {
+                content.innerHTML = `
+                    <div class="error-state">
+                        <div class="error-state-icon">
+                            <i class='bx bx-error-circle'></i>
+                        </div>
+                        <h3 class="error-state-title">Đã xảy ra lỗi khi tải dữ liệu</h3>
+                        <p class="error-state-description">Vui lòng kiểm tra kết nối hoặc thử lại sau.</p>
+                        <div class="error-state-actions">
+                            <button class="btn btn-primary" onclick="location.reload()">
+                                <i class='bx bx-refresh'></i>
+                                Thử lại
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        });
 
         function initAdminLayout() {
             const sidebarToggle = document.getElementById('sidebarToggle');
