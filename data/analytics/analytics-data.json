@@ -1,0 +1,35 @@
+{
+    "metadata": {
+        "lastUpdated": null,
+        "dateRange": {
+            "start": null,
+            "end": null
+        },
+        "totalVisits": 0,
+        "uniqueVisitors": 0,
+        "totalPageviews": 0,
+        "note": "Analytics data will be populated from your tracking system. This is a template structure."
+    },
+    "timeSeries": {
+        "granularity": "day",
+        "data": []
+    },
+    "browsers": [],
+    "devices": [],
+    "operatingSystems": [],
+    "countries": [],
+    "topUrls": [],
+    "hourlyDistribution": [],
+    "returningRate": 0,
+    "peakHour": {
+        "hour": null,
+        "visits": 0
+    },
+    "topCountry": {
+        "code": null,
+        "name": null,
+        "visits": 0,
+        "percentage": 0
+    },
+    "urlDetails": {}
+}

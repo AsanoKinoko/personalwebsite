@@ -1,0 +1,85 @@
+<div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <a href="../index.html" class="sidebar-logo">
+                <!-- <span class="logo-icon">🐱</span> -->
+                <span class="logo-text">Kyuumei Neko</span>
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link" data-nav="dashboard">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="access-analytics.html" class="nav-link active" data-nav="analytics">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                        <span class="nav-text">Quản lý truy cập</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-nav="content">
+                        <i class='bx bx-file'></i>
+                        <span class="nav-text">Quản lý nội dung</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-nav="settings">
+                        <i class='bx bx-cog'></i>
+                        <span class="nav-text">Cài đặt</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-toggle" id="sidebarToggle">
+                <i class='bx bx-chevron-left'></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="admin-main">
+        <!-- Top Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <div class="header-breadcrumbs" id="headerBreadcrumbs">
+                    <!-- Breadcrumbs will be inserted here -->
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="header-btn" title="Notifications">
+                        <i class='bx bx-bell'></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="header-btn" title="Help">
+                        <i class='bx bx-help-circle'></i>
+                    </button>
+                    <div class="user-menu">
+                        <button class="user-btn">
+                            <div class="user-avatar">KN</div>
+                            <span class="user-name">Admin</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="admin-content" id="adminContent">
+            <!-- Page content will be inserted here -->
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+</div>

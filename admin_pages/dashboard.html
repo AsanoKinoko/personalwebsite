@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Admin</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../assets/css/admin/design-tokens.css">
+    <!-- Layout -->
+    <link rel="stylesheet" href="../components/layout/AdminLayout.css">
+    <!-- UI Components -->
+    <link rel="stylesheet" href="../components/ui/Button/Button.css">
+    <link rel="stylesheet" href="../components/ui/Badge/Badge.css">
+    <link rel="stylesheet" href="../components/ui/StatCard/StatCard.css">
+    <link rel="stylesheet" href="../components/ui/Input/Input.css">
+    <!-- Feedback States -->
+    <link rel="stylesheet" href="../components/feedback/LoadingState.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .dashboard-section {
+            margin-bottom: var(--spacing-xl);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: #f1c232;
+            text-shadow: 1px 1px 4px rgba(255, 242, 204, 0.5);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .page-header h1 {
+            color: #f1c232;
+            text-shadow: 1px 1px 4px rgba(255, 242, 204, 0.5);
+        }
+
+        .page-header p {
+            color: #fff2cc;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Layout -->
+    <div id="adminLayoutContainer"></div>
+
+    <script>
+        // Load AdminLayout
+        fetch('../components/layout/AdminLayout.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('adminLayoutContainer').innerHTML = html;
+                
+                // Set active nav
+                const navLink = document.querySelector('[data-nav="dashboard"]');
+                if (navLink) {
+                    navLink.classList.add('active');
+                    // Remove active from analytics
+                    const analyticsLink = document.querySelector('[data-nav="analytics"]');
+                    if (analyticsLink) {
+                        analyticsLink.classList.remove('active');
+                    }
+                }
+
+                // Set breadcrumbs
+                const breadcrumbs = document.getElementById('headerBreadcrumbs');
+                if (breadcrumbs) {
+                    breadcrumbs.innerHTML = `
+                        <a href="dashboard.html" style="color: var(--text-secondary); text-decoration: none;">Dashboard</a>
+                    `;
+                }
+
+                // Set page content
+                const content = document.getElementById('adminContent');
+                if (content) {
+                    content.innerHTML = `
+                        <div class="page-header">
+                            <h1 class="heading-1">Dashboard</h1>
+                            <p class="body-text">Tổng quan về website và hoạt động</p>
+                        </div>
+
+                        <div class="dashboard-section">
+                            <h2 class="section-title">Tổng quan</h2>
+                            <div class="dashboard-grid">
+                                <div class="stat-card">
+                                    <div class="stat-card-header">
+                                        <h3 class="stat-card-title">Tổng lượt truy cập</h3>
+                                        <div class="stat-card-icon primary">
+                                            <i class='bx bx-trending-up'></i>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card-value">12,450</div>
+                                    <div class="stat-card-footer">
+                                        <span class="stat-card-change positive">
+                                            <i class='bx bx-up-arrow-alt'></i>
+                                            +12.5%
+                                        </span>
+                                        <span class="stat-card-description">so với tháng trước</span>
+                                    </div>
+                                </div>
+
+                                <div class="stat-card">
+                                    <div class="stat-card-header">
+                                        <h3 class="stat-card-title">Người dùng duy nhất</h3>
+                                        <div class="stat-card-icon success">
+                                            <i class='bx bx-user'></i>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card-value">8,230</div>
+                                    <div class="stat-card-footer">
+                                        <span class="stat-card-change positive">
+                                            <i class='bx bx-up-arrow-alt'></i>
+                                            +8.3%
+                                        </span>
+                                        <span class="stat-card-description">so với tháng trước</span>
+                                    </div>
+                                </div>
+
+                                <div class="stat-card">
+                                    <div class="stat-card-header">
+                                        <h3 class="stat-card-title">Tổng pageviews</h3>
+                                        <div class="stat-card-icon info">
+                                            <i class='bx bx-file'></i>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card-value">18,920</div>
+                                    <div class="stat-card-footer">
+                                        <span class="stat-card-change positive">
+                                            <i class='bx bx-up-arrow-alt'></i>
+                                            +15.2%
+                                        </span>
+                                        <span class="stat-card-description">so với tháng trước</span>
+                                    </div>
+                                </div>
+
+                                <div class="stat-card">
+                                    <div class="stat-card-header">
+                                        <h3 class="stat-card-title">Tỷ lệ quay lại</h3>
+                                        <div class="stat-card-icon warning">
+                                            <i class='bx bx-refresh'></i>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card-value">34.2%</div>
+                                    <div class="stat-card-footer">
+                                        <span class="stat-card-change neutral">
+                                            <i class='bx bx-minus'></i>
+                                            0%
+                                        </span>
+                                        <span class="stat-card-description">so với tháng trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-section">
+                            <h2 class="section-title">Thao tác nhanh</h2>
+                            <div class="quick-actions">
+                                <a href="access-analytics.html" class="btn btn-primary">
+                                    <i class='bx bx-bar-chart-alt-2'></i>
+                                    Xem phân tích truy cập
+                                </a>
+                                <a href="../index.html" class="btn btn-outline" target="_blank">
+                                    <i class='bx bx-link-external'></i>
+                                    Xem website
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Initialize sidebar toggle
+                initAdminLayout();
+            });
+
+        function initAdminLayout() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('adminSidebar');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('collapsed');
+                });
+            }
+
+            if (mobileMenuBtn && sidebar && sidebarOverlay) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    sidebar.classList.add('mobile-open');
+                    sidebarOverlay.classList.add('active');
+                });
+
+                sidebarOverlay.addEventListener('click', () => {
+                    sidebar.classList.remove('mobile-open');
+                    sidebarOverlay.classList.remove('active');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

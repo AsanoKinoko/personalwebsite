@@ -1,0 +1,33 @@
+/* Admin Dashboard */
+
+/* Design Tokens */
+@import url('./design-tokens.css');
+
+/* Layout */
+@import url('../../components/layout/AdminLayout.css');
+
+/* UI Components */
+@import url('../../components/ui/Button/Button.css');
+@import url('../../components/ui/Badge/Badge.css');
+@import url('../../components/ui/StatCard/StatCard.css');
+@import url('../../components/ui/Input/Input.css');
+
+/* Feature Components */
+@import url('../../components/filters/AnalyticsFilterBar.css');
+@import url('../../components/charts/ChartCard.css');
+@import url('../../components/tables/AnalyticsTable.css');
+@import url('../../components/drawer/UrlDetailDrawer.css');
+@import url('../../components/feedback/LoadingState.css');
+
+/* Admin Page Styles */
+.page-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-header h1 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-header p {
+    margin: 0;
+}
