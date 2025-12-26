@@ -197,6 +197,11 @@
     const getCurrentMainTag = () => getMainTags().find((tag) => tag.id === state.mainTagId) || null;
 
     const getSubtags = (mainTagId) => {
+        // Breaking News doesn't have subtags, just return "All"
+        if (mainTagId === 'breakingNews') {
+            return [{ id: 'all', label: 'All' }];
+        }
+        
         const mainTag = getMainTags().find((tag) => tag.id === mainTagId);
         const items = ensure(mainTag?.subtags).map((subtag) => ({
             id: subtag.id,
@@ -206,6 +211,32 @@
     };
 
     const getPosts = (mainTagId, subtagId) => {
+        // Special handling for "Breaking News" - show all posts from all categories
+        if (mainTagId === 'breakingNews') {
+            const allPosts = [];
+            const mainTags = getMainTags();
+            
+            mainTags.forEach((mainTag) => {
+                // Skip the breakingNews tag itself
+                if (mainTag.id === 'breakingNews') return;
+                
+                const subtags = ensure(mainTag.subtags);
+                subtags.forEach((subtag) => {
+                    ensure(subtag.posts).forEach((post) => {
+                        allPosts.push({ post, mainTag, subtag });
+                    });
+                });
+            });
+
+            allPosts.sort((a, b) => {
+                const aDate = new Date(a.post.createdAt || 0).getTime();
+                const bDate = new Date(b.post.createdAt || 0).getTime();
+                return bDate - aDate;
+            });
+
+            return allPosts;
+        }
+
         const mainTag = getMainTags().find((tag) => tag.id === mainTagId);
         if (!mainTag) return [];
 

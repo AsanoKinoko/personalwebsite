@@ -1,6 +1,14 @@
 {
     "mainTags": [
         {
+            "id": "breakingNews",
+            "label": "Breaking News",
+            "description": "Latest posts from all categories",
+            "subtags": [
+                
+            ]
+        },
+        {
             "id": "frontend",
             "label": "Frontend",
             "description": "Interface explorations and engineering notes.",
