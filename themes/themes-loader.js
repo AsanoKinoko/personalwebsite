@@ -27,6 +27,38 @@
         return {};
     }
 
+    // Resolve theme script path relative to themes-loader.js location
+    function resolveThemeScriptPath(relativePath) {
+        // Find the themes-loader.js script tag to get its path
+        const loaderScript = document.querySelector('script[src*="themes-loader.js"]');
+        if (loaderScript) {
+            const loaderSrc = loaderScript.getAttribute('src');
+            // Get the full URL or relative path
+            let loaderPath;
+            if (loaderSrc.startsWith('http://') || loaderSrc.startsWith('https://') || loaderSrc.startsWith('//')) {
+                // Absolute URL
+                loaderPath = loaderSrc;
+            } else {
+                // Relative path - get the directory
+                const lastSlash = loaderSrc.lastIndexOf('/');
+                if (lastSlash !== -1) {
+                    loaderPath = loaderSrc.substring(0, lastSlash + 1);
+                } else {
+                    loaderPath = './';
+                }
+            }
+            
+            // Replace themes-loader.js with the theme script filename
+            // relativePath is like 'themes/snow-effect.js'
+            // We need to replace 'themes-loader.js' with 'snow-effect.js'
+            const themeFileName = relativePath.replace('themes/', '');
+            return loaderPath + themeFileName;
+        }
+        
+        // Fallback: use relative path as is
+        return relativePath;
+    }
+
     // Load a theme script
     function loadThemeScript(themeId, scriptPath) {
         // Check if script already loaded
@@ -35,19 +67,22 @@
             return Promise.resolve();
         }
 
+        // Resolve the script path relative to themes-loader.js location
+        const resolvedPath = resolveThemeScriptPath(scriptPath);
+
         return new Promise((resolve, reject) => {
             const script = document.createElement('script');
-            script.src = scriptPath;
+            script.src = resolvedPath;
             script.setAttribute('data-theme', themeId);
             script.async = true;
             
             script.onload = () => {
-                console.log(`Theme "${themeId}" loaded successfully`);
+                console.log(`Theme "${themeId}" loaded successfully from ${resolvedPath}`);
                 resolve();
             };
             
             script.onerror = () => {
-                console.error(`Failed to load theme "${themeId}" from ${scriptPath}`);
+                console.error(`Failed to load theme "${themeId}" from ${resolvedPath}`);
                 reject(new Error(`Failed to load theme: ${themeId}`));
             };
             
