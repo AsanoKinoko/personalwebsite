@@ -22,5 +22,13 @@
         "demoUrl": "#",
         "codeUrl": "https://github.com/AsanoKinoko/DebtManagementSystem",
         "tech": ["Java Servlet", "HTML", "CSS"]
+    },
+    {
+        "title": "Landing Page Real Estate",
+        "description": "This is a landing page I tried creating when I started learning and getting familiar with NextJS",
+        "image": "https://placehold.co/400x250?text=Debt+Management+System&bg=e6f5e9&color=2f5233",
+        "demoUrl": "https://github.com/AsanoKinoko/vercel-landing-page-real-estate",
+        "codeUrl": "https://github.com/AsanoKinoko/landing-page-real-estate",
+        "tech": ["NextJS"]
     }
 ]
