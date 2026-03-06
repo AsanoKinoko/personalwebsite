@@ -1,15 +1,8 @@
-// Theme configuration
-const THEMES = {
-    snow: {
-        id: 'snow',
-        name: 'Hiệu ứng tuyết rơi',
-        description: 'Hiệu ứng tuyết rơi mùa đông với animation mượt mà và tối ưu hiệu năng',
-        icon: '❄️',
-        script: '../themes/snow-effect.js',
-        enabled: false
-    }
-    // You can add other themes here.
-};
+// Theme configuration source
+const THEMES_DATA_PATH = '../../../data/themes/themes_data.json';
+
+// Runtime themes cache
+let THEMES = {};
 
 // Storage key
 const STORAGE_KEY = 'website_themes';
@@ -25,7 +18,7 @@ function loadAdminLayout() {
         .then(res => res.text())
         .then(html => {
             document.getElementById('adminLayoutContainer').innerHTML = html;
-            
+
             // Set active nav
             const navLink = document.querySelector('[data-nav="themes"]');
             if (navLink) {
@@ -79,6 +72,36 @@ function initAdminLayout() {
     }
 }
 
+// Resolve data path relative to this script location (safe for GitHub Pages subpaths)
+function resolveThemesDataUrl() {
+    const managerScript = document.querySelector('script[src*="themes-manager.js"]');
+    if (managerScript && managerScript.src) {
+        return new URL(THEMES_DATA_PATH, managerScript.src).toString();
+    }
+    return THEMES_DATA_PATH;
+}
+
+// Load themes catalog from JSON
+async function loadThemesCatalog() {
+    const url = resolveThemesDataUrl();
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to load themes data: ${response.status}`);
+    }
+
+    const payload = await response.json();
+    const themesArray = Array.isArray(payload?.themes) ? payload.themes : [];
+
+    const catalog = {};
+    themesArray.forEach(theme => {
+        if (theme && theme.id) {
+            catalog[theme.id] = { ...theme };
+        }
+    });
+
+    return catalog;
+}
+
 // Load themes state from localStorage
 function loadThemesState() {
     try {
@@ -101,37 +124,48 @@ function saveThemesState(state) {
     }
 }
 
-// Get theme state
-function getThemeState(themeId) {
-    const state = loadThemesState();
-    return state[themeId] || false;
-}
-
 // Set theme state
 function setThemeState(themeId, enabled) {
     const state = loadThemesState();
     state[themeId] = enabled;
     saveThemesState(state);
-    
-    // Dispatch's custom event allows other sites to listen.
+
+    // Dispatch custom event so other pages can react.
     window.dispatchEvent(new CustomEvent('themeStateChanged', {
         detail: { themeId, enabled }
     }));
 }
 
 // Load and render themes
-function loadThemes() {
+async function loadThemes() {
     const content = document.getElementById('adminContent');
     if (!content) {
         setTimeout(loadThemes, 100);
         return;
     }
 
+    try {
+        THEMES = await loadThemesCatalog();
+    } catch (err) {
+        console.error(err);
+        content.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon"><i class='bx bx-error'></i></div>
+                <h3 class="empty-state-title">Không thể tải cấu hình themes</h3>
+                <p class="empty-state-description">Vui lòng kiểm tra file data/themes/themes_data.json.</p>
+            </div>
+        `;
+        return;
+    }
+
     const themesState = loadThemesState();
-    
-    // Update themes with saved state
+
+    // LocalStorage has priority if a value is present; otherwise fallback to JSON default.
     Object.keys(THEMES).forEach(themeId => {
-        THEMES[themeId].enabled = themesState[themeId] || false;
+        const hasSavedState = Object.prototype.hasOwnProperty.call(themesState, themeId);
+        THEMES[themeId].enabled = hasSavedState
+            ? themesState[themeId] === true
+            : THEMES[themeId].enabled === true;
     });
 
     renderThemes();
@@ -142,7 +176,7 @@ function renderThemes() {
     if (!content) return;
 
     const themesList = Object.values(THEMES);
-    
+
     if (themesList.length === 0) {
         content.innerHTML = `
             <div class="page-header">
@@ -181,7 +215,7 @@ function renderThemes() {
                 <div class="theme-card-footer">
                     <div class="theme-toggle">
                         <span class="theme-toggle-label">${isEnabled ? 'Bật' : 'Tắt'}</span>
-                        <div class="toggle-switch ${isEnabled ? 'active' : ''}" 
+                        <div class="toggle-switch ${isEnabled ? 'active' : ''}"
                              data-theme-id="${theme.id}"
                              onclick="toggleTheme('${theme.id}')"
                              role="switch"
@@ -220,14 +254,14 @@ function toggleTheme(themeId) {
     const newState = !theme.enabled;
     setThemeState(themeId, newState);
     theme.enabled = newState;
-    
+
     // Re-render to update the UI
     renderThemes();
-    
+
     // Show notification
     showNotification(
-        newState 
-            ? `${theme.name} đã được bật` 
+        newState
+            ? `${theme.name} đã được bật`
             : `${theme.name} đã được tắt`,
         newState ? 'success' : 'info'
     );

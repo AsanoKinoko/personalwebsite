@@ -26,7 +26,7 @@
     {
         "title": "Landing Page Real Estate",
         "description": "This is a landing page I tried creating when I started learning and getting familiar with NextJS",
-        "image": "https://placehold.co/400x250?text=Debt+Management+System&bg=e6f5e9&color=2f5233",
+        "image": "https://placehold.co/400x250?text=Landing+Page+Real+Estate&bg=e6f5e9&color=2f5233",
         "demoUrl": "https://vercel-landing-page-real-estate.vercel.app/",
         "codeUrl": "https://github.com/AsanoKinoko/landing-page-real-estate",
         "tech": ["NextJS"]

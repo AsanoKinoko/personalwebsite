@@ -1,0 +1,12 @@
+{
+    "themes": [
+      {
+        "id": "snow",
+        "name": "Hiệu ứng tuyết rơi",
+        "description": "Hiệu ứng tuyết rơi mùa đông với animation mượt mà và tối ưu hiệu năng",
+        "icon": "❄️",
+        "script": "./snow-effect.js",
+        "enabled": true
+      }
+    ]
+}

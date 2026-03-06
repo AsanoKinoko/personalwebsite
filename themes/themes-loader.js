@@ -7,12 +7,7 @@
     'use strict';
 
     const STORAGE_KEY = 'website_themes';
-    const THEMES_CONFIG = {
-        snow: {
-            script: 'themes/snow-effect.js'
-        }
-        // Add other themes here as needed
-    };
+    const THEMES_DATA_PATH = '../data/themes/themes_data.json';
 
     // Load themes state from localStorage
     function loadThemesState() {
@@ -27,36 +22,50 @@
         return {};
     }
 
-    // Resolve theme script path relative to themes-loader.js location
-    function resolveThemeScriptPath(relativePath) {
-        // Find the themes-loader.js script tag to get its path
+    // Resolve URL relative to themes-loader.js location (works with GitHub Pages subpaths)
+    function resolveFromLoaderPath(relativePath) {
         const loaderScript = document.querySelector('script[src*="themes-loader.js"]');
-        if (loaderScript) {
-            const loaderSrc = loaderScript.getAttribute('src');
-            // Get the full URL or relative path
-            let loaderPath;
-            if (loaderSrc.startsWith('http://') || loaderSrc.startsWith('https://') || loaderSrc.startsWith('//')) {
-                // Absolute URL
-                loaderPath = loaderSrc;
-            } else {
-                // Relative path - get the directory
-                const lastSlash = loaderSrc.lastIndexOf('/');
-                if (lastSlash !== -1) {
-                    loaderPath = loaderSrc.substring(0, lastSlash + 1);
-                } else {
-                    loaderPath = './';
-                }
-            }
-            
-            // Replace themes-loader.js with the theme script filename
-            // relativePath is like 'themes/snow-effect.js'
-            // We need to replace 'themes-loader.js' with 'snow-effect.js'
-            const themeFileName = relativePath.replace('themes/', '');
-            return loaderPath + themeFileName;
+        if (loaderScript && loaderScript.src) {
+            return new URL(relativePath, loaderScript.src).toString();
         }
-        
-        // Fallback: use relative path as is
         return relativePath;
+    }
+
+    async function loadThemesConfig() {
+        const dataUrl = resolveFromLoaderPath(THEMES_DATA_PATH);
+        const response = await fetch(dataUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to load themes config: ${response.status}`);
+        }
+
+        const payload = await response.json();
+        const themesArray = Array.isArray(payload?.themes) ? payload.themes : [];
+        const config = {};
+
+        themesArray.forEach(theme => {
+            if (theme && theme.id && theme.script) {
+                config[theme.id] = {
+                    script: theme.script,
+                    enabled: theme.enabled === true
+                };
+            }
+        });
+
+        return config;
+    }
+
+    // Resolve theme script path with backward compatibility for "themes/..." values
+    function resolveThemeScriptPath(scriptPath) {
+        if (typeof scriptPath !== 'string' || !scriptPath.trim()) {
+            return scriptPath;
+        }
+
+        // If JSON still uses "themes/snow-effect.js", resolve relative to loader folder.
+        if (scriptPath.startsWith('themes/')) {
+            return resolveFromLoaderPath(scriptPath.replace(/^themes\//, './'));
+        }
+
+        return resolveFromLoaderPath(scriptPath);
     }
 
     // Load a theme script
@@ -67,7 +76,6 @@
             return Promise.resolve();
         }
 
-        // Resolve the script path relative to themes-loader.js location
         const resolvedPath = resolveThemeScriptPath(scriptPath);
 
         return new Promise((resolve, reject) => {
@@ -75,29 +83,43 @@
             script.src = resolvedPath;
             script.setAttribute('data-theme', themeId);
             script.async = true;
-            
+
             script.onload = () => {
                 console.log(`Theme "${themeId}" loaded successfully from ${resolvedPath}`);
                 resolve();
             };
-            
+
             script.onerror = () => {
                 console.error(`Failed to load theme "${themeId}" from ${resolvedPath}`);
                 reject(new Error(`Failed to load theme: ${themeId}`));
             };
-            
+
             document.head.appendChild(script);
         });
     }
 
     // Initialize themes
-    function initThemes() {
+    async function initThemes() {
+        let themesConfig = {};
+
+        try {
+            themesConfig = await loadThemesConfig();
+        } catch (err) {
+            console.error(err);
+            return;
+        }
+
+        window.__THEMES_CONFIG__ = themesConfig;
+
         const themesState = loadThemesState();
         const loadPromises = [];
 
-        Object.keys(THEMES_CONFIG).forEach(themeId => {
-            if (themesState[themeId] === true) {
-                const theme = THEMES_CONFIG[themeId];
+        Object.keys(themesConfig).forEach(themeId => {
+            const theme = themesConfig[themeId];
+            const hasSavedState = Object.prototype.hasOwnProperty.call(themesState, themeId);
+            const shouldEnable = hasSavedState ? themesState[themeId] === true : theme.enabled === true;
+
+            if (shouldEnable) {
                 loadPromises.push(loadThemeScript(themeId, theme.script));
             }
         });
@@ -108,23 +130,21 @@
     // Listen for theme state changes
     window.addEventListener('themeStateChanged', function(e) {
         const { themeId, enabled } = e.detail;
-        
-        if (!THEMES_CONFIG[themeId]) {
+        const themesConfig = window.__THEMES_CONFIG__ || {};
+
+        if (!themesConfig[themeId]) {
             return;
         }
 
         const existingScript = document.querySelector(`script[data-theme="${themeId}"]`);
-        
+
         if (enabled && !existingScript) {
-            // Theme was enabled, load it
-            const theme = THEMES_CONFIG[themeId];
+            const theme = themesConfig[themeId];
             loadThemeScript(themeId, theme.script);
         } else if (!enabled && existingScript) {
-            // Theme was disabled, destroy it if possible
             if (window.SnowEffect && themeId === 'snow') {
                 window.SnowEffect.destroy();
             }
-            // Remove script tag
             existingScript.remove();
         }
     });
