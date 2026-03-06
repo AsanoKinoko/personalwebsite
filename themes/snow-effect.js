@@ -257,12 +257,17 @@
             const themesState = localStorage.getItem('website_themes');
             if (themesState) {
                 const state = JSON.parse(themesState);
-                return state.snow === true;
+                if (Object.prototype.hasOwnProperty.call(state, 'snow')) {
+                    return state.snow === true;
+                }
             }
         } catch (err) {
             console.error('Error checking theme state:', err);
         }
-        return false;
+
+        // Fallback: if user has never toggled before, use default from loaded themes config
+        const themesConfig = window.__THEMES_CONFIG__ || {};
+        return themesConfig.snow?.enabled === true;
     }
 
     // ==================== INITIALIZING ====================
