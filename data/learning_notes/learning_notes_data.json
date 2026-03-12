@@ -10,7 +10,104 @@
             "id": "figma",
             "title": "Figma",
             "image": "data/learning_notes/images/figma.png",
-            "url": "LearningNote.html?tag=figma"
+            "subtitle": "Study Figma step-by-step, like an online textbook.",
+            "url": "MyLearning.html?tag=figma",
+            "topics": [
+                {
+                    "id": "figma-tong-quan",
+                    "title": "Tổng quan",
+                    "breadcrumb": "Figma / Tổng quan",
+                    "url": "my_learning/figma/overview/figma-overview.html",
+                    "children": [
+                        {
+                            "id": "figma-cac-thanh-phan-chinh",
+                            "title": "Các thành phần chính trong Figma",
+                            "breadcrumb": "Figma / Tổng quan / Các thành phần chính",
+                            "url": "my_learning/figma/overview/figma-main-components.html"
+                        },
+                        {
+                            "id": "figma-cong-cu-thiet-ke-co-ban",
+                            "title": "Công cụ thiết kế cơ bản",
+                            "breadcrumb": "Figma / Tổng quan / Công cụ thiết kế cơ bản",
+                            "url": "my_learning/figma/overview/figma-a-basic-design-tool.html"
+                        },
+                        {
+                            "id": "figma-layout-trong-figma",
+                            "title": "Layout trong Figma",
+                            "breadcrumb": "Figma / Tổng quan / Layout trong Figma",
+                            "url": "my_learning/figma/overview/figma-layout-in-figma.html"
+                        },
+                        {
+                            "id": "figma-component-design-system",
+                            "title": "Component (Design System)",
+                            "breadcrumb": "Figma / Tổng quan / Component (Design System)",
+                            "url": "my_learning/figma/overview/figma-component-design-system.html"
+                        },
+                        {
+                            "id": "figma-collaboration",
+                            "title": "Collaboration (điểm mạnh nhất)",
+                            "breadcrumb": "Figma / Tổng quan / Collaboration",
+                            "url": "my_learning/figma/overview/figma-collaboration.html"
+                        },
+                        {
+                            "id": "figma-dev-mode",
+                            "title": "Dev Mode (handoff cho developer)",
+                            "breadcrumb": "Figma / Tổng quan / Dev Mode",
+                            "url": "my_learning/figma/overview/figma-dev-mode.html"
+                        },
+                        {
+                            "id": "figma-plugin",
+                            "title": "Plugin",
+                            "breadcrumb": "Figma / Tổng quan / Plugin",
+                            "url": "my_learning/figma/overview/figma-plugin.html"
+                        },
+                        {
+                            "id": "figma-export",
+                            "title": "Export",
+                            "breadcrumb": "Figma / Tổng quan / Export",
+                            "url": "my_learning/figma/overview/figma-export.html"
+                        },
+                        {
+                            "id": "figma-workflow-ui-ux",
+                            "title": "Workflow UI/UX phổ biến",
+                            "breadcrumb": "Figma / Tổng quan / Workflow UI/UX",
+                            "url": "my_learning/figma/overview/figma-workflow-ui-ux.html"
+                        }
+                    ]
+                },
+                {
+                    "id": "figma-move-scale-frame-slice-tool",
+                    "title": "Move, Scale, Frame và Slice Tool",
+                    "breadcrumb": "Figma / Move, Scale, Frame và Slice Tool",
+                    "url": "my_learning/figma/move-scale-frame-slice-tool/figma-move-scale-frame-slice-tool.html",
+                    "children": [
+                        {
+                            "id": "figma-tools-move-scale",
+                            "title": "Nhóm công cụ Move và Scale",
+                            "breadcrumb": "Figma / Move, Scale, Frame và Slice Tool / Move và Scale",
+                            "url": "my_learning/figma/move-scale-frame-slice-tool/move-and-scale-tool-group/move-and-scale-tool-group.html"
+                        },
+                        {
+                            "id": "figma-tools-frame-section-slice",
+                            "title": "Nhóm công cụ Hand tool và Slice",
+                            "breadcrumb": "Figma / Move, Scale, Frame và Slice Tool / Hand tool và Slice",
+                            "url": "my_learning/figma/move-scale-frame-slice-tool/hand-tool-and-slice-tool-group/hand-tool-and-slice-tool-group.html"
+                        },
+                        {
+                            "id": "figma-tools-export",
+                            "title": "Export",
+                            "breadcrumb": "Figma / Move, Scale, Frame và Slice Tool / Export",
+                            "url": "my_learning/figma/move-scale-frame-slice-tool/figma-export/figma-export.html"
+                        },
+                        {
+                            "id": "figma-tools-frame-group-component",
+                            "title": "Sự khác nhau giữa Frame, Group và Component",
+                            "breadcrumb": "Figma / Move, Scale, Frame và Slice Tool / Frame vs Group vs Component",
+                            "url": "my_learning/figma/move-scale-frame-slice-tool/differences-frame-group-component/differences-frame-group-component.html"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": "html5",

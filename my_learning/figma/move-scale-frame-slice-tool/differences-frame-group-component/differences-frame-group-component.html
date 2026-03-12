@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sự khác nhau giữa Frame, Group và Component</title>
+</head>
+<body>
+    <main>
+        <h2>4. Sự khác nhau giữa Frame, Group và Component</h2>
+
+        <p>Trong Figma, Frame, Group, và Component đều dùng để tổ chức các layer, nhưng mục đích và khả năng của chúng rất khác nhau. Đây là một trong những khái niệm quan trọng nhất khi học Figma.</p>
+
+        <ul>
+            <li>Frame: khung layout chính của thiết kế. Nó giống artboard hoặc container layout. Frame hỗ trợ rất nhiều tính năng layout như Auto Layout, Constraints, Grid layout, Scrolling, Prototype.</li>
+            <li>Group: nhóm layer đơn giản để tổ chức. Nó chỉ giúp gộp các layer lại cho gọn. Group không có layout logic (không có Auto Layout, không có grid, không có constraint). Group chỉ để di chuyển nhiều layer cùng lúc và quản lý layer.</li>
+            <li>Component: là UI có thể tái sử dụng. Đây là nền tảng của Design System. Nếu sửa component gốc, tất cả instance sẽ update.</li>
+        </ul>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Frame</th>
+                    <th>Group</th>
+                    <th>Component</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Container layout</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Auto layout</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Constraint</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Reusable</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Prototype</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

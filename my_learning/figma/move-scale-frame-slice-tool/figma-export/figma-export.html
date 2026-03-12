@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Export</title>
+</head>
+<body>
+    <main>
+        <h2>3. Export</h2>
+
+        <figure>
+            <img src="my_learning/figma/move-scale-frame-slice-tool/figma-export/images/export-settings.png" alt="Export settings" loading="lazy">
+        </figure>
+
+        <p>Trong Figma, Export cho phép bạn xuất (export) hình ảnh hoặc asset từ thiết kế.</p>
+
+        <ul>
+            <li>
+                Scale (1x): là tỷ lệ kích thước khi export.
+                <div>Web thường dùng 1x hoặc 2x, iOS thường sẽ là 2x hoặc 3x còn Android sẽ có nhiều hơn.</div>
+            </li>
+            <li>
+                Format (PNG): Định dạng file xuất. Có 4 format:
+                <ul>
+                    <li>PNG: hình ảnh UI, icon</li>
+                    <li>JPG: ảnh chụp</li>
+                    <li>SVG: icon vector</li>
+                    <li>PDF: tài liệu</li>
+                </ul>
+            </li>
+            <li>Export: Đây là nút để thực hiện export.</li>
+            <li>
+                Preview: Cho phép xem trước ảnh trước khi export.
+                <div>Bạn có thể:</div>
+                <ul>
+                    <li>phóng to</li>
+                    <li>kiểm tra viền</li>
+                    <li>xem pixel</li>
+                </ul>
+                <div>Dùng khi muốn chắc rằng export đúng.</div>
+            </li>
+            <li>
+                Suffix: hậu tố tên file. VD tên file là icon, nếu đặt suffix là @2x thì file export sẽ là icon@2x
+                <div>Dùng khi:</div>
+                <ul>
+                    <li>retina asset</li>
+                    <li>nhiều version file</li>
+                </ul>
+            </li>
+            <li>
+                Color profile (sRGB): Xác định hệ màu của file export.
+                <ul>
+                    <li>sRGB: Đây là chuẩn màu phổ biến cho web, mobile, browser. Hầu hết trường hợp nên để sRGB.</li>
+                    <li>Display P3: là một color space (không gian màu) rộng hơn sRGB. Điều đó nghĩa là nó có thể hiển thị nhiều màu hơn và rực hơn. Thường dùng cho iOS app, Mac app hoặc thiết kế media cao cấp.</li>
+                </ul>
+            </li>
+            <li>
+                Image resampling: Quyết định cách Figma xử lý pixel khi scale ảnh.
+                <div>Detailed: giữ chi tiết tốt hơn, ảnh sắc nét</div>
+                <div>Basic: phù hợp export nhanh, preview. Ảnh có thể hơi mềm hoặc hơi blur, chi tiết nhỏ có thể mất.</div>
+            </li>
+            <li>Ignore overlapping layers: Nếu bật, Figma bỏ qua các layer bị che khuất hoàn toàn.</li>
+        </ul>
+    </main>
+</body>
+</html>

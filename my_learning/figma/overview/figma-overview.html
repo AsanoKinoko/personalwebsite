@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng quan • Figma</title>
+</head>
+<body>
+    <main>
+        <h2>Tổng quan</h2>
+        <p>Figma là một công cụ thiết kế giao diện UI/UX chạy trên web/app desktop cho phép nhiều người thiết kế và chỉnh sửa cùng lúc.</p>
+        <p>Nó được dùng phổ biến để thiết kế:</p>
+        <ul>
+            <li>Website</li>
+            <li>Mobile app</li>
+            <li>Landing page</li>
+            <li>Design system</li>
+            <li>Prototype (mô phỏng hoạt động của UI)</li>
+        </ul>
+        <p>Điểm mạnh nhất của Figma là real-time collaboration giống Google Docs.</p>
+
+        <h3>Nội dung</h3>
+        <ul>
+            <li><strong><a href="?tag=figma&topic=figma-cac-thanh-phan-chinh" data-topic-link="figma-cac-thanh-phan-chinh">1. Các thành phần chính trong Figma</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-cong-cu-thiet-ke-co-ban" data-topic-link="figma-cong-cu-thiet-ke-co-ban">2. Công cụ thiết kế cơ bản</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-layout-trong-figma" data-topic-link="figma-layout-trong-figma">3. Layout trong Figma</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-component-design-system" data-topic-link="figma-component-design-system">4. Component (Design System)</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-collaboration" data-topic-link="figma-collaboration">5. Collaboration (điểm mạnh nhất)</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-dev-mode" data-topic-link="figma-dev-mode">6. Dev Mode (handoff cho developer)</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-plugin" data-topic-link="figma-plugin">7. Plugin</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-export" data-topic-link="figma-export">8. Export</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-workflow-ui-ux" data-topic-link="figma-workflow-ui-ux">9. Workflow UI/UX phổ biến</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'figma');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
