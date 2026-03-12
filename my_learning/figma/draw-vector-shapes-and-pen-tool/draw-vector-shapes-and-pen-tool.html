@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Vector Shapes và Pen Tool • Figma</title>
+</head>
+<body>
+    <main>
+        <h2>Draw Vector Shapes và Pen Tool</h2>
+
+        <p>Phần này tập trung vào cách vẽ shape vector cơ bản, căn chỉnh vị trí/khoảng cách/kích thước, và tuỳ chỉnh Stroke (viền) trong Figma.</p>
+
+        <h3>Nội dung</h3>
+        <ul>
+            <li><strong><a href="?tag=figma&topic=figma-draw-vector-shapes" data-topic-link="figma-draw-vector-shapes">3.1 Draw Vector Shapes</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-align-margins-spacing-and-object-size" data-topic-link="figma-align-margins-spacing-and-object-size">3.2 Căn chỉnh lề, khoảng cách, kích thước đối tượng</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-stroke" data-topic-link="figma-stroke">3.3 Stroke (Viền)</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'figma');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
