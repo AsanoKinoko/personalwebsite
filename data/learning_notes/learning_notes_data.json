@@ -106,6 +106,32 @@
                             "url": "my_learning/figma/move-scale-frame-slice-tool/differences-frame-group-component/differences-frame-group-component.html"
                         }
                     ]
+                },
+                {
+                    "id": "figma-draw-vector-shapes-and-pen-tool",
+                    "title": "Draw Vector Shapes và Pen Tool",
+                    "breadcrumb": "Figma / Draw Vector Shapes và Pen Tool",
+                    "url": "my_learning/figma/draw-vector-shapes-and-pen-tool/draw-vector-shapes/draw-vector-shapes.html",
+                    "children": [
+                        {
+                            "id": "figma-draw-vector-shapes",
+                            "title": "Draw Vector Shapes",
+                            "breadcrumb": "Figma / Draw Vector Shapes và Pen Tool / Draw Vector Shapes",
+                            "url": "my_learning/figma/draw-vector-shapes-and-pen-tool/draw-vector-shapes/draw-vector-shapes.html"
+                        },
+                        {
+                            "id": "figma-align-margins-spacing-and-object-size",
+                            "title": "Căn chỉnh lề, khoảng cách, kích thước đối tượng",
+                            "breadcrumb": "Figma / Draw Vector Shapes và Pen Tool / Alignment & Size",
+                            "url": "my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/align-margins-spacing-and-object-size.html"
+                        },
+                        {
+                            "id": "figma-stroke",
+                            "title": "Stroke (Viền)",
+                            "breadcrumb": "Figma / Draw Vector Shapes và Pen Tool / Stroke",
+                            "url": "my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/stroke.html"
+                        }
+                    ]
                 }
             ]
         },

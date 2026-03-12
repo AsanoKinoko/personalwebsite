@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Căn chỉnh lề, khoảng cách, kích thước đối tượng</title>
+</head>
+<body>
+    <main>
+        <h2>Căn chỉnh lề, khoảng cách, kích thước đối tượng</h2>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/images/align-margins-spacing-and-object-size.png" alt="Panel Position, Alignment, Layout, Dimensions" loading="lazy">
+        </figure>
+
+        <p>Căn chỉnh lề, khoảng cách</p>
+        <p>Kích thước đối tượng</p>
+
+        <h3>Căn đều theo tỉ lệ giữa các object</h3>
+        <p>Nếu muốn căn đều theo tỉ lệ giữa các object thì chọn: <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/images/align-objects proportionally.png" alt="Tidy up, Distribute vertical spacing, Distribute horizontal spacing" loading="lazy"></p>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/images/align-objects proportionally-setting.png" alt="Align objects proportionally setting" loading="lazy">
+        </figure>
+
+        <ul>
+            <li>
+                Tidy up: Ctrl + Alt + Shift + T
+                <ul>
+                    <li>Sắp xếp các object thành hàng thẳng (ngang hoặc dọc)</li>
+                    <li>Căn đều khoảng cách giữa các object</li>
+                    <li>Giữ thứ tự hiện tại của chúng</li>
+                </ul>
+                <p>Khi nào dùng: Khi bạn kéo thả nhiều button/card bị lệch lung tung và muốn Figma tự căn lại cho gọn trong 1 click.</p>
+                <p>Ví dụ: Bạn có 4 button đặt lệch nhau → chọn tất cả → bấm Tidy up → chúng sẽ thẳng hàng và cách đều nhau.</p>
+            </li>
+            <li>
+                Distribute vertical spacing: Alt + Shift + V
+                <ul>
+                    <li>Chia đều khoảng cách theo chiều dọc.</li>
+                    <li>Giữ nguyên vị trí trên cùng và dưới cùng</li>
+                    <li>Căn đều khoảng cách giữa các object ở giữa</li>
+                </ul>
+                <p>Dùng khi: Có nhiều object xếp theo cột, khoảng cách giữa chúng không đều, muốn chia đều lại khoảng cách.</p>
+                <p>Ví dụ: 3 text box xếp dọc nhưng khoảng cách trên – giữa – dưới không đều → dùng chức năng này để chia đều lại.</p>
+            </li>
+            <li>
+                Distribute horizontal spacing: Alt + Shift + H
+                <p>Chia đều khoảng cách theo chiều ngang. Giữ nguyên object ngoài cùng bên trái và phải.</p>
+                <p>Căn đều khoảng cách các object ở giữa.</p>
+                <p>Dùng khi: Các item nằm theo hàng ngang, muốn chúng cách đều nhau.</p>
+                <p>Ví dụ: 5 icon nằm ngang nhưng không đều → chọn tất cả → dùng chức năng này → khoảng cách giữa các icon sẽ bằng nhau.</p>
+            </li>
+        </ul>
+
+        <h3>Layout: Kích thước đối tượng</h3>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/images/layout-setting.png" alt="Layout Dimensions and lock ratio" loading="lazy">
+        </figure>
+
+        <p>Khi khóa tỷ lệ, nếu chúng ta chỉnh sửa kích thước 1 cạnh thì cạnh còn lại sẽ tự chỉnh sửa để theo tỷ lệ gốc của hình.</p>
+
+        <h3>Apply Blend Mode</h3>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/images/appearance-setting.png" alt="Appearance settings" loading="lazy">
+        </figure>
+
+        <p>Apply Blend Mode trong Figma là cách bạn điều khiển cách một layer hòa trộn màu với layer phía dưới nó. Hiểu đơn giản: Nó quyết định màu của layer trên sẽ “trộn” với màu bên dưới như thế nào.</p>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/images/apply-blend-mode-setting-1.png" alt="Apply Blend Mode button" loading="lazy">
+        </figure>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/align-margins-spacing-and-object-size/images/apply-blend-mode-setting-2.png" alt="Blend Mode dropdown and table" loading="lazy">
+        </figure>
+
+        <table border="1" cellpadding="6" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>Pass through</td>
+                    <td>
+                        <ul>
+                            <li>Chỉ xuất hiện khi chọn Group</li>
+                            <li>Cho phép các layer bên trong group tiếp tục blend trực tiếp với layer bên ngoài</li>
+                            <li>Không chặn hiệu ứng blend</li>
+                        </ul>
+                        <p>Dùng khi bạn không muốn group làm ảnh hưởng tới blending.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Normal (mặc định)</td>
+                    <td>
+                        <ul>
+                            <li>Không hòa trộn</li>
+                            <li>Layer trên che layer dưới theo opacity</li>
+                        </ul>
+                        <p>100% opacity = che hoàn toàn.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Darken</td>
+                    <td>Giữ màu tối hơn giữa 2 layer.</td>
+                </tr>
+                <tr>
+                    <td>Multiply (rất hay dùng)</td>
+                    <td>
+                        <ul>
+                            <li>Nhân màu lại với nhau</li>
+                            <li>Luôn làm ảnh tối hơn</li>
+                            <li>Dùng để tạo bóng, shadow, overlay texture</li>
+                        </ul>
+                        <p>Hay dùng cho: Đổ bóng và Tạo hiệu ứng ảnh tối tự nhiên.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Plus darker</td>
+                    <td>Giữ phần tối hơn tổng hợp.</td>
+                </tr>
+                <tr>
+                    <td>Color burn</td>
+                    <td>Tăng tương phản và làm tối mạnh, màu đậm hơn.</td>
+                </tr>
+                <tr>
+                    <td>Lighten</td>
+                    <td>Giữ màu sáng hơn giữa 2 layer.</td>
+                </tr>
+                <tr>
+                    <td>Screen (rất hay dùng)</td>
+                    <td>
+                        <ul>
+                            <li>Ngược lại với Multiply</li>
+                            <li>Làm ảnh sáng hơn</li>
+                            <li>Dùng cho ánh sáng, flare, glow</li>
+                        </ul>
+                        <p>Hay dùng:</p>
+                        <ul>
+                            <li>Hiệu ứng ánh sáng</li>
+                            <li>Ánh nắng</li>
+                            <li>Highlight</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Color dodge</td>
+                    <td>Làm sáng mạnh + tăng tương phản.</td>
+                </tr>
+                <tr>
+                    <td>Plus lighter</td>
+                    <td>Tăng sáng mạnh hơn.</td>
+                </tr>
+                <tr>
+                    <td>Overlay (cực phổ biến)</td>
+                    <td>
+                        <ul>
+                            <li>Kết hợp Multiply + Screen</li>
+                            <li>Vùng tối → tối hơn</li>
+                            <li>Vùng sáng → sáng hơn</li>
+                            <li>Tăng contrast</li>
+                        </ul>
+                        <p>Hay dùng:</p>
+                        <ul>
+                            <li>Tạo hiệu ứng cinematic (tăng độ nét)</li>
+                            <li>Blend texture (pha trộn kết cấu)</li>
+                            <li>Tăng độ nổi ảnh</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Soft light</td>
+                    <td>
+                        <ul>
+                            <li>Nhẹ nhàng hơn Overlay</li>
+                            <li>Tăng contrast dịu</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hard light</td>
+                    <td>
+                        <ul>
+                            <li>Mạnh hơn Overlay</li>
+                            <li>Contrast gắt</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Difference</td>
+                    <td>
+                        <ul>
+                            <li>So sánh màu giữa 2 layer</li>
+                            <li>Tạo hiệu ứng đảo màu / tương phản mạnh</li>
+                        </ul>
+                        <p>Hay dùng cho:</p>
+                        <ul>
+                            <li>Hiệu ứng đặc biệt</li>
+                            <li>Test contrast</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exclusion</td>
+                    <td>
+                        <ul>
+                            <li>Giống Difference nhưng nhẹ hơn</li>
+                            <li>Tạo hiệu ứng đảo màu mềm hơn</li>
+                            <li>Màu trắng → đảo màu</li>
+                            <li>Màu đen → không thay đổi</li>
+                        </ul>
+                        <p>Dùng khi:</p>
+                        <ul>
+                            <li>Muốn tạo hiệu ứng “âm bản” nhẹ</li>
+                            <li>Hiệu ứng thiết kế experimental</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hue (Giữ Hue của layer trên)</td>
+                    <td>
+                        <p>Lấy Hue (tông màu) của layer trên. Giữ lại Saturation + Brightness của layer dưới.</p>
+                        <p>Hiểu đơn giản:</p>
+                        <ul>
+                            <li>Chỉ đổi màu (tông màu)</li>
+                            <li>Không làm ảnh sáng/tối khác đi</li>
+                        </ul>
+                        <p>Ví dụ: Ảnh người bình thường. Layer trên là màu xanh. Dùng Hue → ảnh chuyển sang tông xanh nhưng vẫn giữ độ sáng gốc.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saturation (Giữ độ bão hòa của layer trên)</td>
+                    <td>
+                        <p>Lấy Saturation của layer trên. Giữ Hue + Brightness của layer dưới.</p>
+                        <p>Dùng khi:</p>
+                        <ul>
+                            <li>Muốn tăng/giảm độ rực màu</li>
+                            <li>Làm ảnh sống động hơn hoặc nhạt hơn</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Color (Rất hay dùng)</td>
+                    <td>
+                        <p>Lấy Hue + Saturation của layer trên. Giữ Brightness (độ sáng) của layer dưới.</p>
+                        <p>Đây là mode tô màu phổ biến nhất.</p>
+                        <p>Ví dụ: Ảnh đen trắng, thêm layer màu đỏ phía trên. Dùng Color → ảnh thành đỏ nhưng vẫn giữ độ sáng tối tự nhiên.</p>
+                        <p>Dùng cho:</p>
+                        <ul>
+                            <li>Tô màu ảnh đen trắng</li>
+                            <li>Đổi màu ảnh mà không phá ánh sáng</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Luminosity</td>
+                    <td>
+                        <p>Lấy Brightness (độ sáng) của layer trên. Giữ Hue + Saturation của layer dưới.</p>
+                        <p>Dùng khi:</p>
+                        <ul>
+                            <li>Muốn thay đổi ánh sáng mà không đổi màu</li>
+                            <li>Chỉnh contrast tinh tế</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

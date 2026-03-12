@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke (Viền)</title>
+</head>
+<body>
+    <main>
+        <h2>Stroke (Viền)</h2>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/images/stroke-setting.png" alt="Stroke basic settings" loading="lazy">
+        </figure>
+
+        <p>Các Stroke settings trong Figma dùng để điều chỉnh viền (border) của shape, frame, vector hoặc text.</p>
+
+        <ul>
+            <li>
+                Phần đầu tiên của Stroke là màu + opacity
+                <p>VD: 000000: viền đen</p>
+                <p>100%: đậm hoàn toàn, 50%: mờ</p>
+            </li>
+            <li>
+                Tùy chỉnh ẩn viền (Individual strokes): Icon 4 ô vuông cho phép bật stroke riêng từng cạnh.
+            </li>
+        </ul>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/images/individual-strokes-button.png" alt="Individual strokes button" loading="lazy">
+        </figure>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/images/individual-strokes-setting.png" alt="Individual stroke sides settings" loading="lazy">
+        </figure>
+
+        <ul>
+            <li>
+                <ul>
+                    <li>All: tất cả các cạnh</li>
+                    <li>Top: chỉ viền trên</li>
+                    <li>Bottom: chỉ viền dưới</li>
+                    <li>Left: chỉ viền trái</li>
+                    <li>Right: chỉ viền phải</li>
+                    <li>Custom: tùy chỉnh nhiều cạnh</li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                Stroke Position: Viền có thể nằm ở 3 vị trí:
+                <ul>
+                    <li>Inside: viền nằm bên trong shape</li>
+                    <li>Center: viền nằm giữa</li>
+                    <li>Outside: viền nằm bên ngoài</li>
+                </ul>
+            </li>
+            <li>
+                Weight: Độ dày của viền. Trong CSS tương đương: <code>border-width</code>
+            </li>
+            <li>Stroke visibility: icon con mắt. Cho phép ẩn / hiện stroke.</li>
+            <li>Bạn có thể thêm nhiều stroke để tạo hiệu ứng double border hoặc outline.</li>
+            <li>
+                Advanced Stroke Settings: Icon sliders mở Stroke settings panel.
+            </li>
+        </ul>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/images/advanced-stroke-settings.png" alt="Advanced stroke settings button" loading="lazy">
+        </figure>
+
+        <p>Panel này có 3 tab:</p>
+        <ul>
+            <li>Basic</li>
+            <li>Dynamic</li>
+            <li>Brush</li>
+        </ul>
+
+        <h3>Basic</h3>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/images/advanced-stroke-settings-basic.png" alt="Stroke settings - Basic tab" loading="lazy">
+        </figure>
+
+        <ul>
+            <li>
+                Style: Chọn kiểu stroke:
+                <ul>
+                    <li>Solid: nét liền</li>
+                    <li>Dashed: nét đứt</li>
+                    <li>Custom: tạo tự do</li>
+                </ul>
+            </li>
+            <li>
+                Width Profile: Điều chỉnh độ dày stroke theo chiều dài path.
+                <p>VD: đầu mỏng → giữa dày → cuối mỏng</p>
+                <p>Thường dùng trong:</p>
+                <ul>
+                    <li>illustration</li>
+                    <li>icon</li>
+                    <li>vector art</li>
+                </ul>
+            </li>
+            <li>
+                Join: cách nối góc stroke. Có 3 loại: góc nhọn, góc vát, góc tròn.
+            </li>
+            <li>
+                Miter angle: Xác định độ nhọn tối đa của góc miter. Nếu góc quá nhọn: Figma sẽ chuyển sang kiểu góc an toàn hơn.
+            </li>
+        </ul>
+
+        <h3>Dynamic</h3>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/images/advanced-stroke-settings-dynamic.png" alt="Stroke settings - Dynamic tab" loading="lazy">
+        </figure>
+
+        <ul>
+            <li>Frequency: tần suất thay đổi</li>
+            <li>Wiggle: độ rung stroke</li>
+            <li>Smoothen: độ mượt</li>
+        </ul>
+
+        <p>Ví dụ dùng cho: sketch, vẽ tay hoặc style illustration.</p>
+
+        <h3>Brush</h3>
+
+        <figure>
+            <img src="my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/images/advanced-stroke-settings-brush.png" alt="Stroke settings - Brush tab" loading="lazy">
+        </figure>
+
+        <ul>
+            <li>Brush type: kiểu cọ</li>
+            <li>Direction: hướng cọ</li>
+            <li>Width profile: độ dày stroke</li>
+        </ul>
+
+        <p>Dùng cho: illustration hoặc hand-drawn design.</p>
+    </main>
+</body>
+</html>
