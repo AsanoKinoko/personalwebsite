@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation • Next.js</title>
+  <link rel="stylesheet" href="installation.css">
+</head>
+
+<body>
+  <main>
+    <style>
+      .nextjs-article {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 1rem 2rem;
+        box-sizing: border-box;
+      }
+
+      .nextjs-article pre {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+
+      .nextjs-article img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+
+    <div class="nextjs-article">
+      <h2>Installation</h2>
+      <p>Tạo một ứng dụng Next.js mới và chạy nó trên máy cục bộ.</p>
+
+      <h3>Bắt đầu nhanh (Quick start)</h3>
+      <ol>
+        <li>Tạo một ứng dụng Next.js mới có tên my-app</li>
+        <li>cd my-app và khởi động dev server.</li>
+        <li>Truy cập: http://localhost:3000</li>
+      </ol>
+
+      <p><strong>pnpm</strong></p>
+      <pre><code>pnpm create next-app@latest my-app --yes
+cd my-app
+pnpm dev</code></pre>
+
+      <p><strong>npm</strong></p>
+      <pre><code>npx create-next-app@latest my-app --yes
+cd my-app
+npm run dev</code></pre>
+
+      <p><strong>yarn</strong></p>
+      <pre><code>yarn create next-app@latest my-app --yes
+cd my-app
+yarn dev</code></pre>
+
+      <p><strong>bun</strong></p>
+      <pre><code>bun create next-app@latest my-app --yes
+cd my-app
+bun dev</code></pre>
+
+      <ul>
+        <li><code>--yes</code> sẽ bỏ qua các câu hỏi (prompt) bằng cách sử dụng các tùy chọn đã lưu hoặc giá trị mặc
+          định. Thiết lập mặc định sẽ bật TypeScript, Tailwind, ESLint, App Router và Turbopack, với import alias là
+          @/*.</li>
+      </ul>
+
+      <h3>Yêu cầu hệ thống (System requirements)</h3>
+      <p>Trước khi bắt đầu, hãy đảm bảo môi trường phát triển của bạn đáp ứng các yêu cầu sau:</p>
+      <ul>
+        <li>Phiên bản Node.js tối thiểu: 20.9</li>
+        <li>Hệ điều hành: macOS, Windows (bao gồm WSL) và Linux</li>
+      </ul>
+
+      <h3>Trình duyệt được hỗ trợ</h3>
+      <p>Next.js hỗ trợ các trình duyệt hiện đại mà không cần cấu hình thêm.</p>
+      <ul>
+        <li>Chrome 111+</li>
+        <li>Edge 111+</li>
+        <li>Firefox 111+</li>
+        <li>Safari 16.4+</li>
+      </ul>
+      <p>Tìm hiểu thêm về hỗ trợ trình duyệt, bao gồm cách cấu hình polyfills và nhắm mục tiêu các trình duyệt cụ thể:
+        <a href="https://nextjs.org/docs/architecture/supported-browsers" target="_blank"
+          rel="noopener">https://nextjs.org/docs/architecture/supported-browsers</a></p>
+
+      <h3>Tạo bằng CLI</h3>
+      <p>Cách nhanh nhất để tạo một ứng dụng Next.js mới là sử dụng create-next-app, công cụ này sẽ tự động thiết lập
+        mọi thứ cho bạn.</p>
+      <p>Để tạo một dự án, chạy:</p>
+      <ul>
+        <li><strong>pnpm:</strong> <code>pnpm create next-app</code></li>
+        <li><strong>npm:</strong> <code>npx create-next-app@latest</code></li>
+        <li><strong>yarn:</strong> <code>yarn create next-app</code></li>
+        <li><strong>bun:</strong> <code>bun create next-app</code></li>
+      </ul>
+      <p>Sau khi cài đặt, bạn sẽ thấy các câu hỏi sau:</p>
+      <pre><code>What is your project named? my-app
+Would you like to use the recommended Next.js defaults?
+    Yes, use recommended defaults - TypeScript, ESLint, Tailwind CSS, App Router, Turbopack
+    No, reuse previous settings
+    No, customize settings - Choose your own preferences</code></pre>
+      <p>Nếu bạn chọn tùy chỉnh cài đặt, bạn sẽ thấy các câu hỏi sau:</p>
+      <pre><code>Would you like to use TypeScript? No / Yes
+Which linter would you like to use? ESLint / Biome / None
+Would you like to use React Compiler? No / Yes
+Would you like to use Tailwind CSS? No / Yes
+Would you like your code inside a `src/` directory? No / Yes
+Would you like to use App Router? (recommended) No / Yes
+Would you like to customize the import alias (`@/*` by default)? No / Yes
+What import alias would you like configured? @/*</code></pre>
+      <p>Sau khi hoàn tất các câu hỏi, create-next-app sẽ tạo một thư mục theo tên dự án của bạn và cài đặt các
+        dependencies cần thiết.</p>
+
+      <h3>Cài đặt thủ công (Manual installation)</h3>
+      <p>Để tạo một ứng dụng Next.js mới theo cách thủ công, hãy cài đặt các package cần thiết:</p>
+      <ul>
+        <li><strong>pnpm:</strong> <code>pnpm i next@latest react@latest react-dom@latest</code></li>
+        <li><strong>npm:</strong> <code>npm i next@latest react@latest react-dom@latest</code></li>
+        <li><strong>yarn:</strong> <code>yarn add next@latest react@latest react-dom@latest</code></li>
+        <li><strong>bun:</strong> <code>bun add next@latest react@latest react-dom@latest</code></li>
+      </ul>
+      <p>Good to know: App Router sử dụng các bản React canary được tích hợp sẵn, bao gồm tất cả các thay đổi ổn định
+        của React 19 cũng như các tính năng mới đang được kiểm chứng trong các framework. Pages Router sử dụng phiên bản
+        React mà bạn cài đặt trong package.json.</p>
+      <p>Sau đó, thêm các script sau vào file package.json:</p>
+      <pre><code>{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  }
+}</code></pre>
+      <p>Các script này tương ứng với các giai đoạn khác nhau trong quá trình phát triển ứng dụng:</p>
+      <ul>
+        <li>next dev: Khởi động development server sử dụng Turbopack (bundler mặc định).</li>
+        <li>next build: Build ứng dụng cho môi trường production.</li>
+        <li>next start: Khởi động production server.</li>
+        <li>eslint: Chạy ESLint.</li>
+      </ul>
+      <p>Turbopack hiện là bundler mặc định. Để sử dụng Webpack, chạy <code>next dev --webpack</code> hoặc
+        <code>next build --webpack</code>. Xem tài liệu Turbopack: <a
+          href="https://nextjs.org/docs/app/api-reference/turbopack" target="_blank"
+          rel="noopener">https://nextjs.org/docs/app/api-reference/turbopack</a></p>
+
+      <h3>Tạo thư mục app</h3>
+      <p>Next.js sử dụng cơ chế file-system routing, nghĩa là các route trong ứng dụng được xác định dựa trên cách bạn
+        tổ chức các file.</p>
+      <p>Tạo một thư mục <code>app</code>. Sau đó, bên trong app, tạo file <code>layout.tsx</code>. Đây là root layout.
+        File này bắt buộc phải có và phải chứa các thẻ <code>&lt;html&gt;</code> và <code>&lt;body&gt;</code>.</p>
+      <pre><code>export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    &lt;html lang="en"&gt;
+      &lt;body&gt;{children}&lt;/body&gt;
+    &lt;/html&gt;
+  )
+}</code></pre>
+      <p>Tạo trang chủ <code>app/page.tsx</code> với một số nội dung ban đầu:</p>
+      <pre><code>export default function Page() {
+  return &lt;h1&gt;Hello, Next.js!&lt;/h1&gt;
+}</code></pre>
+      <p>Cả layout.tsx và page.tsx sẽ được render khi người dùng truy cập vào đường dẫn gốc của ứng dụng (/).</p>
+
+      <figure class="installation-figure">
+        <img
+          src="my_learning/nextjs/installation/images/layout-and-page-will-be-rendered-when-the-user-accesses-the application's-root-directory.png"
+          alt="app/layout.tsx and app/page.tsx render at /" loading="lazy">
+      </figure>
+
+      <h3>Good to know:</h3>
+      <ul>
+        <li>Nếu bạn quên tạo root layout, Next.js sẽ tự động tạo file này khi chạy development server bằng next dev.
+        </li>
+        <li>Bạn có thể tùy chọn sử dụng thư mục src ở thư mục gốc của dự án để tách mã nguồn ứng dụng khỏi các file cấu
+          hình.</li>
+      </ul>
+
+      <h3>Tạo thư mục public (optional)</h3>
+      <p>Tạo một thư mục public ở thư mục gốc của dự án để lưu trữ các tài nguyên tĩnh như hình ảnh, font chữ, v.v. Các
+        file bên trong public có thể được tham chiếu trong mã nguồn của bạn bắt đầu từ đường dẫn gốc (/).</p>
+      <p>Bạn có thể tham chiếu các tài nguyên này bằng đường dẫn gốc (/). Ví dụ: public/profile.png có thể được tham
+        chiếu là /profile.png:</p>
+
+      <pre><code>import Image from 'next/image'
+
+export default function Page() {
+  return &lt;Image src='/profile.png' alt="Profile" width={100} height={100} /&gt;
+}</code></pre>
+
+      <h3>Chạy development server</h3>
+      <ul>
+        <li>Chạy npm run dev để khởi động development server.</li>
+        <li>Truy cập http://localhost:3000 để xem ứng dụng của bạn.</li>
+        <li>Chỉnh sửa file app/page.tsx và lưu lại để xem kết quả được cập nhật trong trình duyệt.</li>
+      </ul>
+
+      <h3>Thiết lập TypeScript</h3>
+      <p>Phiên bản TypeScript tối thiểu: v5.1.0</p>
+      <p>Next.js có hỗ trợ TypeScript tích hợp sẵn.</p>
+      <p>Để thêm TypeScript vào dự án, hãy đổi tên một file thành .ts hoặc .tsx và chạy next dev. Next.js sẽ tự động cài
+        đặt các dependency cần thiết và thêm file tsconfig.json với các tùy chọn cấu hình được khuyến nghị.</p>
+
+      <h3>IDE Plugin</h3>
+      <p>Next.js bao gồm một plugin TypeScript tuỳ chỉnh và bộ kiểm tra kiểu (type checker), mà VSCode và các trình soạn
+        thảo mã khác có thể sử dụng để kiểm tra kiểu nâng cao và tự động hoàn thành (auto-completion).</p>
+      <p>Bạn có thể bật plugin trong VS Code bằng cách:</p>
+      <ol>
+        <li>Mở Command Palette (Ctrl/⌘ + Shift + P)</li>
+        <li>Tìm kiếm "TypeScript: Select TypeScript Version"</li>
+        <li>Chọn "Use Workspace Version"</li>
+      </ol>
+
+      <figure class="installation-figure">
+        <img src="my_learning/nextjs/installation/images/TypeScript-plugin.png"
+          alt="TypeScript: Select TypeScript Version..." loading="lazy">
+      </figure>
+
+      <p>Xem trang tài liệu tham khảo về TypeScript để biết thêm thông tin:
+        <a href="https://nextjs.org/docs/app/api-reference/config/typescript" target="_blank"
+          rel="noopener">https://nextjs.org/docs/app/api-reference/config/typescript</a>
+      </p>
+
+      <h3>Thiết lập linting</h3>
+      <p>Next.js hỗ trợ linting với ESLint hoặc Biome. Chọn một công cụ lint và chạy trực tiếp thông qua các script
+        trong package.json.</p>
+
+      <p>Sử dụng ESLint (bộ quy tắc đầy đủ):</p>
+      <pre><code>{
+  "scripts": {
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  }
+}</code></pre>
+
+      <p>Hoặc sử dụng Biome (linter + formatter tốc độ cao):</p>
+      <pre><code>{
+  "scripts": {
+    "lint": "biome check",
+    "format": "biome format --write"
+  }
+}</code></pre>
+
+      <p>Nếu dự án của bạn trước đây sử dụng next lint, hãy chuyển các script sang ESLint CLI bằng codemod sau:</p>
+      <p>npx @next/codemod@canary next-lint-to-eslint-cli .</p>
+      <p>Nếu bạn sử dụng ESLint, hãy tạo một file cấu hình rõ ràng (khuyến nghị dùng eslint.config.mjs). ESLint hỗ trợ
+        cả định dạng cũ .eslintrc.* và định dạng mới eslint.config.mjs.</p>
+      <p>Xem tài liệu tham khảo ESLint API để biết cấu hình được khuyến nghị:
+        <a href="https://nextjs.org/docs/app/api-reference/config/eslint#with-core-web-vitals" target="_blank"
+          rel="noopener">https://nextjs.org/docs/app/api-reference/config/eslint#with-core-web-vitals</a>
+      </p>
+      <p>Lưu ý: Bắt đầu từ Next.js 16, lệnh next build không còn tự động chạy linter nữa. Thay vào đó, bạn có thể chạy
+        linter thông qua các script NPM.</p>
+      <p>Xem trang tài liệu về ESLint Plugin để biết thêm thông tin:
+        <a href="https://nextjs.org/docs/app/api-reference/config/eslint" target="_blank"
+          rel="noopener">https://nextjs.org/docs/app/api-reference/config/eslint</a>
+      </p>
+
+      <h3>Thiết lập Absolute Imports và Module Path Aliases</h3>
+      <p>Next.js hỗ trợ sẵn các tùy chọn "paths" và "baseUrl" trong file tsconfig.json và jsconfig.json. Các tùy chọn
+        này cho phép bạn tạo alias cho thư mục dự án thành đường dẫn tuyệt đối, giúp việc import module dễ dàng và gọn
+        gàng hơn. Ví dụ:</p>
+
+      <pre><code>// Before
+
+import { Button } from '../../../components/button'
+
+// After
+
+import { Button } from '@/components/button'</code></pre>
+
+      <h3>Cấu hình Absolute Imports</h3>
+      <p>Để cấu hình import tuyệt đối, thêm tùy chọn baseUrl vào file tsconfig.json hoặc jsconfig.json. Ví dụ:</p>
+      <pre><code>{
+  "compilerOptions": {
+    "baseUrl": "src/"
+  }
+}</code></pre>
+
+      <p>Ngoài việc cấu hình baseUrl, bạn có thể sử dụng tùy chọn "paths" để tạo "alias" cho đường dẫn module. Ví dụ,
+        cấu hình sau ánh xạ @/components/* tới components/*:</p>
+      <pre><code>{
+  "compilerOptions": {
+    "baseUrl": "src/",
+    "paths": {
+      "@/styles/*": ["styles/*"],
+      "@/components/*": ["components/*"]
+    }
+  }
+}</code></pre>
+
+      <p>Mỗi đường dẫn trong "paths" đều được tính tương đối so với vị trí baseUrl.</p>
+    </div>
+  </main>
+</body>
+</html>

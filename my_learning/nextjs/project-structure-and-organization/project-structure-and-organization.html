@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project structure and organization • Next.js</title>
+</head>
+<body>
+    <main>
+        <h2>Cấu trúc và tổ chức dự án (Project structure and organization)</h2>
+        <p>Phần này giúp bạn hiểu cách Next.js tổ chức thư mục và tệp tin, cách định nghĩa route cũng như sử dụng các tính năng routing nâng cao.</p>
+
+        <h3>Nội dung</h3>
+        <ul>
+            <li>
+                <strong>
+                    <a href="?tag=nextjs&topic=nextjs-project-structure-and-organization-folder-and-file-conventions"
+                       data-topic-link="nextjs-project-structure-and-organization-folder-and-file-conventions">
+                        Quy ước về thư mục và tệp tin (Folder and file conventions)
+                    </a>
+                </strong>
+            </li>
+        </ul>
+    </main>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'nextjs');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

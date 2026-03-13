@@ -1,0 +1,19 @@
+.folder-and-file-figure {
+    max-width: 640px;
+    margin: 2rem auto;
+}
+
+.folder-and-file-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .folder-and-file-figure {
+        max-width: 100%;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+}

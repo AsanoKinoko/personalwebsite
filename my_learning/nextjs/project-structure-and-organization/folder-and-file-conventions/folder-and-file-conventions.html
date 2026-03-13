@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder and file conventions • Next.js</title>
+    <link rel="stylesheet" href="folder-and-file-conventions.css">
+</head>
+
+<body>
+    <main>
+        <style>
+            .nextjs-article {
+                max-width: 860px;
+                margin: 0 auto;
+                padding: 0 1rem 2rem;
+                box-sizing: border-box;
+            }
+
+            .nextjs-article pre {
+                max-width: 100%;
+                overflow-x: auto;
+            }
+
+            .nextjs-article img {
+                max-width: 100%;
+                height: auto;
+            }
+        </style>
+
+        <div class="nextjs-article">
+            <h2>Quy ước về thư mục và tệp tin (Folder and file conventions)</h2>
+
+            <h3>1. Thư mục cấp cao nhất (Top-level folders)</h3>
+            <p>Các thư mục cấp cao nhất được sử dụng để tổ chức mã nguồn và các tài nguyên tĩnh của ứng dụng.</p>
+
+            <figure class="folder-and-file-figure">
+                <img src="my_learning/nextjs/project-structure-and-organization/folder-and-file-conventions/images/top-level-folders.png"
+                    alt="Thư mục cấp cao nhất: app, pages, public, src" loading="lazy">
+            </figure>
+
+            <ul>
+                <li><code>app</code>: App Router</li>
+                <li><code>pages</code>: Pages Router</li>
+                <li><code>public</code>: Tài nguyên tĩnh phục vụ. Ví dụ như ảnh, icons svg...</li>
+                <li><code>src</code>: Thư mục nguồn ứng dụng tùy chọn</li>
+            </ul>
+
+            <h3>2. Các file cấp cao nhất (Top-level files)</h3>
+            <p>Các file cấp cao nhất được sử dụng để:</p>
+            <ul>
+                <li>Cấu hình ứng dụng</li>
+                <li>Quản lý dependencies</li>
+                <li>Chạy proxy</li>
+                <li>Tích hợp các công cụ giám sát</li>
+                <li>Định nghĩa các biến môi trường</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Mô tả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>next.config.js</code></td>
+                        <td>File cấu hình cho Next.js</td>
+                    </tr>
+                    <tr>
+                        <td><code>package.json</code></td>
+                        <td>Dependencies của dự án và các script</td>
+                    </tr>
+                    <tr>
+                        <td><code>instrumentation.ts</code></td>
+                        <td>File OpenTelemetry và Instrumentation</td>
+                    </tr>
+                    <tr>
+                        <td><code>proxy.ts</code></td>
+                        <td>Proxy request của Next.js</td>
+                    </tr>
+                    <tr>
+                        <td><code>.env</code></td>
+                        <td>Biến môi trường (không nên được theo dõi bởi hệ thống quản lý phiên bản)</td>
+                    </tr>
+                    <tr>
+                        <td><code>.env.local</code></td>
+                        <td>Biến môi trường cục bộ (không nên được theo dõi bởi hệ thống quản lý phiên bản)</td>
+                    </tr>
+                    <tr>
+                        <td><code>.env.production</code></td>
+                        <td>Biến môi trường cho production (không nên được theo dõi bởi hệ thống quản lý phiên bản)</td>
+                    </tr>
+                    <tr>
+                        <td><code>.env.development</code></td>
+                        <td>Biến môi trường cho development (không nên được theo dõi bởi hệ thống quản lý phiên bản)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>eslint.config.mjs</code></td>
+                        <td>File cấu hình cho ESLint</td>
+                    </tr>
+                    <tr>
+                        <td><code>.gitignore</code></td>
+                        <td>Các file và thư mục Git sẽ bỏ qua</td>
+                    </tr>
+                    <tr>
+                        <td><code>next-env.d.ts</code></td>
+                        <td>File khai báo TypeScript cho Next.js (không nên chỉnh sửa trực tiếp)</td>
+                    </tr>
+                    <tr>
+                        <td><code>tsconfig.json</code></td>
+                        <td>File cấu hình cho TypeScript</td>
+                    </tr>
+                    <tr>
+                        <td><code>jsconfig.json</code></td>
+                        <td>File cấu hình cho JavaScript</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3. Các file định tuyến (Routing Files)</h3>
+            <p>Thêm <code>page</code> để tạo một route công khai, <code>layout</code> để tạo giao diện dùng chung như
+                header, navigation, hoặc footer, <code>loading</code> để hiển thị skeleton loading, <code>error</code>
+                để xử lý lỗi (error boundaries), và <code>route</code> cho API.</p>
+
+            <h4><code>layout.tsx</code></h4>
+            <ul>
+                <li>Bắt buộc phải có</li>
+                <li>Là layout gốc</li>
+                <li>Phải chứa <code>&lt;html&gt;</code> và <code>&lt;body&gt;</code></li>
+            </ul>
+
+            <h4><code>page.tsx</code></h4>
+            <ul>
+                <li>Là nội dung của route</li>
+                <li>Mỗi thư mục route phải có <code>page.tsx</code></li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Phần mở rộng</th>
+                        <th>Mô tả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>layout</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Layout</td>
+                    </tr>
+                    <tr>
+                        <td><code>page</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Trang</td>
+                    </tr>
+                    <tr>
+                        <td><code>loading</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Giao diện khi đang tải</td>
+                    </tr>
+                    <tr>
+                        <td><code>not-found</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Giao diện khi không tìm thấy</td>
+                    </tr>
+                    <tr>
+                        <td><code>error</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Giao diện lỗi</td>
+                    </tr>
+                    <tr>
+                        <td><code>global-error</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Giao diện lỗi toàn cục</td>
+                    </tr>
+                    <tr>
+                        <td><code>route</code></td>
+                        <td><code>.ts</code></td>
+                        <td>Endpoint API</td>
+                    </tr>
+                    <tr>
+                        <td><code>template</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Layout được render lại</td>
+                    </tr>
+                    <tr>
+                        <td><code>default</code></td>
+                        <td><code>.js .jsx .tsx</code></td>
+                        <td>Trang fallback cho parallel route</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4. Nested routes (Route lồng nhau)</h3>
+            <p>Các thư mục xác định các segment của URL. Khi lồng thư mục thì các segment cũng được lồng theo. Layouts ở
+                bất kỳ cấp nào sẽ bao bọc (wrap) các segment con của nó. Một route sẽ trở thành public khi có file
+                <code>page</code> hoặc <code>route</code>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Path</th>
+                        <th>URL pattern</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>app/layout.tsx</code></td>
+                        <td>—</td>
+                        <td>Root layout bao bọc tất cả các route</td>
+                    </tr>
+                    <tr>
+                        <td><code>app/blog/layout.tsx</code></td>
+                        <td>—</td>
+                        <td>Bao bọc <code>/blog</code> và các route con</td>
+                    </tr>
+                    <tr>
+                        <td><code>app/page.tsx</code></td>
+                        <td><code>/</code></td>
+                        <td>Route công khai</td>
+                    </tr>
+                    <tr>
+                        <td><code>app/blog/page.tsx</code></td>
+                        <td><code>/blog</code></td>
+                        <td>Route công khai</td>
+                    </tr>
+                    <tr>
+                        <td><code>app/blog/authors/page.tsx</code></td>
+                        <td><code>/blog/authors</code></td>
+                        <td>Route công khai</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5. Dynamic routes (Route động)</h3>
+            <p>Có thể tạo các segment động bằng dấu ngoặc vuông.</p>
+            <ul>
+                <li><code>[segment]</code> → một tham số</li>
+                <li><code>[...segment]</code> → bắt tất cả (catch-all)</li>
+                <li><code>[[...segment]]</code> → bắt tất cả nhưng tùy chọn</li>
+            </ul>
+            <p>Có thể truy cập giá trị thông qua prop <code>params</code>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Path</th>
+                        <th>URL pattern</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>app/blog/[slug]/page.tsx</code></td>
+                        <td><code>/blog/my-first-post</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>app/shop/[...slug]/page.tsx</code></td>
+                        <td><code>/shop/clothing</code>, <code>/shop/clothing/shirts</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>app/docs/[[...slug]]/page.tsx</code></td>
+                        <td><code>/docs</code>, <code>/docs/layouts-and-pages</code>,
+                            <code>/docs/api-reference/use-router</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>6. Route groups và thư mục private</h3>
+            <p>Có thể tổ chức code mà không thay đổi URL bằng cách dùng route groups (<code>group</code>) và đặt các tệp
+                không thể định tuyến vào các thư mục riêng tư (<code>_folder</code>).</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Path</th>
+                        <th>URL pattern</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>app/(marketing)/page.tsx</code></td>
+                        <td><code>/</code></td>
+                        <td>Nhóm bị bỏ qua trong URL</td>
+                    </tr>
+                    <tr>
+                        <td><code>app/(shop)/cart/page.tsx</code></td>
+                        <td><code>/cart</code></td>
+                        <td>Chia sẻ layout trong <code>(shop)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>app/blog/_components/Post.tsx</code></td>
+                        <td>—</td>
+                        <td>Không thể truy cập qua route; nơi an toàn cho UI utilities</td>
+                    </tr>
+                    <tr>
+                        <td><code>app/blog/_lib/data.ts</code></td>
+                        <td>—</td>
+                        <td>Không thể truy cập qua route; nơi an toàn cho utilities</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

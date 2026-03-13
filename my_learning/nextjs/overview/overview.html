@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview • Next.js</title>
+</head>
+<body>
+    <main>
+        <style>
+            .nextjs-article {
+                max-width: 860px;
+                margin: 0 auto;
+                padding: 0 1rem 2rem;
+                box-sizing: border-box;
+            }
+        </style>
+
+        <div class="nextjs-article">
+        <h2>Tổng quan</h2>
+        <p>Next.js là một framework của React dùng để xây dựng web application full-stack.</p>
+        <p>Nó hỗ trợ:</p>
+        <ul>
+            <li>Server-Side Rendering (SSR)</li>
+            <li>Static Site Generation (SSG)</li>
+            <li>API routes (backend trong cùng project)</li>
+            <li>Routing tự động theo file</li>
+            <li>Tối ưu SEO</li>
+            <li>Tối ưu hiệu năng</li>
+        </ul>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=nextjs&topic=nextjs-installation" data-topic-link="nextjs-installation">Installation</a></strong></li>
+        </ul>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'nextjs');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

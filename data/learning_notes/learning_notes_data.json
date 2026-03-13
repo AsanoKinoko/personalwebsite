@@ -441,6 +441,41 @@
             ]
         },
         {
+            "id": "nextjs",
+            "title": "NextJS",
+            "subtitle": "Study NextJS step-by-step, like an online textbook.",
+            "image": "data/learning_notes/images/nextjs-icon.svg",
+            "url": "MyLearning.html?tag=nextjs",
+            "topics": [
+                {
+                    "id": "nextjs-overview",
+                    "title": "Overview",
+                    "breadcrumb": "NextJS / Overview",
+                    "url": "my_learning/nextjs/overview/overview.html"
+                },
+                {
+                    "id": "nextjs-installation",
+                    "title": "Installation",
+                    "breadcrumb": "NextJS / Installation",
+                    "url": "my_learning/nextjs/installation/installation.html"
+                },
+                {
+                    "id": "nextjs-project-structure-and-organization",
+                    "title": "Project structure and organization",
+                    "breadcrumb": "NextJS / Project structure and organization",
+                    "url": "my_learning/nextjs/project-structure-and-organization/project-structure-and-organization.html",
+                    "children": [
+                        {
+                            "id": "nextjs-project-structure-and-organization-folder-and-file-conventions",
+                            "title": "Folder and file conventions",
+                            "breadcrumb": "NextJS / Project structure and organization / Folder and file conventions",
+                            "url": "my_learning/nextjs/project-structure-and-organization/folder-and-file-conventions/folder-and-file-conventions.html"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "id": "reactjs",
             "title": "ReactJS",
             "image": "data/learning_notes/images/react_logo_light.svg",
