@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push changes to main & Reset instance • Figma</title>
+    <link rel="stylesheet" href="my_learning/figma/components-in-figma/main-component-and-instance/main-component-and-instance.css">
+    <link rel="stylesheet" href="my_learning/figma/components-in-figma/main-component-and-instance/push-changes-to-main-component-and-reset-instance/push-changes-to-main-component-and-reset-instance.css">
+</head>
+<body>
+    <main>
+        <div class="figma-article">
+            <h3>Push changes to main component và Reset instance</h3>
+
+            <figure class="img-frame img-frame--narrow">
+                <img src="my_learning/figma/components-in-figma/main-component-and-instance/push-changes-to-main-component-and-reset-instance/images/push-changes-to-main-component-and-reset-instance.png" alt="Menu: Push changes to main component / Detach instance / Reset instance" loading="lazy">
+            </figure>
+
+            <p><strong>Push changes to main component</strong>: Đẩy thay đổi từ instance lên component gốc</p>
+
+            <p><strong>Ví dụ</strong>: Bạn có</p>
+            <ul>
+                <li>Button (Main): "Submit"</li>
+                <li>Instance: "Login"</li>
+            </ul>
+
+            <p><strong>Bạn sửa instance</strong>:</p>
+            <ul>
+                <li>đổi màu</li>
+                <li>đổi padding</li>
+                <li>đổi layout</li>
+            </ul>
+
+            <p>Bấm <strong>Push changes</strong> → Main component sẽ trở thành: Button (Main): "Login" + style mới → Tất cả instance khác cũng update theo</p>
+
+            <h4>Khi nào nên dùng?</h4>
+            <p><strong>Khi</strong>:</p>
+            <ul>
+                <li>bạn chỉnh instance và thấy nó đúng hơn main</li>
+                <li>muốn update toàn hệ thống</li>
+            </ul>
+
+            <p><strong>Không nên khi</strong>:</p>
+            <ul>
+                <li>bạn chỉ test tạm</li>
+                <li>thay đổi chỉ dùng cho 1 instance</li>
+            </ul>
+
+            <p><strong>Reset instance</strong> là xoá tất cả override của instance → trở về giống main component</p>
+
+            <p><strong>Ví dụ</strong>:</p>
+            <ul>
+                <li>Main: Button (Blue, "Submit")</li>
+                <li>Instance: (Red, "Login")</li>
+            </ul>
+
+            <p>Bấm <strong>Reset instance</strong> → Instance trở về: Blue, "Submit"</p>
+        </div>
+    </main>
+</body>
+</html>

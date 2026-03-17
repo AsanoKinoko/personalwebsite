@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variants • Figma</title>
+    <link rel="stylesheet" href="my_learning/figma/components-in-figma/components-in-figma.css">
+    <link rel="stylesheet" href="my_learning/figma/components-in-figma/variants/variants.css">
+</head>
+<body>
+    <main>
+        <div class="figma-article">
+            <h3>Variants</h3>
+
+            <p>Đây là kiến thức quan trọng về component. <strong>Variants</strong> cho phép nhiều trạng thái trong 1 component.</p>
+
+            <p><strong>Ví dụ Button</strong>:</p>
+
+            <p><strong>Variant (State)</strong>:</p>
+            <ul>
+                <li>Default</li>
+                <li>Hover</li>
+                <li>Active</li>
+                <li>Disabled</li>
+            </ul>
+
+            <p><strong>Hoặc</strong>:</p>
+            <p><strong>Size</strong>:</p>
+            <ul>
+                <li>Small</li>
+                <li>Medium</li>
+                <li>Large</li>
+            </ul>
+
+            <h4>Thêm variant</h4>
+            <p>Để thêm một Variant thì bạn bấm nút <strong>Add variant</strong> ở bên cột bên phải:</p>
+
+            <figure class="img-frame img-frame--narrow">
+                <img src="my_learning/figma/components-in-figma/variants/images/add-variant-button.png" alt="Nút Add variant" loading="lazy">
+            </figure>
+
+            <p><strong>Sau khi add</strong>:</p>
+            <figure class="img-frame">
+                <img src="my_learning/figma/components-in-figma/variants/images/after-add-variant.png" alt="Sau khi add variant" loading="lazy">
+            </figure>
+
+            <p>Sau khi tạo bạn có thể sửa đổi <strong>Property</strong> của Variant vừa tạo ở cột bên phải:</p>
+            <figure class="img-frame">
+                <img src="my_learning/figma/components-in-figma/variants/images/change-property.png" alt="Đổi property của variant" loading="lazy">
+            </figure>
+
+            <h4>Các loại property</h4>
+            <ul>
+                <li><strong>Text property</strong>: Cho phép đổi text. VD: Button label = "Buy now"</li>
+                <li><strong>Boolean property</strong>: Bật/tắt element. VD: Icon visible = true / false</li>
+                <li><strong>Instance swap property</strong>: Cho phép đổi component con. VD: Icon = [Cart / Heart / User]</li>
+                <li><strong>Variant property</strong>: Chọn variant. VD: Size = Large; State = Hover</li>
+                <li>
+                    <strong>Slot</strong>: dùng để cho phép “nhét” nội dung linh hoạt vào bên trong component.
+                    Slot là vùng “placeholder” bên trong component để chứa nội dung tuỳ biến. Hiểu đơn giản:
+                    <pre><code>Component (Card)
+├─ Image
+├─ Title
+└─ Slot (content)</code></pre>
+                    <p>Slot cho phép bạn thay đổi nội dung bên trong mà không phá structure component.</p>
+                </li>
+            </ul>
+
+            <figure class="img-frame img-frame--narrow">
+                <img src="my_learning/figma/components-in-figma/variants/images/properties.png" alt="Menu Create property (Variant/Text/Boolean/Instance swap/Slot)" loading="lazy">
+            </figure>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main component và instance • Figma</title>
+    <link rel="stylesheet" href="my_learning/figma/components-in-figma/main-component-and-instance/main-component-and-instance.css">
+</head>
+<body>
+    <main>
+        <h2>Main component và instance</h2>
+        <p>Phần này tập trung vào cách làm việc với <strong>Main component</strong> (component gốc) và <strong>Instance</strong> (bản sử dụng), gồm override, detach và cách đồng bộ thay đổi.</p>
+
+        <h3>Nội dung</h3>
+        <ul>
+            <li><strong><a href="?tag=figma&topic=figma-main-component-and-instance-overview" data-topic-link="figma-main-component-and-instance-overview">Tổng quan</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-main-component-and-instance-override" data-topic-link="figma-main-component-and-instance-override">Override (ghi đè instance)</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-main-component-and-instance-detach-instance" data-topic-link="figma-main-component-and-instance-detach-instance">Detach instance</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-main-component-and-instance-push-changes" data-topic-link="figma-main-component-and-instance-push-changes">Push changes to main và reset instance</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'figma');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

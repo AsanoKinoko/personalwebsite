@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Làm việc với Component • Figma</title>
+    <link rel="stylesheet" href="my_learning/figma/components-in-figma/components-in-figma.css">
+</head>
+<body>
+    <main>
+        <h2>Làm việc với component</h2>
+
+        <p><strong>Component</strong> là một UI element có thể tái sử dụng nhiều lần.</p>
+
+        <p><strong>Ví dụ</strong>:</p>
+        <ul>
+            <li>Button</li>
+            <li>Card</li>
+            <li>Navbar</li>
+            <li>Input</li>
+            <li>Modal</li>
+        </ul>
+
+        <div class="callout">
+            <p><strong>Ý chính</strong>: Bạn tạo 1 lần → dùng lại ở nhiều nơi → sửa 1 chỗ → update toàn bộ.</p>
+        </div>
+
+        <h3>Tạo component</h3>
+
+        <p>
+            Để tạo một component thì bạn hãy chọn đối tượng, sau đó nhấn vào
+            <img class="inline-icon" src="my_learning/figma/components-in-figma/images/action-button.png" alt="Component action button" loading="lazy">
+            ở thanh công cụ rồi chọn <strong>Create component</strong> hoặc bấm tổ hợp <strong>Ctrl + Alt + K</strong>.
+        </p>
+
+        <figure class="img-frame">
+            <img src="my_learning/figma/components-in-figma/images/create-component.png" alt="Create component (toolbar)" loading="lazy">
+        </figure>
+
+        <p>Bạn cũng có thể bấm chuột phải cũng sẽ thấy lựa chọn <strong>Create component</strong>:</p>
+
+        <figure class="img-frame">
+            <img src="my_learning/figma/components-in-figma/images/create-component-2.png" alt="Create component (right click menu)" loading="lazy">
+        </figure>
+
+        <p>Sau khi tạo thì ở tab File bên trái nó sẽ hiển thị như sau:</p>
+
+        <figure class="img-frame">
+            <img src="my_learning/figma/components-in-figma/images/after-create-component.png" alt="After create component (layers panel)" loading="lazy">
+        </figure>
+
+        <h3>Nested Component</h3>
+
+        <p>Component có thể chứa component khác:</p>
+
+        <pre><code>Card
+├─ Image
+├─ Title
+├─ Price
+└─ Button (component)</code></pre>
+
+        <p><strong>Lợi ích</strong>:</p>
+        <ul>
+            <li>tái sử dụng sâu</li>
+            <li>dễ maintain</li>
+        </ul>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=figma&topic=figma-main-component-and-instance" data-topic-link="figma-main-component-and-instance">Main component và instance</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-variants" data-topic-link="figma-variants">Variants</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'figma');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Component vs Instance (Tổng quan) • Figma</title>
+    <link rel="stylesheet" href="my_learning/figma/components-in-figma/main-component-and-instance/overview/main-component-and-instance-overview.css">
+</head>
+<body>
+    <main>
+        <div class="figma-article">
+            <h3>Tổng quan</h3>
+
+        <p>Để tạo một instance của 1 component, chúng ta có những cách sau:</p>
+        <ul>
+            <li>
+                <strong>Kéo từ Assets panel (cách chuẩn nhất)</strong>: Mở tab Assets → Tìm component → Drag &amp; drop vào canvas
+                <p><strong>Ưu điểm</strong>:</p>
+                <ul>
+                    <li>Nhanh</li>
+                    <li>Dễ quản lý</li>
+                    <li>Chuẩn khi làm design system</li>
+                </ul>
+            </li>
+            <li><strong>Alt + Drag (duplicate instance)</strong>: Chọn một instance đã có → giữ Alt + kéo → tạo instance mới</li>
+            <li><strong>Dùng khi</strong>: Muốn copy nhanh UI đang có</li>
+            <li><strong>Copy / Paste</strong>: Ctrl + C → Ctrl + V → tạo instance mới giống hệt</li>
+            <li><strong>Duplicate (Ctrl + D)</strong>: Nhân bản instance (nhanh hơn copy/paste)</li>
+            <li><strong>Quick Insert (Ctrl + /)</strong>: Nhấn Ctrl + / → gõ tên component → Enter → instance được tạo ngay (rất nhanh cho power user)</li>
+        </ul>
+
+        <h4>Best practice (rất quan trọng)</h4>
+        <ul>
+            <li>Luôn tạo instance từ Assets khi làm project lớn</li>
+            <li>Tránh copy lung tung từ nhiều nơi</li>
+            <li>Giữ structure rõ ràng</li>
+        </ul>
+
+        <h4>Main Component (component gốc)</h4>
+        <ul>
+            <li>Là “source of truth”</li>
+            <li>Có thể chỉnh sửa full</li>
+        </ul>
+
+        <h4>Instance (bản copy)</h4>
+        <ul>
+            <li>Là bản sử dụng của component</li>
+            <li>Kế thừa từ main component</li>
+        </ul>
+
+        <pre><code>Main Button
+├─ Instance 1
+├─ Instance 2
+└─ Instance 3</code></pre>
+
+        <p><strong>Khi sửa main</strong> → tất cả instance update.</p>
+        <p><strong>VD</strong>: Khi đổi màu tam giác ở Main component thì tam giác ở tất cả instance đổi màu theo.</p>
+
+            <figure class="img-frame">
+                <img src="my_learning/figma/components-in-figma/main-component-and-instance/overview/images/change-color-in-main-component.png" alt="Đổi màu ở main component sẽ cập nhật toàn bộ instance" loading="lazy">
+            </figure>
+        </div>
+    </main>
+</body>
+</html>

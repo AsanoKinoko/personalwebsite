@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.figma-article {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+}
+
+.figma-article pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.figma-article img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-frame {
+    max-width: 640px;
+    margin: 2rem auto;
+}
+
+.img-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

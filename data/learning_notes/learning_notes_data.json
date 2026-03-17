@@ -132,6 +132,52 @@
                             "url": "my_learning/figma/draw-vector-shapes-and-pen-tool/stroke/stroke.html"
                         }
                     ]
+                },
+                {
+                    "id": "figma-components-in-figma",
+                    "title": "Components in Figma",
+                    "breadcrumb": "Figma / Components in Figma",
+                    "url": "my_learning/figma/components-in-figma/components-in-figma.html",
+                    "children": [
+                        {
+                            "id": "figma-main-component-and-instance",
+                            "title": "Main component và instance",
+                            "breadcrumb": "Figma / Components in Figma / Main component và instance",
+                            "url": "my_learning/figma/components-in-figma/main-component-and-instance/main-component-and-instance.html",
+                            "children": [
+                                {
+                                    "id": "figma-main-component-and-instance-overview",
+                                    "title": "Tổng quan",
+                                    "breadcrumb": "Figma / Components in Figma / Main component và instance / Tổng quan",
+                                    "url": "my_learning/figma/components-in-figma/main-component-and-instance/overview/main-component-and-instance-overview.html"
+                                },
+                                {
+                                    "id": "figma-main-component-and-instance-override",
+                                    "title": "Override (ghi đè instance)",
+                                    "breadcrumb": "Figma / Components in Figma / Main component và instance / Override",
+                                    "url": "my_learning/figma/components-in-figma/main-component-and-instance/override/override.html"
+                                },
+                                {
+                                    "id": "figma-main-component-and-instance-detach-instance",
+                                    "title": "Detach instance",
+                                    "breadcrumb": "Figma / Components in Figma / Main component và instance / Detach instance",
+                                    "url": "my_learning/figma/components-in-figma/main-component-and-instance/detach-instance/detach-instance.html"
+                                },
+                                {
+                                    "id": "figma-main-component-and-instance-push-changes",
+                                    "title": "Push changes to main và reset instance",
+                                    "breadcrumb": "Figma / Components in Figma / Main component và instance / Push changes & reset",
+                                    "url": "my_learning/figma/components-in-figma/main-component-and-instance/push-changes-to-main-component-and-reset-instance/push-changes-to-main-component-and-reset-instance.html"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "figma-variants",
+                            "title": "Variants",
+                            "breadcrumb": "Figma / Components in Figma / Variants",
+                            "url": "my_learning/figma/components-in-figma/variants/variants.html"
+                        }
+                    ]
                 }
             ]
         },
