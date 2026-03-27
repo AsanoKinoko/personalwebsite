@@ -1,255 +1,176 @@
 # Themes Management System
 
-Hệ thống quản lý themes và hiệu ứng cho website, cho phép bật/tắt các hiệu ứng từ trang admin.
+Hệ thống quản lý themes và hiệu ứng cho website, cho phép bật/tắt các hiệu ứng từ trang quản trị (Admin Panel). Hệ thống sử dụng cấu hình tập trung bằng file JSON để dễ dàng mở rộng.
 
 ## Cách sử dụng
 
-### 1. Thêm themes vào trang web
+### 1. Nhúng theme vào trang web
 
-Có 2 cách để thêm themes vào các trang:
-
-#### Cách 1: Sử dụng Themes Loader (Khuyến nghị)
-
-Chỉ cần thêm một dòng script vào `<head>` hoặc trước `</body>`:
+Chỉ cần thêm một dòng script vào `<head>` hoặc trước thẻ đóng `</body>`:
 
 ```html
 <script src="themes/themes-loader.js"></script>
 ```
 
-Themes loader sẽ tự động load tất cả các themes đã được bật từ admin panel.
-
-#### Cách 2: Load trực tiếp theme cụ thể
-
-Nếu bạn muốn load một theme cụ thể:
-
-```html
-<script src="themes/snow-effect.js"></script>
-```
-
-Theme sẽ tự kiểm tra trạng thái trong localStorage và chỉ khởi tạo nếu được bật.
+`themes-loader.js` sẽ tự động thực hiện các việc sau:
+1. Tải danh sách các theme từ `data/themes/themes_data.json`.
+2. Kiểm tra trạng thái bật/tắt trong `localStorage` (người dùng cài đặt) hoặc mặc định từ file JSON.
+3. Tự động tải các script theme tương ứng.
 
 ### 2. Quản lý themes từ Admin Panel
 
-1. Truy cập `/admin_pages/themes.html`
-2. Bật/tắt các themes bằng toggle switch
-3. Thay đổi sẽ được lưu vào localStorage và áp dụng ngay lập tức
+1. Truy cập vào trang quản lý Theme trong Admin: `/admin_pages/themes.html` (hoặc thông qua Dashboard).
+2. Sử dụng Toggle Switch để bật hoặc tắt các hiệu ứng.
+3. Thay đổi sẽ được lưu vào `localStorage` và áp dụng ngay lập tức cho tất cả các tab đang mở mà không cần load lại trang.
 
-## Thêm theme mới
+## Quy trình thêm theme mới
 
-Để thêm một theme mới vào hệ thống:
+Để thêm một hiệu ứng mới vào hệ thống, bạn thực hiện theo các bước sau:
 
-### Bước 1: Tạo file theme
+### Bước 1: Tạo script cho theme
+Tạo file script trong thư mục `themes/` (hoặc thư mục con bên trong), ví dụ: `themes/rain-effect/rain-effect.js`.
 
-Tạo file theme trong folder `themes/`, ví dụ: `themes/rain-effect.js`
-
-### Bước 2: Đăng ký theme trong themes-manager.js
-
-Thêm theme vào object `THEMES` trong `assets/js/admin/themes-manager.js`:
+Để theme hoạt động tốt với hệ thống bật/tắt mà không cần load lại trang, script nên được đóng gói theo cấu trúc sau:
 
 ```javascript
-const THEMES = {
-    snow: {
-        id: 'snow',
-        name: 'Hiệu ứng tuyết rơi',
-        description: 'Hiệu ứng tuyết rơi mùa đông...',
-        icon: '❄️',
-        script: '../themes/snow-effect.js',
-        enabled: false
-    },
-    rain: {  // Theme mới
-        id: 'rain',
-        name: 'Hiệu ứng mưa',
-        description: 'Hiệu ứng mưa rơi...',
-        icon: '🌧️',
-        script: '../themes/rain-effect.js',
-        enabled: false
-    }
-};
-```
+(function() {
+    if (window.MyNewEffect) return;
 
-### Bước 3: Thêm vào themes-loader.js
-
-Thêm theme vào `THEMES_CONFIG` trong `themes/themes-loader.js`:
-
-```javascript
-const THEMES_CONFIG = {
-    snow: {
-        script: 'themes/snow-effect.js'
-    },
-    rain: {  // Theme mới
-        script: 'themes/rain-effect.js'
-    }
-};
-```
-
-### Bước 4: Implement theme với localStorage check
-
-Trong file theme mới, thêm logic kiểm tra localStorage:
-
-```javascript
-function isThemeEnabled() {
-    try {
-        const themesState = localStorage.getItem('website_themes');
-        if (themesState) {
-            const state = JSON.parse(themesState);
-            return state.rain === true;  // ID của theme
+    class MyEffect {
+        constructor() {
+            // Khởi tạo hiệu ứng (tạo DOM, bắt đầu animation)
+            this.init();
         }
-    } catch (err) {
-        console.error('Error checking theme state:', err);
+        init() { /* ... */ }
+        destroy() {
+            // Xóa bỏ hiệu ứng hoàn toàn khi theme bị tắt
+            // Dừng requestAnimationFrame, xóa DOM element, v.v.
+        }
     }
-    return false;
-}
 
-// Chỉ init nếu theme được bật
-if (isThemeEnabled()) {
-    init();
-}
-
-// Lắng nghe thay đổi
-window.addEventListener('themeStateChanged', function(e) {
-    if (e.detail.themeId === 'rain') {
-        // Handle state change
-    }
-});
+    window.MyNewEffect = new MyEffect();
+})();
 ```
 
-## Cấu trúc
+### Bước 2: Đăng ký trong themes_data.json
+Thêm thông tin theme vào mảng `themes` trong file `data/themes/themes_data.json`:
 
-- `themes/snow-effect.js` - Hiệu ứng tuyết rơi
-- `themes/themes-loader.js` - Loader tự động cho tất cả themes
-- `admin_pages/themes.html` - Trang quản lý themes
-- `assets/js/admin/themes-manager.js` - Logic quản lý themes
+```json
+{
+  "id": "rain",
+  "name": "Hiệu ứng mưa",
+  "description": "Hiệu ứng mưa rơi nhẹ nhàng",
+  "icon": "🌧️",
+  "script": "./rain-effect/rain-effect.js",
+  "enabled": false
+}
+```
+*Lưu ý: Đường dẫn `script` được tính tương đối từ vị trí của file `themes-loader.js`.*
 
-## Lưu ý
+### Bước 3: Cập nhật hàm hủy (Cleanup) trong themes-loader.js (Tùy chọn)
+Để hỗ trợ việc tắt theme ngay lập tức khi gạt switch trong Admin mà không cần F5, hãy thêm logic hủy vào listener `themeStateChanged` trong `themes/themes-loader.js`:
 
-- Tất cả trạng thái được lưu trong `localStorage` với key `website_themes`
-- Themes sẽ tự động sync giữa các tab/window
-- Khi bật/tắt theme, thay đổi sẽ áp dụng ngay lập tức trên tất cả các trang đang mở
+```javascript
+} else if (!enabled && existingScript) {
+    if (window.MyNewEffect && themeId === 'rain') {
+        window.MyNewEffect.destroy();
+    }
+    existingScript.remove();
+}
+```
 
-=======================================================================================
+## Cấu trúc thư mục
 
-A system for managing themes and effects for your website, allowing you to enable/disable effects from the admin panel.
+- `data/themes/themes_data.json`: **Nguồn dữ liệu duy nhất** chứa danh sách và trạng thái mặc định của các theme.
+- `themes/themes-loader.js`: Bộ nạp logic chính cho phía người dùng cuối.
+- `assets/js/admin/themes-manager.js`: Logic xử lý giao diện quản lý phía Admin.
+- `admin_pages/themes.html`: Giao diện quản lý themes.
+
+---
+
+# Themes Management System (English)
+
+A system for managing themes and effects for your website, allowing you to enable/disable effects from the Admin Panel. It uses a centralized JSON configuration for easy scalability.
 
 ## How to Use
 
-### 1. Adding Themes to Your Website
+### 1. Embed the theme into Your Website
 
-There are two ways to add themes to pages:
-
-#### Method 1: Using Themes Loader (Recommended)
-
-Simply add a line of script to `<head>` or before `</body>`:
+Simply add a line of script to the `<head>` or before the `</body>` tag:
 
 ```html
 <script src="themes/themes-loader.js"></script>
 ```
 
-The Themes Loader will automatically load all themes that have been enabled from the admin panel.
-
-#### Method 2: Load a Specific Theme Directly
-
-If you want to load a specific theme:
-
-```html
-<script src="themes/snow-effect.js"></script>
-```
-
-The theme will automatically check its state in localStorage and only initialize if enabled.
+`themes-loader.js` will automatically:
+1. Load the list of themes from `data/themes/themes_data.json`.
+2. Check the enable/disable state in `localStorage` (user settings) or use the default from the JSON file.
+3. Automatically load the corresponding theme scripts.
 
 ### 2. Managing Themes from the Admin Panel
 
-1. Access `/admin_pages/themes.html`
-2. Enable/disable themes using the toggle switch
-3. Changes will be saved to localStorage and applied immediately
+1. Go to the Theme Management page in Admin: `/admin_pages/themes.html`.
+2. Use the Toggle Switches to enable or disable effects.
+3. Changes are saved to `localStorage` and applied immediately across all open tabs without a page reload.
 
 ## Adding a New Theme
 
-To add a new theme to the system:
+To add a new effect to the system, follow these steps:
 
-### Step 1: Create a theme file
+### Step 1: Create the Theme Script
+Create a script file in the `themes/` directory (or a subdirectory), e.g., `themes/rain-effect/rain-effect.js`.
 
-Create a theme file in the `themes/` folder, for example: `themes/rain-effect.js`
-
-### Step 2: Register the theme in themes-manager.js
-
-Add the theme to the `THEMES` object in `assets/js/admin/themes-manager.js`:
+To ensure the theme supports real-time toggling without a refresh, use the following structure:
 
 ```javascript
-const THEMES = {
-    snow: {
-        id: 'snow',
-        name: 'Hiệu ứng tuyết rơi',
-        description: 'Hiệu ứng tuyết rơi mùa đông...',
-        icon: '❄️',
-        script: '../themes/snow-effect.js',
-        enabled: false
-    },
-    rain: {  // New theme
-        id: 'rain',
-        name: 'Hiệu ứng mưa',
-        description: 'Hiệu ứng mưa rơi...',
-        icon: '🌧️',
-        script: '../themes/rain-effect.js',
-        enabled: false
-    }
-};
-```
+(function() {
+    if (window.MyNewEffect) return;
 
-### Step 3: Add to themes-loader.js
-
-Add the theme to `THEMES_CONFIG` in `themes/themes-loader.js`:
-
-```javascript
-const THEMES_CONFIG = {
-    snow: {
-        script: 'themes/snow-effect.js'
-    },
-    rain: {  // New theme
-        script: 'themes/rain-effect.js'
-    }
-};
-```
-
-### Step 4: Implement theme with localStorage check
-
-In the new theme file, add logic that checks localStorage:
-
-```javascript
-function isThemeEnabled() {
-    try {
-        const themesState = localStorage.getItem('website_themes');
-        if (themesState) {
-            const state = JSON.parse(themesState);
-            return state.rain === true;  // ID of the theme
+    class MyEffect {
+        constructor() {
+            this.init();
         }
-    } catch (err) {
-        console.error('Error checking theme state:', err);
+        init() { /* ... */ }
+        destroy() {
+            // Completely remove the effect when disabled
+            // Stop animations, remove DOM elements, etc.
+        }
     }
-    return false;
-}
 
-// Only init if theme is enabled
-if (isThemeEnabled()) {
-    init();
-}
-
-// Handle state change
-window.addEventListener('themeStateChanged', function(e) {
-    if (e.detail.themeId === 'rain') {
-        // Handle state change
-    }
-});
+    window.MyNewEffect = new MyEffect();
+})();
 ```
 
-## Structure
+### Step 2: Register in themes_data.json
+Add the theme entry to the `themes` array in `data/themes/themes_data.json`:
 
-- `themes/snow-effect.js` - Snowfall effect
-- `themes/themes-loader.js` - Automatic loader for all themes
-- `admin_pages/themes.html` - Theme management page
-- `assets/js/admin/themes-manager.js` - Theme management logic
+```json
+{
+  "id": "rain",
+  "name": "Rain Effect",
+  "description": "Gentle rainfall effect",
+  "icon": "🌧️",
+  "script": "./rain-effect/rain-effect.js",
+  "enabled": false
+}
+```
+*Note: The `script` path is relative to the location of `themes-loader.js`.*
 
-## Notes
+### Step 3: Update Cleanup logic in themes-loader.js (Optional)
+To support immediate removal when toggled off in Admin, add cleanup logic to the `themeStateChanged` listener in `themes/themes-loader.js`:
 
-- All state is stored in `localStorage` with the key `website_themes`
-- Themes will automatically sync between tabs/windows
-- When enabling/disabling a theme, changes will be applied immediately to all open pages
+```javascript
+} else if (!enabled && existingScript) {
+    if (window.MyNewEffect && themeId === 'rain') {
+        window.MyNewEffect.destroy();
+    }
+    existingScript.remove();
+}
+```
+
+## Directory Structure
+
+- `data/themes/themes_data.json`: **Single source of truth** for theme listing and default states.
+- `themes/themes-loader.js`: Main loader for the frontend.
+- `assets/js/admin/themes-manager.js`: Logic for the Admin Management UI.
+- `admin_pages/themes.html`: Admin management interface.

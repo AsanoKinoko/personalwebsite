@@ -145,6 +145,9 @@
             if (window.SnowEffect && themeId === 'snow') {
                 window.SnowEffect.destroy();
             }
+            if (window.CherryBlossomEffect && themeId === 'cherry_blossoms') {
+                window.CherryBlossomEffect.destroy();
+            }
             existingScript.remove();
         }
     });

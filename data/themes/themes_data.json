@@ -1,12 +1,20 @@
 {
-    "themes": [
-      {
-        "id": "snow",
-        "name": "Hiệu ứng tuyết rơi",
-        "description": "Hiệu ứng tuyết rơi mùa đông với animation mượt mà và tối ưu hiệu năng",
-        "icon": "❄️",
-        "script": "./snow-effect.js",
-        "enabled": true
-      }
-    ]
+  "themes": [
+    {
+      "id": "snow",
+      "name": "Hiệu ứng tuyết rơi",
+      "description": "Hiệu ứng tuyết rơi mùa đông với animation mượt mà và tối ưu hiệu năng",
+      "icon": "❄️",
+      "script": "./snow-effect.js",
+      "enabled": false
+    },
+    {
+      "id": "cherry_blossoms",
+      "name": "Hoa anh đào",
+      "description": "Hiệu ứng cánh hoa anh đào rơi cực kỳ chân thực với cảm giác 3D",
+      "icon": "🌸",
+      "script": "./falling-small-cherry-blossom-petals-effect/falling-small-cherry-blossom-petals-effect.js",
+      "enabled": true
+    }
+  ]
 }
