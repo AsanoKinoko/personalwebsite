@@ -3,10 +3,11 @@
  * Simply include this file once per page, and it will automatically load the themes.
  */
 
-(function() {
+(function () {
     'use strict';
 
     const STORAGE_KEY = 'website_themes';
+    const FINGERPRINT_KEY = 'website_themes_fingerprint';
     const THEMES_DATA_PATH = '../data/themes/themes_data.json';
 
     // Load themes state from localStorage
@@ -20,6 +21,30 @@
             console.error('Error loading themes state:', err);
         }
         return {};
+    }
+
+    // Generate a fingerprint from config defaults to detect changes
+    function generateConfigFingerprint(themesConfig) {
+        const entries = Object.keys(themesConfig)
+            .sort()
+            .map(id => `${id}:${themesConfig[id].enabled}`);
+        return entries.join('|');
+    }
+
+    // Compare fingerprint and reset localStorage if config defaults changed
+    function syncWithConfigDefaults(themesConfig) {
+        const currentFingerprint = generateConfigFingerprint(themesConfig);
+        try {
+            const savedFingerprint = localStorage.getItem(FINGERPRINT_KEY);
+            if (savedFingerprint !== null && savedFingerprint !== currentFingerprint) {
+                // Config defaults changed → clear old user overrides
+                localStorage.removeItem(STORAGE_KEY);
+                console.log('Theme config defaults changed, resetting saved preferences.');
+            }
+            localStorage.setItem(FINGERPRINT_KEY, currentFingerprint);
+        } catch (err) {
+            console.error('Error syncing theme fingerprint:', err);
+        }
     }
 
     // Resolve URL relative to themes-loader.js location (works with GitHub Pages subpaths)
@@ -111,6 +136,9 @@
 
         window.__THEMES_CONFIG__ = themesConfig;
 
+        // Reset localStorage if admin changed the config defaults
+        syncWithConfigDefaults(themesConfig);
+
         const themesState = loadThemesState();
         const loadPromises = [];
 
@@ -128,7 +156,7 @@
     }
 
     // Listen for theme state changes
-    window.addEventListener('themeStateChanged', function(e) {
+    window.addEventListener('themeStateChanged', function (e) {
         const { themeId, enabled } = e.detail;
         const themesConfig = window.__THEMES_CONFIG__ || {};
 
