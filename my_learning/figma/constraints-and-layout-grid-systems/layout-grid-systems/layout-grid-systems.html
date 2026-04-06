@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống lưới (Layout Grid System) • Figma</title>
+    <link rel="stylesheet" href="my_learning/figma/constraints-and-layout-grid-systems/constraints-and-layout-grid-systems.css">
+</head>
+<body>
+    <main>
+        <h2>Hệ thống lưới (Layout Grid System)</h2>
+
+        <p>Layout Grid là hệ thống lưới giúp bạn căn chỉnh UI một cách chính xác và nhất quán</p>
+
+        <p>Nó giúp:</p>
+
+        <ul>
+            <li>Canh thẳng hàng (alignment)</li>
+            <li>Giữ spacing đều</li>
+            <li>Responsive design</li>
+            <li>Làm design giống dev (rất quan trọng)</li>
+        </ul>
+
+        <p>Grid không phải để "trang trí". Nó là hệ thống logic giúp UI scale + responsive + maintain</p>
+
+        <p>Có 3 loại Layout Grid trong Figma:</p>
+
+        <h3>a. Grid (ô vuông nhỏ)</h3>
+
+        <p>Giống như giấy kẻ ô</p>
+        <p>Ví dụ: 10px x 10px</p>
+        <p>Dùng cho:</p>
+        <ul>
+            <li>Pixel-perfect</li>
+            <li>Icon</li>
+            <li>Micro spacing (padding, margin nhỏ)</li>
+        </ul>
+
+        <figure class="img-frame">
+            <img src="my_learning/figma/constraints-and-layout-grid-systems/layout-grid-systems/images/grid.png" alt="Grid layout settings trong Figma" loading="lazy">
+        </figure>
+
+        <ul>
+            <li>Size: kích thước ô (VD: 8, 10, 4)</li>
+            <li>Color: màu grid</li>
+            <li>Opacity: độ mờ</li>
+        </ul>
+
+        <p>Best practice: Dùng 8px grid system (chuẩn industry). Cụ thể là tất cả spacing nên theo: 4 / 8 / 16 / 24 / 32 / 48 / 64... Không nên để tùy ý (13px, 17px,...)</p>
+
+        <h3>b. Columns (cột)</h3>
+
+        <p>Chia layout thành nhiều cột</p>
+
+        <p>Dùng cho:</p>
+        <ul>
+            <li>Web design</li>
+            <li>Landing page</li>
+            <li>Dashboard</li>
+        </ul>
+
+        <p>Ví dụ:</p>
+        <ul>
+            <li>12 columns (chuẩn web)</li>
+            <li>8 columns (tablet)</li>
+            <li>4 columns (mobile)</li>
+        </ul>
+
+        <figure class="img-frame">
+            <img src="my_learning/figma/constraints-and-layout-grid-systems/layout-grid-systems/images/column.png" alt="Column layout settings trong Figma" loading="lazy">
+        </figure>
+
+        <ul>
+            <li>Count: số cột (VD: 12)</li>
+            <li>Type (quan trọng)
+                <ul>
+                    <li>Left: Cột bắt đầu từ trái</li>
+                    <li>Right: Bắt đầu từ phải</li>
+                    <li>Center: Căn giữa</li>
+                    <li>Stretch: Giãn full width</li>
+                </ul>
+                <p>Web nên dùng Stretch</p>
+            </li>
+            <li>Margin: khoảng cách từ mép frame
+                <p>Ví dụ:</p>
+                <ul>
+                    <li>Desktop: 120px</li>
+                    <li>Tablet: 64px</li>
+                    <li>Mobile: 16px</li>
+                </ul>
+            </li>
+            <li>Gutter: khoảng cách giữa các cột. Thường là 16px / 24px</li>
+        </ul>
+
+        <h3>c. Rows (hàng)</h3>
+
+        <p>Chia theo chiều dọc frame</p>
+
+        <p>Dùng cho:</p>
+        <ul>
+            <li>Vertical rhythm</li>
+            <li>Danh sách (list)</li>
+            <li>Table</li>
+        </ul>
+
+        <p>Các cài đặt tương tự như Column nhưng theo chiều dọc.</p>
+
+        <h3>Những lỗi người mới hay mắc:</h3>
+
+        <ul>
+            <li>Không dùng grid → layout lệch</li>
+            <li>Dùng grid nhưng không follow</li>
+            <li>Không consistent margin</li>
+            <li>Mix nhiều hệ grid</li>
+        </ul>
+
+        <h3>Tips nâng cao (Senior level):</h3>
+
+        <ul>
+            <li>Toggle grid nhanh: Shift + G</li>
+            <li>Dùng nhiều grid cùng lúc: Grid (8px) + Columns (12)</li>
+            <li>Dùng grid cho design system: Giữ consistency toàn app</li>
+            <li>Grid là cầu nối với dev: Frontend dev sẽ dùng:
+                <ul>
+                    <li>CSS Grid</li>
+                    <li>Flexbox</li>
+                </ul>
+                <p>Bạn design đúng grid → dev code nhanh hơn rất nhiều</p>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>

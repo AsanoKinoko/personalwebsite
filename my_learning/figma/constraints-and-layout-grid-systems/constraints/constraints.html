@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constraints • Figma</title>
+    <link rel="stylesheet"
+        href="my_learning/figma/constraints-and-layout-grid-systems/constraints-and-layout-grid-systems.css">
+</head>
+<body>
+    <main>
+        <h2>Constraints</h2>
+
+        <h3>Constraints là gì?</h3>
+
+        <p>Constraints là cách phần tử "bám" vào Frame cha khi resize</p>
+
+        <p>Hiểu đơn giản: Khi bạn kéo to / nhỏ frame (mobile → tablet → desktop), element sẽ di chuyển / co giãn theo.
+        </p>
+
+        <figure class="img-frame img-frame--narrow">
+            <img src="my_learning/figma/constraints-and-layout-grid-systems/constraints/images/constraints.png"
+                alt="Constraints panel trong Figma" loading="lazy">
+        </figure>
+
+        <p>Constraints trong Figma rất quan trọng và được sử dụng thường xuyên trong việc thiết kế responsive khi thay
+            đổi kích cỡ giao diện. Constraints hay dùng trong trường hợp UI đơn giản, không cần responsive phức tạp (ví
+            dụ các app trên mobile).</p>
+
+        <h3>2 chiều Constraints</h3>
+
+        <p>Figma chia thành 2 trục:</p>
+
+        <ul>
+            <li>Horizontal (ngang)
+                <ul>
+                    <li>Left</li>
+                    <li>Right</li>
+                    <li>Left + Right</li>
+                    <li>Center</li>
+                    <li>Scale</li>
+                </ul>
+            </li>
+            <li>Vertical (dọc)
+                <ul>
+                    <li>Top</li>
+                    <li>Bottom</li>
+                    <li>Top + Bottom</li>
+                    <li>Center</li>
+                    <li>Scale</li>
+                </ul>
+            </li>
+        </ul>
+
+        <figure class="img-frame img-frame--narrow">
+            <img src="my_learning/figma/constraints-and-layout-grid-systems/constraints/images/constraints-settings.png"
+                alt="Constraints dropdown settings" loading="lazy">
+        </figure>
+
+        <h3>Giải thích từng loại (QUAN TRỌNG):</h3>
+
+        <ul>
+            <li><strong>LEFT</strong>: Element luôn giữ khoảng cách với bên trái
+                <p>Dùng khi:</p>
+                <ul>
+                    <li>Icon menu</li>
+                    <li>Logo</li>
+                    <li>Avatar trái</li>
+                </ul>
+            </li>
+            <li><strong>RIGHT</strong>: Element giữ khoảng cách với bên phải
+                <p>Dùng khi:</p>
+                <ul>
+                    <li>Nút settings</li>
+                    <li>Icon close</li>
+                    <li>Cart icon</li>
+                </ul>
+            </li>
+            <li><strong>LEFT + RIGHT</strong>: Element giãn theo chiều ngang
+                <p>Nghĩa là: Frame to → element to theo. Frame nhỏ → element nhỏ theo</p>
+                <p>Dùng:</p>
+                <ul>
+                    <li>Input field</li>
+                    <li>Button full width</li>
+                    <li>Card stretch</li>
+                </ul>
+            </li>
+            <li><strong>SCALE</strong>: Element sẽ scale theo % của frame
+                <p>Ví dụ: Frame gấp đôi → element gấp đôi, không giữ margin cố định nữa</p>
+                <p>Dùng:</p>
+                <ul>
+                    <li>Background image</li>
+                    <li>Responsive illustration</li>
+                </ul>
+                <div class="callout callout--warning">
+                    <p><strong>CẢNH BÁO</strong>: Dev KHÔNG thích kiểu này lắm (khó control)</p>
+                </div>
+            </li>
+            <li>Với <strong>Vertical</strong> cũng khá tương tự:
+                <ul>
+                    <li>Top: dính trên</li>
+                    <li>Bottom: dính dưới</li>
+                    <li>Top + Bottom: stretch dọc</li>
+                    <li>Center: giữa</li>
+                    <li>Scale: scale theo chiều dọc</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Một số ví dụ thực tế (dễ hiểu):</h3>
+
+        <ul>
+            <li><strong>Case 1: Button ở giữa màn hình</strong>
+                <p>Constraints:</p>
+                <ul>
+                    <li>Horizontal: Center</li>
+                    <li>Vertical: Center</li>
+                </ul>
+            </li>
+            <li><strong>Case 2: Header bar</strong>
+                <ul>
+                    <li>Logo: Left + Top</li>
+                    <li>Avatar: Right + Top</li>
+                    <li>Title: Center + Top</li>
+                </ul>
+            </li>
+            <li><strong>Case 3: Input full width</strong>
+                <ul>
+                    <li>Horizontal: Left + Right</li>
+                    <li>Vertical: Top</li>
+                </ul>
+            </li>
+            <li><strong>Case 4: Footer stick dưới</strong>
+                <ul>
+                    <li>Vertical: Bottom</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Một số sai lầm phổ biến:</h3>
+
+        <ul>
+            <li>Dùng Scale bừa bãi: Làm layout bị vỡ khi resize</li>
+            <li>Không set constraints: Resize → UI bay lung tung</li>
+            <li>Dùng Center cho mọi thứ: Không thực tế (UI thật hiếm khi center hết)</li>
+        </ul>
+
+        <h3>Lưu ý:</h3>
+
+        <p>Constraints KHÔNG phải responsive hoàn chỉnh</p>
+
+        <ul>
+            <li>Muốn chuẩn xịn → phải dùng:
+                <ul>
+                    <li>Auto Layout</li>
+                    <li>Hug / Fill container</li>
+                </ul>
+            </li>
+            <li>Constraints chỉ là: "fallback system" cho layout cũ</li>
+        </ul>
+    </main>
+</body>
+</html>

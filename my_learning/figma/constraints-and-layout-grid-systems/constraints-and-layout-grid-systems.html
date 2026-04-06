@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constraints và Hệ thống lưới • Figma</title>
+</head>
+<body>
+    <main>
+        <h2>Constraints và Hệ thống lưới</h2>
+
+        <p>Phần này tập trung vào cách sử dụng <strong>Constraints</strong> để kiểm soát hành vi phần tử khi resize
+            frame, và <strong>Layout Grid System</strong> để căn chỉnh UI chính xác, nhất quán.</p>
+
+        <h3>Nội dung</h3>
+        <ul>
+            <li><strong><a href="?tag=figma&topic=figma-constraints" data-topic-link="figma-constraints">1.
+                        Constraints</a></strong></li>
+            <li><strong><a href="?tag=figma&topic=figma-layout-grid-systems"
+                        data-topic-link="figma-layout-grid-systems">2. Hệ thống lưới (Layout Grid System)</a></strong>
+            </li>
+        </ul>
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'figma');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

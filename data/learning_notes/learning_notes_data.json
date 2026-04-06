@@ -178,6 +178,26 @@
                             "url": "my_learning/figma/components-in-figma/variants/variants.html"
                         }
                     ]
+                },
+                {
+                    "id": "figma-constraints-and-layout-grid-systems",
+                    "title": "Constraints và Hệ thống lưới",
+                    "breadcrumb": "Figma / Constraints và Hệ thống lưới",
+                    "url": "my_learning/figma/constraints-and-layout-grid-systems/constraints-and-layout-grid-systems.html",
+                    "children": [
+                        {
+                            "id": "figma-constraints",
+                            "title": "Constraints",
+                            "breadcrumb": "Figma / Constraints và Hệ thống lưới / Constraints",
+                            "url": "my_learning/figma/constraints-and-layout-grid-systems/constraints/constraints.html"
+                        },
+                        {
+                            "id": "figma-layout-grid-systems",
+                            "title": "Hệ thống lưới (Layout Grid System)",
+                            "breadcrumb": "Figma / Constraints và Hệ thống lưới / Layout Grid System",
+                            "url": "my_learning/figma/constraints-and-layout-grid-systems/layout-grid-systems/layout-grid-systems.html"
+                        }
+                    ]
                 }
             ]
         },
