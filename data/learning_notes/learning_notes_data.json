@@ -1,6 +1,53 @@
 {
     "notes": [
         {
+            "id": "business-analysis",
+            "title": "Business Analysis",
+            "subtitle": "Explore the world of Business Analysis systematically",
+            "image": "data/learning_notes/images/business-analysis.png",
+            "url": "MyLearning.html?tag=business-analysis",
+            "topics": [
+                {
+                    "id": "ba-overview",
+                    "title": "Tổng quan và định nghĩa",
+                    "breadcrumb": "BA / Overview",
+                    "url": "my_learning/ba/overview/overview.html"
+                },
+                {
+                    "id": "ba-diagrams",
+                    "title": "Các loại sơ đồ (Diagrams)",
+                    "breadcrumb": "BA / Diagrams",
+                    "url": "my_learning/ba/diagrams/diagrams.html"
+                },
+                {
+                    "id": "ba-documents",
+                    "title": "Các loại tài liệu (Documents)",
+                    "breadcrumb": "BA / Documents",
+                    "url": "my_learning/ba/documents/documents.html"
+                },
+                {
+                    "id": "ba-sdlc",
+                    "title": "Mô hình phát triển phần mềm (SDLC)",
+                    "breadcrumb": "BA / SDLC",
+                    "url": "my_learning/ba/sdlc/sdlc-overview.html",
+                    "children": [
+                        {
+                            "id": "ba-sdlc-agile",
+                            "title": "Agile",
+                            "breadcrumb": "BA / SDLC / Agile",
+                            "url": "my_learning/ba/sdlc/agile.html"
+                        },
+                        {
+                            "id": "ba-sdlc-waterfall",
+                            "title": "Waterfall",
+                            "breadcrumb": "BA / SDLC / Waterfall",
+                            "url": "my_learning/ba/sdlc/waterfall.html"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "id": "css3",
             "title": "CSS3",
             "image": "data/learning_notes/images/css-3.png",
@@ -207,9 +254,7 @@
             "subtitle": "Study HTML step-by-step, like an online textbook.",
             "image": "data/learning_notes/images/html.png",
             "url": "MyLearning.html?tag=html5",
-            "topics": [
-                
-            ]
+            "topics": []
         },
         {
             "id": "javascript",
