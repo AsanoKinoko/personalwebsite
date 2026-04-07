@@ -26,6 +26,10 @@ class Header {
             if (currentPage === 'learningnote' || currentPage === 'learning-note' || currentPage === 'mylearning') {
                 currentPage = 'learningnote';
             }
+            // Check if it's a blog post page
+            if (pathname.includes('blog_posts')) {
+                currentPage = 'blogpost';
+            }
             const navLinks = document.querySelectorAll('[data-nav]');
             navLinks.forEach(link => {
                 if (link.dataset.nav === currentPage) {
@@ -47,17 +51,36 @@ class Header {
                     const pathParts = pathname.split('/').filter(part => part && !part.endsWith('.html'));
                     // Calculate how many levels up we need to go to reach root
                     const levelsUp = pathParts.length;
-                    backHref = levelsUp > 0 ? '../'.repeat(levelsUp) + 'index.html' : 'index.html';
+                    
+                    if (currentPage === 'blogpost') {
+                        backHref = levelsUp > 0 ? '../'.repeat(levelsUp) + 'Blog.html' : 'Blog.html';
+                    } else {
+                        backHref = levelsUp > 0 ? '../'.repeat(levelsUp) + 'index.html' : 'index.html';
+                    }
                 } else {
-                    backHref = `${baseUrl}/index.html`;
+                    if (currentPage === 'blogpost') {
+                        backHref = `${baseUrl}/Blog.html`;
+                    } else {
+                        backHref = `${baseUrl}/index.html`;
+                    }
                 }
                 backBtn.setAttribute('href', backHref);
+
+                if (currentPage === 'blogpost') {
+                    const backSpan = backBtn.querySelector('span');
+                    if (backSpan) {
+                        backSpan.textContent = 'Back to Blog';
+                    }
+                }
             }
             if (headerEl) {
                 headerEl.classList.toggle('about-header', currentPage === 'about');
                 headerEl.classList.toggle('service-header', currentPage === 'service');
-                headerEl.classList.toggle('blog-header', currentPage === 'blog');
+                headerEl.classList.toggle('blog-header', currentPage === 'blog' || currentPage === 'blogpost');
                 headerEl.classList.toggle('learning-note-header', currentPage === 'learningnote');
+                if (currentPage === 'blogpost') {
+                    headerEl.classList.add('post-header');
+                }
             }
 
             // Initialize menu button functionality
@@ -96,15 +119,23 @@ class Header {
             
             // Calculate relative path to index.html based on current location
             let logoHref;
+            let logoSrc;
             if (isLocal) {
                 const pathname = window.location.pathname;
                 const pathParts = pathname.split('/').filter(part => part && !part.endsWith('.html'));
                 const levelsUp = pathParts.length;
                 logoHref = levelsUp > 0 ? '../'.repeat(levelsUp) + 'index.html' : 'index.html';
+                logoSrc = levelsUp > 0 ? '../'.repeat(levelsUp) + 'assets/image/logo.png' : 'assets/image/logo.png';
             } else {
                 logoHref = `${baseUrl}/index.html`;
+                logoSrc = `${baseUrl}/assets/image/logo.png`;
             }
             logo.setAttribute('href', logoHref);
+
+            const logoImg = logo.querySelector('.logo-img');
+            if (logoImg) {
+                logoImg.setAttribute('src', logoSrc);
+            }
 
             logo.addEventListener('click', (e) => {
                 const pathname = window.location.pathname;
