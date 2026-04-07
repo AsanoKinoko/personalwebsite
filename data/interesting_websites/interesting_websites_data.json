@@ -1,0 +1,343 @@
+{
+  "title": "Interesting Websites",
+  "description": "Curated collection of interesting and useful websites.",
+  "groups": [
+    {
+      "id": "ai",
+      "label": "AI",
+      "icon": "bx bx-bot",
+      "websites": [
+        {
+          "name": "Galileo",
+          "link": "",
+          "description": "AI UI design tool"
+        },
+        {
+          "name": "Mermaid",
+          "link": "https://mermaid.js.org/",
+          "description": "AI diagram generation"
+        },
+        {
+          "name": "Motiff",
+          "link": "",
+          "description": "AI UI design tool"
+        },
+        {
+          "name": "Gamma AI",
+          "link": "https://gamma.app/",
+          "description": "AI slide & presentation generator"
+        },
+        {
+          "name": "Relume AI",
+          "link": "",
+          "description": "AI website & wireframe builder"
+        },
+        {
+          "name": "Uizard",
+          "link": "",
+          "description": "UI/UX design tools"
+        },
+        {
+          "name": "Virtual Threads",
+          "link": "https://www.virtualthreads.io/",
+          "description": "3D T-shirt mockup generator"
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "icon": "bx bx-code-alt",
+      "websites": [
+        {
+          "name": "Reqable",
+          "link": "https://reqable.com/en-US",
+          "description": "API development tool"
+        }
+      ]
+    },
+    {
+      "id": "animation",
+      "label": "Animation",
+      "icon": "bx bx-movie-play",
+      "websites": [
+        {
+          "name": "CSS Animation",
+          "link": "https://cssanimation.io/",
+          "description": "Some interesting CSS animations text"
+        }
+      ]
+    },
+    {
+      "id": "car",
+      "label": "Car",
+      "icon": "bx bx-car",
+      "websites": [
+        {
+          "name": "StartMyCar",
+          "link": "https://www.startmycar.com/",
+          "description": "Technical car document repository"
+        }
+      ]
+    },
+    {
+      "id": "color",
+      "label": "Color",
+      "icon": "bx bx-palette",
+      "websites": [
+        {
+          "name": "Hue Tools",
+          "link": "https://hue.tools/?format=hex",
+          "description": "Suggest ideas for colors and color schemes"
+        }
+      ]
+    },
+    {
+      "id": "icons",
+      "label": "Icons",
+      "icon": "bx bx-shape-square",
+      "websites": [
+        {
+          "name": "Atlas Icons",
+          "link": "https://atlasicons.vectopus.com/",
+          "description": ""
+        },
+        {
+          "name": "Flaticon",
+          "link": "https://www.flaticon.com/",
+          "description": ""
+        },
+        {
+          "name": "Hugeicons",
+          "link": "https://hugeicons.com/",
+          "description": ""
+        },
+        {
+          "name": "Iconhub",
+          "link": "https://iconhub.io/",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "image",
+      "label": "Image",
+      "icon": "bx bx-image",
+      "websites": [
+        {
+          "name": "iLoveIMG",
+          "link": "https://www.iloveimg.com/",
+          "description": "Online photo editor"
+        }
+      ]
+    },
+    {
+      "id": "just-for-fun",
+      "label": "Just For Fun",
+      "icon": "bx bx-party",
+      "websites": [
+        {
+          "name": "Custom Cursor",
+          "link": "https://custom-cursor.com/",
+          "description": ""
+        },
+        {
+          "name": "Text Repeater",
+          "link": "https://textrepeater.com/",
+          "description": ""
+        },
+        {
+          "name": "The Toy Maker",
+          "link": "https://thetoymaker.com/2Toys.html",
+          "description": "Free DIY paper toy templates"
+        }
+      ]
+    },
+    {
+      "id": "kid",
+      "label": "Kid",
+      "icon": "bx bx-child",
+      "websites": [
+        {
+          "name": "KiddoWorksheets",
+          "link": "https://www.kiddoworksheets.com/",
+          "description": "Free printable kids' worksheets"
+        }
+      ]
+    },
+    {
+      "id": "language",
+      "label": "Language",
+      "icon": "bx bx-world",
+      "websites": [
+        {
+          "name": "Hemingway App",
+          "link": "https://hemingwayapp.com/",
+          "description": "English writing assistant"
+        },
+        {
+          "name": "Perfect Chinese Grammar Checker",
+          "link": "https://zh.manfenyufa.com/en/",
+          "description": "Chinese grammar checker"
+        }
+      ]
+    },
+    {
+      "id": "learning",
+      "label": "Learning",
+      "icon": "bx bx-book-open",
+      "websites": [
+        {
+          "name": "AI",
+          "link": "https://elementsofai.com/",
+          "description": ""
+        },
+        {
+          "name": "API",
+          "link": "https://rapidapi.com/",
+          "description": ""
+        },
+        {
+          "name": "Blockchain",
+          "link": "https://cryptozombies.io/",
+          "description": ""
+        },
+        {
+          "name": "CSS",
+          "link": "https://web.dev/learn/css",
+          "description": ""
+        },
+        {
+          "name": "Design Patterns",
+          "link": "https://refactoring.guru/",
+          "description": ""
+        },
+        {
+          "name": "Git",
+          "link": "https://git-scm.com/book/en/v2",
+          "description": ""
+        },
+        {
+          "name": "GO",
+          "link": "https://learn-golang.org/",
+          "description": ""
+        },
+        {
+          "name": "HTML",
+          "link": "https://html.com/",
+          "description": ""
+        },
+        {
+          "name": "JavaScript",
+          "link": "https://javascript.info/",
+          "description": ""
+        },
+        {
+          "name": "Machine Learning",
+          "link": "https://www.freecodecamp.org/learn/machine-learning-with-python/",
+          "description": ""
+        },
+        {
+          "name": "Nextjs",
+          "link": "https://nextjs.org/learn",
+          "description": ""
+        },
+        {
+          "name": "PHP",
+          "link": "https://phptherightway.com/",
+          "description": ""
+        },
+        {
+          "name": "Python",
+          "link": "https://learnpython.org/",
+          "description": ""
+        },
+        {
+          "name": "React",
+          "link": "https://reactplay.io/",
+          "description": ""
+        },
+        {
+          "name": "Rust",
+          "link": "https://www.rust-lang.org/learn",
+          "description": ""
+        },
+        {
+          "name": "SQL",
+          "link": "https://www.w3schools.com/sql/",
+          "description": ""
+        },
+        {
+          "name": "Vue",
+          "link": "https://learnvue.co/",
+          "description": ""
+        },
+        {
+          "name": "Web3",
+          "link": "https://learnweb3.io/",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "quick-reference",
+      "label": "Quick Reference",
+      "icon": "bx bx-book-bookmark",
+      "websites": [
+        {
+          "name": "Quick Reference",
+          "link": "https://quickref.me/",
+          "description": "A huge library of keyboard shortcuts for many programming languages and tools."
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "label": "Science",
+      "icon": "bx bx-test-tube",
+      "websites": [
+        {
+          "name": "Javalabs",
+          "link": "https://javalab.org/en/",
+          "description": "Virtual science experiments & simulations"
+        }
+      ]
+    },
+    {
+      "id": "template",
+      "label": "Template",
+      "icon": "bx bx-layout",
+      "websites": [
+        {
+          "name": "FreeFrontend",
+          "link": "https://freefrontend.com/",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "ui-ux",
+      "label": "UI/UX",
+      "icon": "bx bx-paint",
+      "websites": [
+        {
+          "name": "MageUI",
+          "link": "https://www.mageui.live/",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "3d",
+      "label": "3D",
+      "icon": "bx bx-cube",
+      "websites": [
+        {
+          "name": "Virtual Room",
+          "link": "https://rooms.xyz/",
+          "description": "Interactive virtual room creator"
+        }
+      ]
+    }
+  ]
+}
