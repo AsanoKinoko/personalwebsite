@@ -11,37 +11,49 @@
                     "id": "ba-overview",
                     "title": "Tổng quan và định nghĩa",
                     "breadcrumb": "BA / Overview",
-                    "url": "my_learning/ba/overview/overview.html"
+                    "url": "my_learning/business_analysis/overview/overview.html"
                 },
                 {
                     "id": "ba-diagrams",
                     "title": "Các loại sơ đồ (Diagrams)",
                     "breadcrumb": "BA / Diagrams",
-                    "url": "my_learning/ba/diagrams/diagrams.html"
+                    "url": "my_learning/business_analysis/diagrams/diagrams.html"
                 },
                 {
                     "id": "ba-documents",
                     "title": "Các loại tài liệu (Documents)",
                     "breadcrumb": "BA / Documents",
-                    "url": "my_learning/ba/documents/documents.html"
+                    "url": "my_learning/business_analysis/documents/documents.html"
                 },
                 {
                     "id": "ba-sdlc",
                     "title": "Mô hình phát triển phần mềm (SDLC)",
                     "breadcrumb": "BA / SDLC",
-                    "url": "my_learning/ba/sdlc/sdlc-overview.html",
+                    "url": "my_learning/business_analysis/sdlc/sdlc.html",
                     "children": [
                         {
                             "id": "ba-sdlc-agile",
                             "title": "Agile",
                             "breadcrumb": "BA / SDLC / Agile",
-                            "url": "my_learning/ba/sdlc/agile.html"
+                            "url": "my_learning/business_analysis/sdlc/agile/agile.html"
+                        },
+                        {
+                            "id": "ba-sdlc-iterative-and-incremental",
+                            "title": "Iterative and Incremental",
+                            "breadcrumb": "BA / SDLC / Iterative and Incremental",
+                            "url": "my_learning/business_analysis/sdlc/iterative-and-incremental/iterative-and-incremental.html"
+                        },
+                        {
+                            "id": "ba-sdlc-kanban",
+                            "title": "Kanban",
+                            "breadcrumb": "BA / SDLC / Kanban",
+                            "url": "my_learning/business_analysis/sdlc/kanban/kanban.html"
                         },
                         {
                             "id": "ba-sdlc-waterfall",
                             "title": "Waterfall",
                             "breadcrumb": "BA / SDLC / Waterfall",
-                            "url": "my_learning/ba/sdlc/waterfall.html"
+                            "url": "my_learning/business_analysis/sdlc/waterfall/waterfall.html"
                         }
                     ]
                 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô hình phát triển phần mềm (SDLC)</title>
+</head>
+<body>
+    <main>
+        <h2>Mô hình phát triển phần mềm (SDLC)</h2>
+
+        <p><strong>Software Development Life Cycle (SDLC)</strong> là quy trình chuẩn hóa bao gồm các bước cần thiết để
+            lên kế hoạch, thiết kế, xây dựng, kiểm thử và triển khai một phần mềm hoặc hệ thống.</p>
+
+        <p>Có nhiều mô hình SDLC khác nhau, mỗi mô hình đều có những ưu điểm, nhược điểm và được áp dụng vào các loại dự
+            án phù hợp với bối cảnh cụ thể.</p>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-agile" data-topic-link="ba-sdlc-agile">Mô hình
+                        Agile</a></strong></li>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-iterative-and-incremental" data-topic-link="ba-sdlc-iterative-and-incremental">Iterative
+                        and Incremental Model (Mô hình lặp gia tăng)</a></strong></li>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-kanban" data-topic-link="ba-sdlc-kanban">Mô hình
+                        Kanban</a></strong></li>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-waterfall" data-topic-link="ba-sdlc-waterfall">Mô
+                        hình Waterfall</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

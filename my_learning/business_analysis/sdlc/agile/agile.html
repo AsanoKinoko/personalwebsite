@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô hình Agile • SDLC</title>
+    <link rel="stylesheet" href="my_learning/business_analysis/sdlc/agile/agile.css">
+</head>
+<body>
+    <main>
+        <style>
+            mark {
+                background-color: rgba(255, 235, 59, 0.2);
+                color: inherit;
+                padding: 2px 4px;
+                border-radius: 4px;
+            }
+        </style>
+        <h2>Agile</h2>
+
+        <p><strong>Agile</strong> là một phương thức phát triển phần mềm linh hoạt, được thực hiện bằng cách sử dụng các
+            bước lặp ngắn từ 1 đến 4 tuần, tập trung vào:</p>
+
+        <ul>
+            <li>Phản hồi nhanh với thay đổi</li>
+            <li>Phát triển theo vòng lặp (iteration)</li>
+            <li>Giao hàng sớm & liên tục</li>
+        </ul>
+
+        <div class="callout">
+            <p><strong>Hiểu đơn giản:</strong> Không làm 1 lần cho xong mà làm từng phần nhỏ, cải tiến liên tục.</p>
+        </div>
+
+        <p><strong>Mục tiêu của Agile</strong> là giúp rút ngắn thời gian phát triển sản phẩm, đưa sản phẩm đến với tay
+            khách hàng càng sớm càng tốt.</p>
+
+        <p>Về bản chất, Agile giống như một phương pháp luận, một triết lý dựa trên nguyên tắc phân đoạn vòng lặp
+            (iterative) và tăng trưởng (incremental) nên sở hữu tính linh hoạt cao. Tính chất này đi ngược lại với các
+            phương pháp quản lý dự án truyền thống - vốn dĩ triển khai các giai đoạn một cách tuyến tính và vô cùng bị
+            động trước các thay đổi bất ngờ.</p>
+
+        <hr>
+
+        <h3>Agile Manifesto (Tuyên ngôn Agile)</h3>
+
+        <p><mark><strong>Cá nhân và sự tương tác quan trọng hơn các quy trình và công cụ (Individuals & interactions >
+                    Processes & tools)</strong></mark></p>
+        <p>Trước đây, các nhóm phát triển sản phẩm thường có xu hướng tập trung vào các công cụ hay quy trình tốt nhất
+            để xây dựng sản phẩm. Tuy nhiên, Agile cho rằng những điều đó quả thật quan trọng, nhưng những người đứng
+            sau các quy trình đó mới là nhân tố quan trọng nhất.</p>
+        <p>Sở hữu một nhóm các cá nhân phù hợp cho dự án là yếu tố quan trọng nhất để thành công. Công cụ tốt mà rơi vào
+            tay của những người không có năng lực cũng trở nên vô dụng. Ngoài ra, sự tương tác và kết nối giữa các thành
+            viên trong nhóm cũng là chìa khóa then chốt để làm việc nhóm và giải quyết mọi vấn đề phát sinh.</p>
+
+        <p><mark><strong>Sản phẩm dùng được tốt hơn tài liệu đầy đủ (Working software > Comprehensive
+                    documentation)</strong></mark></p>
+        <p>Trước đây, các kỹ sư phần mềm sẽ dành nhiều thời gian để viết ra các tài liệu chi tiết về thiết kế sản phẩm,
+            thông số,... trước khi bắt tay vào code thực tế. Tài liệu chi tiết rõ ràng là một điểm cộng, tuy nhiên, có
+            những yếu tố khác mà họ cần tập trung vào hơn, đó chính là việc cung cấp một phần mềm có thể hoạt động tốt
+            được.</p>
+        <p>Tuyên ngôn Agile đặt việc cung cấp một sản phẩm thiết thực cho khách hàng của bạn ở mức ưu tiên cao nhất.</p>
+
+        <p><mark><strong>Cộng tác với khách hàng quan trọng hơn đàm phán hợp đồng (Customer
+                    collaboration > Contract negotiation)</strong></mark></p>
+        <p>Trước đây chủ dự án sẽ soạn thảo hợp đồng trước, sau đó khách hàng mới là người hoàn thiện bức tranh chi tiết
+            về thành phẩm yêu cầu. Điều này rất dễ dẫn đến sự mâu thuẫn giữa những gì hợp đồng đã viết, những gì sản
+            phẩm có thể làm và những gì mà khách hàng thực sự yêu cầu.</p>
+        <p>Với Tuyên ngôn Agile, sự tập trung được đặt vào sự phát triển liên tục. Nhóm thực hiện sẽ xây dựng một vòng
+            lặp tương tác và phản hồi với khách hàng để đảm bảo rằng sản phẩm tạo ra phù hợp với họ.</p>
+
+        <p><mark><strong>Phản hồi với sự thay đổi quan trọng hơn bám sát kế hoạch (Responding to change
+                    > Following a plan)</strong></mark></p>
+        <p>Chúng ta luôn kỳ vọng xây dựng nên một lộ trình triển khai dự án hoàn hảo và không bao giờ có sự thay đổi,
+            tuy nhiên, điều đó hầu như chẳng bao giờ xảy ra. Quá trình triển khai sẽ luôn phát sinh những vấn đề mới
+            không nằm trong kế hoạch, nhu cầu và yêu cầu của khách hàng cũng sẽ luôn thay đổi.</p>
+        <p>Tuyên ngôn Agile yêu cầu nhóm thực hiện có được khả năng xoay vòng và thay đổi hướng đi bất cứ lúc nào, với
+            một lộ trình linh hoạt, thay đổi theo từng tuần, tháng hoặc quý.</p>
+
+        <hr>
+
+        <h3>12 nguyên tắc Agile</h3>
+        <ol>
+            <li><strong>Giao hàng phần mềm sớm & liên tục:</strong> Ưu tiên cao nhất của Agile là làm hài lòng khách
+                hàng thông qua việc cung cấp sớm và liên tục các sản phẩm có giá trị.</li>
+            <li><strong>Chấp nhận thay đổi:</strong> Agile luôn chào đón các yêu cầu thay đổi, kể cả khi nó xuất hiện ở
+                giai đoạn cuối của quá trình triển khai, khi mọi thứ đã gần như hoàn thiện. Quy trình Agile luôn khai
+                thác sự thay đổi để tạo nên lợi thế cạnh tranh cho khách hàng.</li>
+            <li><strong>Deliver thường xuyên (1–4 tuần hoặc vài tháng):</strong> Giao phần mềm chạy được cho khách hàng
+                một cách thường xuyên, từ vài tuần đến vài tháng.</li>
+            <li><strong>Dev + Business làm việc cùng nhau:</strong> Các nhà kinh doanh và nhà phát triển phần mềm phải
+                làm việc cùng nhau hàng ngày trong suốt dự án.</li>
+            <li><strong>Xây team tự chủ:</strong> Tập trung xây dựng dự án xung quanh những cá nhân có động lực, cung
+                cấp cho họ môi trường và sự hỗ trợ cần thiết, cùng với niềm tin vào việc hoàn thành tốt công việc.</li>
+            <li><strong>Giao tiếp trực tiếp:</strong> Phương pháp hiệu quả nhất để truyền đạt thông tin là trao đổi trực
+                tiếp.</li>
+            <li><strong>Phần mềm chạy được là thước đo chính:</strong> Phần mềm hoạt động tốt chính là thước đo của tiến
+                độ triển khai Agile.</li>
+            <li><strong>Phát triển bền vững:</strong> Quy trình Agile thúc đẩy sự phát triển bền vững.</li>
+            <li><strong>Code tốt (technical excellence):</strong> Sự chú ý liên tục đến yếu tố kỹ thuật và thiết kế sẽ
+                cải tiến sự linh hoạt.</li>
+            <li><strong>Đơn giản hóa:</strong> Nghệ thuật tối đa hóa lượng công việc chưa xong: Sự đơn giản là cần
+                thiết.</li>
+            <li><strong>Team tự tổ chức:</strong> Những thiết kế và yêu cầu tốt nhất chỉ xuất hiện tại những nhóm làm
+                việc có khả năng tự tổ chức tốt.</li>
+            <li><strong>Liên tục cải tiến (retrospective):</strong> Nhóm thực thi cần suy nghĩ về việc làm việc hiệu quả
+                một cách thường xuyên để có sự điều chỉnh hành vi phù hợp.</li>
+        </ol>
+
+        <hr>
+
+        <h3>Quy trình Agile (cycle)</h3>
+        <p>Một vòng Agile thường như sau:</p>
+
+        <figure class="img-frame">
+            <img src="my_learning/business_analysis/sdlc/agile/images/agile-process-(cycle).png"
+                alt="Agile Process Cycle" loading="lazy">
+        </figure>
+
+        <p><strong>Điểm quan trọng:</strong></p>
+        <ul>
+            <li>Không làm 1 lần ➔ lặp lại nhiều lần</li>
+            <li>Mỗi vòng gọi là Iteration / Sprint</li>
+        </ul>
+
+        <h3>Một số phương pháp Agile phổ biến</h3>
+        <p>Agile không phải 1 framework duy nhất, mà là <strong>tư tưởng + nhiều framework</strong>. Một số framework
+            phổ biến được áp dụng trong thực tế có thể kể đến:</p>
+        <figure class="img-frame">
+            <img src="my_learning/business_analysis/sdlc/agile/images/some-popular-agile-methodologies.png"
+                alt="Some popular Agile methodologies" loading="lazy">
+        </figure>
+
+        <p style="text-align: center; margin-top: -10px; margin-bottom: 30px; color: #666;"><em>Thống kê 2024</em></p>
+
+        <h3>Một số tài liệu chính (Artifacts):</h3>
+        <ul>
+            <li><strong>Product Backlog:</strong> danh sách tất cả yêu cầu</li>
+            <li><strong>Sprint Backlog:</strong> việc sẽ làm trong sprint</li>
+            <li><strong>Increment:</strong> phần mềm hoàn chỉnh sau mỗi sprint</li>
+        </ul>
+
+        <h3>Ưu điểm của Agile</h3>
+        <ul>
+            <li><strong>Linh hoạt, dễ thay đổi:</strong> Dễ dàng thực hiện thay đổi ở bất kỳ giai đoạn nào của dự án,
+                thích nghi nhanh và hiệu quả với sự thay đổi, bao gồm cả yêu cầu sửa lại sản phẩm, sự biến động từ thị
+                trường,...</li>
+            <li><strong>Giao hàng nhanh:</strong> Phát triển và bàn giao sản phẩm nhanh hơn, bởi việc chia nhỏ dự án cho
+                phép đội ngũ có thể tiến hành kiểm tra theo từng phần, phát hiện sự cố và sửa chữa vấn đề nhanh hơn</li>
+            <li><strong>Khách hàng tham gia liên tục:</strong> Sản phẩm đạt chất lượng tốt hơn, do luôn nhận được phản
+                hồi ngay lập tức từ phía khách hàng và được tối ưu lại ngay sau đó</li>
+            <li><strong>Giảm rủi ro:</strong> Lãng phí ít tài nguyên hơn vì nhóm luôn thực hiện các công việc đã được
+                cập nhật, giảm tải thời gian chờ, giảm tải thời gian sửa lỗi sản phẩm, giảm tải số lượng lớn giấy tờ tài
+                liệu,...</li>
+            <li><strong>Phù hợp startup / sản phẩm mới:</strong> Người tham gia dự án không cần phải nắm mọi thông tin
+                ngay từ đầu, phù hợp với những dự án chưa xác định rõ ràng được mục tiêu cuối cùng</li>
+        </ul>
+
+        <h3>Nhược điểm của Agile</h3>
+        <ul>
+            <li><strong>Khó quản lý nếu team yếu:</strong> Bắt buộc phải hướng dẫn và đào tạo chi tiết, thì thành viên
+                dự án mới có thể hiểu rõ được mô hình Agile và thực hiện theo nó một cách rõ ràng, đặc biệt là trong
+                thời gian đầu</li>
+            <li><strong>Thiếu tài liệu nếu làm ẩu:</strong> Ít tài liệu hướng dẫn về dự án và không xác định rõ được kỳ
+                vọng và thành phẩm ngay từ đầu, do người thực thi mô hình Agile thường tin rằng mọi thứ sẽ thay đổi rất
+                nhiều, không quá cần thiết phải ghi chép và lưu trữ tài liệu</li>
+            <li><strong>Phụ thuộc vào khách hàng:</strong> Đòi hỏi sự cam kết về thời gian và công sức từ các bên hơn,
+                vì tất cả mọi người cần phải liên tục tương tác với nhau trong suốt quá trình thực thi dự án</li>
+            <li><strong>Khó estimate chính xác:</strong> Chi phí thực hiện dự án theo mô hình Agile thường cao hơn so
+                với các phương pháp phát triển khác</li>
+            <li><strong>Không phù hợp dự án yêu cầu cố định:</strong> Khó lên kế hoạch dự án, đặc biệt là khó xác định
+                rõ ràng thời gian bàn giao sản phẩm cuối cùng, không nắm rõ được chi phí thực sự của dự án là bao
+                nhiêu,... vì dự án được chia nhỏ thành các vòng lặp khác nhau</li>
+        </ul>
+
+        <h3>Khi nào nên dùng Agile?</h3>
+        <ul>
+            <li><strong>Dùng khi:</strong>
+                <ul>
+                    <li>Requirement thay đổi liên tục</li>
+                    <li>Sản phẩm mới (startup, SaaS)</li>
+                    <li>Cần feedback nhanh</li>
+                    <li>Team nhỏ - trung bình</li>
+                </ul>
+            </li>
+            <li><strong>Không nên dùng khi:</strong>
+                <ul>
+                    <li>Dự án cố định (banking, government)</li>
+                    <li>Yêu cầu rõ ràng từ đầu</li>
+                    <li>Compliance cao</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-iterative-and-incremental"
+                        data-topic-link="ba-sdlc-iterative-and-incremental">Iterative and Incremental Model (Mô hình lặp
+                        gia tăng)</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
