@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô hình Iterative and Incremental • SDLC</title>
+</head>
+
+<body>
+    <main>
+        <style>
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+            .img-frame {
+                border: 1px solid #e6e6e6;
+                border-radius: 10px;
+                overflow: hidden;
+                background: #fff;
+                margin: 14px 0;
+                padding: 0;
+            }
+        </style>
+        <h2>Iterative and Incremental Model (Mô hình lặp gia tăng)</h2>
+
+        <p>Là mô hình kết hợp giữa:</p>
+
+        <ul>
+            <li><strong>Incremental:</strong> xây dựng hệ thống theo từng phần (feature/module), mỗi phần là một chức
+                năng hoàn chỉnh nhỏ</li>
+            <li><strong>Iterative:</strong> Xây hệ thống bằng cách lặp lại nhiều vòng (iteration), mỗi vòng cải tiến dần
+                hệ thống</li>
+        </ul>
+
+        <div class="callout">
+            <p><strong>Hiểu đơn giản:</strong> Mỗi lần bạn thêm tính năng mới (Increment) sẽ đồng thời cải tiến tính
+                năng cũ (Iteration)</p>
+        </div>
+
+        <hr>
+
+        <h3>Quy trình</h3>
+
+        <p>Mỗi vòng (iteration/sprint):</p>
+
+        <ol>
+            <li>Chọn một số feature (increment)</li>
+            <li>Phân tích + thiết kế</li>
+            <li>Code</li>
+            <li>Test</li>
+            <li>Nhận feedback</li>
+            <li>Improve (iteration)</li>
+        </ol>
+
+        <p>Cứ thế lặp lại liên tục.</p>
+
+        <figure class="img-frame">
+            <img src="my_learning/business_analysis/sdlc/iterative-and-incremental/images/iterative-and-incremental-life-cycle.png"
+                alt="Iterative and Incremental Life Cycle" loading="lazy">
+        </figure>
+
+        <hr>
+
+        <h3>Đặc điểm quan trọng</h3>
+        <ul>
+            <li><strong>Phát triển từng phần (Incremental):</strong> Mỗi lần build thêm feature mới</li>
+            <li><strong>Cải tiến liên tục (Iterative):</strong> Refactor, optimize, UX improve</li>
+            <li><strong>Feedback sớm & liên tục:</strong> User test từng version</li>
+            <li><strong>Không cần hoàn hảo từ đầu:</strong> Build nhanh ➔ sửa dần</li>
+        </ul>
+
+        <hr>
+
+        <h3>Ưu điểm</h3>
+        <ul>
+            <li><strong>Ra sản phẩm sớm:</strong> Có thể release ngay từ Sprint 1</li>
+            <li><strong>Linh hoạt cực cao:</strong> Dễ dàng đổi yêu cầu</li>
+            <li><strong>Feedback liên tục:</strong> User tham gia từ đầu</li>
+            <li><strong>Giảm risk:</strong> Sai sửa sớm</li>
+            <li><strong>Improve liên tục:</strong> Code + UX tốt dần</li>
+        </ul>
+
+        <hr>
+
+        <h3>Nhược điểm</h3>
+        <ul>
+            <li><strong>Khó quản lý nếu team yếu:</strong> Dễ loạn</li>
+            <li><strong>Scope creep:</strong> Khách hàng cứ thêm feature</li>
+            <li><strong>Không có plan rõ từ đầu:</strong> Khó estimate</li>
+            <li><strong>Technical debt:</strong> Nếu không refactor</li>
+        </ul>
+
+        <hr>
+
+        <h3>Ví dụ một số rủi ro và cách xử lý:</h3>
+        <ul>
+            <li><strong>Risk:</strong> Mở rộng phạm vi dự án (Scope creep)<br>
+                <strong>Fix:</strong> Ưu tiên các công việc còn tồn đọng (Prioritize backlog)
+            </li>
+            <li><strong>Risk:</strong> Mã nguồn lộn xộn (Code messy)<br>
+                <strong>Fix:</strong> Refactor mỗi iteration
+            </li>
+            <li><strong>Risk:</strong> Không có kiến trúc<br>
+                <strong>Fix:</strong> Thiết kế high-level từ đầu
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Khi nào nên dùng?</h3>
+        <ul>
+            <li><strong>GẦN NHƯ LUÔN LUÔN dùng khi:</strong>
+                <ul>
+                    <li>Web app (React, NextJS, Spring Boot)</li>
+                    <li>Mobile app</li>
+                    <li>Startup</li>
+                    <li>Product evolving</li>
+                </ul>
+            </li>
+            <li><strong>KHÔNG nên dùng khi:</strong>
+                <ul>
+                    <li>Requirement cố định 100%</li>
+                    <li>Project government / military</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-kanban"
+                        data-topic-link="ba-sdlc-kanban">Kanban</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
