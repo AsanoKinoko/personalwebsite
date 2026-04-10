@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô hình Kanban • SDLC</title>
+    <link rel="stylesheet" href="my_learning/business_analysis/sdlc/kanban/kanban.css">
+</head>
+
+<body>
+    <main>
+        <style>
+            mark {
+                background-color: rgba(255, 235, 59, 0.2);
+                color: inherit;
+                padding: 2px 4px;
+                border-radius: 4px;
+            }
+        </style>
+        <h2>Kanban</h2>
+
+        <p><strong>Mô hình Kanban</strong> được dùng như một công cụ trực quan hóa những tác vụ cần làm, để các thành
+            viên dự án có thể thấy nhìn vị trí của chúng đang ở đâu trong luồng công việc. Cách đơn giản là dùng những
+            tấm bảng trắng và dán những tờ giấy màu phía dưới để mô tả và quản lý quá trình làm việc.</p>
+
+        <p>Kanban là một phương pháp quản lý công việc nhằm:</p>
+        <ul>
+            <li>Tối ưu hóa quy trình làm việc (workflow)</li>
+            <li>Giảm lãng phí</li>
+            <li>Tăng hiệu suất và tính linh hoạt</li>
+        </ul>
+
+        <p><mark><strong>Nguồn gốc:</strong></mark> Xuất phát từ hệ thống sản xuất của Toyota (Lean Manufacturing)</p>
+        <p><mark><strong>Ý nghĩa từ “Kanban” (tiếng Nhật):</strong></mark> “Bảng tín hiệu” hoặc “thẻ trực quan”</p>
+
+        <hr>
+
+        <h3>Nguyên lý cốt lõi của Kanban</h3>
+        <p>Kanban có 4 nguyên lý nền tảng:</p>
+        <ul>
+            <li><strong>Bắt đầu với những gì đang có:</strong>
+                <ul>
+                    <li>Không cần thay đổi hệ thống ngay lập tức</li>
+                    <li>Áp dụng Kanban vào quy trình hiện tại</li>
+                    <li>Không sản phẩm nào có lỗi</li>
+                </ul>
+            </li>
+            <li><strong>Đồng ý cải tiến dần dần:</strong>
+                <ul>
+                    <li>Không thay đổi đột ngột - Duy trì dòng chảy luồng công việc: Mục tiêu của Kanban là tối ưu hóa
+                        luồng công việc, đảm bảo rằng công việc di chuyển từ
+                        giai đoạn này sang giai đoạn khác một cách mạch lạc, không có sự trì hoãn không cần thiết. Việc
+                        di
+                        chuyển tấm thẻ Kanban để chuyển trạng thái của mỗi đầu việc sẽ được làm tuần tự theo quy định
+                        ban đầu để
+                        tránh sự tắc nghẽn.
+                    </li>
+                    <li>
+                        Continuous Improvement (Kaizen): Quy trình sản xuất luôn được cải tiến liên tục
+                        cho dù
+                        đã rất tốt.
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Tôn trọng vai trò hiện tại - Hạn chế khối lượng công việc đồng thời (Work In Progress Limit -
+                    WIP Limit):</strong> Kanban giới hạn số lượng công việc được thực hiện cùng một lúc tại mỗi giai
+                đoạn của quy trình làm việc. Số lượng công việc của mỗi người, mỗi bộ phận cũng cần được giới hạn ở mức
+                độ khả thi. Điều này giúp tránh tình trạng bị quá tải, đồng thời thúc đẩy con người tăng cường tập trung
+                vào công việc hiện tại thay vì chạy theo nhiều công việc cùng một lúc.</li>
+            <li><strong>Trực quan hóa quy trình làm việc:</strong> Kanban sử dụng bảng, cột và thẻ Kanban để hình ảnh
+                hóa các công việc và quy trình làm việc. Mỗi tấm thẻ đại diện cho một công việc cần được thực hiện, và
+                các cột trên bảng đại diện cho các giai đoạn khác nhau của quy trình làm việc – cũng là các trạng thái
+                khác nhau của đầu việc. Đơn giản nhất, một bảng Kanban có thể bao gồm 3 cột: To-do (Việc cần làm), Doing
+                (Đang làm), và Done (Đã hoàn thành).</li>
+        </ul>
+
+        <hr>
+
+        <h3>Các khái niệm quan trọng</h3>
+        <ul>
+            <li><strong>Bảng công việc (bảng Kanban - Kanban board)</strong> là bảng chứa những việc cần làm của một dự
+                án hoặc quy trình làm việc. Trong bảng Kanban, các thẻ công việc được di chuyển qua các cột tương ứng
+                với các giai đoạn trong quy trình làm việc, để biểu thị tiến độ của công việc. Ngoài ra, Kanban Board có
+                thể bao gồm các thông tin bổ sung như biểu đồ thống kê về hiệu suất làm việc, các yêu cầu, ghi chú, hoặc
+                các biểu đồ khác nhằm hỗ trợ quản lý và theo dõi tiến độ công việc.</li>
+            <li><strong>Cột Kanban</strong> là khái niệm được sử dụng để mô tả các phần của bảng Kanban, mà mỗi phần đại
+                diện cho một giai đoạn hoặc trạng thái khác nhau trong quy trình làm việc. Các thẻ công việc sẽ di
+                chuyển qua các cột này khi chúng được thực thi lần lượt qua quy trình làm việc. Tại mỗi cột Kanban sẽ
+                chứa một Danh sách (List) tập hợp các thẻ - thường là những thẻ trong cùng một giai đoạn của quy trình.
+            </li>
+            <li><strong>Thẻ công việc (thẻ Kanban - Kanban card)</strong> được sử dụng để hình ảnh hóa các tác vụ trong
+                quy trình làm việc. Mỗi thẻ công việc đại diện cho một tác vụ cụ thể, chẳng hạn như một nhiệm vụ phải
+                hoàn thành hoặc một sản phẩm sẽ được thực hiện. Mỗi tấm thẻ Kanban sẽ bao gồm các thông tin cần thiết
+                như:
+                <ul>
+                    <li><strong>Tiêu đề thẻ:</strong> Mô tả ngắn gọn về tác vụ cần thực hiện</li>
+                    <li><strong>Người phụ trách:</strong> Tên người được giao nhiệm vụ hoặc chịu trách nhiệm cho tác vụ
+                        đó</li>
+                    <li><strong>Dự kiến hoàn thành:</strong> Mốc thời hạn hoặc thời gian dự kiến để hoàn thành tác vụ
+                    </li>
+                    <li><strong>Mã số:</strong> Con số tương ứng với mỗi thẻ, được dùng để xác định và tìm kiếm chính
+                        xác thẻ đó trong hệ thống Kanban</li>
+                    <li><strong>Mã màu hoặc nhãn dán:</strong> Dấu hiệu biểu thị trạng thái của các thẻ công việc, hoặc
+                        nhận biết các tấm thẻ đã được phân phân loại</li>
+                    <li><strong>Đánh dấu ưu tiên:</strong> Dấu hiệu nhận biết các tác vụ cần ưu tiên thực hiện sớm.</li>
+                </ul>
+            </li>
+            <li><strong>Lead Time:</strong> Thời gian từ lúc tạo task đến lúc hoàn thành</li>
+            <li><strong>Cycle Time:</strong> Thời gian từ lúc bắt đầu làm đến lúc hoàn thành</li>
+            <li><strong>Throughput:</strong> Số task hoàn thành / thời gian</li>
+            <li><strong>Bottleneck:</strong> Điểm nghẽn (ví dụ: Testing quá tải)</li>
+        </ul>
+
+        <div class="callout">
+            <p><strong>Công thức quan trọng:</strong> WIP = Throughput x CycleTime</p>
+        </div>
+
+        <hr>
+
+        <h3>Ưu điểm của Kanban</h3>
+        <ul>
+            <li><strong>Linh hoạt cực cao:</strong> Không cần sprint như Scrum. Trong suốt quá trình làm việc, các tấm
+                thẻ Kanban mới sẽ được dễ dàng thêm vào, hoặc thay đổi trạng thái cũng như mức độ ưu tiên của chính nó.
+                Nhờ vậy, Kanban được đánh giá là một mô hình phản ứng nhanh nhạy, giúp quy trình làm việc dễ dàng đáp
+                ứng trước các yêu cầu thay đổi.</li>
+            <li><strong>Dễ áp dụng:</strong> Nhờ nguyên lý sử dụng dễ hiểu và mô hình cũng dễ thiết lập, phương pháp
+                Kanban có thể triển khai trong bất kỳ đội nhóm, doanh nghiệp thuộc ngành nghề hay quy mô nào. Không cần
+                thay đổi tổ chức lớn. Thậm chí, nó còn được linh hoạt áp dụng vào trong các quy trình khác nhau, hay các
+                giai đoạn khác nhau của dự án mà không gây xáo trộn quá lớn.</li>
+            <li><strong>Tăng hiệu suất:</strong> Nhờ WIP limit, phương pháp Kanban yêu cầu con người tập trung vào các
+                nhiệm vụ hiện tại cho đến khi hoàn thành, tránh đa nhiệm gây ách tắc quy trình hoặc ảnh hưởng tới chất
+                lượng đầu ra của công việc. Nguyên lý này đã giúp cho các công việc được xử lý gọn gàng và khoa học hơn,
+                tăng cao năng suất làm việc thực tế.</li>
+            <li><strong>Minh bạch:</strong> Nhìn board là hiểu tình trạng. Phương pháp Kanban giúp mọi người dễ dàng
+                nhìn thấy tất cả các nhiệm vụ và các phần việc bản thân cần làm / phải làm, mang lại sự minh bạch cho
+                toàn bộ quá trình làm việc. Dựa theo đó, mỗi thành viên đều có khả năng loại bỏ công việc không cần
+                thiết và tập trung vào những công việc quan trọng nhất.</li>
+            <li><strong>Giúp nhanh chóng phát hiện vướng mắc trong quy trình:</strong> Khi làm việc trên một tấm bảng
+                Kanban đã được lấp đầy bằng thẻ công việc, sẽ không khó để nhận ra các vướng mắc trong quy trình: một số
+                cột bị quá tải nhiệm vụ, một số cột bị ách tắc lâu ngày, một số thẻ đã lâu chưa được chuyển sang giai
+                đoạn khác,… Đây là một trong các ưu điểm nổi trội của phương pháp trực quan hóa.</li>
+        </ul>
+
+        <h3>Nhược điểm của Kanban</h3>
+        <ul>
+            <li><strong>Không có deadline rõ ràng:</strong> Không có sprint nên dễ trễ nếu không kiểm soát. Kanban tập
+                trung vào quá trình làm việc liên tục và không đặt nhiều giới hạn về mặt thời gian. Các cột trên bảng
+                tương ứng với các giai đoạn làm việc nhưng lại không có khung thời hạn tương ứng, gây khó khăn trong
+                việc lập kế hoạch khi nào sẽ thực hiện tác vụ, và ước lượng khi nào thì mọi việc sẽ được hoàn thành.
+            </li>
+            <li><strong>Khó quản lý team lớn nếu không có quy tắc rõ:</strong> Nếu trong một luồng làm việc có quá nhiều
+                hoạt động hoặc nhiệm vụ liên quan đến nhau đòi hỏi các bước chuyển giao diễn ra thường xuyên, hoặc có
+                các nhiệm vụ không đạt yêu cầu phải chuyển trạng thái “ngược” về giai đoạn trước, bảng Kanban rất dễ bị
+                rối. Đội ngũ thực thi sẽ gặp khó khăn trong việc nắm bắt và theo kịp tất cả các hoạt động này.</li>
+            <li><strong>Phụ thuộc kỷ luật team:</strong> Nếu không tuân thủ WIP -> fail. Phương pháp Kanban đòi hỏi
+                người dùng phải cập nhật trạng thái của các thẻ công việc thường xuyên, thậm chí là tức thời; bởi nếu
+                không, đội ngũ có nguy cơ phải làm việc với các thông tin không chính xác, và cũng làm mất đi ý nghĩa
+                của việc trực quan hóa luồng công việc thành bảng và cột.</li>
+            <li><strong>Không đảm bảo kết quả đầu ra:</strong> Kanban thường tập trung vào việc chuyển trạng thái cho
+                các tấm thẻ trong luồng công việc, nên mặc dù thúc đẩy việc thực thi tác vụ hằng ngày nhưng có thể gây
+                rủi ro cho bức tranh lớn hơn: các nhiệm vụ nhỏ được hoàn thành, nhưng kết quả đầu ra cuối cùng – xét một
+                cách tổng quan - chưa chắc đã đạt được.</li>
+        </ul>
+
+        <hr>
+
+        <h3>Khi nào nên dùng Kanban?</h3>
+        <ul>
+            <li><strong>Kanban phù hợp khi:</strong>
+                <ul>
+                    <li>Công việc liên tục (support, maintenance)</li>
+                    <li>Dự án đang gặp phải tồn đọng do công việc bị đình trệ, quy trình cơ bản đã ổn định nhưng hoạt
+                        động cần mượt mà và hiệu quả hơn</li>
+                    <li>Không thể chia sprint rõ ràng</li>
+                    <li>Cần xử lý task bất kỳ lúc nào</li>
+                    <li>Không có nhiều áp lực về thời gian hoàn thành</li>
+                </ul>
+            </li>
+            <li><strong>Ví dụ:</strong>
+                <ul>
+                    <li>DevOps</li>
+                    <li>IT Support</li>
+                    <li>Bug fixing</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Công cụ phổ biến dùng Kanban</h3>
+        <ul>
+            <li>Trello</li>
+            <li>Jira</li>
+            <li>Notion</li>
+            <li>ClickUp</li>
+        </ul>
+
+        <hr>
+
+        <h3>Các bước cơ bản để triển khai Kanban</h3>
+        <ol>
+            <li><strong>Bước 1: Phác thảo quy trình làm việc trên bảng Kanban</strong>
+                <p>Để triển khai Kanban, bạn cần bắt đầu bằng việc có một tấm bảng trắng hoặc bảng Kanban trực tuyến.
+                    Sau đó, hãy phân tách quy trình làm việc của bạn thành các giai đoạn cụ thể từ khi bắt đầu công việc
+                    cho đến khi hoàn thành. Vẽ các cột trên bảng, mỗi cột lần lượt đại diện cho một giai đoạn trong số
+                    đó.</p>
+            </li>
+            <li><strong>Bước 2: Thiết lập WIP Limit cho từng cột</strong>
+                <p>Để sử dụng phương pháp Kanban hiệu quả, bạn cần xác định và áp dụng hạn chế khối lượng công việc đồng
+                    thời (WIP Limit) cho mỗi cột Kanban - số lượng công việc tối đa được phép tồn tại trong cột đó tại
+                    cùng một thời điểm. Bước này nhằm giữ cho quy trình làm việc trong toàn dự án được mượt mà, tránh
+                    tình trạng quá tải công việc.</p>
+                <p>Xét riêng khối lượng công việc của cá nhân, bạn cũng nên đặt giới hạn chỉ có 2-3 công việc cần làm
+                    cùng lúc. Con số này sẽ giúp bạn tập trung tốt hơn, không cảm thấy bị áp lực khi làm quá nhiều việc
+                    cùng lúc, và cũng không bị giảm chất lượng đầu ra công việc.</p>
+            </li>
+            <li><strong>Bước 3: Tạo thẻ Kanban</strong>
+                <p>Tiếp theo, đã đến lúc tạo thẻ Kanban tương ứng cho mỗi công việc hoặc tác vụ, rồi đặt chúng lên cột
+                    tương ứng của bảng. Mỗi thẻ cần chứa các thông tin cần thiết như tiêu đề, người phụ trách, ngày đến
+                    hạn và bất kỳ thông tin bổ sung nào.</p>
+                <p>Lưu ý rằng bạn có thể sắp xếp các tấm thẻ trong mỗi cột theo thứ tự ưu tiên - với các công việc cấp
+                    bách nhất nằm ở trên cùng, để cái nhìn rõ ràng về công việc đang diễn ra và biết cách ưu tiên công
+                    việc hợp lý.</p>
+                <p>Bạn cũng có thể lựa chọn các màu sắc khác nhau cho những tấm thẻ để liên tưởng đến các loại công
+                    việc, mức độ khẩn cấp hay ưu tiên khác nhau (Ví dụ: Màu đỏ là trạng thái khẩn cấp, màu vàng là ưu
+                    tiên thứ hai, màu xanh là bình thường).</p>
+            </li>
+            <li><strong>Bước 4: Bắt đầu làm việc</strong>
+                <p>Khi đã triển khai bảng Kanban, bạn có thể bắt đầu làm việc với công việc ở tấm thẻ trên cùng của mỗi
+                    cột. Sau khi hoàn thành, hãy di chuyển thẻ sang cột tiếp theo trong quy trình làm việc. Lưu ý rằng
+                    bạn cần đảm bảo tuân thủ các WIP Limit để tránh quá tải và tối ưu hóa hiệu suất làm việc.</p>
+                <p>Nếu trong quá trình làm việc có vấn đề hoặc chướng ngại, hãy nhanh chóng xử lý, để đảm bảo quy trình
+                    được trơn tru nhất có thể.</p>
+            </li>
+            <li><strong>Bước 5: Cải tiến hệ thống Kanban</strong>
+                <p>Đừng quên liên tục thu thập phản hồi từ đội ngũ làm việc của bạn và các bên liên quan (đối tác, khách
+                    hàng, người hỗ trợ) và sử dụng các thông tin này để cải tiến hệ thống Kanban - bao gồm cả quy trình
+                    làm việc, cấu trúc của bảng và cột, hoặc cách sắp xếp và gắn nhãn trên thẻ Kanban,…</p>
+                <p>Và sau một khoảng thời gian định kỳ, bạn có thể thực hiện kiểm đếm và tổng hợp lại tình trạng của các
+                    tấm thẻ công việc: bao nhiêu thẻ đã di chuyển tới cột cuối cùng, bao nhiêu thẻ đang bị quá hạn,… để
+                    biết được hiệu suất làm việc thực tế của cá nhân và đội nhóm. Thông qua các con số này, có thể đánh
+                    giá được liệu phương pháp Kanban có thực sự mang lại hiệu quả – so với trước khi sử dụng, hoặc trước
+                    khi bạn thực hiện cải tiến hệ thống.</p>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-waterfall" data-topic-link="ba-sdlc-waterfall">Mô
+                        hình Waterfall</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
