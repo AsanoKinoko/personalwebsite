@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô hình Waterfall • SDLC</title>
+    <link rel="stylesheet" href="my_learning/business_analysis/sdlc/waterfall/waterfall.css">
+</head>
+<body>
+    <main>
+        <style>
+            mark {
+                background-color: rgba(255, 235, 59, 0.2);
+                color: inherit;
+                padding: 2px 4px;
+                border-radius: 4px;
+            }
+        </style>
+        <h2>Waterfall</h2>
+
+        <p><strong>Waterfall Model (Mô hình thác nước)</strong> là mô hình phát triển phần mềm tuần tự (sequential). Nó
+            tập trung vào việc quản lý dự án dựa trên tiến trình tuần tự và liên tiếp, trong đó:</p>
+        <ul>
+            <li>Mỗi giai đoạn phải hoàn thành 100% rồi mới chuyển sang giai đoạn tiếp theo</li>
+            <li>Không quay lại bước trước (hoặc rất khó quay lại)</li>
+        </ul>
+
+        <div class="callout">
+            <p><strong>Ý tưởng:</strong> Giống nước chảy từ trên xuống -> không chảy ngược lên được</p>
+        </div>
+
+        <hr>
+
+        <h3>Các giai đoạn của Waterfall</h3>
+        <p>Waterfall thường gồm 6 giai đoạn chính:</p>
+
+        <h4>1 - Requirements (Phân tích yêu cầu)</h4>
+        <p>Thu thập yêu cầu từ khách hàng: Các thông tin mà nhóm dự án cần thu thập trong giai đoạn này bao gồm:</p>
+        <ul>
+            <li><strong>Phạm vi và lịch trình dự án:</strong> Mục tiêu của dự án là gì? Khách hàng yêu cầu như thế nào
+                về chất lượng sản phẩm, dịch vụ hoàn chỉnh? Thời hạn của dự án là bao lâu? Các chi phí liên quan như thế
+                nào?</li>
+            <li><strong>Kỳ vọng của các bên liên quan:</strong> Khách hàng hoặc đối tác thực sự mong muốn điều gì ở dự
+                án, về cả tiến độ lẫn đặc điểm của kết quả nghiệm thu? Nhóm dự án cần đảm bảo đã trao đổi xong với các
+                bên liên quan, vì họ sẽ có rất ít cơ hội để tham gia vào khi dự án bắt đầu.</li>
+            <li><strong>Nghiên cứu thị trường:</strong> Đây là thông tin cực kỳ quan trọng đối với mọi chu kỳ phát triển
+                sản phẩm. Tùy thuộc vào sản phẩm, nhóm dự án sẽ cần tìm hiểu về các đối thủ cạnh tranh, thị trường và
+                các yếu tố liên quan khác.</li>
+            <li><strong>Viết tài liệu:</strong> SRS (Software Requirements Specification)</li>
+        </ul>
+        <p><strong>Output:</strong> Tài liệu yêu cầu chi tiết</p>
+
+        <h4>2 - System Design (Thiết kế hệ thống)</h4>
+        <p>Ở giai đoạn này, các thông tin, dữ liệu thu thập được ở giai đoạn 1 được phác họa thành những “hình hài” cụ
+            thể. Nhóm dự án sẽ đưa ra những ý tưởng khả thi, và phát triển một bộ kế hoạch lý thuyết nhằm mục đích
+            chuyển đổi các ý tưởng này thành sản phẩm cuối cùng. Sau đó, nhóm dự án thu hẹp các ý tưởng lý thuyết thành
+            một kế hoạch cụ thể hơn, bao gồm ngân sách, thời gian, nhân lực, và các yếu tố khác. Một bản thiết kế tổng
+            thể cho sản phẩm cũng cần được đưa ra.</p>
+        <ul>
+            <li>Thiết kế kiến trúc</li>
+            <ul>
+                <li>Database</li>
+                <li>UI/UX</li>
+                <li>API</li>
+            </ul>
+            <li>Chia module</li>
+        </ul>
+        <p><strong>Output:</strong> Design Document</p>
+
+        <h4>3 - Implementation (Coding)</h4>
+        <ul>
+            <li><strong>Lập trình theo design:</strong> Theo dõi tiến độ, quản lý các nguồn lực và điều phối công việc
+                chặt chẽ: Đây là việc cần làm để giảm thiểu những sai lầm có thể xảy ra.</li>
+            <li><strong>Dev chia task:</strong> Với kế hoạch thiết kế đã được tạo sẵn, nhóm dự án có thể sử dụng các
+                công cụ hỗ trợ đắc lực cho giai đoạn này, chẳng hạn như các công cụ sơ đồ Gantt hoặc phần mềm quản lý dự
+                án Base Wework.</li>
+        </ul>
+        <p><strong>Output:</strong> Source code</p>
+
+        <h4>4 - Integration & Testing (Tích hợp & kiểm thử)</h4>
+        <p>Trước khi được thương mại hóa, mọi sản phẩm và dịch vụ đều cần trải qua một phiên bản thử nghiệm. Dự án của
+            doanh nghiệp cũng không ngoại lệ. Đây được coi là giai đoạn căng thẳng nhất trong mô hình, bởi vì một số ý
+            tưởng thú vị ở giai đoạn đầu có thể bị loại bỏ lúc này, và bất kỳ vấn đề nghiêm trọng nào cũng có nghĩa là
+            dự án phải bắt đầu lại từ đầu.</p>
+        <p>Trong giai đoạn Kiểm thử, cần đảm bảo rằng mọi thứ đều hoạt động chính xác và tất cả yêu cầu của khách hàng
+            đều được đáp ứng theo tiêu chuẩn cao. Các tính năng và cách thức vận hành của sản phẩm, dịch vụ cũng cần
+            được kiểm tra kỹ lưỡng để tránh ảnh hưởng đến trải nghiệm của khách hàng.</p>
+        <ul>
+            <li>Test từng module -> tích hợp</li>
+            <li>Các loại test: Unit test, Integration test, System test</li>
+        </ul>
+        <p><strong>Output:</strong> Test report</p>
+
+        <h4>5 - Deployment (Triển khai)</h4>
+        <ul>
+            <li>Deploy lên production</li>
+            <li>Release cho user</li>
+        </ul>
+        <p><strong>Output:</strong> Product chạy thực tế</p>
+
+        <h4>6 - Maintenance (Bảo trì)</h4>
+        <ul>
+            <li><strong>Fix bug:</strong> Giải quyết mọi vấn đề, lỗi và trục trặc chưa xử lý hết trong giai đoạn Kiểm
+                nghiệm</li>
+            <li><strong>Update tính năng:</strong> Tiếp nhận và xử lý những góp ý, phản hồi của khách hàng. Cải thiện
+                sản phẩm, dịch vụ và cập nhật chúng tới khách hàng</li>
+        </ul>
+        <p><strong>Output:</strong> Phiên bản mới</p>
+        <p>Giai đoạn này xảy ra sau khi nhóm dự án bàn giao sản phẩm cuối cùng cho khách hàng. Tuy nhiên, giai đoạn này
+            sẽ thay đổi tùy thuộc vào tính chất của sản phẩm và các thỏa thuận đã ký trước đó. Trong một số trường hợp,
+            việc bảo trì có thể diễn ra cho đến khi khách hàng hài lòng. Mặt khác, nếu sản phẩm được tung ra thị trường,
+            việc bảo trì có thể tiếp tục vô thời hạn.</p>
+        <p>Lưu ý rằng ngay cả khi nhóm dự án đã đầu tư nguồn lực đáng kể vào quy trình kiểm soát chất lượng, vẫn sẽ có
+            một số lỗi sai bị “bỏ quên”. Thông thường, mọi vấn đề sẽ chỉ được ghi nhận khi có khách hàng tích cực sử
+            dụng sản phẩm, dịch vụ và cung cấp phản hồi.</p>
+
+        <hr>
+
+        <h3>Một số tài liệu chính</h3>
+        <p><mark>Waterfall rất nặng về document</mark></p>
+        <ul>
+            <li>SRS (Requirement)</li>
+            <li>Design Document</li>
+            <li>Test Plan</li>
+            <li>User Manual</li>
+        </ul>
+
+        <hr>
+
+        <h3>Đặc điểm của Waterfall</h3>
+        <ul>
+            <li><strong>Tính chất chính:</strong>
+                <ul>
+                    <li>Linear (tuyến tính)</li>
+                    <li>Predictable (dễ dự đoán)</li>
+                    <li>Document-driven (phụ thuộc tài liệu)</li>
+                </ul>
+            </li>
+            <li><strong>Nguyên tắc:</strong>
+                <ul>
+                    <li>Không chuyển phase nếu chưa xong phase trước</li>
+                    <li>Mỗi phase có deliverable rõ ràng</li>
+                    <li>Review sau mỗi phase</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Ưu điểm</h3>
+        <ul>
+            <li><strong>Rõ ràng, dễ quản lý:</strong> Mô hình Waterfall giúp nhà quản lý và các thành viên trong nhóm
+                hiểu rõ yêu cầu đối với sản phẩm đầu ra, mục tiêu, cũng như vai trò, trách nhiệm của mỗi cá nhân trong
+                dự án</li>
+                <ul>
+                    <li>Có timeline cụ thể</li>
+                    <li>Phù hợp cho project lớn</li>
+                </ul>
+            <li><strong>Documentation tốt</strong></li>
+                <ul>
+                    <li>Dễ maintain lâu dài</li>
+                </ul>
+            <li><strong>Dễ kiểm soát:</strong> Mô hình thác nước xác định rõ các cột mốc và mục tiêu cụ thể; giúp nhóm
+                dự án tuân thủ đúng thời hạn, đảm bảo kết quả đầu ra, cũng như theo dõi tiến trình một cách dễ dàng hơn
+            </li>
+            <li><strong>Giảm thiểu rủi ro:</strong> Vì mỗi giai đoạn trong mô hình cần được hoàn thành trước khi tiến
+                hành giai đoạn tiếp theo, nên doanh nghiệp có thể dự phòng và kiểm soát rủi ro một cách khả quan hơn
+            </li>
+            <li>Mô hình Waterfall không khuyến khích sự thay đổi đột ngột sau khi kết thúc giai đoạn thu thập thông tin.
+                Vì vậy, mô hình này chủ yếu thích hợp với các dự án:
+                <ul>
+                    <li>Yêu cầu rõ ràng từ đầu</li>
+                    <li>Ít thay đổi</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Nhược điểm</h3>
+        <ul>
+            <li><strong>Rất khó thay đổi:</strong> Đối với các dự án lớn và phức tạp, việc phân nhỏ dự án thành các giai
+                đoạn tuần tự có thể làm mất đi tính linh hoạt và khả năng thích ứng</li>
+                <ul>
+                    <li>Nếu đổi yêu cầu -> phải quay lại từ đầu -> gây trì hoãn và làm tăng chi phí của dự án</li>
+                </ul>
+            <li><strong>Feedback chậm:</strong> Trong mô hình Waterfall, việc thử nghiệm và thu thập phản hồi từ khách
+                hàng thường chỉ diễn ra ở giai đoạn sau của dự án. Điều này khiến cho việc phát hiện lỗi và điều chỉnh
+                diễn ra muộn màng, có thể khiến mọi thứ trở nên phức tạp và tốn kém hơn</li>
+            <li><strong>Risk cao:</strong> Mô hình thác nước giới hạn sự tham gia của các bên liên quan, do đó dự án có
+                nguy cơ thất bại cao hơn nếu các yêu cầu ban đầu bị hiểu sai hoặc không được lưu ý đúng cách (Sai
+                requirement = fail project). Vì vậy, việc đầu tư nhiều thời gian và nguồn lực để lập kế hoạch chi tiết
+                là rất quan trọng</li>
+            <li><strong>Không phù hợp với:</strong>
+                <ul>
+                    <li>Startup</li>
+                    <li>Product evolving liên tục</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Khi nào nên dùng Waterfall?</h3>
+        <p>Dùng khi:</p>
+        <ul>
+            <li><strong>Yêu cầu rõ ràng 100%:</strong> Ví dụ: hệ thống ngân hàng, quân sự</li>
+            <li><strong>Dự án lớn, cần kiểm soát chặt:</strong> VD: Government projects</li>
+            <li><strong>Không thay đổi scope:</strong> Fixed contract</li>
+        </ul>
+
+        <hr>
+
+        <!-- <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-agile" data-topic-link="ba-sdlc-agile">Mô hình
+                        Agile</a></strong></li>
+        </ul> -->
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
