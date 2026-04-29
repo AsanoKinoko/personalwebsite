@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Diagram</title>
+</head>
+<body>
+    <div class="content-section">
+        <h2>Activity Diagram</h2>
+        <p>Activity Diagram là một loại biểu đồ thuộc mô hình động (Dynamic Model) trong UML (Unified Modeling Language)
+            dùng để mô tả:</p>
+        <ul>
+            <li>Luồng công việc (workflow)</li>
+            <li>Quy trình nghiệp vụ (business process)</li>
+            <li>Luồng xử lý trong hệ thống</li>
+            <li>Các hoạt động tuần tự + song song + rẽ nhánh</li>
+        </ul>
+
+        <p><strong>Hiểu đơn giản:</strong><br>
+            Nó giống như flowchart nâng cấp (có thêm xử lý song song & logic phức tạp)</p>
+
+        <p>Activity Diagram tập trung vào luồng điều khiển từ hoạt động này sang hoạt động khác, thể hiện trình tự hành
+            động
+            để đạt mục tiêu cụ thể. Nó dùng để mô hình hóa workflow giữa use case, hoạt động phức tạp trong operation,
+            hoặc
+            quy trình kinh doanh có phối hợp song song. Khác flowchart thông thường, nó hỗ trợ phân nhánh, hợp nhất và
+            hoạt
+            động đồng thời.</p>
+
+        <h3>Mục đích & Ý nghĩa</h3>
+        <p><strong>Mục đích chính</strong></p>
+        <ul>
+            <li>Mô tả quy trình nghiệp vụ</li>
+            <li>Mô hình hóa logic xử lý</li>
+            <li>Phân tích hệ thống trước khi code</li>
+        </ul>
+
+        <p><strong>Lợi ích</strong></p>
+        <ul>
+            <li>Hiểu toàn bộ flow hệ thống</li>
+            <li>Phát hiện bottleneck (điểm nghẽn)</li>
+            <li>Giao tiếp giữa BA – Dev – Stakeholder</li>
+            <li>Làm nền cho Sequence Diagram</li>
+        </ul>
+
+        <p><strong>Ví dụ:</strong></p>
+        <ul>
+            <li>Flow đăng nhập</li>
+            <li>Quy trình đặt hàng</li>
+            <li>Luồng xử lý thanh toán</li>
+        </ul>
+
+        <h3>Thành phần Chính</h3>
+        <p>Activity Diagram gồm các ký hiệu cơ bản sau:</p>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Thành phần</th>
+                        <th>Mô tả</th>
+                        <th>Ký hiệu UML</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Initial Node (Nút bắt đầu)</td>
+                        <td>Điểm khởi đầu quy trình.</td>
+                        <td class="text-center">
+                            Hình tròn đen<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/initial-node.png" alt="Initial Node" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Activity/Action</td>
+                        <td>Hành động hoặc tác vụ cụ thể đại diện cho 1 bước xử lý. Activity là quy trình lớn, Action là
+                            bước nhỏ trong Activity</td>
+                        <td class="text-center">
+                            Hình chữ nhật bo góc<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/activity.png" alt="Activity/Action" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Control Flow (Luồng điều khiển)</td>
+                        <td>Xác định thứ tự thực hiện, có thể kèm điều kiện</td>
+                        <td class="text-center">
+                            Mũi tên<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/control-flow.png" alt="Control Flow" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Object Flow</td>
+                        <td>Luồng đối tượng giữa các activity</td>
+                        <td class="text-center"><em>Mũi tên đứt nét</em></td>
+                    </tr>
+                    <tr>
+                        <td>Decision Node (Nút quyết định/Branch)</td>
+                        <td>Phân nhánh dựa trên điều kiện (guard)</td>
+                        <td class="text-center">
+                            Hình thoi<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/decision-node.png" alt="Decision Node" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Merge Node</td>
+                        <td>Hợp nhất các nhánh quyết định</td>
+                        <td class="text-center">
+                            Hình thoi<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/merge-node.png" alt="Merge Node" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fork Node</td>
+                        <td>Phân nhánh thành nhiều luồng song song</td>
+                        <td class="text-center">
+                            Thanh ngang dày<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/fork-node.png" alt="Fork Node" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Join Node</td>
+                        <td>Hợp nhất luồng song song (chờ tất cả hoàn thành)</td>
+                        <td class="text-center">
+                            Thanh ngang dày<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/join-node.png" alt="Join Node" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Final Node (Nút kết thúc)</td>
+                        <td>Kết thúc quy trình</td>
+                        <td class="text-center">
+                            Hình tròn có chấm đen bên trong<br>
+                            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/final-node.png" alt="Final Node" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Swimlane/Partition</td>
+                        <td>Chia diagram theo actor / role</td>
+                        <td class="text-center">Hàng dọc/cột</td>
+                    </tr>
+                    <tr>
+                        <td>Condition (Điều kiện)</td>
+                        <td>Điều kiện</td>
+                        <td class="text-center"><code>[valid]</code>/<code>[invalid]</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Quy tắc Vẽ</h3>
+        <ul>
+            <li>Bắt đầu từ Initial Node, kết thúc tại Final Node.</li>
+            <li>Sử dụng Decision cho điều kiện (ví dụ: [đúng/sai]), Merge để hội tụ nhánh.</li>
+            <li>Fork/Join phải cân bằng số nhánh; Swimlane phân chia trách nhiệm rõ ràng.</li>
+            <li>Tránh vòng lặp vô hạn; ưu tiên luồng chính, chi tiết hóa use case nếu cần.</li>
+        </ul>
+
+        <h3>Các loại luồng trong Activity Diagram</h3>
+        <ol>
+            <li>
+                <strong>Sequential Flow (Tuần tự)</strong><br>
+                A &rarr; B &rarr; C
+            </li>
+            <li>
+                <strong>Branching (Rẽ nhánh)</strong><br>
+                A &rarr; (if/else)
+            </li>
+            <li>
+                <strong>Parallel Flow (Song song)</strong><br>
+                A &rarr; (Fork) &rarr; B &amp; C cùng chạy
+            </li>
+            <li>
+                <strong>Loop (Lặp)</strong><br>
+                quay lại bước trước
+            </li>
+            <li>
+                <strong>Object Flow (luồng dữ liệu)</strong><br>
+                truyền data giữa các activity
+            </li>
+        </ol>
+
+        <h3>Cách xây dựng Activity Diagram</h3>
+        <p><strong>Bước 1: Xác định Use Case</strong><br>
+            Flow nào cần mô tả?</p>
+        <p><strong>Bước 2: Xác định Start / End</strong></p>
+        <p><strong>Bước 3: Liệt kê Activities</strong></p>
+        <p><strong>Bước 4: Xác định:</strong></p>
+        <ul>
+            <li>Decision</li>
+            <li>Parallel</li>
+            <li>Loop</li>
+        </ul>
+        <p><strong>Bước 5: Thêm Swimlane (nếu cần)</strong></p>
+        <p><strong>Bước 6: Validate với Stakeholder</strong></p>
+
+        <h3>Khi nào dùng Activity Diagram?</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Nên dùng khi:</strong></p>
+                <ul>
+                    <li>Flow phức tạp</li>
+                    <li>Có nhiều điều kiện</li>
+                    <li>Có xử lý song song</li>
+                    <li>BA cần mô tả nghiệp vụ</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Không nên dùng khi:</strong></p>
+                <ul>
+                    <li>Chỉ cần logic đơn giản &rarr; dùng flowchart</li>
+                    <li>Muốn mô tả interaction &rarr; dùng Sequence Diagram</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="mt-4">Nó hỗ trợ thiết kế Sequence Diagram sau và hiểu rõ hệ thống động.</p>
+        <p><strong>Hình ảnh:</strong></p>
+        <div class="text-center my-4">
+            <img src="my_learning/business_analysis/diagrams/uml/activity-diagram/images/example.png"
+                alt="Ví dụ Activity Diagram" class="img-fluid"
+                style="max-width: 100%; border: 1px solid #ddd; padding: 10px; border-radius: 8px;" />
+        </div>
+        <p><strong>VD: rút tiền ATM:</strong> Khách hàng chèn thẻ &rarr; ATM kiểm tra &rarr; quyết định PIN đúng/sai
+            &rarr; rút tiền hoặc giữ thẻ.</p>
+            
+        <div class="mt-5 d-flex justify-content-end">
+            <a href="?tag=business-analysis&topic=ba-diagrams-uml-class" data-topic-link="ba-diagrams-uml-class" class="btn btn-outline-primary">
+                Phần tiếp theo: Class Diagram &rarr;
+            </a>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

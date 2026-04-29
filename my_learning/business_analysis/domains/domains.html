@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Một số domain BA</title>
+</head>
+<body>
+    <main>
+        <h2>Một số domain BA</h2>
+
+        <p>Mỗi ngành nghề (domain) có những đặc thù riêng về nghiệp vụ, quy trình, hệ thống và quy định pháp lý.
+            Hiểu sâu về domain giúp BA phân tích chính xác hơn, giao tiếp hiệu quả hơn với stakeholder, và đưa ra
+            giải pháp phù hợp thực tế.</p>
+
+        <p>Dưới đây là một số domain phổ biến mà BA thường làm việc:</p>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-domains-banking"
+                        data-topic-link="ba-domains-banking">Banking</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

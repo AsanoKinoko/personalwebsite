@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Diagram</title>
+</head>
+<body>
+    <div class="content-section">
+        <h2>Class Diagram</h2>
+        <p>Class Diagram (Biểu đồ lớp) là một loại UML Structure Diagram (biểu đồ cấu trúc) dùng để mô tả cấu trúc tĩnh
+            của hệ thống hướng đối tượng, tức là “hệ thống gồm những lớp nào, mỗi lớp có gì, và chúng liên hệ ra sao”.
+        </p>
+
+        <p><strong>Nó thể hiện:</strong></p>
+        <ul>
+            <li>Các class (lớp)</li>
+            <li>Attributes (thuộc tính)</li>
+            <li>Methods / Operations (phương thức)</li>
+            <li>Relationships (mối quan hệ giữa các lớp)</li>
+        </ul>
+
+        <p><strong>Hiểu đơn giản:</strong> Class Diagram = “bản thiết kế (blueprint)” của hệ thống OOP.</p>
+
+        <h3>Vai trò & Mục đích sử dụng</h3>
+        <p>Class Diagram có vai trò cực kỳ quan trọng giúp nhóm phát triển hiểu hệ thống ở mức cấu trúc, thống nhất
+            thuật ngữ miền nghiệp vụ, và làm nền cho thiết kế mã nguồn:</p>
+
+        <ol>
+            <li>
+                <strong>Trong phân tích & thiết kế</strong>
+                <ul>
+                    <li>Mô hình hóa hệ thống trước khi code</li>
+                    <li>Hiểu rõ cấu trúc dữ liệu và logic</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Trong phát triển phần mềm</strong>
+                <ul>
+                    <li>Thiết kế kiến trúc lớp trước khi code</li>
+                    <li>Là nền tảng của Object-Oriented Programming</li>
+                    <li>Mapping trực tiếp sang code (Java, C#, etc.)</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Trong giao tiếp team</strong>
+                <ul>
+                    <li>Giúp BA, Dev, Tester hiểu chung một ngôn ngữ</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Trong tối ưu hệ thống</strong>
+                <ul>
+                    <li>Phát hiện lỗi design sớm (dependency, coupling…)</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>Thành phần của Class Diagram</h3>
+        <p><strong>1. Class (Lớp):</strong> là khối xây dựng cơ bản của class diagram, đại diện cho một nhóm đối tượng
+            có cùng vai trò trong hệ thống.</p>
+        <p>Một class được biểu diễn bằng hình chữ nhật gồm 3 phần:</p>
+        <ul>
+            <li>Class Name</li>
+            <li>attributes</li>
+            <li>methods</li>
+        </ul>
+        <p><strong>Ví dụ:</strong></p>
+        <pre><code>User
+----------------
+- id: int
+- name: String
+----------------
++ login()
++ logout()</code></pre>
+
+        <p><strong>2. Attributes (Thuộc tính)</strong></p>
+        <ul>
+            <li>Là dữ liệu của class (state)</li>
+            <li>Đại diện cho “class biết gì”</li>
+        </ul>
+        <p>Trong diagram, thuộc tính thường ghi theo dạng <code>visibility name: type</code>. Ví dụ:
+            <code>age: int</code>, <code>name: String</code>
+        </p>
+
+        <p><strong>3. Methods (Phương thức)</strong></p>
+        <ul>
+            <li>Là hành vi của class (behavior)</li>
+            <li>Đại diện cho “class làm gì”</li>
+        </ul>
+        <p>Trong diagram, phương thức thường ghi dạng <code>tenHam(thamSo: Kieu): KieuTraVe</code></p>
+        <p><strong>Ví dụ:</strong></p>
+        <pre><code>+ getName(): String
++ setAge(age: int): void</code></pre>
+
+        <p><strong>4. Visibility (Phạm vi truy cập)</strong></p>
+        <ul>
+            <li><code>+</code>: Public</li>
+            <li><code>-</code>: Private</li>
+            <li><code>#</code>: Protected</li>
+            <li><code>~</code>: package</li>
+        </ul>
+
+        <h3>Các mối quan hệ (Relationships)</h3>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Loại quan hệ</th>
+                        <th>Mô tả</th>
+                        <th>Ví dụ</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Association (Liên kết)</strong></td>
+                        <td>Quan hệ cơ bản giữa 2 class, nó biểu thị rằng các đối tượng của hai lớp có liên hệ với nhau.
+                        </td>
+                        <td>User - Order</td>
+                        <td>Có thể: 1-1, 1-N, N-N</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dependency (Phụ thuộc)</strong></td>
+                        <td>Class A “dùng tạm thời” class B, nghĩa là thay đổi ở lớp B có thể ảnh hưởng lớp A. Quan hệ
+                            yếu nhất.</td>
+                        <td>PaymentService &rarr; Logger</td>
+                        <td>Mũi tên đứt nét</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aggregation (Kết tập)</strong></td>
+                        <td>Quan hệ whole-part (yếu). Thành phần có thể tồn tại độc lập với toàn thể.</td>
+                        <td>Team &loz;------ Player</td>
+                        <td>Dùng hình thoi rỗng</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Composition (Hợp thành)</strong></td>
+                        <td>Quan hệ whole-part (mạnh), là aggregation chặt. Part không thể tồn tại nếu thiếu whole,
+                            nghĩa là khi “whole” bị hủy thì “part” cũng bị hủy theo</td>
+                        <td>House &diams;---- Room</td>
+                        <td>Dùng hình thoi đặc</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generalization/Inheritance (Kế thừa)</strong></td>
+                        <td>Biểu thị quan hệ “is-a”. Lớp con kế thừa thuộc tính và hành vi của lớp cha.</td>
+                        <td>Lớp con &rarr; Lớp cha</td>
+                        <td>Mũi tên tam giác rỗng hướng về lớp cha</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Realization (Triển khai Interface)</strong></td>
+                        <td>Class implement interface.</td>
+                        <td>Class Bird implements Flyable</td>
+                        <td>Mũi tên đứt nét + tam giác rỗng hướng về interface</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="mt-3"><strong>Tổng quan độ mạnh quan hệ:</strong></p>
+        <p><code>Dependency &lt; Association &lt; Aggregation &lt; Composition &lt; Inheritance &lt; Realization</code>
+        </p>
+
+        <h3>Các thành phần mở rộng</h3>
+        <ol>
+            <li>
+                <strong>Interface</strong>
+                <ul>
+                    <li>Chứa các method abstract</li>
+                    <li>Class phải implement</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Abstract Class</strong>
+                <ul>
+                    <li>Không thể khởi tạo object</li>
+                    <li>Có thể chứa method abstract + concrete</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Enum</strong>
+                <ul>
+                    <li>Tập giá trị cố định. Ví dụ: <code>Status = {Pending, Done, Cancelled}</code></li>
+                </ul>
+            </li>
+            <li>
+                <strong>Association Class</strong>
+                <ul>
+                    <li>Quan hệ có thuộc tính riêng.</li>
+                    <li>Ví dụ: <code>Student --- Course</code> (với <code>Enrollment(score, date)</code> ở giữa)</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Multiplicity</strong>
+                <ul>
+                    <li>Cho biết một đối tượng của lớp này có thể liên kết với bao nhiêu đối tượng của lớp kia.</li>
+                    <li>Các ký hiệu phổ biến là <code>1</code>, <code>0..1</code>, <code>*</code> hoặc
+                        <code>0..*</code>, <code>1..*</code>, và các khoảng như <code>3..5</code>.
+                    </li>
+                    <li>Đây là phần rất quan trọng để mô tả đúng ràng buộc nghiệp vụ.</li>
+                    <li>Ví dụ: <code>1</code> (đúng một), <code>0..1</code> (không hoặc một), <code>*</code> (nhiều),
+                        <code>1..*</code> (ít nhất một).
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <p><strong>Ví dụ Class Diagram đơn giản:</strong></p>
+        <pre><code>User
+----------------
+- id: int
+- name: String
+----------------
++ login()
++ logout()
+
+Order
+----------------
+- orderId: int
+- total: double
+----------------
++ createOrder()
+
+User 1 ---- * Order
+(Nghĩa là: 1 User có nhiều Order)</code></pre>
+
+        <h3>Best Practices</h3>
+        <ol>
+            <li><strong>Đặt tên đúng chuẩn:</strong> Class &rarr; danh từ (User, Product), Method &rarr; động từ
+                (create, update)</li>
+            <li><strong>Không vẽ quá chi tiết:</strong> Chỉ giữ phần cần thiết</li>
+            <li><strong>Tránh coupling cao:</strong> Dependency quá nhiều &rarr; design lỗi</li>
+            <li><strong>Phân nhóm rõ ràng:</strong> Module theo domain</li>
+            <li><strong>Đọc dễ hiểu &gt; đầy đủ</strong></li>
+        </ol>
+
+        <h3>Lỗi thường gặp</h3>
+        <ul>
+            <li>Đưa quá nhiều chi tiết cài đặt vào mô hình khái niệm.</li>
+            <li>Nhầm aggregation với composition.</li>
+            <li>Quên multiplicity.</li>
+            <li>Đặt tên lớp và phương thức không nhất quán với miền nghiệp vụ.</li>
+            <li>Nhồi quá nhiều lớp vào một sơ đồ duy nhất.</li>
+        </ul>
+        <p><em>Một sơ đồ tốt thường đơn giản, có chủ đích rõ ràng, và chỉ chứa những gì cần cho mục tiêu hiện tại. Nếu
+                mục tiêu là phân tích nghiệp vụ thì đừng sớm chốt chi tiết kỹ thuật quá sâu; nếu mục tiêu là thiết kế
+                code thì cần đủ chi tiết để triển khai.</em></p>
+
+        <h3>Khi nào dùng Class Diagram?</h3>
+        <p>Class Diagram phù hợp nhất khi bạn cần mô tả cấu trúc tĩnh của miền bài toán hoặc thiết kế hướng đối tượng.
+            Nó không phù hợp để mô tả luồng thời gian, hành vi theo trình tự, hay trạng thái thay đổi theo thời gian;
+            những phần đó thường thuộc Sequence Diagram, Activity Diagram, hoặc State Diagram.</p>
+
+        <p><strong>Bạn nên dùng khi:</strong></p>
+        <ul>
+            <li>Thiết kế database (ERD gần giống)</li>
+            <li>Thiết kế hệ thống OOP</li>
+            <li>Phân tích domain (DDD)</li>
+            <li>Chuẩn bị code backend (Spring, .NET, Node)</li>
+        </ul>
+        
+        <div class="mt-5 d-flex justify-content-end">
+            <a href="?tag=business-analysis&topic=ba-diagrams-uml-sequence" data-topic-link="ba-diagrams-uml-sequence" class="btn btn-outline-primary">
+                Phần tiếp theo: Sequence Diagram &rarr;
+            </a>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

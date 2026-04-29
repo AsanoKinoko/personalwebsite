@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Diagram</title>
+</head>
+
+<body>
+    <div class="content-section">
+        <h2>Sequence Diagram</h2>
+        <p>Sequence Diagram (Sơ đồ tuần tự) là một loại biểu đồ tương tác trong UML (Unified Modeling Language), tập
+            trung vào việc mô tả:</p>
+        <ul>
+            <li>Cách các đối tượng (objects) tương tác với nhau</li>
+            <li>Thứ tự thời gian (timeline) của các tương tác đó</li>
+            <li>Luồng message (thông điệp) giữa các thành phần</li>
+        </ul>
+
+        <p><strong>Nói ngắn gọn:</strong> Sequence Diagram = “Ai gọi ai, gọi khi nào, và gọi theo thứ tự nào”</p>
+
+        <p>Đây là công cụ thiết yếu trong phân tích và thiết kế phần mềm giúp trực quan hóa luồng xử lý của một kịch bản
+            cụ thể.</p>
+
+        <p><strong>Đặc điểm quan trọng:</strong></p>
+        <ul>
+            <li><strong>Trục dọc:</strong> thời gian (top &rarr; bottom)</li>
+            <li><strong>Trục ngang:</strong> các đối tượng / thành phần hệ thống</li>
+        </ul>
+
+        <h3>Vai trò & mục đích</h3>
+        <p>Sequence Diagram dùng để:</p>
+        <ul>
+            <li><strong>Hiểu behavior (hành vi hệ thống):</strong> Xem hệ thống hoạt động ra sao theo thời gian</li>
+            <li><strong>Thiết kế & phân tích:</strong>
+                <ul>
+                    <li>Thiết kế logic backend/API</li>
+                    <li>Phân tích use case: Là tài liệu trung gian quan trọng chuyển đổi từ yêu cầu người dùng (use
+                        case) sang sơ đồ lớp (class diagram) và các bước cài đặt hệ thống</li>
+                </ul>
+            </li>
+            <li><strong>Documentation:</strong>
+                <ul>
+                    <li>Mô tả luồng xử lý</li>
+                    <li>Hỗ trợ team dev hiểu hệ thống: Giúp mọi thành viên (lập trình viên, tester, quản lý) hiểu rõ
+                        luồng xử lý phức tạp mà không cần đọc sâu vào code</li>
+                </ul>
+            </li>
+            <li><strong>Debug & architecture:</strong>
+                <ul>
+                    <li>Tìm lỗi logic: Việc mô phỏng sớm giúp nhóm nhận diện các thiếu sót trong logic nghiệp vụ hoặc
+                        luồng dữ liệu trước khi thực thi</li>
+                    <li>Thiết kế microservices / API flow</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Thành phần chính trong Sequence Diagram</h3>
+        <ol>
+            <li>
+                <strong>Actor</strong><br>
+                Đại diện cho người dùng hoặc hệ thống bên ngoài.<br>
+                <em>Ví dụ:</em> User, Payment Gateway
+            </li>
+            <li>
+                <strong>Lifeline (Đường sống)</strong><br>
+                Là đối tượng tham gia vào interaction. Được biểu diễn bằng: Tên object ở trên, Đường thẳng dọc
+                xuống.<br>
+                <em>Ý nghĩa:</em> Thể hiện object “tồn tại theo thời gian”.
+            </li>
+            <li>
+                <strong>Activation (Execution)</strong><br>
+                Thanh hình chữ nhật trên lifeline biểu thị khoảng thời gian một đối tượng đang thực hiện một tác vụ hoặc
+                xử lý thông điệp.<br>
+                <em>Thể hiện:</em> Object đang xử lý logic.<br>
+                <em>Hiểu đơn giản:</em> “Đang chạy code”.
+            </li>
+            <li>
+                <strong>Message (Thông điệp)</strong><br>
+                Là phần QUAN TRỌNG NHẤT.<br>Các loại message:
+                <ul>
+                    <li><strong>Call Message (Synchronous):</strong> Gọi hàm và chờ kết quả. <em>Ví dụ:
+                            <code>userService.login()</code></em></li>
+                    <li><strong>Asynchronous Message:</strong> Gọi nhưng không chờ. <em>Dùng trong: Event-driven,
+                            Message queue.</em></li>
+                    <li><strong>Return Message:</strong> Trả kết quả về caller.</li>
+                    <li><strong>Self Message:</strong> Object gọi chính nó.</li>
+                    <li><strong>Create Message:</strong> Tạo object mới.</li>
+                    <li><strong>Destroy Message:</strong> Hủy object.</li>
+                    <li><strong>Recursive Message:</strong> Gọi đệ quy.</li>
+                </ul>
+                <p><em>*Tất cả message đều là communication giữa lifelines.</em></p>
+            </li>
+            <li>
+                <strong>Note (Ghi chú)</strong><br>
+                Thêm comment, không ảnh hưởng logic.
+            </li>
+        </ol>
+
+        <h3>Cách đọc Sequence Diagram</h3>
+        <p><strong>Quy tắc đọc:</strong></p>
+        <ul>
+            <li>Bắt đầu từ trên xuống dưới</li>
+            <li>Theo thứ tự message</li>
+            <li>Xem: Ai gọi ai, Gọi cái gì, Khi nào</li>
+        </ul>
+        <p><strong>Ví dụ:</strong> User &rarr; LoginController &rarr; AuthService &rarr; Database</p>
+
+        <h3>Combined Fragments</h3>
+        <p>Dùng để mô tả logic phức tạp:</p>
+        <ul>
+            <li><code>alt</code> (if-else): Điều kiện rẽ nhánh</li>
+            <li><code>loop</code>: Lặp</li>
+            <li><code>opt</code>: Optional</li>
+            <li><code>par</code>: Song song (parallel)</li>
+        </ul>
+        <p><strong>Ví dụ <code>alt</code>:</strong></p>
+        <ul>
+            <li><code>[valid]</code> &rarr; login success</li>
+            <li><code>[invalid]</code> &rarr; error</li>
+        </ul>
+        <p><em>*alt = if/else trong code</em></p>
+
+        <h3>Phân loại Sequence Diagram</h3>
+        <ul>
+            <li>
+                <strong>System Sequence Diagram (SSD):</strong><br>
+                Chỉ có: Actor, System (black box). Dùng trong phân tích requirement.
+            </li>
+            <li>
+                <strong>Detailed Sequence Diagram:</strong><br>
+                Có: Class, Object, Method call. Dùng trong design/code.
+            </li>
+        </ul>
+
+        <h3>Quy trình xây dựng cơ bản</h3>
+        <p>Để tạo một Sequence Diagram hiệu quả, bạn có thể thực hiện theo các bước sau:</p>
+        <ol>
+            <li><strong>Xác định phạm vi:</strong> Chọn một kịch bản hoặc chức năng cụ thể cần mô hình hóa (ví dụ: đăng
+                nhập, thanh toán).</li>
+            <li><strong>Liệt kê đối tượng:</strong> Xác định tất cả tác nhân và các đối tượng/module hệ thống tham gia
+                vào kịch bản đó.</li>
+            <li><strong>Phác thảo trình tự:</strong> Vẽ các thông điệp theo thứ tự thời gian (từ trên xuống dưới), bắt
+                đầu từ tác nhân kích hoạt.</li>
+            <li><strong>Bổ sung chi tiết:</strong> Thêm các hộp kích hoạt, điều kiện (nếu có) và phản hồi để hoàn thiện
+                luồng xử lý.</li>
+        </ol>
+
+        <h3>Khi nào nên dùng Sequence Diagram?</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Nên dùng khi:</strong></p>
+                <ul>
+                    <li>Mô tả use case</li>
+                    <li>Thiết kế API flow</li>
+                    <li>Debug logic</li>
+                    <li>Làm tài liệu cho team</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Không nên dùng khi:</strong></p>
+                <ul>
+                    <li>Mô tả structure &rarr; dùng Class Diagram</li>
+                    <li>Mô tả trạng thái &rarr; dùng State Diagram</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-5 d-flex justify-content-end">
+            <a href="?tag=business-analysis&topic=ba-diagrams-uml-state-machine" data-topic-link="ba-diagrams-uml-state-machine" class="btn btn-outline-primary">
+                Phần tiếp theo: State Machine Diagram &rarr;
+            </a>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

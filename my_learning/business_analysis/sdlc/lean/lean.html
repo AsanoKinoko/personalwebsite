@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô hình Lean • SDLC</title>
+</head>
+
+<body>
+    <main>
+        <style>
+            mark {
+                background-color: rgba(255, 235, 59, 0.2);
+                color: inherit;
+                padding: 2px 4px;
+                border-radius: 4px;
+            }
+        </style>
+        <h2>Lean</h2>
+
+        <p>Cắt giảm chi phí là một việc làm nhạy cảm, có thể gây ra nhiều hậu quả nếu cắt giảm sai. Cắt giảm chi phí
+            đúng cách là việc doanh nghiệp không lãng phí thời gian, nguyên vật liệu, nhân sự vào các hoạt động không
+            cần thiết; hay sản xuất quá mức gây dư thừa và tăng chi phí lưu trữ, kho bãi - đây chính là điều mà mô hình
+            Lean, một mô hình kinh điển trong quản lý vận hành, hướng đến.</p>
+
+        <p>Lean là mô hình quản trị theo triết lý tinh gọn, quản trị và phát triển sản phẩm tập trung vào:</p>
+
+        <ul>
+            <li>Loại bỏ lãng phí (Waste - Muda)</li>
+            <li>Tối đa hóa giá trị cho khách hàng</li>
+            <li>Liên tục cải tiến (Continuous Improvement)</li>
+        </ul>
+
+        <p>Nguồn gốc từ hệ thống sản xuất của Toyota Production System (TPS) và sau đó được áp dụng rộng rãi trong:</p>
+
+        <ul>
+            <li>Phát triển phần mềm -> Lean Software Development</li>
+            <li>Startup -> Lean Startup</li>
+        </ul>
+
+        <hr>
+
+        <h3>Khác biệt giữa mô hình Lean và mô hình sản xuất truyền thống</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Khác nhau</th>
+                    <th>Sản xuất truyền thống</th>
+                    <th>Sản xuất Lean</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Triết lý</strong></td>
+                    <td>Tập trung vào sản xuất hàng loạt và tối đa hóa sự sẵn có của tài nguyên</td>
+                    <td>Tập trung vào tạo ra giá trị cho khách hàng, loại bỏ lãng phí và tối ưu hóa quy trình sản xuất
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Chiến lược</strong></td>
+                    <td>Sản xuất được thúc đẩy bởi dự báo doanh số (Chiến lược đẩy)</td>
+                    <td>Sản xuất được thúc đẩy bởi nhu cầu của khách hàng (Chiến lược kéo)</td>
+                </tr>
+                <tr>
+                    <td><strong>Tầm nhìn và mục tiêu</strong></td>
+                    <td>Tập trung vào lợi nhuận ngắn hạn và tăng cường năng suất</td>
+                    <td>Tầm nhìn dài hạn, tạo ra giá trị cho khách hàng, tăng cường chất lượng, giảm thiểu lãng phí và
+                        tạo ra một môi trường làm việc tốt hơn</td>
+                </tr>
+                <tr>
+                    <td><strong>Quy trình sản xuất</strong></td>
+                    <td>
+                        <ul>
+                            <li>Quy trình sản xuất tĩnh, không linh hoạt, với sự tách rời giữa các công đoạn sản xuất.
+                            </li>
+                            <li>Các quy trình chuẩn hóa chỉ nằm ở trên giấy, thực tế triển khai thì có không thật sự
+                                giống.</li>
+                            <li>Bán thành phẩm (WIP) được coi là bình thường trong quy trình sản xuất.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Quy trình sản xuất linh hoạt, kết hợp các công đoạn lại với nhau, tạo điều kiện cho dòng
+                                chảy liên tục và tránh lãng phí.</li>
+                            <li>Có phương pháp để kiểm soát các quy trình thực tế thực hiện đúng và đồng bộ như mẫu
+                                chuẩn trên giấy.</li>
+                            <li>Bán thành phẩm được coi là dấu hiệu của quy trình cần cải thiện, là một loại lãng phí
+                                cần loại bỏ</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Đổi mới và cải tiến</strong></td>
+                    <td>
+                        <ul>
+                            <li>Các vấn đề xảy ra bị nhìn nhận một cách tiêu cực.</li>
+                            <li>Nếu quy trình hiện tại đang chạy ổn định thì doanh nghiệp sẽ không thay đổi.</li>
+                            <li>Tập trung đào tạo con người để giảm sai lỗi.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Các vấn đề được coi là cơ hội để cải tiến.</li>
+                            <li>Doanh nghiệp cải tiến các quy trình và con người một cách liên tục.</li>
+                            <li>Tập trung cải tiến quy trình để giảm sai lỗi</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h3>Mục tiêu cốt lõi của Lean</h3>
+
+        <p>Lean hướng tới 3 mục tiêu chính:</p>
+        <ul>
+            <li><strong>Value (Giá trị):</strong> Chỉ làm những gì khách hàng thực sự cần</li>
+            <li><strong>Flow (Dòng chảy):</strong> Công việc diễn ra mượt, không bị tắc nghẽn</li>
+            <li><strong>Efficiency (Hiệu quả):</strong> Giảm chi phí, tăng tốc độ</li>
+        </ul>
+
+        <div class="callout">
+            <p><strong>Tư duy quan trọng:</strong></p>
+            <p>“Nếu khách hàng không sẵn sàng trả tiền cho nó -> đó là lãng phí”</p>
+        </div>
+
+        <hr>
+
+        <h3>5 nguyên tắc của Lean giúp cắt giảm chi phí</h3>
+
+        <p><strong>Nguyên tắc 1 - Tập trung vào quy trình:</strong> Trọng tâm của mọi sự thay đổi và cải tiến trong
+            phương pháp Lean đều nằm ở quy trình. Đối với doanh nghiệp sản xuất, các quy trình rất quan trọng bởi nó sẽ
+            quyết định nguồn lực sử dụng, thời gian sử dụng và chất lượng sản phẩm</p>
+
+        <p><strong>Nguyên tắc 2 - Tối đa giá trị, tối thiểu lãng phí:</strong> Trong Lean, các lãng phí được định nghĩa
+            là những hành động không tạo ra giá trị. Phương pháp Lean tập trung loại bỏ các lãng phí đó, đồng thời tăng
+            cường giá trị mang lại cho khách hàng để tạo ra lợi thế cạnh tranh cho doanh nghiệp:</p>
+        <ul>
+            <li>Hiểu rõ khách hàng cần gì</li>
+            <li>Tránh làm “nice-to-have”</li>
+        </ul>
+
+        <p><strong>Nguyên tắc 3 - Tiêu chuẩn hóa công việc:</strong> Trong Lean, doanh nghiệp sẽ cần tiêu chuẩn các
+            nhiệm vụ (tiêu chuẩn về thời gian, kết quả, quy trình xử lý,...). Khi tiêu chuẩn hóa, doanh nghiệp sẽ đạt
+            được kết quả là chất lượng sản phẩm nhất quán, giảm các chi phí gây ra do sản phẩm lỗi. Sử dụng Establish
+            Pull (Chiến lược kéo):</p>
+        <ul>
+            <li>Chỉ làm khi có nhu cầu</li>
+            <li>Không push việc xuống team</li>
+        </ul>
+        <p>Ví dụ:</p>
+        <ul>
+            <li>Dev chỉ code khi có ticket</li>
+            <li>Không build feature “cho vui”</li>
+        </ul>
+
+        <p><strong>Nguyên tắc 4 - Tạo dòng chảy liên tục:</strong> “Dòng chảy” có nghĩa là một quy trình mà trong đó sản
+            phẩm chạy qua từng bước theo một trình tự xác định, một cách tuần tự, theo tốc độ yêu cầu của khách hàng.
+            Khi điều này được đạt được, doanh nghiệp giảm thiểu những yếu tố phát sinh có thể gây lãng phí trong quy
+            trình, giảm thiểu thời gian chờ và tăng tính linh hoạt cho quy trình.</p>
+
+        <p><strong>Nguyên tắc 5 - Giải quyết vấn đề nhanh chóng:</strong> Trong Lean, chúng ta nhìn nhận vấn đề như cơ
+            hội để cải tiến. Thay vì nhảy vào giải pháp, chúng ta giải quyết các nút thắt theo một trình tự khoa học
+            Plan-Do-Check-Act: Đi từ xác định nguyên nhân gốc rễ của vấn đề, phát triển giải pháp, triển khai giải pháp,
+            kiểm tra kết quả, đến áp dụng phương pháp mới. Nhờ vậy, các nút thắt được tháo nhanh hơn, giúp doanh nghiệp
+            tiết kiệm thời gian và nguồn lực.</p>
+
+        <hr>
+
+        <h3>8 loại lãng phí trong Lean</h3>
+
+        <p>Dựa vào mức độ phổ biến của các lãng phí, chúng ta có thể xác định 8 loại lãng phí chính trong quá trình phát
+            triển sản phẩm mang tên D.O.W.N.T.I.M.E:</p>
+
+        <ul>
+            <li><strong>Defects - Lỗi:</strong> Bug, fix lại</li>
+            <li><strong>Overproduction - Làm dư:</strong> Code tính năng chưa cần</li>
+            <li><strong>Waiting - Thời gian chờ đợi:</strong> Chờ deploy, chờ approval</li>
+            <li><strong>Non-Utilized talent - Khả năng của nhân sự</strong></li>
+            <li><strong>Transportation - Vận chuyển:</strong> Chuyển task qua nhiều team</li>
+            <li><strong>Inventory - Tồn đọng:</strong> Backlog quá lớn</li>
+            <li><strong>Motion - Thao tác thừa:</strong> Click nhiều bước</li>
+            <li><strong>Extra-processing - Làm quá mức:</strong> Viết code quá phức tạp</li>
+        </ul>
+
+        <p>Trong software, thường gặp nhất:</p>
+        <ul>
+            <li>Bug (Defect)</li>
+            <li>Overengineering (Extra-processing)</li>
+            <li>Waiting (delay pipeline)</li>
+        </ul>
+
+        <hr>
+
+        <h3>Lean Software Development (LSD)</h3>
+        <p>Lean được áp dụng vào IT thành 7 nguyên tắc:</p>
+        <ul>
+            <li>Eliminate Waste (Loại bỏ lãng phí)</li>
+            <li>Build Quality In (Chất lượng ngay từ đầu)</li>
+            <li>Create Knowledge (Học liên tục)</li>
+            <li>Defer Commitment (Trì hoãn quyết định)</li>
+            <li>Deliver Fast (Giao hàng nhanh)</li>
+            <li>Respect People (Tôn trọng con người)</li>
+            <li>Optimize the Whole (Tối ưu toàn hệ thống)</li>
+        </ul>
+
+        <hr>
+
+        <h3>Lean Startup</h3>
+        <p>Lean Startup áp dụng Lean vào việc build sản phẩm: Chu trình cốt lõi Build &rarr; Measure &rarr; Learn</p>
+        <ul>
+            <li>Build: tạo MVP</li>
+            <li>Measure: đo dữ liệu thật</li>
+            <li>Learn: học từ user</li>
+        </ul>
+
+        <p><strong>MVP (Minimum Viable Product)</strong></p>
+        <ul>
+            <li>Sản phẩm đơn giản nhất nhưng usable</li>
+            <li>Mục tiêu: validate idea</li>
+        </ul>
+
+        <p><strong>Pivot vs Persevere</strong></p>
+        <ul>
+            <li>Pivot: đổi hướng</li>
+            <li>Persevere: tiếp tục</li>
+        </ul>
+
+        <hr>
+
+        <h3>Lean trong vai trò BA</h3>
+        <p>Với Business Analyst thì:</p>
+
+        <ol>
+            <li><strong>Focus vào Value</strong>
+                <ul>
+                    <li>Không viết BRD quá dài</li>
+                    <li>Chỉ đặc tả cái cần thiết</li>
+                </ul>
+            </li>
+            <li><strong>Giảm Waste trong Requirement</strong>
+                <p>Tránh:</p>
+                <ul>
+                    <li>Over-specification</li>
+                    <li>Feature creep</li>
+                </ul>
+            </li>
+            <li><strong>Data-driven</strong>
+                <ul>
+                    <li>Dùng KPI, analytics</li>
+                    <li>Không dựa vào cảm tính</li>
+                </ul>
+            </li>
+            <li><strong>Continuous Feedback</strong>
+                <ul>
+                    <li>Luôn validate với stakeholder</li>
+                </ul>
+            </li>
+            <li><strong>MVP mindset</strong>
+                <ul>
+                    <li>Không làm full system từ đầu</li>
+                    <li>Release từng phần</li>
+                </ul>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h3>Công cụ phổ biến trong Lean</h3>
+        <ol>
+            <li><strong>Kanban</strong>
+                <ul>
+                    <li>Visualize workflow</li>
+                    <li>Giới hạn WIP</li>
+                </ul>
+                <p><em>Liên quan trực tiếp tới Kanban</em></p>
+            </li>
+            <li><strong>Value Stream Mapping (VSM)</strong>
+                <ul>
+                    <li>Mapping toàn bộ flow</li>
+                    <li>Tìm waste</li>
+                </ul>
+            </li>
+            <li><strong>Kaizen</strong>
+                <ul>
+                    <li>Cải tiến liên tục từng bước nhỏ</li>
+                </ul>
+            </li>
+            <li><strong>5 Whys</strong>
+                <ul>
+                    <li>Hỏi “Tại sao” 5 lần để tìm root cause</li>
+                </ul>
+            </li>
+            <li><strong>Just-In-Time (JIT)</strong>
+                <ul>
+                    <li>Làm đúng lúc cần</li>
+                    <li>Giảm tồn kho</li>
+                </ul>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h3>Ưu điểm của Lean</h3>
+        <ul>
+            <li>Giảm chi phí</li>
+            <li>Tăng tốc delivery</li>
+            <li>Tập trung vào user</li>
+            <li>Tối ưu quy trình</li>
+        </ul>
+
+        <h3>Nhược điểm của Lean</h3>
+        <ul>
+            <li>Khó áp dụng nếu:
+                <ul>
+                    <li>Team thiếu kỷ luật</li>
+                    <li>Stakeholder không rõ mục tiêu</li>
+                </ul>
+            </li>
+            <li>Dễ hiểu sai thành “Cắt giảm mọi thứ”</li>
+            <li>Không phù hợp với dự án yêu cầu compliance cao (banking, gov)</li>
+        </ul>
+
+        <h3>Khi nào nên dùng Lean?</h3>
+        <ul>
+            <li><strong>Phù hợp khi:</strong>
+                <ul>
+                    <li>Startup</li>
+                    <li>Product chưa rõ direction</li>
+                    <li>Muốn tối ưu performance team</li>
+                </ul>
+            </li>
+            <li><strong>Không phù hợp khi:</strong>
+                <ul>
+                    <li>Requirement fixed (Waterfall)</li>
+                    <li>Hệ thống legacy nặng</li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Nội dung tiếp theo</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-sdlc-kanban"
+                        data-topic-link="ba-sdlc-kanban">Kanban</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Diagram</title>
+</head>
+<body>
+    <div class="content-section">
+        <h2>Sơ đồ ngữ cảnh (Context Diagram)</h2>
+        <p>Sơ đồ ngữ cảnh (Context Diagram hay System Context Diagram) là sơ đồ cấp cao nhất mô tả toàn bộ hệ thống như một “hộp đen” (black box) và cách nó tương tác với các tác nhân bên ngoài (external entities) mà không đi sâu vào chi tiết bên trong hệ thống.</p>
+        <ul>
+            <li>Nó là một phần của Data Flow Diagram (DFD), thường được gọi là Level 0 DFD.</li>
+            <li>Tập trung vào phạm vi hệ thống (system boundary) và luồng dữ liệu ra/vào (input/output).</li>
+            <li>Không mô tả chi tiết xử lý bên trong hệ thống.</li>
+        </ul>
+
+        <p><strong>Hiểu đơn giản, Context Diagram trả lời câu hỏi:</strong><br>
+            “Hệ thống này giao tiếp với những ai và trao đổi cái gì?”</p>
+
+        <p><strong>Context Diagram có những đặc trưng rất “BA mindset”:</strong></p>
+        <ul>
+            <li>Level cao (High-level)</li>
+            <li>Không có logic xử lý nội bộ</li>
+            <li>Tập trung vào interaction</li>
+            <li>Đơn giản – dễ hiểu cho stakeholder non-tech</li>
+            <li>Dùng để xác định scope & boundary</li>
+        </ul>
+
+        <h3>Mục đích và vai trò</h3>
+        <p><strong>Xác định phạm vi hệ thống:</strong> phân biệt rõ phần nào nằm trong hệ thống, phần nào là môi trường bên ngoài.</p>
+        <ul>
+            <li>Tránh scope creep.</li>
+            <li>Rõ ràng hệ thống làm gì / không làm gì.</li>
+        </ul>
+
+        <p><strong>Giao tiếp với stakeholder:</strong> làm rõ các bên liên quan (stakeholders) và đối tác tích hợp (khách hàng, hệ thống khác, thiết bị, con người, tổ chức…).</p>
+        <ul>
+            <li>Non-tech cũng hiểu được.</li>
+            <li>Dùng trong: Kickoff project, Requirement gathering.</li>
+        </ul>
+
+        <p><strong>Là nền tảng cho các sơ đồ khác:</strong></p>
+        <ul>
+            <li>Dẫn xuống Level 1 DFD: Khi “explode” (bóc tách) quá trình duy nhất trong context diagram, ta tạo ra DFD Level 1, trong đó hệ thống được phân thành các quá trình con chính (ví dụ: nhập liệu, xử lý, xuất báo cáo). Từ Level 1, có thể tiếp tục bóc tách chi tiết hơn thành các DFD ở các mức thấp hơn.</li>
+            <li>Use Case Diagram.</li>
+            <li>Sequence Diagram.</li>
+        </ul>
+        <p>Giúp đội dự án và khách hàng đồng thuận về phạm vi và nhu cầu ban đầu, từ đó hình thành các yêu cầu hệ thống và ràng buộc.</p>
+
+        <h3>Thành phần chính của Context Diagram</h3>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Thành phần</th>
+                        <th>Mô tả</th>
+                        <th>Ví dụ / Ký hiệu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>System (Hệ thống)</td>
+                        <td>
+                            <ul>
+                                <li>Là trung tâm của sơ đồ.</li>
+                                <li>Được vẽ như 1 khối duy nhất, thường được vẽ bằng hình tròn, hình chữ nhật lớn hoặc một quá trình (process) đại diện cho toàn bộ hệ thống/phần mềm.</li>
+                                <li>Không chia nhỏ thành các process con.</li>
+                            </ul>
+                        </td>
+                        <td class="text-center">Hình tròn / Hình chữ nhật lớn</td>
+                    </tr>
+                    <tr>
+                        <td>External Entities (Tác nhân bên ngoài)</td>
+                        <td>
+                            <ul>
+                                <li>Là người hoặc hệ thống bên ngoài.</li>
+                                <li>Có tương tác với hệ thống.</li>
+                            </ul>
+                        </td>
+                        <td>Ví dụ: User / Customer, Admin, Payment Gateway, Third-party API</td>
+                    </tr>
+                    <tr>
+                        <td>Data Flows (Luồng dữ liệu)</td>
+                        <td>
+                            <ul>
+                                <li>Là mũi tên nối từ thực thể bên ngoài đến hệ thống và ngược lại, thể hiện dữ liệu đi vào hoặc đi ra.</li>
+                                <li>Phải có tên rõ ràng.</li>
+                            </ul>
+                        </td>
+                        <td>Ví dụ: “Login Request”, “Payment Confirmation”, “Order Data”</td>
+                    </tr>
+                    <tr>
+                        <td>System Boundary (Phạm vi hệ thống)</td>
+                        <td>
+                            <ul>
+                                <li>Đường ranh giới phân biệt: Một đường viền (hình tròn hoặc hình chữ nhật lớn) bao bọc hệ thống để phân biệt: Bên trong hệ thống và Bên ngoài hệ thống.</li>
+                                <li>Giúp BA xác định: Cái gì thuộc scope, cái gì không thuộc scope.</li>
+                            </ul>
+                        </td>
+                        <td class="text-center">Đường viền bao bọc</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Quy tắc và nguyên tắc vẽ</h3>
+        <ul>
+            <li><strong>Một hệ thống = một process duy nhất:</strong> không chia nhỏ thành các quá trình con; đó là nhiệm vụ của DFD Level 1+.</li>
+            <li><strong>Không có kho dữ liệu (data store):</strong> trong context diagram không thể hiện file, database hay tập tin lưu trữ.</li>
+            <li><strong>Chỉ hiển thị các tương tác trực tiếp:</strong> chỉ đưa vào những thực thể và luồng dữ liệu thật sự giao tiếp với hệ thống, tránh đưa quá nhiều chi tiết phụ.</li>
+            <li><strong>Trình bày trên một trang:</strong> nên gọn gàng, đủ để mọi bên liên quan đọc và hiểu dễ dàng.</li>
+        </ul>
+
+        <h3>Cách vẽ Context Diagram</h3>
+        <p><strong>Bước 1: Xác định System</strong></p>
+        <ul>
+            <li>Đặt tên rõ ràng</li>
+            <li>Ví dụ: “Online Shopping System”</li>
+        </ul>
+        <p><strong>Bước 2: Xác định External Entities</strong></p>
+        <ul>
+            <li>Ai tương tác với hệ thống?</li>
+            <li>Hệ thống bên ngoài nào liên quan?</li>
+        </ul>
+        <p><strong>Bước 3: Xác định Data Flow</strong></p>
+        <ul>
+            <li>Input gì?</li>
+            <li>Output gì?</li>
+        </ul>
+        <p><strong>Bước 4: Vẽ sơ đồ</strong></p>
+        <ul>
+            <li>System ở giữa</li>
+            <li>Entities xung quanh</li>
+            <li>Mũi tên rõ ràng</li>
+        </ul>
+
+        <h3>Ưu điểm & Nhược điểm</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Ưu điểm:</strong></p>
+                <ul>
+                    <li>Dễ hiểu, dễ thảo luận với khách hàng, người dùng không chuyên</li>
+                    <li>Nhanh</li>
+                    <li>Tốt cho stakeholder communication</li>
+                    <li>Rõ scope, giúp xác định rõ phạm vi, hạn chế “scope creep”</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Nhược điểm:</strong></p>
+                <ul>
+                    <li>Không có chi tiết: Không thể hiện chi tiết bên trong hệ thống, không phù hợp cho thiết kế chi tiết.</li>
+                    <li>Không dùng để implement</li>
+                    <li>Không thể hiện logic: Không thể hiện các luồng dữ liệu giữa các thành phần bên trong hệ thống</li>
+                    <li>Nếu vẽ quá nhiều thực thể, sơ đồ có thể trở nên rối, mất tính tổng quan</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Ứng dụng thực tế</h3>
+        <p>Context diagram được dùng rộng rãi trong:</p>
+        <ul>
+            <li>Phân tích và thiết kế hệ thống phần mềm (software engineering).</li>
+            <li>Quản trị dự án (PMP, business analysis) để xác định phạm vi dự án và các yếu tố bên ngoài ảnh hưởng.</li>
+            <li>Thiết kế hệ thống lớn như:
+                <ul>
+                    <li>E‑commerce, banking, payment gateway.</li>
+                    <li>Hệ thống y tế (EHR – bệnh án điện tử).</li>
+                    <li>DevOps / CI‑CD pipeline.</li>
+                    <li>Hệ thống đặt phòng khách sạn, ATM, v.v.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Khi nào nên dùng?</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Dùng Context Diagram khi:</strong></p>
+                <ul>
+                    <li>Bắt đầu dự án (Discovery phase)</li>
+                    <li>BA thu thập requirement</li>
+                    <li>Define scope</li>
+                    <li>Giải thích hệ thống cho team mới</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Context Diagram không phải để “vẽ cho đẹp”, mà để:</strong></p>
+                <ul>
+                    <li>Xác định System Boundary</li>
+                    <li>Hiểu rõ Integration</li>
+                    <li>Làm rõ Stakeholder interaction</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p class="mt-4"><strong>Một BA giỏi sẽ dùng Context Diagram để:</strong></p>
+        <ul>
+            <li>Phát hiện thiếu stakeholder</li>
+            <li>Phát hiện dependency với hệ thống khác</li>
+            <li>Tránh hiểu sai requirement</li>
+        </ul>
+        
+    </div>
+</body>
+</html>

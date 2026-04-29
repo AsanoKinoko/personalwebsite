@@ -17,13 +17,173 @@
                     "id": "ba-diagrams",
                     "title": "Các loại sơ đồ (Diagrams)",
                     "breadcrumb": "BA / Diagrams",
-                    "url": "my_learning/business_analysis/diagrams/diagrams.html"
+                    "url": "my_learning/business_analysis/diagrams/diagrams.html",
+                    "children": [
+                        {
+                            "id": "ba-diagrams-uml",
+                            "title": "UML / Diagram",
+                            "breadcrumb": "BA / Diagrams / UML",
+                            "url": "my_learning/business_analysis/diagrams/uml/uml.html",
+                            "children": [
+                                {
+                                    "id": "ba-diagrams-uml-activity",
+                                    "title": "Activity Diagram",
+                                    "breadcrumb": "BA / Diagrams / UML / Activity Diagram",
+                                    "url": "my_learning/business_analysis/diagrams/uml/activity-diagram/activity-diagram.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-uml-class",
+                                    "title": "Class Diagram",
+                                    "breadcrumb": "BA / Diagrams / UML / Class Diagram",
+                                    "url": "my_learning/business_analysis/diagrams/uml/class-diagram/class-diagram.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-uml-sequence",
+                                    "title": "Sequence Diagram",
+                                    "breadcrumb": "BA / Diagrams / UML / Sequence Diagram",
+                                    "url": "my_learning/business_analysis/diagrams/uml/sequence-diagram/sequence-diagram.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-uml-state-machine",
+                                    "title": "State Machine Diagram",
+                                    "breadcrumb": "BA / Diagrams / UML / State Machine Diagram",
+                                    "url": "my_learning/business_analysis/diagrams/uml/state-machine-diagram/state-machine-diagram.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-uml-use-case",
+                                    "title": "Use Case Diagram",
+                                    "breadcrumb": "BA / Diagrams / UML / Use Case Diagram",
+                                    "url": "my_learning/business_analysis/diagrams/uml/use-case-diagram/use-case-diagram.html"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "ba-diagrams-business-modeling",
+                            "title": "Business Modeling",
+                            "breadcrumb": "BA / Diagrams / Business Modeling",
+                            "url": "my_learning/business_analysis/diagrams/business-modeling/business-modeling.html",
+                            "children": [
+                                {
+                                    "id": "ba-diagrams-business-modeling-bpmn",
+                                    "title": "Business Process Model (BPMN)",
+                                    "breadcrumb": "BA / Diagrams / Business Modeling / BPMN",
+                                    "url": "my_learning/business_analysis/diagrams/business-modeling/bpmn/bpmn.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-business-modeling-context",
+                                    "title": "Context Diagram",
+                                    "breadcrumb": "BA / Diagrams / Business Modeling / Context Diagram",
+                                    "url": "my_learning/business_analysis/diagrams/business-modeling/context-diagram/context-diagram.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-business-modeling-dfd",
+                                    "title": "Data Flow Diagram (DFD)",
+                                    "breadcrumb": "BA / Diagrams / Business Modeling / DFD",
+                                    "url": "my_learning/business_analysis/diagrams/business-modeling/dfd/dfd.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-business-modeling-user-story-mapping",
+                                    "title": "User Story Mapping",
+                                    "breadcrumb": "BA / Diagrams / Business Modeling / User Story Mapping",
+                                    "url": "my_learning/business_analysis/diagrams/business-modeling/user-story-mapping/user-story-mapping.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-business-modeling-workflow",
+                                    "title": "Workflow Diagram",
+                                    "breadcrumb": "BA / Diagrams / Business Modeling / Workflow Diagram",
+                                    "url": "my_learning/business_analysis/diagrams/business-modeling/workflow-diagram/workflow-diagram.html"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "ba-diagrams-data-modeling",
+                            "title": "Data Modeling",
+                            "breadcrumb": "BA / Diagrams / Data Modeling",
+                            "url": "my_learning/business_analysis/diagrams/data-modeling/data-modeling.html",
+                            "children": [
+                                {
+                                    "id": "ba-diagrams-data-modeling-dictionary",
+                                    "title": "Data Dictionary",
+                                    "breadcrumb": "BA / Diagrams / Data Modeling / Data Dictionary",
+                                    "url": "my_learning/business_analysis/diagrams/data-modeling/data-dictionary/data-dictionary.html"
+                                },
+                                {
+                                    "id": "ba-diagrams-data-modeling-erd",
+                                    "title": "ERD (Entity Relationship Diagram)",
+                                    "breadcrumb": "BA / Diagrams / Data Modeling / ERD",
+                                    "url": "my_learning/business_analysis/diagrams/data-modeling/erd/erd.html"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "ba-documents",
                     "title": "Các loại tài liệu (Documents)",
                     "breadcrumb": "BA / Documents",
-                    "url": "my_learning/business_analysis/documents/documents.html"
+                    "url": "my_learning/business_analysis/documents/documents.html",
+                    "children": [
+                        {
+                            "id": "ba-documents-brd",
+                            "title": "BRD - Business Requirements Document",
+                            "breadcrumb": "BA / Documents / BRD",
+                            "url": "my_learning/business_analysis/documents/brd/brd.html"
+                        },
+                        {
+                            "id": "ba-documents-frd",
+                            "title": "FRD - Functional Requirements Document",
+                            "breadcrumb": "BA / Documents / FRD",
+                            "url": "my_learning/business_analysis/documents/frd/frd.html"
+                        },
+                        {
+                            "id": "ba-documents-nfr",
+                            "title": "NFR - Non-functional Requirements",
+                            "breadcrumb": "BA / Documents / NFR",
+                            "url": "my_learning/business_analysis/documents/nfr/nfr.html"
+                        },
+                        {
+                            "id": "ba-documents-srs",
+                            "title": "SRS - Software Requirements Specification",
+                            "breadcrumb": "BA / Documents / SRS",
+                            "url": "my_learning/business_analysis/documents/srs/srs.html"
+                        },
+                        {
+                            "id": "ba-documents-testing",
+                            "title": "Tài liệu kiểm thử (Testing)",
+                            "breadcrumb": "BA / Documents / Testing",
+                            "url": "my_learning/business_analysis/documents/testing/testing.html"
+                        },
+                        {
+                            "id": "ba-documents-dev-support",
+                            "title": "Tài liệu kỹ thuật hỗ trợ Dev",
+                            "breadcrumb": "BA / Documents / Dev Support",
+                            "url": "my_learning/business_analysis/documents/dev-support/dev-support.html"
+                        },
+                        {
+                            "id": "ba-documents-requirement-management",
+                            "title": "Tài liệu quản lý yêu cầu (Requirement Management)",
+                            "breadcrumb": "BA / Documents / Requirement Management",
+                            "url": "my_learning/business_analysis/documents/requirement-management/requirement-management.html"
+                        },
+                        {
+                            "id": "ba-documents-uxui-product",
+                            "title": "Tài liệu UX/UI & Product",
+                            "breadcrumb": "BA / Documents / UX/UI & Product",
+                            "url": "my_learning/business_analysis/documents/uxui-product/uxui-product.html"
+                        },
+                        {
+                            "id": "ba-documents-deployment-operation",
+                            "title": "Tài liệu triển khai & vận hành",
+                            "breadcrumb": "BA / Documents / Deployment & Operation",
+                            "url": "my_learning/business_analysis/documents/deployment-operation/deployment-operation.html"
+                        },
+                        {
+                            "id": "ba-documents-advanced-ba",
+                            "title": "Một số tài liệu phân tích nâng cao (Advanced BA) có thể có",
+                            "breadcrumb": "BA / Documents / Advanced BA",
+                            "url": "my_learning/business_analysis/documents/advanced-ba/advanced-ba.html"
+                        }
+                    ]
                 },
                 {
                     "id": "ba-sdlc",
@@ -38,10 +198,16 @@
                             "url": "my_learning/business_analysis/sdlc/agile/agile.html"
                         },
                         {
-                            "id": "ba-sdlc-iterative-and-incremental",
-                            "title": "Iterative and Incremental",
+                            "id": "ba-sdlc-iterative-incremental",
+                            "title": "Iterative and Incremental Model (Mô hình lặp gia tăng)",
                             "breadcrumb": "BA / SDLC / Iterative and Incremental",
                             "url": "my_learning/business_analysis/sdlc/iterative-and-incremental/iterative-and-incremental.html"
+                        },
+                        {
+                            "id": "ba-sdlc-lean",
+                            "title": "Lean",
+                            "breadcrumb": "BA / SDLC / Lean",
+                            "url": "my_learning/business_analysis/sdlc/lean/lean.html"
                         },
                         {
                             "id": "ba-sdlc-kanban",
@@ -54,6 +220,20 @@
                             "title": "Waterfall",
                             "breadcrumb": "BA / SDLC / Waterfall",
                             "url": "my_learning/business_analysis/sdlc/waterfall/waterfall.html"
+                        }
+                    ]
+                },
+                {
+                    "id": "ba-domains",
+                    "title": "Một số domain BA",
+                    "breadcrumb": "BA / Domains",
+                    "url": "my_learning/business_analysis/domains/domains.html",
+                    "children": [
+                        {
+                            "id": "ba-domains-banking",
+                            "title": "Banking",
+                            "breadcrumb": "BA / Domains / Banking",
+                            "url": "my_learning/business_analysis/domains/banking/banking.html"
                         }
                     ]
                 }

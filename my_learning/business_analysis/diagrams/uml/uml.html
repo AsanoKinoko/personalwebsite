@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UML Diagram</title>
+</head>
+<body>
+    <main class="content-section">
+        <h2>UML Diagram (Unified Modeling Language)</h2>
+        <p>UML là ngôn ngữ mô hình hóa thống nhất, cung cấp một tập hợp các sơ đồ tiêu chuẩn để trực quan hóa, thiết kế và ghi lại cấu trúc và hành vi của các hệ thống phần mềm. Trong phân tích nghiệp vụ, UML giúp các BA truyền đạt rõ ràng yêu cầu và quy trình đến cả team kỹ thuật và khách hàng.</p>
+        
+        <h3>Các loại sơ đồ UML phổ biến</h3>
+        <ul>
+            <li><strong><a href="?tag=business-analysis&topic=ba-diagrams-uml-activity" data-topic-link="ba-diagrams-uml-activity">1. Activity Diagram</a></strong></li>
+            <li><strong><a href="?tag=business-analysis&topic=ba-diagrams-uml-class" data-topic-link="ba-diagrams-uml-class">2. Class Diagram</a></strong></li>
+            <li><strong><a href="?tag=business-analysis&topic=ba-diagrams-uml-sequence" data-topic-link="ba-diagrams-uml-sequence">3. Sequence Diagram</a></strong></li>
+            <li><strong><a href="?tag=business-analysis&topic=ba-diagrams-uml-state-machine" data-topic-link="ba-diagrams-uml-state-machine">4. State Machine Diagram</a></strong></li>
+            <li><strong><a href="?tag=business-analysis&topic=ba-diagrams-uml-use-case" data-topic-link="ba-diagrams-uml-use-case">5. Use Case Diagram</a></strong></li>
+        </ul>
+    </main>
+
+    <script>
+        (function() {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

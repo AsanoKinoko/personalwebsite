@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking • Domain BA</title>
+</head>
+<body>
+    <main>
+        <style>
+            mark {
+                background-color: rgba(255, 235, 59, 0.2);
+                color: inherit;
+                padding: 2px 4px;
+                border-radius: 4px;
+            }
+
+            .recon-steps {
+                counter-reset: recon-counter;
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .recon-steps>li {
+                counter-increment: recon-counter;
+                padding: 8px 0 8px 36px;
+                position: relative;
+            }
+
+            .recon-steps>li::before {
+                content: counter(recon-counter);
+                position: absolute;
+                left: 0;
+                top: 8px;
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                background: #5b86e5;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 0.85em;
+            }
+        </style>
+
+        <h2>Banking</h2>
+
+        <h3>Vòng đời một giao dịch (Transaction Lifecycle)</h3>
+
+        <figure class="img-frame">
+            <img src="my_learning/business_analysis/domains/banking/images/transaction-lifecycle.png"
+                alt="Transaction Lifecycle" loading="lazy">
+        </figure>
+
+        <ul>
+            <li><strong>Initiation:</strong> Khởi tạo giao dịch từ front-end bởi maker.</li>
+            <li><strong>Validation:</strong> Hệ thống hoặc checker kiểm tra số dư, hạn mức, KYC và các điều kiện nghiệp
+                vụ.</li>
+            <li><strong>Posting:</strong> Giao dịch được hạch toán thực sự vào tài khoản theo Debit/Credit.</li>
+            <li><strong>GL Update & EOD:</strong> Cập nhật sổ cái và thực hiện xử lý cuối ngày.</li>
+        </ul>
+
+        <div class="callout">
+            <p><strong>Lưu ý:</strong></p>
+            <ul>
+                <li>Không phải giao dịch nào tạo ra cũng được ghi sổ ngay.</li>
+                <li>Có giao dịch cần duyệt, kiểm tra, chờ batch EOD hoặc chờ xử lý downstream.</li>
+                <li>Phải phân biệt trạng thái nghiệp vụ với trạng thái hạch toán.</li>
+            </ul>
+        </div>
+
+        <hr>
+        <h3>Những điều BA cần hiểu sâu</h3>
+
+        <p>BA làm core banking không chỉ cần biết "tên module", mà phải hiểu logic vận hành của từng luồng. Trong tâm
+            gồm:</p>
+
+        <ul>
+            <li>Dữ liệu khách hàng đi từ CIF ra các sản phẩm.</li>
+            <li>Tài khoản phải phân biệt số dư kế toán và số dư khả dụng.</li>
+            <li>Khoản vay phải theo dõi vòng đời, lịch trả nợ, lãi, phí và phạt.</li>
+            <li>Mỗi giao dịch phải có kiểm soát, hạch toán và đối soát.</li>
+        </ul>
+
+        <p>Một ví dụ đơn giản: khi khách hàng chuyển tiền, hệ thống không chỉ trừ tiền và cộng tiền. Nó còn có
+            thể cần kiểm tra hạn mức, kiểm tra trạng thái tài khoản, tạo bút toán GL, cập nhật batch cuối ngày, và
+            đồng bộ sang hệ thống ngoài nếu liên ngân hàng.</p>
+        <hr>
+
+        <h3>Một số vấn đề nổi bật</h3>
+
+        <h4>1. Nếu gặp vấn đề tiền trừ rồi nhưng bên kia chưa nhận được thì giải quyết thế nào?</h4>
+
+        <p>Cụ thể: App báo lỗi Core Banking đã trừ tiền mà tài khoản đích chưa nhận. Phải thiết kế luồng đối
+            soát (Reconciliation) và hoàn tiền (Refund) tự động như nào để tránh tổng đài CSKH sập?</p>
+
+        <h4>Bản chất vấn đề (Root Cause)</h4>
+
+        <p>Kịch bản thường xảy ra:</p>
+        <ol>
+            <li>User chuyển tiền</li>
+            <li>Hệ thống A (ngân hàng nguồn) trừ tiền thành công</li>
+            <li>Gửi request sang hệ thống B (ngân hàng đích / switch / Napas)</li>
+            <li>Nhưng:
+                <ul>
+                    <li>Timeout</li>
+                    <li>Network lỗi</li>
+                    <li>Hệ thống B chưa xử lý</li>
+                    <li>ACK (response) bị mất</li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>Kết quả:</p>
+        <ul>
+            <li>A nghĩ chưa thành công (fail)</li>
+            <li>B có thể đã nhận hoặc chưa</li>
+            <li>User thấy: "Bị trừ tiền nhưng chưa nhận"</li>
+        </ul>
+
+        <p><mark>Vấn đề này nên thiết kế theo nguyên tắc: không coi "đã trừ tiền" là hoàn tất giao dịch, mà coi đó mới
+                là một trạng thái trung gian cho đến khi có xác nhận đối soát/ghi có ở đích hoặc tự động hoàn tiền. Mục
+                tiêu là để hệ thống tự xử lý đa số case, chỉ đẩy sang CSKH khi thật sự là ngoại lệ.</mark></p>
+
+
+        <h4>Cách xử lý về nghiệp vụ</h4>
+
+        <p>Chúng ta nên chia tình huống thành 3 trạng thái chính:</p>
+
+        <table class="status-table">
+            <thead>
+                <tr>
+                    <th>Trạng thái</th>
+                    <th>Mô tả</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Debit done, credit pending</strong></td>
+                    <td>Tiền đã bị trừ ở nguồn nhưng đích chưa ghi có ngay.</td>
+                </tr>
+                <tr>
+                    <td><strong>Debit done, credit failed</strong></td>
+                    <td>Bên đích xác nhận lỗi, cần hoàn tiền/đảo giao dịch.</td>
+                </tr>
+                <tr>
+                    <td><strong>Debit done, credit success nhưng chậm hiển thị</strong></td>
+                    <td>Thực tế đã ghi có, chỉ là hệ thống đích hoặc app chưa cập nhật trạng thái.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <p><strong>Điểm quan trọng:</strong> Phải phân biệt rõ "money movement" và "status visibility". Nhiều ca
+                khách hàng tưởng mất tiền, nhưng thực tế giao dịch đang pending hoặc đã settle ở đối tác rồi.</p>
+        </div>
+
+
+        <h4>Luồng chuyển tiền (Happy + Error Path)</h4>
+
+        <div class="flow-path">
+            [User] → [App] → [Core Banking A] → (debit) → [Payment Service] → [External System / Bank B]
+        </div>
+
+        <p>Khi xảy ra lỗi: Sau khi debit xong, nếu không nhận được response rõ ràng → set trạng thái: <strong>status =
+                UNKNOWN</strong></p>
+
+
+        <h4>Luồng đối soát tự động (Reconciliation)</h4>
+
+        <p>Một luồng reconciliation tự động tốt thường gồm các bước sau:</p>
+
+        <ol class="recon-steps">
+            <li><strong>Nhận sự kiện giao dịch chuẩn hóa</strong> từ app, core banking, switch/API gateway và hệ thống
+                đích.</li>
+            <li><strong>Đối chiếu theo khóa định danh</strong> như transaction id, trace id, reference id, amount,
+                timestamp, sender/receiver, channel.
+                <p>VD: Check transactionId bên Bank B / Napas. So sánh:</p>
+                <ul>
+                    <li>B đã nhận tiền → SUCCESS</li>
+                    <li>B không có giao dịch → REFUND</li>
+                    <li>B đang xử lý → giữ UNKNOWN</li>
+                </ul>
+            </li>
+            <li><strong>Phân loại kết quả:</strong>
+                <ul>
+                    <li>Match success</li>
+                    <li>Debit success, credit pending.</li>
+                    <li>Debit success, credit failed.</li>
+                    <li>Duplicate</li>
+                    <li>Unknown / orphan.</li>
+                </ul>
+            </li>
+            <li><strong>Áp rule theo timeout SLA:</strong>
+                <ul>
+                    <li>Nếu trong SLA thì chờ retry và refresh status.</li>
+                    <li>Nếu quá SLA thì chuyển sang exception queue.</li>
+                </ul>
+            </li>
+            <li><strong>Ghi trạng thái chuẩn</strong> vào transaction orchestration layer để app/CSKH dùng chung một
+                nguồn sự thật.</li>
+        </ol>
+
+        <p><mark>Về nghiệp vụ kế toán, các khoản chưa xác định có thể tạm giữ qua suspense account hoặc settlement
+                interim account cho đến khi xác định được luồng đúng.</mark></p>
+
+
+        <h4>Luồng Refund tự động</h4>
+
+        <p>Refund tự động nên được kích hoạt khi reconciliation kết luận rằng:</p>
+        <ul>
+            <li>nguồn đã bị debit thật,</li>
+            <li>đích không credit,</li>
+            <li>giao dịch không thể tự recover trong SLA,</li>
+            <li>và không có pending confirmation hợp lệ từ mạng thanh toán/đối tác.</li>
+        </ul>
+
+        <p>Luồng chuẩn có thể là:</p>
+        <ol>
+            <li>Detect exception từ reconciliation engine. Khi xác định FAIL thật:
+                <br>IF destination NOT received
+                <br>THEN refund</li>
+            <li>Verify idempotency để tránh refund 2 lần.</li>
+            <li>Check auto-recovery window, ví dụ retry với switch/partner trong vài phút hoặc vài giờ.</li>
+            <li>Create refund instruction trong core banking hoặc payment orchestration.</li>
+            <li>Post accounting reversal:
+                <ul>
+                    <li>debit suspense/clearing,</li>
+                    <li>credit customer account.</li>
+                </ul>
+            </li>
+            <li>Notify customer rằng hoàn tiền đang xử lý hoặc đã hoàn tất.</li>
+            <li>Close case tự động khi refund thành công.</li>
+        </ol>
+
+        <div class="flow-path">
+            [Reconciliation Job] -> detect FAILED -> [Refund Service] -> credit lại tài khoản nguồn -> update status =
+            REFUNDED
+        </div>
+
+        <p>Quan trọng: Refund cũng phải có</p>
+        <ul>
+            <li>refundTransactionId</li>
+            <li>idempotent</li>
+            <li>audit log đầy đủ</li>
+        </ul>
+
+        <p><mark>Nếu hệ thống của bạn hỗ trợ reversal trực tiếp, nên ưu tiên reversal cho giao dịch nội bộ chưa
+                settle; còn nếu đã qua settlement rồi thì dùng refund theo đúng chu trình bù trừ và hạch toán.</mark>
+        </p>
+
+        <h4>Thiết kế để không làm sập CSKH</h4>
+
+        <p>Muốn tránh tổng đài quá tải, bạn cần đẩy phần lớn case vào tự động hóa và self-service:</p>
+        <ul>
+            <li>Hiển thị trạng thái rõ ràng trong app: Pending, Processing, Success, Failed, Refunding.</li>
+            <li>Tự động cập nhật ETA: ví dụ "đang đối soát, dự kiến xong trong 30 phút".</li>
+            <li>Auto-refresh trạng thái thay vì bắt khách gọi CSKH.</li>
+            <li>Tạo case ticket chỉ khi vượt SLA.</li>
+            <li>Push notification / SMS khi có kết quả cuối cùng.</li>
+        </ul>
+
+        <p><mark>Quan trọng nhất là app không nên chỉ báo "lỗi" chung chung. Nó phải trả về một mã trạng thái nghiệp
+                vụ cụ thể để khách hiểu tiền đang ở đâu và bao giờ được xử lý tiếp.</mark></p>
+
+        <hr>
+
+        <h3>2. Cú lừa mang tên Real-time trong ngân hàng</h3>
+
+        <p>Khách hàng muốn app phải mượt và xử lý giao dịch trong nháy mắt. Nhưng BA quên mất phía sau là hệ thống
+            Core Banking già cỗi có độ trễ lớn. Nhiệm vụ của BA là thiết kế cơ chế xử lý bất đồng bộ (Asynchronous)
+            và giao diện chờ khéo léo để người dùng không bấm nút "Thanh Toán" 2 lần liên tiếp.</p>
+
+        <p>Bản chất thì đây là một "cú lừa mang tên real-time" trong ngân hàng.</p>
+
+        <p>Người dùng nhìn thấy app, thấy nút bấm, thấy spinner, thấy số dư đổi nhanh, nên nghĩ rằng mọi thứ phía sau
+            cũng phải xử lý tức thời. Nhưng BA nếu chỉ chạy theo kỳ vọng đó mà không hiểu backend thật sự vận hành ra
+            sao thì rất dễ thiết kế sai. Vì phía sau thường là:</p>
+        <ul>
+            <li>Core Banking cũ, nhiều batch, nhiều lock, nhiều dependency</li>
+            <li>Hệ thống trung gian, switch, queue, service bus</li>
+            <li>Kết nối liên ngân hàng hoặc đối tác ngoài</li>
+            <li>Timeout, retry, duplicate, delayed response, unknown state</li>
+        </ul>
+
+        <p><mark>Nên cái cần thiết kế không phải là "real-time thật", mà là trải nghiệm có cảm giác real-time, trong
+                khi xử lý bên dưới là bất đồng bộ, an toàn, chống trùng và có thể đối soát được.</mark></p>
+
+        <p><mark>BA phải chấp nhận một sự thật: Nhiều giao dịch ngân hàng không nên thiết kế như "synchronous
+                request-response thuần túy", mà phải thiết kế như "gửi yêu cầu -> nhận xác nhận tiếp nhận -> theo dõi
+                kết quả sau".</mark></p>
+
+        <h4>Sai lầm phổ biến của BA khi đòi "real-time"</h4>
+
+        <p>Sai lầm hay gặp là viết flow kiểu:</p>
+
+        <div class="flow-path">
+            User bấm Thanh Toán -> hệ thống gọi Core Banking -> nhận kết quả ngay -> show Success / Fail
+        </div>
+
+        <p>Flow này nhìn đẹp trên giấy nhưng rất nguy hiểm ngoài đời, vì nó giả định:</p>
+        <ul>
+            <li>Core luôn phản hồi nhanh</li>
+            <li>Không có timeout</li>
+            <li>Không có trạng thái mơ hồ</li>
+            <li>Không có duplicate click</li>
+            <li>Không có retry</li>
+            <li>Không có lỗi mạng phía app</li>
+            <li>Không có chậm ACK</li>
+        </ul>
+
+        <p>Trong ngân hàng, các giả định này rất dễ sai.</p>
+
+        <p>Thực tế đúng hơn phải là:</p>
+
+        <div class="flow-path">
+            User bấm Thanh Toán -> app gửi request -> backend ghi nhận giao dịch với mã duy nhất -> trả ngay trạng thái
+            "Đã tiếp nhận / Đang xử lý" -> hệ thống nền tiếp tục xử lý với core -> cập nhật trạng thái cuối sau
+        </div>
+
+        <h4>Asynchronous trong bài toán thanh toán nghĩa là gì?</h4>
+
+        <p>Không phải cứ có queue là asynchronous. Ở mức BA, bất đồng bộ nghĩa là UI không chờ kết quả cuối trong cùng
+            một nhịp request-response.</p>
+
+        <p>Thay vào đó:</p>
+        <ol>
+            <li>User gửi lệnh</li>
+            <li>Hệ thống tiếp nhận và cấp mã giao dịch</li>
+            <li>Hệ thống nền xử lý với core / đối tác</li>
+            <li>App dùng polling, push, refresh trạng thái hoặc callback để cập nhật kết quả sau</li>
+        </ol>
+
+        <p>Nghĩa là "nhanh ở phản hồi đầu tiên", chứ không nhất thiết "nhanh ở kết quả cuối".</p>
+
+        <h4>Luồng BA nên thiết kế</h4>
+
+        <p><strong>Giai đoạn 1: Submit giao dịch</strong></p>
+
+        <p>User bấm Thanh Toán.</p>
+
+        <p>App gửi request kèm:</p>
+        <ul>
+            <li>transactionIntentId hoặc clientRequestId</li>
+            <li>thông tin giao dịch</li>
+            <li>timestamp</li>
+            <li>device/session info nếu cần</li>
+        </ul>
+
+        <p>Backend làm ngay 3 việc:</p>
+        <ul>
+            <li>kiểm tra hợp lệ request</li>
+            <li>sinh transactionId duy nhất</li>
+            <li>lưu giao dịch ở trạng thái RECEIVED hoặc PROCESSING</li>
+        </ul>
+
+        <p>Sau đó backend trả về rất nhanh:</p>
+<pre><code>{
+  "transactionId": "TXN202604200001",
+  "status": "PROCESSING",
+  "message": "Giao dịch đang được xử lý"
+}</code></pre>
+
+        <p>Điểm mấu chốt:</p>
+        <ul>
+            <li>chưa cần biết core xong chưa</li>
+            <li>nhưng app đã có thứ để bám vào</li>
+            <li>user biết hệ thống đã nhận lệnh</li>
+        </ul>
+
+        <p><strong>Giai đoạn 2: Xử lý nền với core</strong></p>
+
+        <p>Một worker/service khác xử lý:</p>
+        <ul>
+            <li>gọi core banking</li>
+            <li>gọi payment switch</li>
+            <li>gọi bank đích / cổng thanh toán</li>
+            <li>nhận response</li>
+            <li>update trạng thái giao dịch</li>
+        </ul>
+
+        <p>Nếu bị timeout hoặc response không chắc chắn:</p>
+        <ul>
+            <li>set UNKNOWN</li>
+            <li>đưa vào luồng reconcile</li>
+        </ul>
+
+        <p><strong>Giai đoạn 3: App cập nhật kết quả</strong></p>
+
+        <p>App có thể:</p>
+        <ul>
+            <li>polling trạng thái mỗi 2–3 giây</li>
+            <li>nhận push/in-app notification</li>
+            <li>hoặc user quay lại màn hình lịch sử giao dịch để xem</li>
+        </ul>
+
+        <p>Flow ngoài mặt có cảm giác mượt:</p>
+        <ul>
+            <li>bấm một lần</li>
+            <li>thấy trạng thái đang xử lý</li>
+            <li>vài giây sau tự chuyển thành thành công / thất bại / đang kiểm tra</li>
+        </ul>
+
+        <h4>Cách thiết kế UI chờ "khéo" để user không bấm 2 lần</h4>
+
+        <p>Mục tiêu UX: UI chờ không chỉ để "đẹp", mà để:</p>
+        <ul>
+            <li>xác nhận hệ thống đã nhận thao tác</li>
+            <li>giảm lo lắng</li>
+            <li>ngăn double click</li>
+            <li>không tạo cảm giác app bị treo</li>
+            <li>hướng user theo đúng kỳ vọng</li>
+        </ul>
+
+        <p><strong>1. Disable nút ngay lập tức</strong></p>
+
+        <p>Ngay khi user bấm:</p>
+        <ul>
+            <li>disable nút Thanh Toán</li>
+            <li>đổi trạng thái nút thành Đang xử lý...</li>
+            <li>hiện loading rõ ràng</li>
+        </ul>
+        <p>Ví dụ: [Đang xử lý...] chứ không còn là [Thanh Toán]</p>
+
+        <p><strong>2. Lock action trong một khoảng thời gian hợp lý</strong></p>
+
+        <p>Trong lúc request đầu tiên chưa được xác nhận là đã tiếp nhận:</p>
+        <ul>
+            <li>chặn mọi lần bấm tiếp theo</li>
+            <li>chặn back-and-submit lại nếu cần</li>
+            <li>nếu user tap liên tục thì không gửi thêm request mới</li>
+        </ul>
+
+        <p><strong>3. Hiển thị thông điệp đúng</strong></p>
+
+        <p>Thông điệp tốt hơn là:</p>
+        <ul>
+            <li>"Đang gửi yêu cầu thanh toán"</li>
+            <li>"Hệ thống đã tiếp nhận, đang xử lý"</li>
+            <li>"Vui lòng không thoát ứng dụng hoặc bấm lại"</li>
+        </ul>
+
+        <p>Thông điệp không nên là:</p>
+        <ul>
+            <li>"Đợi chút..."</li>
+            <li>"Loading..."</li>
+            <li>"Xin vui lòng chờ"</li>
+        </ul>
+        <p>vì quá mơ hồ, không trấn an được user</p>
+
+        <p><strong>4. Có màn hình trung gian xác nhận "đã tiếp nhận"</strong></p>
+
+        <p>Thay vì để spinner quay mãi ở đúng nút bấm, nên chuyển sang một màn hình/trạng thái riêng:</p>
+
+        <div class="callout">
+            <p><strong><em>Giao dịch đang được xử lý</em></strong></p>
+            <p><em>Mã giao dịch: TXN...</em></p>
+            <p><em>Chúng tôi sẽ cập nhật kết quả trong giây lát</em></p>
+        </div>
+
+        <p>Khi user thấy mã giao dịch, họ bớt xu hướng bấm lại.</p>
+
+        <h4>"Real-time cảm giác" được tạo bằng gì?</h4>
+
+        <p>Trong app ngân hàng, thứ user cảm nhận là real-time thường đến từ 4 thứ:</p>
+
+        <p><strong>1. Phản hồi tức thì sau hành động</strong></p>
+        <p>User bấm là có phản ứng ngay:</p>
+        <ul>
+            <li>nút đổi trạng thái</li>
+            <li>animation/loading</li>
+            <li>app chuyển màn hình</li>
+        </ul>
+
+        <p><strong>2. Trạng thái rõ ràng</strong></p>
+        <p>User luôn biết:</p>
+        <ul>
+            <li>hệ thống đã nhận chưa</li>
+            <li>đang xử lý hay chưa</li>
+            <li>có mã tham chiếu chưa</li>
+        </ul>
+
+        <p><strong>3. Tiến triển nhìn thấy được</strong></p>
+        <p>Ví dụ:</p>
+        <ul>
+            <li>Đã tiếp nhận</li>
+            <li>Đang kết nối ngân hàng</li>
+            <li>Đang xác nhận kết quả</li>
+        </ul>
+        <p>Không cần nói quá kỹ thuật, nhưng có progress logic thì user đỡ hoảng hơn spinner quay vô tận.</p>
+
+        <p><strong>4. Kết quả được trả về chủ động</strong></p>
+        <ul>
+            <li>tự động refresh</li>
+            <li>push notification</li>
+            <li>cập nhật vào lịch sử giao dịch</li>
+        </ul>
+
+    </main>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll('a[data-topic-link]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic-link');
+                    const targetWindow = window.top || window.parent || window;
+                    if (targetWindow.selectTopic && typeof targetWindow.selectTopic === 'function') {
+                        targetWindow.selectTopic(topicId);
+                    } else {
+                        const currentUrl = new URL(targetWindow.location.href);
+                        currentUrl.searchParams.set('tag', 'business-analysis');
+                        currentUrl.searchParams.set('topic', topicId);
+                        targetWindow.location.href = currentUrl.toString();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
