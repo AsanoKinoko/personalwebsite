@@ -13,6 +13,11 @@
           "description": "AI UI design tool"
         },
         {
+          "name": "Maplify",
+          "link": "https://mapify.so",
+          "description": "Summarize your mind map with AI"
+        },
+        {
           "name": "Mermaid",
           "link": "https://mermaid.js.org/",
           "description": "AI diagram generation"
@@ -69,6 +74,23 @@
       ]
     },
     {
+      "id": "business-analyst",
+      "label": "Business Analyst",
+      "icon": "bx bx-line-chart",
+      "websites": [
+        {
+          "name": "Modern analyst",
+          "link": "https://modernanalyst.com/",
+          "description": "A huge resource library (Temples, books, etc.) for Business Analysts"
+        },
+        {
+          "name": "xmind",
+          "link": "https://xmind.com/ai",
+          "description": "Smart mind map creation tool with AI support"
+        }
+      ]
+    },
+    {
       "id": "car",
       "label": "Car",
       "icon": "bx bx-car",
@@ -89,6 +111,23 @@
           "name": "Hue Tools",
           "link": "https://hue.tools/?format=hex",
           "description": "Suggest ideas for colors and color schemes"
+        }
+      ]
+    },
+    {
+      "id": "game",
+      "label": "Game",
+      "icon": "bx bx-joystick",
+      "websites": [
+        {
+          "name": "Grabcraft",
+          "link": "https://www.grabcraft.com/",
+          "description": "Minecraft building ideas library"
+        },
+        {
+          "name": "Hordes",
+          "link": "https://hordes.io/",
+          "description": "An adventure role-playing game right on the web"
         }
       ]
     },
@@ -128,6 +167,11 @@
           "name": "iLoveIMG",
           "link": "https://www.iloveimg.com/",
           "description": "Online photo editor"
+        },
+        {
+          "name": "MoeWalls",
+          "link": "https://moewalls.com/",
+          "description": "A collection of live wallpapers for computers and phones"
         }
       ]
     },
@@ -171,6 +215,11 @@
       "icon": "bx bx-world",
       "websites": [
         {
+          "name": "Fluentez",
+          "link": "https://fluentez.com/",
+          "description": "Effective online English learning tools"
+        },
+        {
           "name": "Hemingway App",
           "link": "https://hemingwayapp.com/",
           "description": "English writing assistant"
@@ -203,6 +252,11 @@
           "description": ""
         },
         {
+          "name": "Coddytech",
+          "link": "https://coddy.tech/",
+          "description": "Learn programming for free"
+        },
+        {
           "name": "CSS",
           "link": "https://web.dev/learn/css",
           "description": ""
@@ -231,6 +285,11 @@
           "name": "JavaScript",
           "link": "https://javascript.info/",
           "description": ""
+        },
+        {
+          "name": "Khan Academy",
+          "link": "https://vi.khanacademy.org/lohp/learner",
+          "description": "Free math lesson library in Viet Nam"
         },
         {
           "name": "Machine Learning",
@@ -268,6 +327,11 @@
           "description": ""
         },
         {
+          "name": "SQLBolt",
+          "link": "https://sqlbolt.com/",
+          "description": "Learn basic SQL with sample exercises"
+        },
+        {
           "name": "Vue",
           "link": "https://learnvue.co/",
           "description": ""
@@ -280,9 +344,38 @@
       ]
     },
     {
+      "id": "pet",
+      "label": "Pet",
+      "icon": "bx bxs-dog",
+      "websites": [
+        {
+          "name": "Uchinoko Maker",
+          "link": "https://uchinoko-maker.jp/?lang=vi-VN",
+          "description": "This pet character creation tool is incredibly fun. It can be used as a template, avatar, or on various products"
+        }
+      ]
+    },
+    {
+      "id": "medicine",
+      "label": "Medicine",
+      "icon": "bx bx-plus-medical",
+      "websites": [
+        {
+          "name": "innerbody",
+          "link": "https://www.innerbody.com/",
+          "description": "A free resource library on health and human anatomy"
+        },
+        {
+          "name": "Smart Servier",
+          "link": "https://smart.servier.com/",
+          "description": "Free medical image library"
+        }
+      ]
+    },
+    {
       "id": "quick-reference",
       "label": "Quick Reference",
-      "icon": "bx bx-book-bookmark",
+      "icon": "bx bx-bolt-circle",
       "websites": [
         {
           "name": "Quick Reference",
@@ -300,6 +393,23 @@
           "name": "Javalabs",
           "link": "https://javalab.org/en/",
           "description": "Virtual science experiments & simulations"
+        },
+        {
+          "name": "Zperiod",
+          "link": "https://zperiod.app/",
+          "description": "A periodic table of chemical elements with information and a 3D model, along with some chemical tools"
+        }
+      ]
+    },
+    {
+      "id": "sound",
+      "label": "Sound",
+      "icon": "bx bx-music",
+      "websites": [
+        {
+          "name": "Myinstants",
+          "link": "https://www.myinstants.com",
+          "description": "A huge library of sound effects, updated according to trends"
         }
       ]
     },
@@ -332,6 +442,11 @@
       "label": "3D",
       "icon": "bx bx-cube",
       "websites": [
+        {
+          "name": "Planner5D",
+          "link": "https://planner5d.com/",
+          "description": "3D interior and space design tools"
+        },
         {
           "name": "Virtual Room",
           "link": "https://rooms.xyz/",
