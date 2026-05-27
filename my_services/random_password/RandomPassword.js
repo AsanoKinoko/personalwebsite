@@ -5,7 +5,7 @@ class PasswordGenerator {
         this.uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         this.digits = '0123456789';
         this.special = '@#$%^&*()_+-=[]{}|;:,.<>?';
-        
+
         this.init();
     }
 
@@ -15,6 +15,33 @@ class PasswordGenerator {
         const lengthSlider = document.getElementById('passwordLength');
         const lengthValue = document.getElementById('lengthValue');
         const passwordOutput = document.getElementById('passwordOutput');
+
+        // Tab Elements
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // Initialize Caesar Cipher component
+        const caesarCipher = new CaesarCipher(passwordOutput, (msg) => this.showNotification(msg));
+
+        // Tab Switching
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                btn.classList.add('active');
+                document.getElementById(`${targetTab}-generator-content`).classList.add('active');
+
+                // Clear output or update based on active tab
+                if (targetTab === 'random') {
+                    generateBtn.click();
+                } else {
+                    passwordOutput.value = "The text after encryption/decryption";
+                }
+            });
+        });
 
         // Update length display
         lengthSlider.addEventListener('input', (e) => {
@@ -40,29 +67,29 @@ class PasswordGenerator {
     generatePassword(length) {
         // Ensure length is within valid range
         length = Math.max(8, Math.min(50, length));
-        
+
         let password = '';
         const allChars = this.lowercase + this.uppercase + this.digits + this.special;
-        
+
         // Ensure at least one of each required type
         password += this.getRandomChar(this.lowercase);
         password += this.getRandomChar(this.uppercase);
         password += this.getRandomChar(this.digits);
-        
+
         // Add 1-10 special characters (at least 1, max 10)
         const specialCount = Math.min(10, Math.max(1, Math.floor(length * 0.15)));
         for (let i = 0; i < specialCount; i++) {
             password += this.getRandomChar(this.special);
         }
-        
+
         // Fill the rest with random characters
         while (password.length < length) {
             password += this.getRandomChar(allChars);
         }
-        
+
         // Shuffle the password to randomize positions
         password = this.shuffleString(password);
-        
+
         return password;
     }
 
@@ -108,7 +135,7 @@ class PasswordGenerator {
         const notification = document.getElementById('notification');
         notification.textContent = message;
         notification.classList.add('show');
-        
+
         setTimeout(() => {
             notification.classList.remove('show');
         }, 3000);
