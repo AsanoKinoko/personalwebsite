@@ -5,7 +5,11 @@
         "image": "https://placehold.co/400x250?text=Project+Evaluation+System&bg=e6f5e9&color=2f5233",
         "demoUrl": "#",
         "codeUrl": "https://github.com/AsanoKinoko/Project-Evaluation-System",
-        "tech": ["ReactJS", "Spring Boot", "MongoDB"]
+        "tech": [
+            "ReactJS",
+            "Spring Boot",
+            "MongoDB"
+        ]
     },
     {
         "title": "GreenWeave",
@@ -13,7 +17,11 @@
         "image": "data/projects/images/GreenWeave_Demo.png",
         "demoUrl": "#",
         "codeUrl": "https://github.com/AsanoKinoko/GreenWeave_V2",
-        "tech": ["ReactJS", "NodeJS", "MongoDB"]
+        "tech": [
+            "ReactJS",
+            "NodeJS",
+            "MongoDB"
+        ]
     },
     {
         "title": "Debt Management System",
@@ -21,7 +29,23 @@
         "image": "https://placehold.co/400x250?text=Debt+Management+System&bg=e6f5e9&color=2f5233",
         "demoUrl": "#",
         "codeUrl": "https://github.com/AsanoKinoko/DebtManagementSystem",
-        "tech": ["Java Servlet", "HTML", "CSS"]
+        "tech": [
+            "Java Servlet",
+            "HTML",
+            "CSS"
+        ]
+    },
+    {
+        "title": "Ocean Flow",
+        "description": "A small project that allows you to manage daily tasks and habits in a game-like style",
+        "image": "data/projects/images/Ocean_Flow.png",
+        "demoUrl": "https://my-to-do-web.vercel.app/",
+        "codeUrl": "https://github.com/AsanoKinoko/my-to-do-web",
+        "tech": [
+            "NextJS",
+            "NodeJS",
+            "Firebase"
+        ]
     },
     {
         "title": "Landing Page Real Estate",
@@ -29,6 +53,8 @@
         "image": "https://placehold.co/400x250?text=Landing+Page+Real+Estate&bg=e6f5e9&color=2f5233",
         "demoUrl": "https://vercel-landing-page-real-estate.vercel.app/",
         "codeUrl": "https://github.com/AsanoKinoko/landing-page-real-estate",
-        "tech": ["NextJS"]
+        "tech": [
+            "NextJS"
+        ]
     }
 ]
